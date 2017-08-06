@@ -1,7 +1,9 @@
 package com.example.s3529589.mad_a1.Model;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -24,15 +26,16 @@ public class MainActivity extends AppCompatActivity {
 
         View addFriendBtn = findViewById(R.id.addFriends);
         addFriendBtn.setOnClickListener(new AddFriendController(this));
-
+       // check();
         View displayriendListBtn = findViewById(R.id.displayFriends);
         displayriendListBtn.setOnClickListener(new DisplayFriendListController(this));
     }
 
-    public List<Friend> getFriendList(){
+    public List<Friend> getFriendList() {
         return friendList;
     }
-    public void addToFriendList(Friend f){
+
+    public void addToFriendList(Friend f) {
         friendList.add(f);
     }
 
@@ -48,13 +51,20 @@ public class MainActivity extends AppCompatActivity {
                     name = contactsManager.getContactName();
                     email = contactsManager.getContactEmail();
 
-                    friendList.add(new Friend(name,email));
+                    friendList.add(new Friend(name, email));
 
                 } catch (ContactDataManager.ContactQueryException e) {
                     Log.e(LOG_TAG, e.getMessage());
                 }
             }
         }
+    }
+
+    private void check() {
+        ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS);
+
+
+
     }
 
 }
