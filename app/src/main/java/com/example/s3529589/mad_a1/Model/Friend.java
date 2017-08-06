@@ -14,4 +14,8 @@ public class Friend {
         this.email = email;
     }
 
+    public String getName(){
+        return name;
+    }
+
 }

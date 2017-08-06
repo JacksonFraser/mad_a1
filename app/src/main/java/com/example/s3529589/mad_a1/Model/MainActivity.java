@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.example.s3529589.mad_a1.Controller.AddFriendController;
+import com.example.s3529589.mad_a1.Controller.DisplayFriendListController;
 import com.example.s3529589.mad_a1.R;
 
 import java.util.ArrayList;
@@ -23,8 +24,14 @@ public class MainActivity extends AppCompatActivity {
 
         View addFriendBtn = findViewById(R.id.addFriends);
         addFriendBtn.setOnClickListener(new AddFriendController(this));
+
+        View displayriendListBtn = findViewById(R.id.displayFriends);
+        displayriendListBtn.setOnClickListener(new DisplayFriendListController(this));
     }
 
+    public List<Friend> getFriendList(){
+        return friendList;
+    }
     public void addToFriendList(Friend f){
         friendList.add(f);
     }
