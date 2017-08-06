@@ -6,13 +6,65 @@
     android:layout_height="match_parent"
     tools:context="com.example.s3529589.mad_a1.MainActivity">
 
-    <TextView
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Test text!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/addFriends"
+            android:text="@string/addFriends"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/removeFriends"
+            android:text="@string/removeFriends"
+            android:layout_below="@+id/addFriends"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editFriends"
+            android:text="@string/editFriends"
+            android:layout_below="@+id/removeFriends"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/displayFriends"
+            android:text="@string/displayFriends"
+            android:layout_below="@+id/editFriends"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/scheduleMeetings"
+            android:text="@string/scheduleMeetings"
+            android:layout_below="@+id/displayFriends"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editMeetingDetails"
+            android:text="@string/editMeetingDetails"
+            android:layout_below="@+id/displayFriends"
+            tools:layout_editor_absoluteY="0dp"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/displayMeetings"
+            android:text="@string/displayMeetings"
+            android:layout_below="@+id/editMeetingDetails"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/selection"
+            android:text="@string/selection"
+            android:layout_below="@+id/displayMeetings"/>
+    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
