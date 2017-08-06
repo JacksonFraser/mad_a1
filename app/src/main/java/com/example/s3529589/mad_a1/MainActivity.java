@@ -16,21 +16,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         View addFriendBtn = findViewById(R.id.addFriends);
-
-        addFriendBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                addFriendActivity(v);
-            }
-        });
+        addFriendBtn.setOnClickListener(new addFriendController(this));
     }
 
-
-    public void addFriendActivity(View view){
-        this.setContentView(R.layout.add_friend);
-
-        Intent contactPickerIntent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
-        startActivityForResult(contactPickerIntent, PICK_CONTACTS);
-    }
 }
 
 
