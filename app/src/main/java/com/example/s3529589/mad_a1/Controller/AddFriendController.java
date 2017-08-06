@@ -1,11 +1,9 @@
 package com.example.s3529589.mad_a1.Controller;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.provider.ContactsContract;
 import android.view.View;
 
-import com.example.s3529589.mad_a1.Model.AddFriendActivity;
 import com.example.s3529589.mad_a1.Model.MainActivity;
 
 /**
@@ -22,11 +20,7 @@ public class AddFriendController implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-    AddFriendActivity a = new AddFriendActivity();
         Intent contactPickerIntent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
         mActivity.startActivityForResult(contactPickerIntent, PICK_CONTACTS);
-
-
-
     }
 }

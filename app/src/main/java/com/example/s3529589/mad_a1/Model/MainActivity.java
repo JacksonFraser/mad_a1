@@ -37,9 +37,12 @@ public class MainActivity extends AppCompatActivity {
                 String name = "";
                 String email = "";
                 try {
+
                     name = contactsManager.getContactName();
                     email = contactsManager.getContactEmail();
+
                     friendList.add(new Friend(name,email));
+
                 } catch (ContactDataManager.ContactQueryException e) {
                     Log.e(LOG_TAG, e.getMessage());
                 }
