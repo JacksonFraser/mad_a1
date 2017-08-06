@@ -7,7 +7,8 @@ import android.provider.ContactsContract.CommonDataKinds.Email;
 import android.provider.ContactsContract.Contacts;
 import android.util.Log;
 
-/**
+/*
+*
  * <p>
  * Class used to retrieve information about a Contact selected through the Android
  * Contacts Picker Activity. requires permission android.permission.READ_CONTACTS
@@ -49,7 +50,7 @@ import android.util.Log;
  * }
  * }
  * </code>
- */
+*/
 
 public class ContactDataManager
 {
