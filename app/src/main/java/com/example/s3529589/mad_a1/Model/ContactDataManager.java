@@ -1,4 +1,4 @@
-package com.example.s3529589.mad_a1;
+package com.example.s3529589.mad_a1.Model;
 
 import android.content.Context;
 import android.content.Intent;

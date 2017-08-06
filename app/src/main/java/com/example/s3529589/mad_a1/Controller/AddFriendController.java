@@ -1,8 +1,10 @@
-package com.example.s3529589.mad_a1;
+package com.example.s3529589.mad_a1.Controller;
 
 import android.content.Intent;
 import android.provider.ContactsContract;
 import android.view.View;
+
+import com.example.s3529589.mad_a1.Model.MainActivity;
 
 /**
  * Created by s3529589 on 8/6/17.
