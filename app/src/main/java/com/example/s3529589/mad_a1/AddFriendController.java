@@ -8,19 +8,17 @@ import android.view.View;
  * Created by s3529589 on 8/6/17.
  */
 
-public class addFriendController implements View.OnClickListener {
+public class AddFriendController implements View.OnClickListener {
     private MainActivity mActivity;
+    protected static final int PICK_CONTACTS = 100;
 
-    public addFriendController(MainActivity mainActivity) {
+    public AddFriendController(MainActivity mainActivity) {
         this.mActivity = mainActivity;
     }
 
     @Override
     public void onClick(View v) {
         Intent contactPickerIntent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
-        mActivity.startActivityForResult(contactPickerIntent, 100);
-
-
-
+        mActivity.startActivityForResult(contactPickerIntent, PICK_CONTACTS);
     }
 }
