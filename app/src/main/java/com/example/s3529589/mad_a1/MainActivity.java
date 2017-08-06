@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         addFriendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println("Add Friend");
+
             }
         });
     }
