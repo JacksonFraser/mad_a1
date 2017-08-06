@@ -3,6 +3,7 @@ package com.example.s3529589.mad_a1.Model;
 import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -21,12 +22,13 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         View addFriendBtn = findViewById(R.id.addFriends);
         addFriendBtn.setOnClickListener(new AddFriendController(this));
-       // check();
+
         View displayriendListBtn = findViewById(R.id.displayFriends);
         displayriendListBtn.setOnClickListener(new DisplayFriendListController(this));
     }
@@ -47,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
                 String name = "";
                 String email = "";
                 try {
-
                     name = contactsManager.getContactName();
                     email = contactsManager.getContactEmail();
 
@@ -59,14 +60,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
-    private void check() {
-        ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS);
-
-
-
-    }
-
 }
 
 

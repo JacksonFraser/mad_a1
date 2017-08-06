@@ -1,6 +1,5 @@
 package com.example.s3529589.mad_a1.Model;
 
-
 import android.widget.DatePicker;
 
 public class Friend {
@@ -16,6 +15,10 @@ public class Friend {
 
     public String getName(){
         return name;
+    }
+
+    public String getEmail(){
+        return email;
     }
 
 }
