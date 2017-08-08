@@ -27,7 +27,7 @@
             android:background="#931621"
             android:textColor="#eeeeee"
             android:textStyle="bold"
-            android:textSize="22dp"
+            android:textSize="22sp"
             />
 
         <Button
@@ -35,12 +35,11 @@
             android:layout_height="wrap_content"
             android:id="@+id/removeFriends"
             android:text="@string/removeFriends"
-            android:layout_below="@+id/addFriends"
             android:layout_weight="1"
             android:background="#28464B"
             android:textColor="#eeeeee"
             android:textStyle="bold"
-            android:textSize="22dp"
+            android:textSize="22sp"
             />
 
         <Button
@@ -48,12 +47,11 @@
             android:layout_height="wrap_content"
             android:id="@+id/editFriends"
             android:text="@string/editFriends"
-            android:layout_below="@+id/removeFriends"
             android:layout_weight="1"
             android:background="#326771"
             android:textColor="#eeeeee"
             android:textStyle="bold"
-            android:textSize="22dp"
+            android:textSize="22sp"
             />
 
         <Button
@@ -61,12 +59,11 @@
             android:layout_height="wrap_content"
             android:id="@+id/displayFriends"
             android:text="@string/displayFriends"
-            android:layout_below="@+id/editFriends"
             android:layout_weight="1"
             android:background="#2C8C99"
             android:textColor="#eeeeee"
             android:textStyle="bold"
-            android:textSize="22dp"
+            android:textSize="22sp"
             />
 
         <Button
@@ -74,12 +71,11 @@
             android:layout_height="wrap_content"
             android:id="@+id/scheduleMeetings"
             android:text="@string/scheduleMeetings"
-            android:layout_below="@+id/displayFriends"
             android:layout_weight="1"
             android:background="#F9B689"
             android:textColor="#eeeeee"
             android:textStyle="bold"
-            android:textSize="22dp"
+            android:textSize="22sp"
             />
 
         <Button
@@ -87,12 +83,11 @@
             android:layout_height="wrap_content"
             android:id="@+id/editMeetingDetails"
             android:text="@string/editMeetingDetails"
-            android:layout_below="@+id/displayFriends"
             android:layout_weight="1"
             android:background="#42D9C8"
             android:textColor="#eeeeee"
             android:textStyle="bold"
-            android:textSize="22dp"
+            android:textSize="22sp"
             />
 
         <Button
@@ -100,11 +95,11 @@
             android:layout_height="wrap_content"
             android:id="@+id/displayMeetings"
             android:text="@string/displayMeetings"
-            android:layout_below="@+id/editMeetingDetails"
             android:layout_weight="1"
             android:textColor="#eeeeee"
+            android:background="#C47335"
             android:textStyle="bold"
-            android:textSize="22dp"
+            android:textSize="22sp"
             />
 
         <Button
@@ -112,11 +107,11 @@
             android:layout_height="wrap_content"
             android:id="@+id/selection"
             android:text="@string/selection"
-            android:layout_below="@+id/displayMeetings"
             android:layout_weight="1"
+            android:background="#B79FAD"
             android:textColor="#eeeeee"
             android:textStyle="bold"
-            android:textSize="22dp"
+            android:textSize="22sp"
             />
     </LinearLayout>
 
