@@ -22,6 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Model.FriendListActivity"></activity>
+        <activity android:name=".Model.FriendMenuActivity"></activity>
 
     </application>
 

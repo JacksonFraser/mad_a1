@@ -4,18 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 
-import com.example.s3529589.mad_a1.Controller.AddFriendController;
-import com.example.s3529589.mad_a1.Controller.DisplayFriendListController;
 import com.example.s3529589.mad_a1.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by s3529589 on 8/9/17.
- */
 
 public class FriendListActivity extends Activity{
     private List<Friend> friendList = new ArrayList<Friend>();

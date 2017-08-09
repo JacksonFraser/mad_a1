@@ -17,15 +17,27 @@
         tools:layout_editor_absoluteY="8dp"
         tools:layout_editor_absoluteX="0dp">
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editFriends"
+            android:text="@string/add"
+            android:layout_weight="1"
+            android:background="#326771"
+            android:textColor="#eeeeee"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            />
+
 
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/friendMenuBtn"
-            android:text="@string/addFriends"
+            android:id="@+id/editMeetingDetails"
+            android:text="@string/remove"
             android:layout_weight="1"
-            android:background="#931621"
+            android:background="#42D9C8"
             android:textColor="#eeeeee"
             android:textStyle="bold"
             android:textSize="22sp"
@@ -34,16 +46,26 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/meetingMenuBtn"
-            android:text="@string/removeFriends"
+            android:id="@+id/displayMeetings"
+            android:text="@string/edit"
             android:layout_weight="1"
-            android:background="#28464B"
             android:textColor="#eeeeee"
+            android:background="#C47335"
             android:textStyle="bold"
             android:textSize="22sp"
             />
 
-
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edit"
+            android:text="@string/display"
+            android:layout_weight="1"
+            android:background="#B79FAD"
+            android:textColor="#eeeeee"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

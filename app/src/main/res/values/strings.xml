@@ -1,13 +1,11 @@
 <resources>
     <string name="app_name">Friend Finder App</string>
 
-    <string name="addFriends">Add friend</string>
-    <string name="removeFriends">Remove friend</string>
-    <string name="editFriends">Edit friend</string>
-    <string name="displayFriends">Display friend list</string>
-    <string name="scheduleMeetings">Schedule and unschedule meeting</string>
-    <string name="editMeetingDetails">Edit meeting details</string>
-    <string name="displayMeetings">Display meeting list</string>
-    <string name="selection">Selection/Editing</string>
-    <string name="initialMesage">Please Select Friend To Add:</string>
+    <string name="addFriends">Friends Menu</string>
+    <string name="removeFriends">Meetings Menu</string>
+    <string name="add">Add</string>
+    <string name="remove">Remove</string>
+    <string name="edit">Edit</string>
+    <string name="display">Display</string>
+    <string name="schedule">Schedule/unschedule</string>
 </resources>

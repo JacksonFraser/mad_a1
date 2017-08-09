@@ -9,8 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
-import com.example.s3529589.mad_a1.Controller.AddFriendController;
-import com.example.s3529589.mad_a1.Controller.DisplayFriendListController;
+import com.example.s3529589.mad_a1.Controller.FriendMenuController;
+import com.example.s3529589.mad_a1.Controller.MeetingMenuController;
 import com.example.s3529589.mad_a1.R;
 
 import java.util.ArrayList;
@@ -26,11 +26,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        View addFriendBtn = findViewById(R.id.addFriends);
-        addFriendBtn.setOnClickListener(new AddFriendController(this));
+        View friendMenuBtn = findViewById(R.id.friendMenuBtn);
+        friendMenuBtn.setOnClickListener(new FriendMenuController(this));
 
-        View displayriendListBtn = findViewById(R.id.displayFriends);
-        displayriendListBtn.setOnClickListener(new DisplayFriendListController(this));
+        View meetingMenuBtn = findViewById(R.id.meetingMenuBtn);
+        meetingMenuBtn.setOnClickListener(new MeetingMenuController(this));
     }
 
 
