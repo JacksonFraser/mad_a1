@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private List<Friend> friendList = new ArrayList<Friend>();
+
     private String LOG_TAG = this.getClass().getName();
 
     @Override
@@ -33,33 +33,9 @@ public class MainActivity extends AppCompatActivity {
         displayriendListBtn.setOnClickListener(new DisplayFriendListController(this));
     }
 
-    public List<Friend> getFriendList() {
-        return friendList;
-    }
 
-    public void addToFriendList(Friend f) {
-        friendList.add(f);
-    }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 100) {
-            if (resultCode == RESULT_OK) {
-                ContactDataManager contactsManager = new ContactDataManager(this, data);
-                String name = "";
-                String email = "";
-                try {
-                    name = contactsManager.getContactName();
-                    email = contactsManager.getContactEmail();
 
-                    friendList.add(new Friend(name, email));
-
-                } catch (ContactDataManager.ContactQueryException e) {
-                    Log.e(LOG_TAG, e.getMessage());
-                }
-            }
-        }
-    }
 }
 
 
