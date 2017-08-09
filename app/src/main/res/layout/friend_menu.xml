@@ -20,7 +20,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editFriends"
+            android:id="@+id/addBtn"
             android:text="@string/add"
             android:layout_weight="1"
             android:background="#326771"
@@ -34,7 +34,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editMeetingDetails"
+            android:id="@+id/removeBtn"
             android:text="@string/remove"
             android:layout_weight="1"
             android:background="#42D9C8"
@@ -46,7 +46,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/displayMeetings"
+            android:id="@+id/editBtn"
             android:text="@string/edit"
             android:layout_weight="1"
             android:textColor="#eeeeee"
@@ -58,7 +58,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/edit"
+            android:id="@+id/displayBtn"
             android:text="@string/display"
             android:layout_weight="1"
             android:background="#B79FAD"
