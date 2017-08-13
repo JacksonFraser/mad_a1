@@ -8,4 +8,5 @@
     <string name="edit">Edit</string>
     <string name="display">Display</string>
     <string name="schedule">Schedule/unschedule</string>
+    <string name="datePickerText">Please Select Birthday:</string>
 </resources>

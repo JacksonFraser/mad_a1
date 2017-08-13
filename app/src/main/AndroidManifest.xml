@@ -21,9 +21,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Model.FriendListActivity"></activity>
         <activity android:name=".Model.FriendMenuActivity"></activity>
         <activity android:name=".Model.MeetingMenuActivity"></activity>
+        <activity android:name=".Model.DatePickerActivity"></activity>
 
     </application>
 
