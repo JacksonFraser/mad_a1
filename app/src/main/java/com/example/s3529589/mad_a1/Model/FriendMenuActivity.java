@@ -10,8 +10,7 @@ import com.example.s3529589.mad_a1.Controller.AddFriendController;
 import com.example.s3529589.mad_a1.R;
 
 public class FriendMenuActivity extends Activity{
-    private DatePickerActivity datePickerActivity;
-
+    private final int F_REQUEST = 10;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -20,30 +19,20 @@ public class FriendMenuActivity extends Activity{
 
         View addBtn = findViewById(R.id.addBtn);
         addBtn.setOnClickListener(new AddFriendController(this));
-        this.datePickerActivity = new DatePickerActivity();
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 100) {
+        if (requestCode == F_REQUEST) {
             if (resultCode == RESULT_OK) {
-                ContactDataManager contactsManager = new ContactDataManager(this, data);
-                String name = "";
-                String email = "";
-                try {
+                System.out.println(data.getExtras());
+                System.out.println("JKHDSKJFHDKSJFHKJDHFKJHFKJHSKJHFKDJSFHKJSDHFKJHFS");
 
-
-                    name = contactsManager.getContactName();
-                    email = contactsManager.getContactEmail();
-
-
-                } catch (ContactDataManager.ContactQueryException e) {
-                }
             }
         }
 
-        Intent it = new Intent(this, DatePickerActivity.class);
-        this.startActivity(it);
     }
+
+
 }
 
