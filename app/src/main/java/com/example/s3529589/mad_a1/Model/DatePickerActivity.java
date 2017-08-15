@@ -35,8 +35,12 @@ public class DatePickerActivity extends AppCompatActivity {
                 Intent intent = new Intent(DatePickerActivity.this, FriendMenuActivity.class);
                 intent.putExtra("date", date);
                 startActivity(intent);
+
+                // Finish DatePickerActivity
+                finish();
             }
         });
+
     }
 
 
