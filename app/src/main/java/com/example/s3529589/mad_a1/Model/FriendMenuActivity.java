@@ -10,7 +10,8 @@ import com.example.s3529589.mad_a1.Controller.AddFriendController;
 import com.example.s3529589.mad_a1.R;
 
 public class FriendMenuActivity extends Activity{
-    private final int F_REQUEST = 10;
+    private DatePickerActivity datePickerActivity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -19,20 +20,33 @@ public class FriendMenuActivity extends Activity{
 
         View addBtn = findViewById(R.id.addBtn);
         addBtn.setOnClickListener(new AddFriendController(this));
+        this.datePickerActivity = new DatePickerActivity();
+
+        // Recieve intent from DatePickerActivity
+        Intent incomingIntent = getIntent();
+        String date = incomingIntent.getStringExtra("date");
+        System.out.println("Printing date in FriendMenuActivity: " + date);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == F_REQUEST) {
+        if (requestCode == 100) {
             if (resultCode == RESULT_OK) {
-                System.out.println(data.getExtras());
-                System.out.println("JKHDSKJFHDKSJFHKJDHFKJHFKJHSKJHFKDJSFHKJSDHFKJHFS");
+                ContactDataManager contactsManager = new ContactDataManager(this, data);
+                String name = "";
+                String email = "";
+                try {
+                    name = contactsManager.getContactName();
+                    email = contactsManager.getContactEmail();
 
+                    // Immediately prompt user to choose birthday after selecting contact
+                    Intent it = new Intent(this, DatePickerActivity.class);
+                    this.startActivity(it);
+
+                } catch (ContactDataManager.ContactQueryException e) {
+                }
             }
         }
-
     }
-
-
 }
 

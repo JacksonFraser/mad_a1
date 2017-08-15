@@ -13,9 +13,6 @@ import com.example.s3529589.mad_a1.Controller.FriendMenuController;
 import com.example.s3529589.mad_a1.Controller.MeetingMenuController;
 import com.example.s3529589.mad_a1.R;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class MainActivity extends AppCompatActivity {
 
     private String LOG_TAG = this.getClass().getName();
@@ -32,10 +29,6 @@ public class MainActivity extends AppCompatActivity {
         View meetingMenuBtn = findViewById(R.id.meetingMenuBtn);
         meetingMenuBtn.setOnClickListener(new MeetingMenuController(this));
     }
-
-
-
-
 }
 
 

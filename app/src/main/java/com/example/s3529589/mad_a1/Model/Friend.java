@@ -6,7 +6,7 @@ public class Friend {
     private String id;
     private String name;
     private String email;
-    private DatePicker birthday;
+    private String birthday;
 
     public Friend(String name, String email){
         this.name = name;

@@ -1,9 +1,6 @@
 package com.example.s3529589.mad_a1.Controller;
 
-import android.Manifest;
 import android.content.Intent;
-import android.provider.ContactsContract;
-import android.support.v4.app.ActivityCompat;
 import android.view.View;
 
 import com.example.s3529589.mad_a1.Model.FriendMenuActivity;
@@ -20,7 +17,6 @@ public class FriendMenuController implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         // Request for permissions to read contacts
-
         Intent it = new Intent(mActivity, FriendMenuActivity.class);
         mActivity.startActivity(it);
     }

@@ -7,8 +7,6 @@ import android.provider.ContactsContract.CommonDataKinds.Email;
 import android.provider.ContactsContract.Contacts;
 import android.util.Log;
 
-
-
 public class ContactDataManager
 {
     private static final String LOG_TAG = ContactDataManager.class.getName();
@@ -98,8 +96,6 @@ public class ContactDataManager
             if (cursor != null)
                 cursor.close();
         }
-
         return email;
     }
-
 }
