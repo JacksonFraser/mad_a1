@@ -28,7 +28,7 @@ public class DatePickerActivity extends AppCompatActivity {
         confirmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String date = mDatePicker.getDayOfMonth()+"/"+mDatePicker.getMonth();
+                String date = mDatePicker.getDayOfMonth()+"/"+(mDatePicker.getMonth()+1);
                 System.out.println("Printint date in DatePickerActivity: " + date);
 
                 // Return back to FriendMenuActivity

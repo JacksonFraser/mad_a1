@@ -43,6 +43,9 @@ public class FriendMenuActivity extends Activity{
                     Intent it = new Intent(this, DatePickerActivity.class);
                     this.startActivity(it);
 
+                    // Finish activity
+                    finish();
+
                 } catch (ContactDataManager.ContactQueryException e) {
                 }
             }
