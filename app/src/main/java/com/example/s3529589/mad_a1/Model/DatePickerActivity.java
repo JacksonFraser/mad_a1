@@ -29,7 +29,7 @@ public class DatePickerActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String date = mDatePicker.getDayOfMonth()+"/"+mDatePicker.getMonth();
-                System.out.println(date);
+                System.out.println("Printint date in DatePickerActivity: " + date);
 
                 // Return back to FriendMenuActivity
                 Intent intent = new Intent(DatePickerActivity.this, FriendMenuActivity.class);
