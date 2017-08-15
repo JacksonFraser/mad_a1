@@ -1,12 +1,7 @@
-package com.example.s3529589.mad_a1.Model;
+package com.example.s3529589.mad_a1.Activity;
 
-import android.Manifest;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 
 import com.example.s3529589.mad_a1.Controller.FriendMenuController;

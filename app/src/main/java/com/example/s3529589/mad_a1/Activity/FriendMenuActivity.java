@@ -1,12 +1,12 @@
-package com.example.s3529589.mad_a1.Model;
+package com.example.s3529589.mad_a1.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import com.example.s3529589.mad_a1.Controller.AddFriendController;
+import com.example.s3529589.mad_a1.Model.ContactDataManager;
 import com.example.s3529589.mad_a1.R;
 
 public class FriendMenuActivity extends Activity{

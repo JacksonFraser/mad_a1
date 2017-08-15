@@ -1,4 +1,4 @@
-package com.example.s3529589.mad_a1.Model;
+package com.example.s3529589.mad_a1.Activity;
 
 import android.app.Activity;
 import android.os.Bundle;

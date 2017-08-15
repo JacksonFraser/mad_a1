@@ -14,16 +14,16 @@
         android:theme="@style/AppTheme"
 
         >
-        <activity android:name=".Model.MainActivity">
+        <activity android:name=".Activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Model.FriendMenuActivity"></activity>
-        <activity android:name=".Model.MeetingMenuActivity"></activity>
-        <activity android:name=".Model.DatePickerActivity"></activity>
+        <activity android:name=".Activity.FriendMenuActivity"></activity>
+        <activity android:name=".Activity.MeetingMenuActivity"></activity>
+        <activity android:name=".Activity.DatePickerActivity"></activity>
 
     </application>
 

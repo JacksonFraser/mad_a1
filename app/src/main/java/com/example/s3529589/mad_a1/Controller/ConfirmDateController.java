@@ -1,11 +1,8 @@
 package com.example.s3529589.mad_a1.Controller;
 
-import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
-
-import com.example.s3529589.mad_a1.Model.DatePickerActivity;
+import com.example.s3529589.mad_a1.Activity.DatePickerActivity;
 import com.example.s3529589.mad_a1.R;
 
 /**

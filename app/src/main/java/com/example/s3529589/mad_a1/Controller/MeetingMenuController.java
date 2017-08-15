@@ -2,8 +2,8 @@ package com.example.s3529589.mad_a1.Controller;
 
 import android.content.Intent;
 import android.view.View;
-import com.example.s3529589.mad_a1.Model.MainActivity;
-import com.example.s3529589.mad_a1.Model.MeetingMenuActivity;
+import com.example.s3529589.mad_a1.Activity.MainActivity;
+import com.example.s3529589.mad_a1.Activity.MeetingMenuActivity;
 
 public class MeetingMenuController implements View.OnClickListener {
     private MainActivity mainActivity;
