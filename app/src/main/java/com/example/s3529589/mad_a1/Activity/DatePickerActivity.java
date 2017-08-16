@@ -9,6 +9,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+
+import com.example.s3529589.mad_a1.Model.ContactDataManager;
+import com.example.s3529589.mad_a1.Model.DateSingleton;
+import com.example.s3529589.mad_a1.Model.Friend;
 import com.example.s3529589.mad_a1.R;
 
 /**
