@@ -23,16 +23,10 @@ public class FriendMenuActivity extends Activity{
         View addBtn = findViewById(R.id.addBtn);
         addBtn.setOnClickListener(new AddFriendController(this));
 
-        // Recieve intent from DatePickerActivity
-        Intent incomingIntent = getIntent();
-        Bundle date = incomingIntent.getBundleExtra("date");
-        System.out.println("Printing date in FriendMenuActivity: " + date);
-        try{
-            System.out.println(date.get("name"));
-            System.out.println(date.get("date"));
-            System.out.println(date.get("email"));
-        }catch(Exception e){
-
+        for(Friend f : DateSingleton.getInstance().getFriendList()){
+            System.out.println(f.getName());
+            System.out.println(f.getEmail());
+            System.out.println(f.getBirthdate());
         }
     }
 }

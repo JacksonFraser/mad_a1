@@ -39,16 +39,12 @@ public class DatePickerActivity extends AppCompatActivity {
         confirmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String date = mDatePicker.getDayOfMonth()+"/"+mDatePicker.getMonth();
-                System.out.println("Printint date in DatePickerActivity: " + date);
+                String birthdate = mDatePicker.getDayOfMonth()+"/"+mDatePicker.getMonth();
 
                 // Return back to FriendMenuActivity
                 Intent intent = new Intent(DatePickerActivity.this, FriendMenuActivity.class);
-                Bundle b = new Bundle();
-                b.putString("date",date);
-                b.putString("name",name);
-                b.putString("email",email);
-                intent.putExtra("date", b);
+                DateSingleton d = DateSingleton.getInstance();
+                d.getFriendList().add(new Friend(name,email,birthdate));
                 startActivity(intent);
             }
         });
