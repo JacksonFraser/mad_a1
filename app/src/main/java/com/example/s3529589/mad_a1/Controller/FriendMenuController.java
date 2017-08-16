@@ -16,13 +16,8 @@ public class FriendMenuController implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        // Request for permissions to read contacts
         Intent it = new Intent(mActivity, FriendMenuActivity.class);
         mActivity.startActivity(it);
     }
 
-  /*  private void check() {
-        ActivityCompat.requestPermissions(mActivity, new String[]{Manifest.permission.READ_CONTACTS}, 1);
-    }
-    */
 }

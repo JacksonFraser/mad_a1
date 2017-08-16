@@ -11,6 +11,8 @@ import com.example.s3529589.mad_a1.R;
 
 public class FriendMenuActivity extends Activity{
     private DatePickerActivity datePickerActivity;
+    private String name;
+    private String email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,8 +22,8 @@ public class FriendMenuActivity extends Activity{
 
         View addBtn = findViewById(R.id.addBtn);
         addBtn.setOnClickListener(new AddFriendController(this));
-        this.datePickerActivity = new DatePickerActivity();
 
+<<<<<<< HEAD:app/src/main/java/com/example/s3529589/mad_a1/Activity/FriendMenuActivity.java
         // Recieve intent from DatePickerActivity
         Intent incomingIntent = getIntent();
         String date = incomingIntent.getStringExtra("date");
@@ -49,6 +51,12 @@ public class FriendMenuActivity extends Activity{
                 } catch (ContactDataManager.ContactQueryException e) {
                 }
             }
+=======
+        for(Friend f : DateSingleton.getInstance().getFriendList()){
+            System.out.println(f.getName());
+            System.out.println(f.getEmail());
+            System.out.println(f.getBirthdate());
+>>>>>>> testBranch:app/src/main/java/com/example/s3529589/mad_a1/Model/FriendMenuActivity.java
         }
     }
 }
