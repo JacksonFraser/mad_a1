@@ -4,12 +4,12 @@ public class Friend {
     private String id;
     private String name;
     private String email;
-    private String birthdate;
+    private String birthday;
 
-    public Friend(String name, String email, String birthdate){
+    public Friend(String name, String email, String birthday){
         this.name = name;
         this.email = email;
-        this.birthdate = birthdate;
+        this.birthday = birthday;
     }
 
     public String getName(){
@@ -21,6 +21,6 @@ public class Friend {
     }
 
     public String getBirthdate(){
-        return birthdate;
+        return birthday;
     }
 }

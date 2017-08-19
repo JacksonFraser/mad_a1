@@ -7,17 +7,17 @@ import java.util.List;
  * Created by supriya on 16/08/17.
  */
 
-public class DateSingleton {
-    private static DateSingleton instance = null;
+public class DataSingleton {
+    private static DataSingleton instance = null;
     private static List<Friend> friendList = new ArrayList<>();
 
-    protected DateSingleton(){
+    protected DataSingleton(){
 
     }
 
-    public static DateSingleton getInstance(){
+    public static DataSingleton getInstance(){
         if(instance == null)
-            instance = new DateSingleton();
+            instance = new DataSingleton();
         return instance;
     }
 

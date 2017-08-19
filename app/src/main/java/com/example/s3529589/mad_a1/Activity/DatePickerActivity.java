@@ -11,13 +11,9 @@ import android.widget.Button;
 import android.widget.DatePicker;
 
 import com.example.s3529589.mad_a1.Model.ContactDataManager;
-import com.example.s3529589.mad_a1.Model.DateSingleton;
+import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.Model.Friend;
 import com.example.s3529589.mad_a1.R;
-
-/**
- * Created by s3529589 on 8/13/17.
- */
 
 public class DatePickerActivity extends AppCompatActivity {
 
@@ -33,7 +29,7 @@ public class DatePickerActivity extends AppCompatActivity {
         setContentView(R.layout.date_picker);
 
 
-        check();
+        // check();
         Intent contactPickerIntent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
         startActivityForResult(contactPickerIntent, PICK_CONTACTS);
 
@@ -48,7 +44,7 @@ public class DatePickerActivity extends AppCompatActivity {
 
                 // Return back to FriendMenuActivity
                 Intent intent = new Intent(DatePickerActivity.this, FriendMenuActivity.class);
-                DateSingleton d = DateSingleton.getInstance();
+                DataSingleton d = DataSingleton.getInstance();
                 d.getFriendList().add(new Friend(name,email,birthdate));
                 startActivity(intent);
 
