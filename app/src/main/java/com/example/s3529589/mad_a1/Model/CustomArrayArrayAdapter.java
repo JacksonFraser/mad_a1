@@ -24,8 +24,8 @@ public class CustomArrayArrayAdapter extends ArrayAdapter<Friend> {
     private static LayoutInflater inflater = null;
 
 
-    public CustomArrayArrayAdapter(DisplayFriendActivity displayFriendActivity, List<Friend> friendList) {
-        super(displayFriendActivity, 0, friendList);
+    public CustomArrayArrayAdapter(Activity activity, List<Friend> friendList) {
+        super(activity, 0, friendList);
 
         this.friendList = friendList;
         this.context = activity;
@@ -54,7 +54,7 @@ public class CustomArrayArrayAdapter extends ArrayAdapter<Friend> {
 
 
             String name = (String) holder.friendNameTV.getText().toString();
-            holder.friendNameTV.setOnClickListener(new RemoveFriendController(name));
+            holder.friendNameTV.setOnClickListener(new RemoveFriendController(friendList.get(pos).getId()));
 
 
         return rowView;

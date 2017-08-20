@@ -10,17 +10,17 @@ import com.example.s3529589.mad_a1.Model.Friend;
  */
 
 public class RemoveFriendController implements View.OnClickListener {
-    private String name;
+    private int id;
 
-    public RemoveFriendController(String name) {
-        this.name = name;
+    public RemoveFriendController(int id) {
+        this.id = id;
     }
 
     @Override
     public void onClick(View v) {
         System.out.println("got clicked");
         for(Friend f : DataSingleton.getInstance().getFriendList()){
-            if(f.getName().equals(name)){
+            if(f.getId() ==  id){
                 DataSingleton.getInstance().getFriendList().remove(f);
             }
         }
