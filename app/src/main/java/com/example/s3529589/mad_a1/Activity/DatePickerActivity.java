@@ -33,6 +33,7 @@ public class DatePickerActivity extends AppCompatActivity {
         Intent contactPickerIntent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
         startActivityForResult(contactPickerIntent, PICK_CONTACTS);
 
+
         confirmBtn = (Button) findViewById(R.id.confirmDateBtn);
         mDatePicker = (DatePicker) findViewById(R.id.datePicker);
 
@@ -64,8 +65,6 @@ public class DatePickerActivity extends AppCompatActivity {
         if (requestCode == 100) {
             if (resultCode == RESULT_OK) {
                 ContactDataManager contactsManager = new ContactDataManager(this, data);
-                String name = "";
-                String email = "";
                 try {
                     this.name = contactsManager.getContactName();
                     this.email = contactsManager.getContactEmail();
