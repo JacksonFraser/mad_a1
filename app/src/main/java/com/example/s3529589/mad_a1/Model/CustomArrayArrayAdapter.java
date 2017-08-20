@@ -2,6 +2,7 @@ package com.example.s3529589.mad_a1.Model;
 
 import android.app.Activity;
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,11 @@ import java.util.List;
 public class CustomArrayArrayAdapter extends ArrayAdapter<Friend> {
     private List<Friend> friendList;
     private Context context;
+
+    public Activity getActivity() {
+        return activity;
+    }
+
     private Activity activity;
     private static LayoutInflater inflater = null;
 
@@ -35,6 +41,10 @@ public class CustomArrayArrayAdapter extends ArrayAdapter<Friend> {
     }
 
 
+
+    public Context getContext() {
+        return context;
+    }
 
     @Override
     public View getView(int pos, View convertView, ViewGroup parent){
