@@ -15,7 +15,7 @@ import java.util.List;
 public class CustomArrayArrayAdapter extends ArrayAdapter<Friend> {
     private List<Friend> friendList;
     private Context context;
-    private int layoutRescourceId;
+
     private static LayoutInflater inflater = null;
     public CustomArrayArrayAdapter(DisplayFriendActivity displayFriendActivity, List<Friend> friendList) {
         super(displayFriendActivity,0,friendList);
