@@ -5,18 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import com.example.s3529589.mad_a1.Activity.DisplayFriendActivity;
-import com.example.s3529589.mad_a1.Activity.FriendMenuActivity;
 import com.example.s3529589.mad_a1.R;
 
 import java.util.List;
-
-/**
- * Created by s3529589 on 8/20/17.
- */
 
 public class CustomArrayArrayAdapter extends ArrayAdapter<Friend> {
     private List<Friend> friendList;
@@ -46,16 +40,14 @@ public class CustomArrayArrayAdapter extends ArrayAdapter<Friend> {
 
         holder.friendBirthDateTV = (TextView) rowView.findViewById(R.id.friendBirthDate);
         holder.friendBirthDateTV.setText(friendList.get(pos).getBirthdate());
+
         if(!context.getClass().isInstance(DisplayFriendActivity.class)){
             //holder.friendNameTV.setOnClickListener(RemoveDetailsController(friendList.get(pos.)));
         }
 
-
         return rowView;
-
-
-
     }
+
     public class FriendHolder {
         TextView friendNameTV;
         TextView friendEmailTV;
