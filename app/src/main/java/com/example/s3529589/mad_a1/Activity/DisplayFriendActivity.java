@@ -20,6 +20,9 @@ public class DisplayFriendActivity extends Activity{
 
     private void createListView(){
         ListView lv = (ListView) findViewById(R.id.list_view);
+        // show when the list is empty
+        lv.setEmptyView(findViewById(R.id.list_view_empty));
+
         lv.setAdapter(new CustomArrayArrayAdapter(this, DataSingleton.getInstance().getFriendList()));
     }
 
