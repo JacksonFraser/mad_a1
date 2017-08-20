@@ -24,6 +24,7 @@
         <activity android:name=".Activity.FriendMenuActivity"></activity>
         <activity android:name=".Activity.MeetingMenuActivity"></activity>
         <activity android:name=".Activity.DatePickerActivity"></activity>
+        <activity android:name=".Activity.DisplayFriendActivity"></activity>
 
     </application>
 

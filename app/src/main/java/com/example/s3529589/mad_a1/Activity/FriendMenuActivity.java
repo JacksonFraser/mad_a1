@@ -5,14 +5,12 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.s3529589.mad_a1.Controller.AddFriendController;
+import com.example.s3529589.mad_a1.Controller.DisplayFriendsController;
 import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.Model.Friend;
 import com.example.s3529589.mad_a1.R;
 
 public class FriendMenuActivity extends Activity{
-    private String name;
-    private String email;
-    private String birthday;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,11 +21,9 @@ public class FriendMenuActivity extends Activity{
         View addBtn = findViewById(R.id.addBtn);
         addBtn.setOnClickListener(new AddFriendController(this));
 
-        for(Friend f : DataSingleton.getInstance().getFriendList()){
-            System.out.println(f.getName());
-            System.out.println(f.getEmail());
-            System.out.println(f.getBirthdate());
-        }
+        View displayBtn = findViewById(R.id.displayFriendBtn);
+        displayBtn.setOnClickListener(new DisplayFriendsController(this));
+
     }
 }
 
