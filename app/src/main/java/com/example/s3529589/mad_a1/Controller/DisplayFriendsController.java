@@ -20,5 +20,6 @@ public class DisplayFriendsController implements View.OnClickListener {
     public void onClick(View v) {
         Intent it = new Intent(friendMenuActivity, DisplayFriendActivity.class);
         friendMenuActivity.startActivity(it);
+        friendMenuActivity.finish();
     }
 }

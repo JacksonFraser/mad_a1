@@ -5,10 +5,10 @@ import android.view.View;
 
 import com.example.s3529589.mad_a1.Activity.DatePickerActivity;
 import com.example.s3529589.mad_a1.Activity.FriendMenuActivity;
+import com.example.s3529589.mad_a1.Activity.PickContactActivity;
 
 public class AddFriendController implements View.OnClickListener {
     private FriendMenuActivity friendMenuActivity;
-    private static final int PICK_CONTACTS = 100;
 
     public AddFriendController(FriendMenuActivity friendMenuActivity) {
         this.friendMenuActivity = friendMenuActivity;
@@ -16,9 +16,8 @@ public class AddFriendController implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        Intent it = new Intent(friendMenuActivity, DatePickerActivity.class);
+        Intent it = new Intent(friendMenuActivity, PickContactActivity.class);
         friendMenuActivity.startActivity(it);
+        friendMenuActivity.finish();
     }
-
-
 }

@@ -23,7 +23,4 @@ public class DisplayFriendActivity extends Activity{
         setContentView(R.layout.display_friends);
     }
 
-    private void listTest(){
-
-    }
 }
