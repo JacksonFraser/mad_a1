@@ -40,9 +40,11 @@ public class DatePickerActivity extends AppCompatActivity {
                 d.getFriendList().add(new Friend(name, email, birthday));
 
 
-                System.out.println(d.getFriendList().get(0).getName());
+                for(Friend f : DataSingleton.getInstance().getFriendList())
+                    System.out.println(f.getName());
 
-                System.out.println( d.getFriendList().get(0).getBirthdate());
+
+
 
                 Intent it = new Intent(DatePickerActivity.this, FriendMenuActivity.class);
                 startActivity(it);

@@ -6,6 +6,8 @@ import android.view.View;
 
 import com.example.s3529589.mad_a1.Controller.AddFriendController;
 import com.example.s3529589.mad_a1.Controller.DisplayFriendsController;
+import com.example.s3529589.mad_a1.Controller.RemoveFriendController;
+import com.example.s3529589.mad_a1.Controller.RemoveFriendMController;
 import com.example.s3529589.mad_a1.R;
 
 public class FriendMenuActivity extends Activity{
@@ -21,6 +23,9 @@ public class FriendMenuActivity extends Activity{
 
         View displayBtn = findViewById(R.id.displayFriendBtn);
         displayBtn.setOnClickListener(new DisplayFriendsController(this));
+
+        View removeBtn  = findViewById(R.id.removeBtn);
+        removeBtn.setOnClickListener(new RemoveFriendMController(this));
     }
 }
 
