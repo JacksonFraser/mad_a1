@@ -33,11 +33,16 @@ public class DatePickerActivity extends AppCompatActivity {
         confirmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String birthday = mDatePicker.getDayOfMonth()+"/"+mDatePicker.getMonth();
+                String birthday = mDatePicker.getDayOfMonth()+"/"+(mDatePicker.getMonth()+1);
 
                 // add to the Friends ArrayList
                 DataSingleton d = DataSingleton.getInstance();
                 d.getFriendList().add(new Friend(name, email, birthday));
+
+
+                System.out.println(d.getFriendList().get(0).getName());
+
+                System.out.println( d.getFriendList().get(0).getBirthdate());
 
                 Intent it = new Intent(DatePickerActivity.this, FriendMenuActivity.class);
                 startActivity(it);
