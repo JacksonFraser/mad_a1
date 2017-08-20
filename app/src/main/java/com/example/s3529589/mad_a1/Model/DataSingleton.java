@@ -3,10 +3,6 @@ package com.example.s3529589.mad_a1.Model;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by supriya on 16/08/17.
- */
-
 public class DataSingleton {
     private static DataSingleton instance = null;
     private static List<Friend> friendList = new ArrayList<>();

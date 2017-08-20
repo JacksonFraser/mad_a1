@@ -14,7 +14,7 @@ public class FriendMenuActivity extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.friend_menu);
+        setContentView(R.layout.friends_menu);
 
         View addBtn = findViewById(R.id.addBtn);
         addBtn.setOnClickListener(new AddFriendController(this));
