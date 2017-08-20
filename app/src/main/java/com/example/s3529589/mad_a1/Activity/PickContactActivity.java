@@ -45,7 +45,6 @@ public class PickContactActivity extends AppCompatActivity {
                     // finish PickContactActivity
                     finish();
 
-
                 } catch (ContactDataManager.ContactQueryException e) {
                 }
             } else {

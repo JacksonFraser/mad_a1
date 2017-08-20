@@ -41,7 +41,6 @@ public class DatePickerActivity extends AppCompatActivity {
 
 
                 System.out.println(d.getFriendList().get(0).getName());
-
                 System.out.println( d.getFriendList().get(0).getBirthdate());
 
                 Intent it = new Intent(DatePickerActivity.this, FriendMenuActivity.class);

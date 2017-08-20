@@ -18,7 +18,7 @@ public class CustomArrayArrayAdapter extends ArrayAdapter<Friend> {
 
     private static LayoutInflater inflater = null;
     public CustomArrayArrayAdapter(DisplayFriendActivity displayFriendActivity, List<Friend> friendList) {
-        super(displayFriendActivity,0,friendList);
+        super(displayFriendActivity, 0, friendList);
         this.friendList = friendList;
         this.context = displayFriendActivity;
         inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
