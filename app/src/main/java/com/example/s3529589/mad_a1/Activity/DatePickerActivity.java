@@ -36,8 +36,7 @@ public class DatePickerActivity extends AppCompatActivity {
                 String birthday = mDatePicker.getDayOfMonth()+"/"+(mDatePicker.getMonth()+1);
 
                 // add to the Friends ArrayList
-                DataSingleton d = DataSingleton.getInstance();
-                d.getFriendList().add(new Friend(name, email, birthday));
+                DataSingleton.getInstance().getFriendList().add(new Friend(name, email, birthday));
 
                 for(Friend f : DataSingleton.getInstance().getFriendList())
                     System.out.println(f.getName());
