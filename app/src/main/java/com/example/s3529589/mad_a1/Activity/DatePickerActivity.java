@@ -29,7 +29,6 @@ public class DatePickerActivity extends AppCompatActivity {
         name = incomingIntent.getStringExtra("name");
         email = incomingIntent.getStringExtra("email");
 
-
         confirmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

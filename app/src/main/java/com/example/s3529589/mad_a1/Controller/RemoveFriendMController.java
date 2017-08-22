@@ -6,10 +6,6 @@ import android.view.View;
 import com.example.s3529589.mad_a1.Activity.DisplayFriendActivity;
 import com.example.s3529589.mad_a1.Activity.FriendMenuActivity;
 
-/**
- * Created by s3529589 on 8/20/17.
- */
-
 public class RemoveFriendMController implements View.OnClickListener {
     private FriendMenuActivity friendMenuActivity;
 

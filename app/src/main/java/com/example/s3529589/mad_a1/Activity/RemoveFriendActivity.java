@@ -8,10 +8,6 @@ import com.example.s3529589.mad_a1.Model.CustomArrayArrayAdapter;
 import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.R;
 
-/**
- * Created by s3529589 on 8/20/17.
- */
-
 public class RemoveFriendActivity extends Activity {
 
     @Override

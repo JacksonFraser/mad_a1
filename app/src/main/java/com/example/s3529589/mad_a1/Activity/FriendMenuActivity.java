@@ -6,7 +6,6 @@ import android.view.View;
 
 import com.example.s3529589.mad_a1.Controller.AddFriendController;
 import com.example.s3529589.mad_a1.Controller.DisplayFriendsController;
-import com.example.s3529589.mad_a1.Controller.RemoveFriendController;
 import com.example.s3529589.mad_a1.Controller.RemoveFriendMController;
 import com.example.s3529589.mad_a1.R;
 

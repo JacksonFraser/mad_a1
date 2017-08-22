@@ -9,8 +9,8 @@ import com.example.s3529589.mad_a1.Model.ContactDataManager;
 import com.example.s3529589.mad_a1.R;
 
 public class PickContactActivity extends AppCompatActivity {
-    String name;
-    String email;
+    private String name;
+    private String email;
     private int PICK_CONTACTS = 100;
 
     @Override
@@ -28,8 +28,6 @@ public class PickContactActivity extends AppCompatActivity {
         if (requestCode == 100) {
             if (resultCode == RESULT_OK) {
                 ContactDataManager contactsManager = new ContactDataManager(this, data);
-                String name = "";
-                String email = "";
                 try {
                     this.name = contactsManager.getContactName();
                     this.email = contactsManager.getContactEmail();

@@ -22,21 +22,6 @@ public class RemoveFriendController implements View.OnClickListener {
         this.customArrayArrayAdapter = customArrayArrayAdapter;
     }
 
-
-
-   /* @Override
-    public void onClick(DialogInterface dialog, int which) {
-        switch(which){
-            case DialogInterface.BUTTON_POSITIVE:
-                removeFriend();
-                break;
-            case DialogInterface.BUTTON_NEGATIVE:
-                break;
-        }
-
-    }*/
-
-
     @Override
     public void onClick(View v) {
         AlertDialog.Builder alert = new AlertDialog.Builder(customArrayArrayAdapter.getContext());
@@ -49,8 +34,8 @@ public class RemoveFriendController implements View.OnClickListener {
             }
         });
         alert.show();
-
     }
+
     private void removeFriend(){
         try{
             for(Friend f : DataSingleton.getInstance().getFriendList()){
