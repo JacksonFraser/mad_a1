@@ -10,8 +10,6 @@ import com.example.s3529589.mad_a1.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String LOG_TAG = this.getClass().getName();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 

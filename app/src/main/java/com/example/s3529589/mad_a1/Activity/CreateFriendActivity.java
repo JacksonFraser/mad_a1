@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.example.s3529589.mad_a1.Model.ContactDataManager;
 import com.example.s3529589.mad_a1.R;
 
-public class PickContactActivity extends AppCompatActivity {
+public class CreateFriendActivity extends AppCompatActivity {
     private String name;
     private String email;
     private int PICK_CONTACTS = 100;
@@ -33,7 +33,7 @@ public class PickContactActivity extends AppCompatActivity {
                     this.email = contactsManager.getContactEmail();
 
                     // send data to DatePickerActivity
-                    Intent it = new Intent(PickContactActivity.this, DatePickerActivity.class);
+                    Intent it = new Intent(CreateFriendActivity.this, DatePickerActivity.class);
                     it.putExtra("name", this.name);
                     it.putExtra("email", this.email);
 
@@ -46,7 +46,7 @@ public class PickContactActivity extends AppCompatActivity {
                 } catch (ContactDataManager.ContactQueryException e) {
                 }
             } else {
-                Intent it = new Intent(PickContactActivity.this, FriendMenuActivity.class);
+                Intent it = new Intent(CreateFriendActivity.this, FriendMenuActivity.class);
                 startActivity(it);
                 // finish PickContactActivity
                 finish();
