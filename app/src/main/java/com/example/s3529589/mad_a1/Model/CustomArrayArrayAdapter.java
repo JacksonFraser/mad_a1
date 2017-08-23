@@ -2,17 +2,13 @@ package com.example.s3529589.mad_a1.Model;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.example.s3529589.mad_a1.Activity.DatePickerActivity;
-import com.example.s3529589.mad_a1.Activity.DisplayFriendActivity;
-import com.example.s3529589.mad_a1.Activity.MeetingMenuActivity;
-import com.example.s3529589.mad_a1.Activity.RemoveFriendActivity;
+import com.example.s3529589.mad_a1.Controller.FriendLongCLickController;
 import com.example.s3529589.mad_a1.Controller.RemoveFriendController;
 import com.example.s3529589.mad_a1.R;
 
@@ -42,16 +38,14 @@ public class CustomArrayArrayAdapter extends ArrayAdapter<Friend> {
 
 
 
-    public Context getContext() {
-        return context;
-    }
 
     @Override
     public View getView(int pos, View convertView, ViewGroup parent){
         FriendHolder holder = new FriendHolder();
-        View rowView;
 
-        rowView = inflater.inflate(R.layout.list_view_item_row, null);
+        View rowView = inflater.inflate(R.layout.list_view_item_row, null);
+        rowView.setOnClickListener(new RemoveFriendController(friendList.get(pos).getId(),this));
+        rowView.setOnLongClickListener(new FriendLongCLickController(this));
 
         holder.friendNameTV = (TextView) rowView.findViewById(R.id.friendName);
         holder.friendNameTV.setText(friendList.get(pos).getName());
@@ -62,11 +56,6 @@ public class CustomArrayArrayAdapter extends ArrayAdapter<Friend> {
 
         holder.friendBirthDateTV = (TextView) rowView.findViewById(R.id.friendBirthDate);
         holder.friendBirthDateTV.setText(friendList.get(pos).getBirthdate());
-
-
-            String name = (String) holder.friendNameTV.getText().toString();
-            holder.friendNameTV.setOnClickListener(new RemoveFriendController(friendList.get(pos).getId(),this));
-
 
         return rowView;
     }

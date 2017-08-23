@@ -31,29 +31,7 @@
 
 
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/removeBtn"
-            android:text="@string/remove"
-            android:layout_weight="1"
-            android:background="#42D9C8"
-            android:textColor="#eeeeee"
-            android:textStyle="bold"
-            android:textSize="22sp"
-            />
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/editBtn"
-            android:text="@string/edit"
-            android:layout_weight="1"
-            android:textColor="#eeeeee"
-            android:background="#C47335"
-            android:textStyle="bold"
-            android:textSize="22sp"
-            />
 
         <Button
             android:layout_width="match_parent"
