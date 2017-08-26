@@ -29,9 +29,13 @@ public class FriendMenuLongClickController implements View.OnLongClickListener {
         alert.setTitle("Choose an option")
                 .setItems(holdOptions, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                if(which == 1) {
-                                    removeFriend();
+                                switch(which){
+                                    case 0 :
+                                        editFriend();
+                                    case 1 :
+                                        removeFriend();
                                 }
+
                             }
         });
         alert.show();
@@ -51,5 +55,17 @@ public class FriendMenuLongClickController implements View.OnLongClickListener {
         } catch(Exception e ){
 
         }
+    }
+    public void editFriend(){
+        final String[] holdOptions = {
+                "Edsdfsdfit", "Desdfsdflete"
+        };
+        AlertDialog.Builder alert = new AlertDialog.Builder(customArrayArrayAdapter.getContext());
+        alert.setTitle("Choose an option")
+                .setItems(holdOptions, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+        alert.show();
     }
 }
