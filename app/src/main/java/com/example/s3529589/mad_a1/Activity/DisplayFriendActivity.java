@@ -16,7 +16,6 @@ public class DisplayFriendActivity extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.display_friends);
         createListView();
-
     }
 
     private void createListView(){

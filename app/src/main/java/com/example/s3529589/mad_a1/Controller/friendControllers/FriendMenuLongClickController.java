@@ -1,10 +1,13 @@
 package com.example.s3529589.mad_a1.Controller.friendControllers;
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
+import java.util.Calendar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -74,7 +77,13 @@ public class FriendMenuLongClickController implements View.OnLongClickListener {
         final EditText editEmail = (EditText) textEntryView.findViewById(R.id.edit_friend_email);
         final Button editBtn = (Button) textEntryView.findViewById(R.id.selectDate);
 
-        // Sel
+        // Select birthday
+        editBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chooseDate() ;
+            }
+        });
 
         AlertDialog.Builder alert = new AlertDialog.Builder(customArrayArrayAdapter.getContext());
         alert.setTitle("Edit details");
@@ -117,5 +126,10 @@ public class FriendMenuLongClickController implements View.OnLongClickListener {
         } catch(Exception e ){
 
         }
+    }
+
+    private void chooseDate(){
+
+
     }
 }
