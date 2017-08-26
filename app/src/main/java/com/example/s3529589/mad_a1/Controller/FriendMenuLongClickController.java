@@ -1,11 +1,9 @@
 package com.example.s3529589.mad_a1.Controller;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.s3529589.mad_a1.Model.CustomArrayArrayAdapter;
@@ -42,7 +40,6 @@ public class FriendMenuLongClickController implements View.OnLongClickListener {
                                         removeFriend();
                                         break;
                                 }
-
                             }
         });
         alert.show();
@@ -64,37 +61,43 @@ public class FriendMenuLongClickController implements View.OnLongClickListener {
         }
     }
     public void editFriend(){
+
         String choices[] = {"Cancel","Confirm"};
         LayoutInflater factory = LayoutInflater.from(customArrayArrayAdapter.getContext());
+
+
         final View textEntryView = factory.inflate(R.layout.edit_friend, null);
+
+        final EditText editName = (EditText) textEntryView.findViewById(R.id.edit_friend_name);
+        final EditText editEmail = (EditText) textEntryView.findViewById(R.id.edit_friend_email);
+
         AlertDialog.Builder alert = new AlertDialog.Builder(customArrayArrayAdapter.getContext());
         alert.setTitle("Choose an option");
         alert.setView(textEntryView);
-
-
-
 
         alert.setItems(choices, new DialogInterface.OnClickListener(){
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                String name = editName.getText().toString();
+                String email = editEmail.getText().toString();
+
                 switch(which){
                     case 0 :
 
                         break;
                     case 1 :
-                        editFriendDetails(id);
+                        editFriendDetails(id, name, email);
                         break;
                 }
             }
         });
-
-
-
         alert.show();
     }
+
     private void editFriendDetails(int id, String name, String email){
         try {
+
             for(Friend f : DataSingleton.getInstance().getFriendList()){
                 if(f.getId() ==  id) {
                     f.setName(name);

@@ -13,7 +13,9 @@
     <EditText
         android:id="@+id/edit_friend_name"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:inputType="text"/>
 
 
     <TextView
@@ -25,7 +27,9 @@
     <EditText
         android:id="@+id/edit_friend_email"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:inputType="text"/>
 
 
 
