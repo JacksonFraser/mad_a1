@@ -23,7 +23,6 @@ public class ConfirmDateController implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-
         String birthday = datePicker.getDayOfMonth()+"/"+(datePicker.getMonth()+1);
 
         // add to the Friends ArrayList

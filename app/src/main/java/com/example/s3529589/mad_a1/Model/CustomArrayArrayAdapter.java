@@ -8,8 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.example.s3529589.mad_a1.Controller.FriendLongCLickController;
-import com.example.s3529589.mad_a1.Controller.RemoveFriendController;
+import com.example.s3529589.mad_a1.Controller.FriendMenuLongClickController;
 import com.example.s3529589.mad_a1.R;
 
 import java.util.List;
@@ -33,19 +32,14 @@ public class CustomArrayArrayAdapter extends ArrayAdapter<Friend> {
         this.context = activity;
         inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.activity = activity;
-
     }
-
-
-
 
     @Override
     public View getView(int pos, View convertView, ViewGroup parent){
         FriendHolder holder = new FriendHolder();
 
         View rowView = inflater.inflate(R.layout.list_view_item_row, null);
-        rowView.setOnClickListener(new RemoveFriendController(friendList.get(pos).getId(),this));
-        rowView.setOnLongClickListener(new FriendLongCLickController(this));
+        rowView.setOnLongClickListener(new FriendMenuLongClickController(friendList.get(pos).getId(),this));
 
         holder.friendNameTV = (TextView) rowView.findViewById(R.id.friendName);
         holder.friendNameTV.setText(friendList.get(pos).getName());
@@ -59,8 +53,6 @@ public class CustomArrayArrayAdapter extends ArrayAdapter<Friend> {
 
         return rowView;
     }
-
-
 
     public class FriendHolder {
         TextView friendNameTV;
