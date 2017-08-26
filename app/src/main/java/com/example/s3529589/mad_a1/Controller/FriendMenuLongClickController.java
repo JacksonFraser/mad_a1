@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.s3529589.mad_a1.Model.CustomArrayArrayAdapter;
 import com.example.s3529589.mad_a1.Model.DataSingleton;
@@ -72,26 +73,29 @@ public class FriendMenuLongClickController implements View.OnLongClickListener {
         final EditText editEmail = (EditText) textEntryView.findViewById(R.id.edit_friend_email);
 
         AlertDialog.Builder alert = new AlertDialog.Builder(customArrayArrayAdapter.getContext());
-        alert.setTitle("Choose an option");
+        alert.setTitle("Edit details");
         alert.setView(textEntryView);
 
-        alert.setItems(choices, new DialogInterface.OnClickListener(){
-
+        // Edit friend details on 'Confirm'
+        alert.setPositiveButton("CONFIRM", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 String name = editName.getText().toString();
                 String email = editEmail.getText().toString();
 
-                switch(which){
-                    case 0 :
-
-                        break;
-                    case 1 :
-                        editFriendDetails(id, name, email);
-                        break;
-                }
+                editFriendDetails(id, name, email);
+                Toast.makeText(customArrayArrayAdapter.getContext(), "Friend updated", Toast.LENGTH_LONG).show();
             }
         });
+
+        // Close alert on 'Cancel'
+        alert.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
         alert.show();
     }
 
