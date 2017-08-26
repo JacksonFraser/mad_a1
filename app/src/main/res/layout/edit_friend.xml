@@ -9,19 +9,19 @@
         android:text="Name:"
         />
 
-
     <EditText
         android:id="@+id/edit_friend_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLines="1"
-        android:inputType="text"/>
+        android:inputType="text"
+        android:hint="Set name"/>
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Email"
+        android:text="Email:"
         />
 
     <EditText
@@ -29,9 +29,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLines="1"
-        android:inputType="text"/>
+        android:inputType="text"
+        android:hint="Set email"/>
 
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Birthday:"
+        />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select date"
+        android:id="@+id/selectDate"
+        />
 
 </LinearLayout>

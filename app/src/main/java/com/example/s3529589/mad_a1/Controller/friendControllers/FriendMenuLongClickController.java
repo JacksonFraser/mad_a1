@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -11,7 +12,6 @@ import com.example.s3529589.mad_a1.Model.CustomArrayArrayAdapter;
 import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.Model.Friend;
 import com.example.s3529589.mad_a1.R;
-
 
 public class FriendMenuLongClickController implements View.OnLongClickListener {
     private int id;
@@ -59,9 +59,9 @@ public class FriendMenuLongClickController implements View.OnLongClickListener {
             }
 
         } catch(Exception e ){
-
         }
     }
+
     public void editFriend(){
 
         String choices[] = {"Cancel","Confirm"};
@@ -72,6 +72,9 @@ public class FriendMenuLongClickController implements View.OnLongClickListener {
 
         final EditText editName = (EditText) textEntryView.findViewById(R.id.edit_friend_name);
         final EditText editEmail = (EditText) textEntryView.findViewById(R.id.edit_friend_email);
+        final Button editBtn = (Button) textEntryView.findViewById(R.id.selectDate);
+
+        // Sel
 
         AlertDialog.Builder alert = new AlertDialog.Builder(customArrayArrayAdapter.getContext());
         alert.setTitle("Edit details");
