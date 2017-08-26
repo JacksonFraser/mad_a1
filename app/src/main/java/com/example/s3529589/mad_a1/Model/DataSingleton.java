@@ -6,6 +6,7 @@ import java.util.List;
 public class DataSingleton {
     private static DataSingleton instance = null;
     private static List<Friend> friendList = new ArrayList<>();
+    private static List<Meeting> modelList = new ArrayList<>();
 
     protected DataSingleton(){
 

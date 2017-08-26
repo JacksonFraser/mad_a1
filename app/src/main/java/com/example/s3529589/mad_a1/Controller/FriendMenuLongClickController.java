@@ -54,6 +54,7 @@ public class FriendMenuLongClickController implements View.OnLongClickListener {
                 if(f.getId() ==  id) {
                     DataSingleton.getInstance().getFriendList().remove(f);
                     customArrayArrayAdapter.notifyDataSetChanged();
+                    Toast.makeText(customArrayArrayAdapter.getContext(), "Friend Removed", Toast.LENGTH_LONG).show();
                 }
             }
 
