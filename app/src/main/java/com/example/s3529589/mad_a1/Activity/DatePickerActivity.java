@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.DatePicker;
 
-import com.example.s3529589.mad_a1.Controller.ConfirmDateController;
+import com.example.s3529589.mad_a1.Controller.friendControllers.ConfirmDateController;
 import com.example.s3529589.mad_a1.R;
 
 public class DatePickerActivity extends AppCompatActivity {

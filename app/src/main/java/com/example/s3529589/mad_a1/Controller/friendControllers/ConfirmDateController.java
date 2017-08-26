@@ -1,4 +1,4 @@
-package com.example.s3529589.mad_a1.Controller;
+package com.example.s3529589.mad_a1.Controller.friendControllers;
 
 import android.content.Intent;
 import android.view.View;

@@ -15,7 +15,8 @@ public class ScheduleMeetingActivity extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.meeting_menu);
+        setContentView(R.layout.schedule_meeting);
+        //View addTitle =
     }
 }
 

@@ -4,8 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.s3529589.mad_a1.Controller.AddFriendController;
-import com.example.s3529589.mad_a1.Controller.ScheduleMeetingController;
+import com.example.s3529589.mad_a1.Controller.meetingControllers.ScheduleMeetingController;
 import com.example.s3529589.mad_a1.R;
 
 public class MeetingMenuActivity extends Activity {

@@ -26,6 +26,7 @@
         <activity android:name=".Activity.DatePickerActivity"></activity>
         <activity android:name=".Activity.DisplayFriendActivity"></activity>
         <activity android:name=".Activity.CreateFriendActivity"></activity>
+        <activity android:name=".Activity.ScheduleMeetingActivity"></activity>
 
     </application>
 
