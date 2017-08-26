@@ -4,9 +4,10 @@ public class Friend {
     private int id;
     private String name;
     private String email;
-    private String birthday;
-    private static int uuid = 0;
 
+    private String birthday;
+
+    private static int uuid = 0;
     public Friend(String name, String email, String birthday){
         id = uuid;
         uuid++;
@@ -26,7 +27,19 @@ public class Friend {
     public String getBirthdate(){
         return birthday;
     }
+
     public int getId(){
         return id;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
     }
 }

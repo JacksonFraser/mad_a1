@@ -3,11 +3,14 @@ package com.example.s3529589.mad_a1.Controller;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.view.LayoutInflater;
 import android.view.View;
 
 import com.example.s3529589.mad_a1.Model.CustomArrayArrayAdapter;
 import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.Model.Friend;
+import com.example.s3529589.mad_a1.R;
+
 
 public class FriendMenuLongClickController implements View.OnLongClickListener {
     private int id;
@@ -32,8 +35,10 @@ public class FriendMenuLongClickController implements View.OnLongClickListener {
                                 switch(which){
                                     case 0 :
                                         editFriend();
+                                        break;
                                     case 1 :
                                         removeFriend();
+                                        break;
                                 }
 
                             }
@@ -57,15 +62,12 @@ public class FriendMenuLongClickController implements View.OnLongClickListener {
         }
     }
     public void editFriend(){
-        final String[] holdOptions = {
-                "Edsdfsdfit", "Desdfsdflete"
-        };
+        LayoutInflater factory = LayoutInflater.from(customArrayArrayAdapter.getContext());
+        final View textEntryView = factory.inflate(R.layout.edit_friend, null);
         AlertDialog.Builder alert = new AlertDialog.Builder(customArrayArrayAdapter.getContext());
-        alert.setTitle("Choose an option")
-                .setItems(holdOptions, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                    }
-                });
+        alert.setTitle("Choose an option");
+        alert.setView(textEntryView);
+
         alert.show();
     }
 }
