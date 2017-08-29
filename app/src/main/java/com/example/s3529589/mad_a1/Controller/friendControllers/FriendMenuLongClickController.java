@@ -119,10 +119,8 @@ public class FriendMenuLongClickController implements View.OnLongClickListener {
 
                 String name = editName.getText().toString();
                 String email = editEmail.getText().toString();
-                if(!name.isEmpty() && !email.isEmpty())
-                    editFriendDetails(id, name, email);
+                editFriendDetails(id, name, email);
 
-                customArrayArrayAdapter.notifyDataSetChanged();
                 Toast.makeText(customArrayArrayAdapter.getContext(), "Friend updated", Toast.LENGTH_LONG).show();
             }
         });
@@ -143,8 +141,10 @@ public class FriendMenuLongClickController implements View.OnLongClickListener {
 
             for(Friend f : DataSingleton.getInstance().getFriendList()){
                 if(f.getId() ==  id) {
-                    f.setName(name);
-                    f.setEmail(email);
+                    if(!name.isEmpty())
+                        f.setName(name);
+                    if(!email.isEmpty())
+                        f.setEmail(email);
                     customArrayArrayAdapter.notifyDataSetChanged();
                 }
             }
