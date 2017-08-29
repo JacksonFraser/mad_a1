@@ -101,6 +101,7 @@ public class FriendMenuLongClickController implements View.OnLongClickListener {
                         Friend f = DataSingleton.getInstance().getFriendById(id);
                         String birthDate = String.valueOf(dayOfMonth)+"/"+String.valueOf(month+1);
                         f.setBirthday(birthDate);
+
                     }
                 });
             }
@@ -115,10 +116,13 @@ public class FriendMenuLongClickController implements View.OnLongClickListener {
         alert.setPositiveButton("CONFIRM", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+
                 String name = editName.getText().toString();
                 String email = editEmail.getText().toString();
+                if(!name.isEmpty() && !email.isEmpty())
+                    editFriendDetails(id, name, email);
 
-                editFriendDetails(id, name, email);
+                customArrayArrayAdapter.notifyDataSetChanged();
                 Toast.makeText(customArrayArrayAdapter.getContext(), "Friend updated", Toast.LENGTH_LONG).show();
             }
         });
