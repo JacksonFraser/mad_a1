@@ -21,12 +21,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.FriendMenuActivity"></activity>
-        <activity android:name=".Activity.MeetingMenuActivity"></activity>
-        <activity android:name=".Activity.DatePickerActivity"></activity>
-        <activity android:name=".Activity.DisplayFriendActivity"></activity>
-        <activity android:name=".Activity.CreateFriendActivity"></activity>
-        <activity android:name=".Activity.ScheduleMeetingActivity"></activity>
+        <activity android:name=".Activity.friendActivities.FriendMenuActivity"></activity>
+        <activity android:name=".Activity.meetingActivities.MeetingMenuActivity"></activity>
+        <activity android:name=".Activity.friendActivities.DatePickerActivity"></activity>
+        <activity android:name=".Activity.friendActivities.DisplayFriendActivity"></activity>
+        <activity android:name=".Activity.friendActivities.CreateFriendActivity"></activity>
+        <activity android:name=".Activity.meetingActivities.ScheduleMeetingActivity"></activity>
 
     </application>
 

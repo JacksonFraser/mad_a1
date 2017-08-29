@@ -3,8 +3,6 @@ package com.example.s3529589.mad_a1.Controller.friendControllers;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
-import java.util.Calendar;
-
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.view.LayoutInflater;
@@ -19,9 +17,11 @@ import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.Model.Friend;
 import com.example.s3529589.mad_a1.R;
 
+import java.util.Calendar;
+
 public class FriendMenuLongClickController implements View.OnLongClickListener {
     private int id;
-    private  CustomArrayArrayAdapter customArrayArrayAdapter;
+    private CustomArrayArrayAdapter customArrayArrayAdapter;
 
     public FriendMenuLongClickController(int id, CustomArrayArrayAdapter customArrayArrayAdapter) {
         this.id = id;
@@ -38,17 +38,17 @@ public class FriendMenuLongClickController implements View.OnLongClickListener {
         AlertDialog.Builder alert = new AlertDialog.Builder(customArrayArrayAdapter.getContext());
         alert.setTitle("Choose an option")
                 .setItems(holdOptions, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                switch(which){
-                                    case 0 :
-                                        editFriend();
-                                        break;
-                                    case 1 :
-                                        removeFriend();
-                                        break;
-                                }
-                            }
-        });
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which) {
+                            case 0:
+                                editFriend();
+                                break;
+                            case 1:
+                                removeFriend();
+                                break;
+                        }
+                    }
+                });
         alert.show();
 
         return true;
@@ -56,21 +56,21 @@ public class FriendMenuLongClickController implements View.OnLongClickListener {
 
     private void removeFriend() {
         try {
-            for(Friend f : DataSingleton.getInstance().getFriendList()){
-                if(f.getId() ==  id) {
+            for (Friend f : DataSingleton.getInstance().getFriendList()) {
+                if (f.getId() == id) {
                     DataSingleton.getInstance().getFriendList().remove(f);
                     customArrayArrayAdapter.notifyDataSetChanged();
                     Toast.makeText(customArrayArrayAdapter.getContext(), "Friend Removed", Toast.LENGTH_LONG).show();
                 }
             }
 
-        } catch(Exception e ){
+        } catch (Exception e) {
         }
     }
 
-    public void editFriend(){
+    public void editFriend() {
 
-        String choices[] = {"Cancel","Confirm"};
+        String choices[] = {"Cancel", "Confirm"};
         LayoutInflater factory = LayoutInflater.from(customArrayArrayAdapter.getContext());
 
 
@@ -99,7 +99,7 @@ public class FriendMenuLongClickController implements View.OnLongClickListener {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         Friend f = DataSingleton.getInstance().getFriendById(id);
-                        String birthDate = String.valueOf(dayOfMonth)+"/"+String.valueOf(month+1);
+                        String birthDate = String.valueOf(dayOfMonth) + "/" + String.valueOf(month + 1);
                         f.setBirthday(birthDate);
 
                     }
@@ -136,20 +136,20 @@ public class FriendMenuLongClickController implements View.OnLongClickListener {
         alert.show();
     }
 
-    private void editFriendDetails(int id, String name, String email){
+    private void editFriendDetails(int id, String name, String email) {
         try {
 
-            for(Friend f : DataSingleton.getInstance().getFriendList()){
-                if(f.getId() ==  id) {
-                    if(!name.isEmpty())
+            for (Friend f : DataSingleton.getInstance().getFriendList()) {
+                if (f.getId() == id) {
+                    if (!name.isEmpty())
                         f.setName(name);
-                    if(!email.isEmpty())
+                    if (!email.isEmpty())
                         f.setEmail(email);
                     customArrayArrayAdapter.notifyDataSetChanged();
                 }
             }
 
-        } catch(Exception e ){
+        } catch (Exception e) {
 
         }
     }

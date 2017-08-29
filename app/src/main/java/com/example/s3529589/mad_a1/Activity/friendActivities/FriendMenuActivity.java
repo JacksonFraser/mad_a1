@@ -1,4 +1,4 @@
-package com.example.s3529589.mad_a1.Activity;
+package com.example.s3529589.mad_a1.Activity.friendActivities;
 
 import android.app.Activity;
 import android.os.Bundle;

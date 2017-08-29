@@ -3,8 +3,8 @@ package com.example.s3529589.mad_a1.Controller.friendControllers;
 import android.content.Intent;
 import android.view.View;
 import android.widget.DatePicker;
-import com.example.s3529589.mad_a1.Activity.DatePickerActivity;
-import com.example.s3529589.mad_a1.Activity.FriendMenuActivity;
+import com.example.s3529589.mad_a1.Activity.friendActivities.DatePickerActivity;
+import com.example.s3529589.mad_a1.Activity.friendActivities.FriendMenuActivity;
 import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.Model.Friend;
 

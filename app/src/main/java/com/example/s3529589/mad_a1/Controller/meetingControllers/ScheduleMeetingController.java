@@ -1,11 +1,10 @@
 package com.example.s3529589.mad_a1.Controller.meetingControllers;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 
-import com.example.s3529589.mad_a1.Activity.MeetingMenuActivity;
-import com.example.s3529589.mad_a1.Activity.ScheduleMeetingActivity;
+import com.example.s3529589.mad_a1.Activity.meetingActivities.MeetingMenuActivity;
+import com.example.s3529589.mad_a1.Activity.meetingActivities.ScheduleMeetingActivity;
 
 /**
  * Created by s3529589 on 8/26/17.
