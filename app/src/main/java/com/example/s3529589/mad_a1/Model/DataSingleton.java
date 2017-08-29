@@ -21,4 +21,11 @@ public class DataSingleton {
     public List<Friend> getFriendList(){
         return friendList;
     }
+    public Friend getFriendById(int id){
+        for(Friend f : friendList)
+            if(id == f.getId())
+                return f;
+
+        return null;
+    }
 }

@@ -4,6 +4,9 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import java.util.Calendar;
+
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -79,10 +82,29 @@ public class FriendMenuLongClickController implements View.OnLongClickListener {
 
         // Select birthday
         editBtn.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View v) {
-                chooseDate() ;
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog d = new DatePickerDialog(
+                        customArrayArrayAdapter.getContext(),
+                        android.R.style.Theme_Holo_Light_Dialog_MinWidth);
+                d.show();
+                d.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
+
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        Friend f = DataSingleton.getInstance().getFriendById(id);
+                        String birthDate = String.valueOf(dayOfMonth)+"/"+String.valueOf(month+1);
+                        f.setBirthday(birthDate);
+                    }
+                });
             }
+
         });
 
         AlertDialog.Builder alert = new AlertDialog.Builder(customArrayArrayAdapter.getContext());
@@ -126,10 +148,5 @@ public class FriendMenuLongClickController implements View.OnLongClickListener {
         } catch(Exception e ){
 
         }
-    }
-
-    private void chooseDate(){
-
-
     }
 }
