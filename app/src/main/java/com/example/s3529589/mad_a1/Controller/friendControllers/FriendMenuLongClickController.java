@@ -17,8 +17,8 @@ public class FriendMenuLongClickController implements View.OnLongClickListener {
 
     @Override
     public boolean onLongClick(View v) {
-       CustomEditFriendDetailsAlertDialog a =  new CustomEditFriendDetailsAlertDialog(this.customArrayArrayAdapter, this.id);
-        a.show();
+        CustomEditFriendDetailsAlertDialog editFriendDialog =  new CustomEditFriendDetailsAlertDialog(this.customArrayArrayAdapter, this.id);
+        editFriendDialog.show();
 
 
         return true;
