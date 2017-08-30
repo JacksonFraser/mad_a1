@@ -48,7 +48,7 @@ public class CustomArrayArrayAdapter extends ArrayAdapter<Friend> {
         holder.friendEmailTV = (TextView) rowView.findViewById(R.id.friendEmail);
         holder.friendEmailTV.setText(friendList.get(pos).getEmail());
 
-        holder.friendBirthDateTV = (TextView) rowView.findViewById(R.id.friendBirthDate);
+        holder.friendBirthDateTV = (TextView) rowView.findViewById(R.id.friendBirthday);
         holder.friendBirthDateTV.setText(friendList.get(pos).getBirthdate());
 
         return rowView;
