@@ -15,10 +15,6 @@ import com.example.s3529589.mad_a1.R;
 
 import java.util.Calendar;
 
-/**
- * Created by s3529589 on 8/26/17.
- */
-
 public class ScheduleMeetingActivity extends Activity{
 
     @Override
@@ -87,7 +83,7 @@ public class ScheduleMeetingActivity extends Activity{
         });
 
         View createMeetingBtn = findViewById(R.id.create_meeting_confirm_btn);
-        createMeetingBtn.setOnClickListener(new CreateMeetingController(this,meetingTitle,meetingStartDate,meetingEndDate));
+        //createMeetingBtn.setOnClickListener(new CreateMeetingController(this,meetingTitle,meetingStartDate,meetingEndDate));
 
 
     }

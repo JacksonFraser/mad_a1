@@ -30,7 +30,6 @@ public class FriendMenuLongClickController implements View.OnLongClickListener {
 
     @Override
     public boolean onLongClick(View v) {
-
         final String[] holdOptions = {
                 "Edit", "Delete"
         };
@@ -54,6 +53,7 @@ public class FriendMenuLongClickController implements View.OnLongClickListener {
         return true;
     }
 
+    // When the user selects 'Delete' after long hold
     private void removeFriend() {
         try {
             for (Friend f : DataSingleton.getInstance().getFriendList()) {
@@ -68,16 +68,19 @@ public class FriendMenuLongClickController implements View.OnLongClickListener {
         }
     }
 
+    // When the user selects Edit after long hold
     public void editFriend() {
-
         String choices[] = {"Cancel", "Confirm"};
         LayoutInflater factory = LayoutInflater.from(customArrayArrayAdapter.getContext());
-
 
         final View textEntryView = factory.inflate(R.layout.edit_friend, null);
 
         final EditText editName = (EditText) textEntryView.findViewById(R.id.edit_friend_name);
+        editName.setHint(DataSingleton.getInstance().getFriendById(id).getName());
+
         final EditText editEmail = (EditText) textEntryView.findViewById(R.id.edit_friend_email);
+        editEmail.setHint(DataSingleton.getInstance().getFriendById(id).getEmail());
+
         final Button editBtn = (Button) textEntryView.findViewById(R.id.selectDate);
 
         // Select birthday
