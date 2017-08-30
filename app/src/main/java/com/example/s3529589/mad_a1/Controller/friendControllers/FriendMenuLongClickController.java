@@ -1,5 +1,6 @@
 package com.example.s3529589.mad_a1.Controller.friendControllers;
 
+import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
@@ -85,7 +86,6 @@ public class FriendMenuLongClickController implements View.OnLongClickListener {
 
         // Select birthday
         editBtn.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View v) {
                 Calendar cal = Calendar.getInstance();
@@ -93,22 +93,18 @@ public class FriendMenuLongClickController implements View.OnLongClickListener {
                 int month = cal.get(Calendar.MONTH);
                 int day = cal.get(Calendar.DAY_OF_MONTH);
 
-                DatePickerDialog d = new DatePickerDialog(
-                        customArrayArrayAdapter.getContext(),
-                        android.R.style.Theme_Holo_Light_Dialog_MinWidth);
-                d.show();
-                d.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
-
+                DatePickerDialog.OnDateSetListener listener = new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        Friend f = DataSingleton.getInstance().getFriendById(id);
-                        String birthDate = String.valueOf(dayOfMonth) + "/" + String.valueOf(month + 1);
-                        f.setBirthday(birthDate);
-
+                        DataSingleton.getInstance().getFriendById(id).setBirthday(String.valueOf(dayOfMonth) + "/" + String.valueOf(month+1));
                     }
-                });
-            }
+                };
 
+                DatePickerDialog d = new DatePickerDialog(
+                        customArrayArrayAdapter.getContext(), android.R.style.Theme_Holo_Light_Dialog_MinWidth, listener, year, month,day);
+
+                d.show();
+            }
         });
 
         AlertDialog.Builder alert = new AlertDialog.Builder(customArrayArrayAdapter.getContext());
