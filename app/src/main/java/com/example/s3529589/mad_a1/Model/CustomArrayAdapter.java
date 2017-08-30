@@ -13,7 +13,7 @@ import com.example.s3529589.mad_a1.R;
 
 import java.util.List;
 
-public class CustomArrayArrayAdapter extends ArrayAdapter<Friend> {
+public class CustomArrayAdapter extends ArrayAdapter<Friend> {
     private List<Friend> friendList;
     private Context context;
 
@@ -25,7 +25,7 @@ public class CustomArrayArrayAdapter extends ArrayAdapter<Friend> {
     private static LayoutInflater inflater = null;
 
 
-    public CustomArrayArrayAdapter(Activity activity, List<Friend> friendList) {
+    public CustomArrayAdapter(Activity activity, List<Friend> friendList) {
         super(activity, 0, friendList);
 
         this.friendList = friendList;

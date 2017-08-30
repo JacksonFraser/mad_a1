@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ListView;
 
-import com.example.s3529589.mad_a1.Model.CustomArrayArrayAdapter;
+import com.example.s3529589.mad_a1.Model.CustomArrayAdapter;
 import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.R;
 
@@ -23,7 +23,7 @@ public class DisplayFriendActivity extends Activity{
         // show when the list is empty
         lv.setEmptyView(findViewById(R.id.list_view_empty));
 
-        lv.setAdapter(new CustomArrayArrayAdapter(this, DataSingleton.getInstance().getFriendList()));
+        lv.setAdapter(new CustomArrayAdapter(this, DataSingleton.getInstance().getFriendList()));
     }
 
     @Override
