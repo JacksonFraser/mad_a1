@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="editFriendNameLbl">Name</string>
+    <string name="editFriendEmailLbl">Name</string>
+    <string name="editFriendBirthdayLbl">Birthday</string>
+    <string name="editFriendSelectBirthdayBtn">Select Birthday</string>
+</resources>

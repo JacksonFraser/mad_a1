@@ -7,19 +7,22 @@ import android.widget.EditText;
 
 import com.example.s3529589.mad_a1.Activity.meetingActivities.ScheduleMeetingActivity;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class CustomDatePickerDialogController implements View.OnClickListener {
     private ScheduleMeetingActivity scheduleMeetingActivity;
     private EditText meetingTime;
     public CustomDatePickerDialogController(ScheduleMeetingActivity scheduleMeetingActivity, EditText meetingTime) {
         this.scheduleMeetingActivity = scheduleMeetingActivity;
-        this.meetingTime = meetingTime;
+        this.meetingTime = meetingTime;;
     }
 
     @Override
     public void onClick(View v) {
         Calendar cal = Calendar.getInstance();
+
         int year = cal.get(Calendar.YEAR);
         int month = cal.get(Calendar.MONTH);
         int day = cal.get(Calendar.DAY_OF_MONTH);
@@ -34,6 +37,12 @@ public class CustomDatePickerDialogController implements View.OnClickListener {
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(
                 scheduleMeetingActivity, android.R.style.Theme_Holo_Light_Dialog_MinWidth, listener, year, month,day);
+
+        // CONVERT FROM CAL TO DATE @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        Date date = cal.getTime();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        String formattedDate = formatter.format(date);
+        System.out.println(formattedDate);
 
         datePickerDialog.show();
     }

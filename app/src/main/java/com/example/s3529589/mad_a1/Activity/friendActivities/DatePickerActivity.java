@@ -22,7 +22,7 @@ public class DatePickerActivity extends AppCompatActivity {
         confirmBtn = (Button) findViewById(R.id.confirmDateBtn);
         datePicker = (DatePicker) findViewById(R.id.datePicker);
 
-        // receive intents from PickContactActivity
+        // receive intents from CreateFriendActivity
         Intent incomingIntent = getIntent();
         name = incomingIntent.getStringExtra("name");
         email = incomingIntent.getStringExtra("email");

@@ -11,7 +11,6 @@ public class ScheduleMeetingController implements View.OnClickListener {
 
     public ScheduleMeetingController(MeetingMenuActivity meetingMenuActivity) {
         this.meetingMenuActivity = meetingMenuActivity;
-
     }
 
     @Override

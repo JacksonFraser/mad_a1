@@ -21,7 +21,6 @@ public class FriendMenuActivity extends Activity{
 
         View displayBtn = findViewById(R.id.displayFriendBtn);
         displayBtn.setOnClickListener(new DisplayFriendsController(this));
-
     }
 }
 

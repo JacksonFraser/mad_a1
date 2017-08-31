@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Friend Finder App</string>
+
+    <string name="addFriends">Friends Menu</string>
+    <string name="removeFriends">Meetings Menu</string>
+</resources>

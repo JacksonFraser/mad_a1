@@ -8,6 +8,8 @@ import com.example.s3529589.mad_a1.Activity.friendActivities.FriendMenuActivity;
 import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.Model.Friend;
 
+import java.util.Date;
+
 public class ConfirmDateController implements View.OnClickListener {
     String name;
     String email;

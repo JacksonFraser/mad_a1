@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/schedule"
-            android:text="@string/schedule"
+            android:text="@string/meetingMenuScheduleLbl"
             android:layout_weight="1"
             android:background="#326771"
             android:textColor="#eeeeee"
@@ -29,13 +29,11 @@
             android:textSize="22sp"
             />
 
-
-
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/editMeetingDetails"
-            android:text="@string/edit"
+            android:text="@string/meetingMenuEditLbl"
             android:layout_weight="1"
             android:background="#42D9C8"
             android:textColor="#eeeeee"
@@ -47,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/displayMeetings"
-            android:text="@string/display"
+            android:text="@string/meetingMenuDisplayLbl"
             android:layout_weight="1"
             android:textColor="#eeeeee"
             android:background="#C47335"

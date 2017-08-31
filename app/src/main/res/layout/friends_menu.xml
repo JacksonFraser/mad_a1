@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/addBtn"
-            android:text="@string/add"
+            android:text="@string/friendMenuAddLbl"
             android:layout_weight="1"
             android:background="#326771"
             android:textColor="#eeeeee"
@@ -29,14 +29,10 @@
             android:textSize="22sp"
             />
 
-
-
-
-
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/displayFriendBtn"
+            android:id="@+id/friendMenuDisplayLbl"
             android:text="@string/display"
             android:layout_weight="1"
             android:background="#B79FAD"
