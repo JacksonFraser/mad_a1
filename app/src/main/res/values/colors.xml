@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#000000</color>
-    <color name="colorPrimaryDark">#eeeeee</color>
     <color name="colorAccent">#3274ed</color>
+
+    <color name="menuTextColor">#eeeeee</color>
+
+    <color name="mainMenuFriend">#931621</color>
+    <color name="mainMenuMeeting">#28464B</color>
+
+    <color name="friendMenuAdd">#326771</color>
+    <color name="friendMenuDisplay">#B79FAD</color>
+
+    <color name="meetingMenuSchedule">#326771</color>
+    <color name="meetingMenuEdit">#42D9C8</color>
+    <color name="meetingMenuDisplay">#C47335</color>
+
+
+
 </resources>

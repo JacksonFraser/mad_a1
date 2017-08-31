@@ -23,8 +23,8 @@
             android:id="@+id/schedule"
             android:text="@string/meetingMenuScheduleLbl"
             android:layout_weight="1"
-            android:background="#326771"
-            android:textColor="#eeeeee"
+            android:background="@color/meetingMenuSchedule"
+            android:textColor="@color/menuTextColor"
             android:textStyle="bold"
             android:textSize="22sp"
             />
@@ -35,8 +35,8 @@
             android:id="@+id/editMeetingDetails"
             android:text="@string/meetingMenuEditLbl"
             android:layout_weight="1"
-            android:background="#42D9C8"
-            android:textColor="#eeeeee"
+            android:background="@color/meetingMenuEdit"
+            android:textColor="@color/menuTextColor"
             android:textStyle="bold"
             android:textSize="22sp"
             />
@@ -47,12 +47,11 @@
             android:id="@+id/displayMeetings"
             android:text="@string/meetingMenuDisplayLbl"
             android:layout_weight="1"
-            android:textColor="#eeeeee"
-            android:background="#C47335"
+            android:textColor="@color/menuTextColor"
+            android:background="@color/meetingMenuDisplay"
             android:textStyle="bold"
             android:textSize="22sp"
             />
-
 
     </LinearLayout>
 

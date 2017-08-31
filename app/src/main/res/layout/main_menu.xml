@@ -23,8 +23,8 @@
             android:id="@+id/friendMenuBtn"
             android:text="@string/addFriends"
             android:layout_weight="1"
-            android:background="#931621"
-            android:textColor="#eeeeee"
+            android:background="@color/mainMenuFriend"
+            android:textColor="@color/menuTextColor"
             android:textStyle="bold"
             android:textSize="22sp"
             />
@@ -35,12 +35,11 @@
             android:id="@+id/meetingMenuBtn"
             android:text="@string/removeFriends"
             android:layout_weight="1"
-            android:background="#28464B"
-            android:textColor="#eeeeee"
+            android:background="@color/mainMenuMeeting"
+            android:textColor="@color/menuTextColor"
             android:textStyle="bold"
             android:textSize="22sp"
             />
-
 
     </LinearLayout>
 

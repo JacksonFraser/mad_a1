@@ -23,8 +23,8 @@
             android:id="@+id/addBtn"
             android:text="@string/friendMenuAddLbl"
             android:layout_weight="1"
-            android:background="#326771"
-            android:textColor="#eeeeee"
+            android:background="@color/friendMenuAdd"
+            android:textColor="@color/menuTextColor"
             android:textStyle="bold"
             android:textSize="22sp"
             />
@@ -35,8 +35,8 @@
             android:id="@+id/displayFriendsBtn"
             android:text="@string/friendMenuDisplayLbl"
             android:layout_weight="1"
-            android:background="#B79FAD"
-            android:textColor="#eeeeee"
+            android:background="@color/friendMenuDisplay"
+            android:textColor="@color/menuTextColor"
             android:textStyle="bold"
             android:textSize="22sp"
             />
