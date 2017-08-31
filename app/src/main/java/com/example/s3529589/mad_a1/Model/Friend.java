@@ -1,10 +1,13 @@
 package com.example.s3529589.mad_a1.Model;
 
+import android.graphics.drawable.Drawable;
+
 public class Friend {
     private int id;
     private String name;
     private String email;
     private String birthday;
+    private Drawable displayPicture;
 
     private static int uuid = 0;
     public Friend(String name, String email, String birthday){
@@ -27,6 +30,10 @@ public class Friend {
         return birthday;
     }
 
+    public Drawable getDisplayPicture() {
+        return displayPicture;
+    }
+
     public int getId(){
         return id;
     }
@@ -41,5 +48,9 @@ public class Friend {
 
     public void setBirthday(String birthday) {
         this.birthday = birthday;
+    }
+
+    public void setDisplayPicture(Drawable displayPicture) {
+        this.displayPicture = displayPicture;
     }
 }

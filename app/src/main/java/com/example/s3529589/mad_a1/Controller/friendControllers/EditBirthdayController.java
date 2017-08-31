@@ -7,13 +7,15 @@ import android.widget.DatePicker;
 
 import com.example.s3529589.mad_a1.Model.DataSingleton;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
-public class EditBirthDateController implements View.OnClickListener {
+public class EditBirthdayController implements View.OnClickListener {
     private Context context;
     private int id;
 
-    public EditBirthDateController(Context context, int id) {
+    public EditBirthdayController(Context context, int id) {
         this.context = context;
         this.id = id;
     }
@@ -28,7 +30,14 @@ public class EditBirthDateController implements View.OnClickListener {
         DatePickerDialog.OnDateSetListener listener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                DataSingleton.getInstance().getFriendById(id).setBirthday(String.valueOf(dayOfMonth) + "/" + String.valueOf(month+1));
+                Calendar calendar = Calendar.getInstance();
+                calendar.set(year, month, dayOfMonth);
+
+                Date date = calendar.getTime();
+                SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+                String birthday = formatter.format(date);
+
+                DataSingleton.getInstance().getFriendById(id).setBirthday(birthday);
             }
         };
 

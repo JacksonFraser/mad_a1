@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.s3529589.mad_a1.Controller.friendControllers.FriendMenuLongClickController;
+import com.example.s3529589.mad_a1.Controller.friendControllers.PickDisplayPictureController;
 import com.example.s3529589.mad_a1.R;
 
 import java.util.List;
@@ -52,6 +53,7 @@ public class CustomArrayAdapter extends ArrayAdapter<Friend> {
         holder.friendBirthDateTV.setText(friendList.get(pos).getBirthdate());
 
         holder.displayImg = (ImageView) rowView.findViewById(R.id.displayImg);
+        holder.displayImg.setOnClickListener(new PickDisplayPictureController(this, friendList.get(pos).getId()));
 
         return rowView;
     }

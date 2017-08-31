@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.s3529589.mad_a1.Controller.friendControllers.EditBirthDateController;
+import com.example.s3529589.mad_a1.Controller.friendControllers.EditBirthdayController;
 import com.example.s3529589.mad_a1.R;
 
 public class CustomEditFriendDetailsAlertDialog extends AlertDialog.Builder{
@@ -70,7 +70,7 @@ public class CustomEditFriendDetailsAlertDialog extends AlertDialog.Builder{
         final Button editBtn = (Button) textEntryView.findViewById(R.id.selectDate);
 
         // Select birthday
-        editBtn.setOnClickListener(new EditBirthDateController(customArrayAdapter.getContext(),id));
+        editBtn.setOnClickListener(new EditBirthdayController(customArrayAdapter.getContext(),id));
 
         AlertDialog.Builder alert = new AlertDialog.Builder(customArrayAdapter.getContext());
         alert.setTitle("Edit details");
