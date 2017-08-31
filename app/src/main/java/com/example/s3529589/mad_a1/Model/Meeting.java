@@ -8,10 +8,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by s3529589 on 8/26/17.
- */
-
 public class Meeting {
     private int id;
     private String title;
@@ -20,7 +16,6 @@ public class Meeting {
     private static int uuid = 0;
     private List<Friend> friendList = new ArrayList<>();
     private Location location;
-
 
     public Meeting(String title, Date startDate, Date endDate, List<Friend> friendList, Location location) throws InvalidDateInput {
 
@@ -35,6 +30,5 @@ public class Meeting {
         this.friendList = friendList;
         this.location = location;
     }
-
 
 }

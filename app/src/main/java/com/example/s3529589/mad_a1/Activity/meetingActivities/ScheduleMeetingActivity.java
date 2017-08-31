@@ -34,7 +34,6 @@ public class ScheduleMeetingActivity extends Activity{
         EditText meetingTitleView = (EditText) findViewById(R.id.meeting_title);
         String meetingTitle = meetingTitleView.getText().toString();
 
-
         //Meeting start date
         View startDateBtn = findViewById(R.id.start_date_btn);
         final EditText meetingStartDateET = (EditText) findViewById(R.id.start_time);
@@ -104,8 +103,6 @@ public class ScheduleMeetingActivity extends Activity{
         //Create meeting from data
         View createMeetingBtn = findViewById(R.id.create_meeting_confirm_btn);
         createMeetingBtn.setOnClickListener(new CreateMeetingController(this,meetingTitle,meetingStartDate,meetingEndDate,meetingFriendList));
-
-
     }
 }
 

@@ -6,13 +6,8 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 
 import com.example.s3529589.mad_a1.Activity.meetingActivities.ScheduleMeetingActivity;
-import com.example.s3529589.mad_a1.Model.DataSingleton;
 
 import java.util.Calendar;
-
-/**
- * Created by s3529589 on 8/30/17.
- */
 
 public class CustomDatePickerDialogController implements View.OnClickListener {
     private ScheduleMeetingActivity scheduleMeetingActivity;
@@ -37,9 +32,9 @@ public class CustomDatePickerDialogController implements View.OnClickListener {
             }
         };
 
-        DatePickerDialog d = new DatePickerDialog(
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
                 scheduleMeetingActivity, android.R.style.Theme_Holo_Light_Dialog_MinWidth, listener, year, month,day);
 
-        d.show();
+        datePickerDialog.show();
     }
 }

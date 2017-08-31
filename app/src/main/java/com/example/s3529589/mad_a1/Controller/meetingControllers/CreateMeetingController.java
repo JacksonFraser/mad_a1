@@ -7,10 +7,6 @@ import com.example.s3529589.mad_a1.Model.Friend;
 
 import java.util.List;
 
-/**
- * Created by s3529589 on 8/30/17.
- */
-
 public class CreateMeetingController implements View.OnClickListener {
     private ScheduleMeetingActivity scheduleMeetingActivity;
     private String meetingTitle;
@@ -24,7 +20,6 @@ public class CreateMeetingController implements View.OnClickListener {
         this.meetingStartTime =  meetingStartDate;
         this.meetingEndTime = meetingEndDate;
         this.meetingFriendList = meetingFriendList;
-
     }
 
     @Override

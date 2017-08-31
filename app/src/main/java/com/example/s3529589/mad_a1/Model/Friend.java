@@ -1,7 +1,5 @@
 package com.example.s3529589.mad_a1.Model;
 
-import android.graphics.drawable.Drawable;
-
 public class Friend {
     private int id;
     private String name;
@@ -32,6 +30,7 @@ public class Friend {
     public int getId(){
         return id;
     }
+
     public void setName(String name) {
         this.name = name;
     }
