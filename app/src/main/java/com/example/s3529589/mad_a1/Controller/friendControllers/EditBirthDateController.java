@@ -9,10 +9,6 @@ import com.example.s3529589.mad_a1.Model.DataSingleton;
 
 import java.util.Calendar;
 
-/**
- * Created by s3529589 on 8/30/17.
- */
-
 public class EditBirthDateController implements View.OnClickListener {
     private Context context;
     private int id;
@@ -21,8 +17,6 @@ public class EditBirthDateController implements View.OnClickListener {
         this.context = context;
         this.id = id;
     }
-
-
 
     @Override
     public void onClick(View v) {

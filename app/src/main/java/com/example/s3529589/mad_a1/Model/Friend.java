@@ -1,10 +1,11 @@
 package com.example.s3529589.mad_a1.Model;
 
+import android.graphics.drawable.Drawable;
+
 public class Friend {
     private int id;
     private String name;
     private String email;
-
     private String birthday;
 
     private static int uuid = 0;

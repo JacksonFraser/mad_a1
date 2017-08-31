@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.s3529589.mad_a1.Controller.friendControllers.FriendMenuLongClickController;
@@ -44,12 +45,13 @@ public class CustomArrayAdapter extends ArrayAdapter<Friend> {
         holder.friendNameTV = (TextView) rowView.findViewById(R.id.friendName);
         holder.friendNameTV.setText(friendList.get(pos).getName());
 
-
         holder.friendEmailTV = (TextView) rowView.findViewById(R.id.friendEmail);
         holder.friendEmailTV.setText(friendList.get(pos).getEmail());
 
         holder.friendBirthDateTV = (TextView) rowView.findViewById(R.id.friendBirthday);
         holder.friendBirthDateTV.setText(friendList.get(pos).getBirthdate());
+
+        holder.displayImg = (ImageView) rowView.findViewById(R.id.displayImg);
 
         return rowView;
     }
@@ -58,5 +60,6 @@ public class CustomArrayAdapter extends ArrayAdapter<Friend> {
         TextView friendNameTV;
         TextView friendEmailTV;
         TextView friendBirthDateTV;
+        ImageView displayImg;
     }
 }

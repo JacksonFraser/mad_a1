@@ -20,7 +20,6 @@ public class FriendMenuLongClickController implements View.OnLongClickListener {
         CustomEditFriendDetailsAlertDialog editFriendDialog =  new CustomEditFriendDetailsAlertDialog(this.customArrayAdapter, this.id);
         editFriendDialog.show();
 
-
         return true;
     }
 

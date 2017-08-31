@@ -9,10 +9,6 @@ import com.example.s3529589.mad_a1.Activity.meetingActivities.ScheduleMeetingAct
 
 import java.util.Calendar;
 
-/**
- * Created by s3529589 on 8/30/17.
- */
-
 public class CustomTimePickDialogController implements View.OnClickListener {
     private ScheduleMeetingActivity scheduleMeetingActivity;
     private EditText meetingTime;

@@ -6,10 +6,6 @@ import android.view.View;
 import com.example.s3529589.mad_a1.Activity.meetingActivities.MeetingMenuActivity;
 import com.example.s3529589.mad_a1.Activity.meetingActivities.ScheduleMeetingActivity;
 
-/**
- * Created by s3529589 on 8/26/17.
- */
-
 public class ScheduleMeetingController implements View.OnClickListener {
     private MeetingMenuActivity meetingMenuActivity;
 

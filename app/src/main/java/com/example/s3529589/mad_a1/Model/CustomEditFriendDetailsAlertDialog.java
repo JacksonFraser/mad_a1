@@ -11,12 +11,6 @@ import android.widget.Toast;
 import com.example.s3529589.mad_a1.Controller.friendControllers.EditBirthDateController;
 import com.example.s3529589.mad_a1.R;
 
-
-
-/**
- * Created by s3529589 on 8/30/17.
- */
-
 public class CustomEditFriendDetailsAlertDialog extends AlertDialog.Builder{
     private CustomArrayAdapter customArrayAdapter;
     private int id;
@@ -123,6 +117,5 @@ public class CustomEditFriendDetailsAlertDialog extends AlertDialog.Builder{
 
         }
     }
-
 
 }

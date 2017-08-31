@@ -2,12 +2,15 @@ package com.example.s3529589.mad_a1.Activity.friendActivities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.ListView;
 
 import com.example.s3529589.mad_a1.Model.CustomArrayAdapter;
 import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.R;
+
+import java.io.InputStream;
 
 public class DisplayFriendActivity extends Activity{
 
@@ -35,5 +38,7 @@ public class DisplayFriendActivity extends Activity{
         //finish DisplayFriendActivity
         finish();
     }
+
+
 
 }
