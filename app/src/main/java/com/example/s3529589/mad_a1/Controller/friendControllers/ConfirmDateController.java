@@ -8,6 +8,8 @@ import com.example.s3529589.mad_a1.Activity.friendActivities.FriendMenuActivity;
 import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.Model.Friend;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class ConfirmDateController implements View.OnClickListener {
@@ -25,7 +27,16 @@ public class ConfirmDateController implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        String birthday = datePicker.getDayOfMonth()+"/"+(datePicker.getMonth()+1);
+        int day = datePicker.getDayOfMonth();
+        int month = datePicker.getMonth();
+        int year =  datePicker.getYear();
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(year, month, day);
+        Date date = calendar.getTime();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+
+        String birthday = formatter.format(date);
 
         // add to the Friends ArrayList
         DataSingleton.getInstance().getFriendList().add(new Friend(name, email, birthday));

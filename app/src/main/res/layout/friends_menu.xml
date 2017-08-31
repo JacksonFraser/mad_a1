@@ -32,8 +32,8 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/friendMenuDisplayLbl"
-            android:text="@string/display"
+            android:id="@+id/displayFriendsBtn"
+            android:text="@string/friendMenuDisplayLbl"
             android:layout_weight="1"
             android:background="#B79FAD"
             android:textColor="#eeeeee"

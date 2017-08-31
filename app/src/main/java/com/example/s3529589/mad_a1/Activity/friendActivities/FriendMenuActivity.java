@@ -19,7 +19,7 @@ public class FriendMenuActivity extends Activity{
         View addBtn = findViewById(R.id.addBtn);
         addBtn.setOnClickListener(new AddFriendController(this));
 
-        View displayBtn = findViewById(R.id.displayFriendBtn);
+        View displayBtn = findViewById(R.id.displayFriendsBtn);
         displayBtn.setOnClickListener(new DisplayFriendsController(this));
     }
 }

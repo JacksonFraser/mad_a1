@@ -38,11 +38,19 @@ public class CustomDatePickerDialogController implements View.OnClickListener {
         DatePickerDialog datePickerDialog = new DatePickerDialog(
                 scheduleMeetingActivity, android.R.style.Theme_Holo_Light_Dialog_MinWidth, listener, year, month,day);
 
-        // CONVERT FROM CAL TO DATE @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        // CONVERT FROM CAL TO DATE @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         Date date = cal.getTime();
+
+        // Set the hour and minute
+
+        //cal.set(Calendar.HOUR_OF_DAY, 17);
+        //cal.set(Calendar.MINUTE, 30);
+
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
         String formattedDate = formatter.format(date);
         System.out.println(formattedDate);
+
+        // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
         datePickerDialog.show();
     }
