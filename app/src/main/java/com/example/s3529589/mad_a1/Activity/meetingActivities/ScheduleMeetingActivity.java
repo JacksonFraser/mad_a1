@@ -28,16 +28,15 @@ public class ScheduleMeetingActivity extends Activity{
 
         //Meeting title
         EditText meetingTitleView = (EditText) findViewById(R.id.meetingTitle);
-        final String meetingTitle = meetingTitleView.getText().toString();
 
         //Meeting start time
         View startTimeBtn = findViewById(R.id.startTimeBtn);
-        final TextView startTime = (TextView) findViewById(R.id.startTimeLbl);
+        TextView startTime = (TextView) findViewById(R.id.startTimeLbl);
         startTimeBtn.setOnClickListener(new StartMeetingTimeController(this, startTime));
 
         //Meeting end time
         View endTimeBtn = findViewById(R.id.finishTimeBtn);
-        final TextView finishTime = (TextView) findViewById(R.id.finishTimeLbl);
+        TextView finishTime = (TextView) findViewById(R.id.finishTimeLbl);
         endTimeBtn.setOnClickListener(new FinishMeetingTimeController(this, finishTime));
 
         final List<Friend> meetingFriendList = new ArrayList<>();
@@ -86,10 +85,13 @@ public class ScheduleMeetingActivity extends Activity{
             }
         });
 
+        final String meetingTitle = meetingTitleView.getText().toString();
+        final String asd1 = startTime.getText().toString();
+        final String asd2 = finishTime.getText().toString();
+
         //Create a meeting
         View createMeetingBtn = findViewById(R.id.confirmMeetingBtn);
-        createMeetingBtn.setOnClickListener(new CreateMeetingController(meetingTitle, startTime.getText().toString(), finishTime.getText().toString(), meetingFriendList));
-
+        createMeetingBtn.setOnClickListener(new CreateMeetingController(meetingTitleView, startTime, finishTime, meetingFriendList));
     }
 
 }
