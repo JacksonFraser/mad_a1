@@ -2,5 +2,4 @@
 <resources>
     <string name="datePickerText">Please Select Birthday:</string>
     <string name="confirmDatePick">Confirm</string>
-
 </resources>

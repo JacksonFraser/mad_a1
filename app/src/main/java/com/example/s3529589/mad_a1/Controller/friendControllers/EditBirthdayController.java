@@ -37,7 +37,7 @@ public class EditBirthdayController implements View.OnClickListener {
                 SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
                 String birthday = formatter.format(date);
 
-                DataSingleton.getInstance().getFriendById(id).setBirthday(birthday);
+                DataSingleton.getInstance().getFriendById(id).setBirthday(date);
             }
         };
 

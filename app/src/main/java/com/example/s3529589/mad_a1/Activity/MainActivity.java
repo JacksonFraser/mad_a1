@@ -10,6 +10,10 @@ import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.Model.Friend;
 import com.example.s3529589.mad_a1.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -17,16 +21,20 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_menu);
-        adddummydata();
+        addDummyData();
         View friendMenuBtn = findViewById(R.id.friendMenuBtn);
         friendMenuBtn.setOnClickListener(new FriendMenuController(this));
 
         View meetingMenuBtn = findViewById(R.id.meetingMenuBtn);
         meetingMenuBtn.setOnClickListener(new MeetingMenuController(this));
     }
-    private void adddummydata(){
-        Friend f1 = new Friend("BOBBY FLAG", "KHAKDJAHD", "10101");
-        Friend f2 = new Friend("GOOD PERSON", "aaaaaaaaaa", "99999");
+
+    private void addDummyData(){
+        Calendar calendar = Calendar.getInstance();
+        Date date = calendar.getTime();
+
+        Friend f1 = new Friend("BOBBY FLAG", "KHAKDJAHD", date);
+        Friend f2 = new Friend("GOOD PERSON", "AAAAAAAA", date);
         DataSingleton.getInstance().getFriendList().add(f1);
         DataSingleton.getInstance().getFriendList().add(f2);
     }

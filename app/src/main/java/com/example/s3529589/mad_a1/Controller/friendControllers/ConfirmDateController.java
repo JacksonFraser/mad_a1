@@ -39,7 +39,7 @@ public class ConfirmDateController implements View.OnClickListener {
         String birthday = formatter.format(date);
 
         // add to the Friends ArrayList
-        DataSingleton.getInstance().getFriendList().add(new Friend(name, email, birthday));
+        DataSingleton.getInstance().getFriendList().add(new Friend(name, email, date));
 
         for(Friend f : DataSingleton.getInstance().getFriendList())
             System.out.println(f.getName());

@@ -21,8 +21,6 @@ import java.io.InputStream;
 
 public class DisplayFriendActivity extends Activity{
 
-    int id;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,15 +28,10 @@ public class DisplayFriendActivity extends Activity{
         createListView();
     }
 
-    public void passFriendID(int id){
-        this.id = id;
-    }
-
     private void createListView(){
         ListView lv = (ListView) findViewById(R.id.list_view);
         // show when the list is empty
         lv.setEmptyView(findViewById(R.id.list_view_empty));
-
         lv.setAdapter(new CustomArrayAdapter(this, DataSingleton.getInstance().getFriendList()));
     }
 
@@ -52,26 +45,4 @@ public class DisplayFriendActivity extends Activity{
         finish();
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == 212) {
-            if(resultCode == RESULT_OK){
-
-                Uri selectedImage = data.getData();
-                String[] filePathColumn = {MediaStore.Images.Media.DATA};
-
-                Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
-                cursor.moveToFirst();
-
-                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-                String filePath = cursor.getString(columnIndex);
-                cursor.close();
-
-                Bitmap bitmapImage = BitmapFactory.decodeFile(filePath);
-                Drawable displayImg = new BitmapDrawable(getResources(), bitmapImage);
-
-                DataSingleton.getInstance().getFriendById(id).setDisplayPicture(displayImg);
-            }
-        }
-    }
 }

@@ -1,7 +1,5 @@
 package com.example.s3529589.mad_a1.Model;
 
-import android.location.Location;
-
 import com.example.s3529589.mad_a1.Exceptions.InvalidDateInput;
 
 import java.util.ArrayList;
@@ -15,9 +13,9 @@ public class Meeting {
     private Date endDate;
     private static int uuid = 0;
     private List<Friend> friendList = new ArrayList<>();
-    private Location location;
+    private String location;
 
-    public Meeting(String title, Date startDate, Date endDate, List<Friend> friendList, Location location) throws InvalidDateInput {
+    public Meeting(String title, Date startDate, Date endDate, List<Friend> friendList, String location) throws InvalidDateInput {
 
         if(endDate.before(startDate))
             throw new InvalidDateInput("End date cannot be before start date");

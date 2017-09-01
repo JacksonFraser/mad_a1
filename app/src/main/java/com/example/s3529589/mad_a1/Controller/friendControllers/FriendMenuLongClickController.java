@@ -5,7 +5,6 @@ import android.view.View;
 import com.example.s3529589.mad_a1.Model.CustomEditFriendDetailsAlertDialog;
 import com.example.s3529589.mad_a1.Model.CustomArrayAdapter;
 
-
 public class FriendMenuLongClickController implements View.OnLongClickListener {
     private int id;
     private CustomArrayAdapter customArrayAdapter;
@@ -22,6 +21,4 @@ public class FriendMenuLongClickController implements View.OnLongClickListener {
 
         return true;
     }
-
-
 }

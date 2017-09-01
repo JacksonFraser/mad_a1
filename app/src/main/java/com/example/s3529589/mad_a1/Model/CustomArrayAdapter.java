@@ -13,6 +13,7 @@ import com.example.s3529589.mad_a1.Controller.friendControllers.FriendMenuLongCl
 import com.example.s3529589.mad_a1.Controller.friendControllers.PickDisplayPictureController;
 import com.example.s3529589.mad_a1.R;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class CustomArrayAdapter extends ArrayAdapter<Friend> {
@@ -25,7 +26,6 @@ public class CustomArrayAdapter extends ArrayAdapter<Friend> {
 
     private Activity activity;
     private static LayoutInflater inflater = null;
-
 
     public CustomArrayAdapter(Activity activity, List<Friend> friendList) {
         super(activity, 0, friendList);
@@ -50,10 +50,12 @@ public class CustomArrayAdapter extends ArrayAdapter<Friend> {
         holder.friendEmailTV.setText(friendList.get(pos).getEmail());
 
         holder.friendBirthDateTV = (TextView) rowView.findViewById(R.id.friendBirthday);
-        holder.friendBirthDateTV.setText(friendList.get(pos).getBirthdate());
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        String birthday = formatter.format(friendList.get(pos).getBirthdate());
+        holder.friendBirthDateTV.setText(birthday);
 
         holder.displayImg = (ImageView) rowView.findViewById(R.id.displayImg);
-        holder.displayImg.setOnClickListener(new PickDisplayPictureController(this, friendList.get(pos).getId()));
+        holder.displayImg.setOnClickListener(new PickDisplayPictureController(this));
 
         return rowView;
     }
