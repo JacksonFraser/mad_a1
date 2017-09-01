@@ -20,7 +20,6 @@ import java.util.List;
 import java.util.Locale;
 
 public class CreateMeetingController implements View.OnClickListener {
-
     private ScheduleMeetingActivity scheduleMeetingActivity;
 
     private EditText meetingTitle;
@@ -37,13 +36,16 @@ public class CreateMeetingController implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm aaa");
         String startInString = startTime.getText().toString();
         String finishInString = finishTime.getText().toString();
 
+        // Convert String to Date
+        DateFormat formatter = new SimpleDateFormat("d-MMM-yyyy,HH:mm:ss aaa");
+        Date start = null;
+        Date finish = null;
         try {
-            Date start = formatter.parse(startInString);
-            Date finish = formatter.parse(finishInString);
+            start = formatter.parse(startInString);
+            finish = formatter.parse(finishInString);
         } catch (ParseException e) {
             e.printStackTrace();
         }

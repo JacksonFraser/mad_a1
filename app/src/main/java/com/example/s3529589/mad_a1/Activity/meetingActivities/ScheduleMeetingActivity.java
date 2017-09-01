@@ -85,10 +85,6 @@ public class ScheduleMeetingActivity extends Activity{
             }
         });
 
-        final String meetingTitle = meetingTitleView.getText().toString();
-        final String asd1 = startTime.getText().toString();
-        final String asd2 = finishTime.getText().toString();
-
         //Create a meeting
         View createMeetingBtn = findViewById(R.id.confirmMeetingBtn);
         createMeetingBtn.setOnClickListener(new CreateMeetingController(meetingTitleView, startTime, finishTime, meetingFriendList));
