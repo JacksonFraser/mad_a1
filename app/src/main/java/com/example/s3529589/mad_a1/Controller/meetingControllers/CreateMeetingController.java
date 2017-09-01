@@ -28,6 +28,6 @@ public class CreateMeetingController implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         DataSingleton.getInstance().getMeetingList().add(new Meeting(meetingTitle, startTime, finishTime, meetingFriendList, "dummyLocation"));
-        System.out.println(DataSingleton.getInstance().getMeetingById(0).getTitle());
+        System.out.println(DataSingleton.getInstance().getMeetingById(0).getStartTime());
     }
 }

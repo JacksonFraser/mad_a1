@@ -21,17 +21,6 @@ import java.util.List;
 
 public class ScheduleMeetingActivity extends Activity{
 
-    Date start;
-    Date finish;
-
-    public void setStart(Date start){
-        this.start = start;
-    }
-
-    public void setFinish(Date finish){
-        this.finish = finish;
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +28,6 @@ public class ScheduleMeetingActivity extends Activity{
 
         //Meeting title
         EditText meetingTitleView = (EditText) findViewById(R.id.meetingTitle);
-        String meetingTitle = meetingTitleView.getText().toString();
 
         //Meeting start time
         View startTimeBtn = findViewById(R.id.startTimeBtn);
@@ -97,9 +85,9 @@ public class ScheduleMeetingActivity extends Activity{
         });
 
         //Create a meeting
-        View createMeetingBtn = findViewById(R.id.confirmMeetingBtn);
-        createMeetingBtn.setOnClickListener(new CreateMeetingController(meetingTitle, start, finish, meetingFriendList));
-        
+        //View createMeetingBtn = findViewById(R.id.confirmMeetingBtn);
+        //createMeetingBtn.setOnClickListener(new CreateMeetingController(meetingTitleView.getText().toString(), start, finish, meetingFriendList));
+
     }
 
 }

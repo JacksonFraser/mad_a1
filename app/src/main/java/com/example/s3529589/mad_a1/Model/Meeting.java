@@ -32,4 +32,8 @@ public class Meeting {
     public String getTitle() {
         return title;
     }
+
+    public Date getStartTime() {
+        return startTime;
+    }
 }

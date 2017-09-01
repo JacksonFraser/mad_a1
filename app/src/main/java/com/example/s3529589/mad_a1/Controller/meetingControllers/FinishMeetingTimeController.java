@@ -33,12 +33,15 @@ public class FinishMeetingTimeController implements View.OnClickListener {
                 cal.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 cal.set(Calendar.MINUTE, minute);
                 Date finishTime = cal.getTime();
-                scheduleMeetingActivity.setStart(finishTime);
 
+                meetingTime.setText(finishTime.toString());
+
+                /*
                 SimpleDateFormat formatter = new SimpleDateFormat("HH:mm aaa");
                 String labelTime = formatter.format(finishTime);
 
                 meetingTime.setText(labelTime);
+                */
             }
         };
         TimePickerDialog t = new TimePickerDialog(scheduleMeetingActivity, android.R.style.Theme_Holo_Light_Dialog_MinWidth, listener, hour,minute, true);

@@ -33,15 +33,18 @@ public class StartMeetingTimeController implements View.OnClickListener {
                 cal.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 cal.set(Calendar.MINUTE, minute);
                 Date startTime = cal.getTime();
-                scheduleMeetingActivity.setStart(startTime);
 
+                meetingTime.setText(startTime.toString());
+
+                /*
                 SimpleDateFormat formatter = new SimpleDateFormat("HH:mm aaa");
                 String labelTime = formatter.format(startTime);
 
                 meetingTime.setText(labelTime);
+                */
             }
         };
-        TimePickerDialog t = new TimePickerDialog(scheduleMeetingActivity, android.R.style.Theme_Holo_Light_Dialog_MinWidth, listener, hour,minute, true);
+        TimePickerDialog t = new TimePickerDialog(scheduleMeetingActivity, android.R.style.Theme_Holo_Light_Dialog_MinWidth, listener, hour, minute, true);
         t.show();
     }
 }
