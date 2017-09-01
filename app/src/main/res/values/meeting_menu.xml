@@ -2,5 +2,4 @@
 <resources>
     <string name="meetingMenuScheduleLbl">Schedule/Unschedule</string>
     <string name="meetingMenuEditLbl">Edit</string>
-    <string name="meetingMenuDisplayLbl">Display</string>
 </resources>

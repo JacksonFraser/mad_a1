@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nameTxt">Name</string>
+    <string name="selectBirthdayTxt">Select Birthday</string>
+    <string name="displayTxt">Display</string>
+
+</resources>

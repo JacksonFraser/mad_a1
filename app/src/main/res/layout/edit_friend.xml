@@ -6,7 +6,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/editFriendNameLbl"
+        android:text="@string/nameTxt"
         />
 
     <EditText
@@ -21,7 +21,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/editFriendEmailLbl"
+        android:text="@string/selectBirthdayTxt"
         />
 
     <EditText
@@ -42,7 +42,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/editFriendSelectBirthdayBtn"
+        android:text="@string/selectBirthdayTxt"
         android:id="@+id/selectDate"
         />
 

@@ -45,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/displayMeetings"
-            android:text="@string/meetingMenuDisplayLbl"
+            android:text="@string/displayTxt"
             android:layout_weight="1"
             android:textColor="@color/menuTextColor"
             android:background="@color/meetingMenuDisplay"

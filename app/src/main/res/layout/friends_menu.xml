@@ -33,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/displayFriendsBtn"
-            android:text="@string/friendMenuDisplayLbl"
+            android:text="@string/displayTxt"
             android:layout_weight="1"
             android:background="@color/friendMenuDisplay"
             android:textColor="@color/menuTextColor"
