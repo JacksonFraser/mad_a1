@@ -21,6 +21,11 @@ public class DataSingleton {
     public List<Friend> getFriendList(){
         return friendList;
     }
+
+    public List<Meeting> getMeetingList(){
+        return meetingList;
+    }
+
     public Friend getFriendById(int id){
         for(Friend f : friendList)
             if(id == f.getId())
@@ -28,4 +33,14 @@ public class DataSingleton {
 
         return null;
     }
+
+    public Meeting getMeetingById(int id){
+        for(Meeting m : meetingList)
+            if(id == m.getId())
+                return m;
+
+        return null;
+    }
+
+
 }

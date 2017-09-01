@@ -9,24 +9,27 @@ import java.util.List;
 public class Meeting {
     private int id;
     private String title;
-    private Date startDate;
-    private Date endDate;
+    private Date startTime;
+    private Date finishTime;
     private static int uuid = 0;
     private List<Friend> friendList = new ArrayList<>();
     private String location;
 
-    public Meeting(String title, Date startDate, Date endDate, List<Friend> friendList, String location) throws InvalidDateInput {
-
-        if(endDate.before(startDate))
-            throw new InvalidDateInput("End date cannot be before start date");
-
+    public Meeting(String title, Date start, Date finish, List<Friend> friendList, String location) {
         this.id = uuid;
         uuid++;
         this.title = title;
-        this.startDate = startDate;
-        this.endDate = endDate;
+        this.startTime = start;
+        this.finishTime = finish;
         this.friendList = friendList;
         this.location = location;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
 }

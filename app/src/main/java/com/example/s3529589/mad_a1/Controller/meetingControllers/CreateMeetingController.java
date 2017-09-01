@@ -1,30 +1,33 @@
 package com.example.s3529589.mad_a1.Controller.meetingControllers;
 
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.s3529589.mad_a1.Activity.meetingActivities.ScheduleMeetingActivity;
+import com.example.s3529589.mad_a1.Exceptions.InvalidDateInput;
+import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.Model.Friend;
+import com.example.s3529589.mad_a1.Model.Meeting;
 
+import java.util.Date;
 import java.util.List;
 
 public class CreateMeetingController implements View.OnClickListener {
-    private ScheduleMeetingActivity scheduleMeetingActivity;
     private String meetingTitle;
-    private String meetingStartTime;
-    private String meetingEndTime;
+    private Date startTime;
+    private Date finishTime;
     private List<Friend> meetingFriendList;
 
-    public CreateMeetingController(ScheduleMeetingActivity scheduleMeetingActivity, String meetingTitle, String meetingStartDate, String meetingEndDate, List<Friend> meetingFriendList) {
-        this.scheduleMeetingActivity = scheduleMeetingActivity;
+    public CreateMeetingController(String meetingTitle, Date start, Date end, List<Friend> meetingFriendList) {
         this.meetingTitle = meetingTitle;
-        this.meetingStartTime =  meetingStartDate;
-        this.meetingEndTime = meetingEndDate;
+        this.startTime =  start;
+        this.finishTime = end;
         this.meetingFriendList = meetingFriendList;
     }
 
     @Override
     public void onClick(View v) {
-        System.out.println(meetingFriendList.get(0).getBirthdate());
-        System.out.println(meetingFriendList.get(1).getBirthdate());
+        DataSingleton.getInstance().getMeetingList().add(new Meeting(meetingTitle, startTime, finishTime, meetingFriendList, "dummyLocation"));
+        System.out.println(DataSingleton.getInstance().getMeetingById(0).getTitle());
     }
 }

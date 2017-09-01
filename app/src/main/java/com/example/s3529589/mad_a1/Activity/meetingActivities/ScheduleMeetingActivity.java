@@ -2,61 +2,58 @@ package com.example.s3529589.mad_a1.Activity.meetingActivities;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.DatePickerDialog;
 import android.content.DialogInterface;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.view.View;
-import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.s3529589.mad_a1.Controller.meetingControllers.CreateMeetingController;
-import com.example.s3529589.mad_a1.Controller.meetingControllers.CustomDatePickerDialogController;
-import com.example.s3529589.mad_a1.Model.CustomTimePickDialogController;
+import com.example.s3529589.mad_a1.Controller.meetingControllers.FinishMeetingTimeController;
+import com.example.s3529589.mad_a1.Controller.meetingControllers.StartMeetingTimeController;
 import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.Model.Friend;
 import com.example.s3529589.mad_a1.R;
 
 import java.util.ArrayList;
-import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class ScheduleMeetingActivity extends Activity{
 
+    Date start;
+    Date finish;
+
+    public void setStart(Date start){
+        this.start = start;
+    }
+
+    public void setFinish(Date finish){
+        this.finish = finish;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.schedule_meeting);
 
         //Meeting title
-        EditText meetingTitleView = (EditText) findViewById(R.id.meeting_title);
+        EditText meetingTitleView = (EditText) findViewById(R.id.meetingTitle);
         String meetingTitle = meetingTitleView.getText().toString();
 
-        //Meeting start date
-        View startDateBtn = findViewById(R.id.start_date_btn);
-        final EditText meetingStartDateET = (EditText) findViewById(R.id.start_time);
-        String meetingStartDate = meetingStartDateET.getText().toString();
-        startDateBtn.setOnClickListener(new CustomDatePickerDialogController(this,meetingStartDateET));
-
-        //Meeting end date
-        View endDateBtn = findViewById(R.id.end_date_btn);
-        final EditText meetingEndDateET = (EditText) findViewById(R.id.end_time);
-        String meetingEndDate = meetingEndDateET.getText().toString();
-        endDateBtn.setOnClickListener(new CustomDatePickerDialogController(this,meetingEndDateET));
-
         //Meeting start time
-        View startTimeBtn = findViewById(R.id.start_time_meeting_button);
-        startTimeBtn.setOnClickListener(new CustomTimePickDialogController(this,meetingStartDateET));
+        View startTimeBtn = findViewById(R.id.startTimeBtn);
+        TextView startTime = (TextView) findViewById(R.id.startTimeLbl);
+        startTimeBtn.setOnClickListener(new StartMeetingTimeController(this, startTime));
 
         //Meeting end time
-        View endTimeBtn = findViewById(R.id.end_time_meeting_button);
-        endTimeBtn.setOnClickListener(new CustomTimePickDialogController(this,meetingEndDateET));
+        View endTimeBtn = findViewById(R.id.finishTimeBtn);
+        TextView finishTime = (TextView) findViewById(R.id.finishTimeLbl);
+        endTimeBtn.setOnClickListener(new FinishMeetingTimeController(this, finishTime));
 
         final List<Friend> meetingFriendList = new ArrayList<>();
-        View addFriendBtn = findViewById(R.id.add_friend_to_meeting_btn);
-        addFriendBtn.setOnClickListener(new View.OnClickListener(){
+        View pickFriends = findViewById(R.id.selectFriendsBtn);
+        pickFriends.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
@@ -96,13 +93,14 @@ public class ScheduleMeetingActivity extends Activity{
                     }
                 });
                 builder.show();
-
             }
         });
 
-        //Create meeting from data
-        View createMeetingBtn = findViewById(R.id.create_meeting_confirm_btn);
-        createMeetingBtn.setOnClickListener(new CreateMeetingController(this,meetingTitle,meetingStartDate,meetingEndDate,meetingFriendList));
+        //Create a meeting
+        View createMeetingBtn = findViewById(R.id.confirmMeetingBtn);
+        createMeetingBtn.setOnClickListener(new CreateMeetingController(meetingTitle, start, finish, meetingFriendList));
+        
     }
+
 }
 

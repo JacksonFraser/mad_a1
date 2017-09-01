@@ -9,6 +9,7 @@ public class Friend {
     private Date birthday;
 
     private static int uuid = 0;
+
     public Friend(String name, String email, Date birthday){
         id = uuid;
         uuid++;
@@ -28,7 +29,6 @@ public class Friend {
     public Date getBirthdate(){
         return birthday;
     }
-
 
     public int getId(){
         return id;

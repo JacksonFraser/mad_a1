@@ -26,7 +26,7 @@
         android:id="@+id/confirmDateBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/confirmDatePick"
+        android:text="@string/confirmTxt"
         android:background="#ffffff"
         android:textStyle="bold"
         android:textSize="25sp"
