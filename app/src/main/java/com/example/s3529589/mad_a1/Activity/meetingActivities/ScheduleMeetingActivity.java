@@ -28,15 +28,16 @@ public class ScheduleMeetingActivity extends Activity{
 
         //Meeting title
         EditText meetingTitleView = (EditText) findViewById(R.id.meetingTitle);
+        final String meetingTitle = meetingTitleView.getText().toString();
 
         //Meeting start time
         View startTimeBtn = findViewById(R.id.startTimeBtn);
-        TextView startTime = (TextView) findViewById(R.id.startTimeLbl);
+        final TextView startTime = (TextView) findViewById(R.id.startTimeLbl);
         startTimeBtn.setOnClickListener(new StartMeetingTimeController(this, startTime));
 
         //Meeting end time
         View endTimeBtn = findViewById(R.id.finishTimeBtn);
-        TextView finishTime = (TextView) findViewById(R.id.finishTimeLbl);
+        final TextView finishTime = (TextView) findViewById(R.id.finishTimeLbl);
         endTimeBtn.setOnClickListener(new FinishMeetingTimeController(this, finishTime));
 
         final List<Friend> meetingFriendList = new ArrayList<>();
@@ -53,6 +54,7 @@ public class ScheduleMeetingActivity extends Activity{
                     friendsId[i] = f.getId();
                     i++;
                 }
+
                 final AlertDialog.Builder builder = new AlertDialog.Builder(ScheduleMeetingActivity.this);
                 builder.setTitle("Select Friends");
                 builder.setMultiChoiceItems(friends, null, new DialogInterface.OnMultiChoiceClickListener() {
@@ -85,8 +87,8 @@ public class ScheduleMeetingActivity extends Activity{
         });
 
         //Create a meeting
-        //View createMeetingBtn = findViewById(R.id.confirmMeetingBtn);
-        //createMeetingBtn.setOnClickListener(new CreateMeetingController(meetingTitleView.getText().toString(), start, finish, meetingFriendList));
+        View createMeetingBtn = findViewById(R.id.confirmMeetingBtn);
+        createMeetingBtn.setOnClickListener(new CreateMeetingController(meetingTitle, startTime.getText().toString(), finishTime.getText().toString(), meetingFriendList));
 
     }
 
