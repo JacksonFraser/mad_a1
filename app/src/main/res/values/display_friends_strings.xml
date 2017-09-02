@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="noFriends">No friends :(</string>
+    <string name="noMeetings">No Meetings </string>
+
 </resources>

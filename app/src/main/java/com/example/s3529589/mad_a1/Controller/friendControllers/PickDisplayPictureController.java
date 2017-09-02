@@ -2,12 +2,12 @@ package com.example.s3529589.mad_a1.Controller.friendControllers;
 
 import android.view.View;
 
-import com.example.s3529589.mad_a1.Model.CustomArrayAdapter;
+import com.example.s3529589.mad_a1.Model.CustomFriendDetailsArrayAdapter;
 
 public class PickDisplayPictureController implements View.OnClickListener {
-    private CustomArrayAdapter caa;
+    private CustomFriendDetailsArrayAdapter caa;
 
-    public PickDisplayPictureController(CustomArrayAdapter caa) {
+    public PickDisplayPictureController(CustomFriendDetailsArrayAdapter caa) {
         this.caa = caa;
     }
 

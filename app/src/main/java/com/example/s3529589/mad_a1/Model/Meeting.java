@@ -1,6 +1,6 @@
 package com.example.s3529589.mad_a1.Model;
 
-import com.example.s3529589.mad_a1.Exceptions.InvalidDateInput;
+import com.example.s3529589.mad_a1.Exceptions.InvalidMeetingInput;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -15,7 +15,15 @@ public class Meeting {
     private List<Friend> friendList = new ArrayList<>();
     private String location;
 
-    public Meeting(String title, Date start, Date finish, List<Friend> friendList, String location) {
+    public Meeting(String title, Date start, Date finish, List<Friend> friendList, String location) throws InvalidMeetingInput{
+        if(finish.before(start))
+            throw new InvalidMeetingInput("Start time has to be before end time");
+        if(start == null)
+            throw new InvalidMeetingInput("Meeting start time cannot be null");
+        if(finish == null)
+            throw new InvalidMeetingInput("Meeting end time cannot be null");
+        if(title.isEmpty())
+            throw new InvalidMeetingInput("Meeting has to have a title");
         this.id = uuid;
         uuid++;
         this.title = title;
@@ -23,6 +31,7 @@ public class Meeting {
         this.finishTime = finish;
         this.friendList = friendList;
         this.location = location;
+
     }
 
     public int getId() {
@@ -36,4 +45,6 @@ public class Meeting {
     public Date getStartTime() {
         return startTime;
     }
+
+    public Date getEndTIme() { return finishTime; }
 }

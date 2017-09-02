@@ -16,7 +16,7 @@ import com.example.s3529589.mad_a1.R;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-public class CustomArrayAdapter extends ArrayAdapter<Friend> {
+public class CustomFriendDetailsArrayAdapter extends ArrayAdapter<Friend> {
     private List<Friend> friendList;
     private Context context;
 
@@ -27,7 +27,7 @@ public class CustomArrayAdapter extends ArrayAdapter<Friend> {
     private Activity activity;
     private static LayoutInflater inflater = null;
 
-    public CustomArrayAdapter(Activity activity, List<Friend> friendList) {
+    public CustomFriendDetailsArrayAdapter(Activity activity, List<Friend> friendList) {
         super(activity, 0, friendList);
 
         this.friendList = friendList;
@@ -40,7 +40,7 @@ public class CustomArrayAdapter extends ArrayAdapter<Friend> {
     public View getView(int pos, View convertView, ViewGroup parent){
         FriendHolder holder = new FriendHolder();
 
-        View rowView = inflater.inflate(R.layout.list_view_item_row, null);
+        View rowView = inflater.inflate(R.layout.friend_details_list_iew_item_row, null);
         rowView.setOnLongClickListener(new FriendMenuLongClickController(friendList.get(pos).getId(),this));
 
         holder.friendNameTV = (TextView) rowView.findViewById(R.id.friendName);

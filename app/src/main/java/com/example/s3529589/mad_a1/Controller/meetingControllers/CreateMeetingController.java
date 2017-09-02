@@ -3,9 +3,10 @@ package com.example.s3529589.mad_a1.Controller.meetingControllers;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.s3529589.mad_a1.Activity.meetingActivities.ScheduleMeetingActivity;
-import com.example.s3529589.mad_a1.Exceptions.InvalidDateInput;
+import com.example.s3529589.mad_a1.Exceptions.InvalidMeetingInput;
 import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.Model.Friend;
 import com.example.s3529589.mad_a1.Model.Meeting;
@@ -27,12 +28,15 @@ public class CreateMeetingController implements View.OnClickListener {
     private TextView finishTime;
     private List<Friend> meetingFriendList;
 
-    public CreateMeetingController(EditText meetingTitle, TextView startTime, TextView finishTime, List<Friend> meetingFriendList) {
+    public CreateMeetingController(ScheduleMeetingActivity scheduleMeetingActivity,EditText meetingTitle, TextView startTime, TextView finishTime, List<Friend> meetingFriendList) {
+        this.scheduleMeetingActivity = scheduleMeetingActivity;
         this.meetingTitle = meetingTitle;
         this.startTime =  startTime;
         this.finishTime = finishTime;
         this.meetingFriendList = meetingFriendList;
     }
+
+
 
     @Override
     public void onClick(View v) {
@@ -40,7 +44,7 @@ public class CreateMeetingController implements View.OnClickListener {
         String finishInString = finishTime.getText().toString();
 
         // Convert String to Date
-        DateFormat formatter = new SimpleDateFormat("d-MMM-yyyy, h:mm aaa");
+        DateFormat formatter = new SimpleDateFormat("d-MMM-yyyy, h:mm a");
         Date start = null;
         Date finish = null;
         try {
@@ -50,11 +54,13 @@ public class CreateMeetingController implements View.OnClickListener {
             e.printStackTrace();
         }
 
-        DataSingleton.getInstance().getMeetingList().add(new Meeting(meetingTitle.getText().toString(), start, finish, meetingFriendList, "11"));
+        try{
+            DataSingleton.getInstance().getMeetingList().add(new Meeting(meetingTitle.getText().toString(), start, finish, meetingFriendList, "11"));
+            scheduleMeetingActivity.finish();
+        }catch(InvalidMeetingInput e){
+            Toast.makeText(this.scheduleMeetingActivity, e.getMessage(), Toast.LENGTH_LONG).show();
+        }
 
-        System.out.println(meetingTitle.getText().toString());
-        System.out.println(start);
-        System.out.println(finish);
 
     }
 }

@@ -2,22 +2,12 @@ package com.example.s3529589.mad_a1.Activity.friendActivities;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.widget.ImageView;
 import android.widget.ListView;
 
-import com.example.s3529589.mad_a1.Model.CustomArrayAdapter;
+import com.example.s3529589.mad_a1.Model.CustomFriendDetailsArrayAdapter;
 import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.R;
-
-import java.io.InputStream;
 
 public class DisplayFriendActivity extends Activity{
 
@@ -32,7 +22,7 @@ public class DisplayFriendActivity extends Activity{
         ListView lv = (ListView) findViewById(R.id.list_view);
         // show when the list is empty
         lv.setEmptyView(findViewById(R.id.list_view_empty));
-        lv.setAdapter(new CustomArrayAdapter(this, DataSingleton.getInstance().getFriendList()));
+        lv.setAdapter(new CustomFriendDetailsArrayAdapter(this, DataSingleton.getInstance().getFriendList()));
     }
 
     @Override

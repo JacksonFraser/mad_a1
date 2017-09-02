@@ -1,18 +1,24 @@
 package com.example.s3529589.mad_a1.Activity;
 
+import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.example.s3529589.mad_a1.Controller.friendControllers.FriendMenuController;
 import com.example.s3529589.mad_a1.Controller.meetingControllers.MeetingMenuController;
+import com.example.s3529589.mad_a1.Exceptions.InvalidMeetingInput;
 import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.Model.Friend;
+import com.example.s3529589.mad_a1.Model.Meeting;
 import com.example.s3529589.mad_a1.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+
+import static android.os.Build.VERSION_CODES.M;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,11 +38,23 @@ public class MainActivity extends AppCompatActivity {
     private void addDummyData(){
         Calendar calendar = Calendar.getInstance();
         Date date = calendar.getTime();
-
-        Friend f1 = new Friend("BOBBY FLAG", "KHAKDJAHD", date);
-        Friend f2 = new Friend("GOOD PERSON", "AAAAAAAA", date);
+        Date date1 = calendar.getTime();
+        Date date2 = calendar.getTime();
+        Friend f1 = new Friend("BOBBY FLAG", "gmail@gmail", date);
+        Friend f2 = new Friend("GOOD PERSON", "newemail@me.com", date);
         DataSingleton.getInstance().getFriendList().add(f1);
         DataSingleton.getInstance().getFriendList().add(f2);
+        try{
+            Meeting m1 = new Meeting("meeting 1",date1,date2,null,null);
+            Meeting m2 = new Meeting("meeting 2",date1,date2,null,null);
+            DataSingleton.getInstance().getMeetingList().add(m1);
+            DataSingleton.getInstance().getMeetingList().add(m2);
+
+
+        }catch (InvalidMeetingInput e){
+            System.out.println(e.getMessage());
+        }
+
     }
 }
 

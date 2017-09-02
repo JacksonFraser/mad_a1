@@ -12,12 +12,12 @@ import com.example.s3529589.mad_a1.Controller.friendControllers.EditBirthdayCont
 import com.example.s3529589.mad_a1.R;
 
 public class CustomEditFriendDetailsAlertDialog extends AlertDialog.Builder{
-    private CustomArrayAdapter customArrayAdapter;
+    private CustomFriendDetailsArrayAdapter customFriendDetailsArrayAdapter;
     private int id;
 
-    public CustomEditFriendDetailsAlertDialog(CustomArrayAdapter customArrayAdapter, int id) {
-        super(customArrayAdapter.getContext());
-        this.customArrayAdapter = customArrayAdapter;
+    public CustomEditFriendDetailsAlertDialog(CustomFriendDetailsArrayAdapter customFriendDetailsArrayAdapter, int id) {
+        super(customFriendDetailsArrayAdapter.getContext());
+        this.customFriendDetailsArrayAdapter = customFriendDetailsArrayAdapter;
         this.id = id;
         final String[] holdOptions = {
                 "Edit", "Delete"
@@ -45,8 +45,8 @@ public class CustomEditFriendDetailsAlertDialog extends AlertDialog.Builder{
             for (Friend f : DataSingleton.getInstance().getFriendList()) {
                 if (f.getId() == id) {
                     DataSingleton.getInstance().getFriendList().remove(f);
-                    customArrayAdapter.notifyDataSetChanged();
-                    Toast.makeText(customArrayAdapter.getContext(), "Friend Removed", Toast.LENGTH_LONG).show();
+                    customFriendDetailsArrayAdapter.notifyDataSetChanged();
+                    Toast.makeText(customFriendDetailsArrayAdapter.getContext(), "Friend Removed", Toast.LENGTH_LONG).show();
                 }
             }
 
@@ -57,7 +57,7 @@ public class CustomEditFriendDetailsAlertDialog extends AlertDialog.Builder{
     // When the user selects Edit after long hold
     public void editFriend() {
         String choices[] = {"Cancel", "Confirm"};
-        LayoutInflater factory = LayoutInflater.from(customArrayAdapter.getContext());
+        LayoutInflater factory = LayoutInflater.from(customFriendDetailsArrayAdapter.getContext());
 
         final View textEntryView = factory.inflate(R.layout.edit_friend, null);
 
@@ -70,9 +70,9 @@ public class CustomEditFriendDetailsAlertDialog extends AlertDialog.Builder{
         final Button editBtn = (Button) textEntryView.findViewById(R.id.selectDate);
 
         // Select birthday
-        editBtn.setOnClickListener(new EditBirthdayController(customArrayAdapter.getContext(),id));
+        editBtn.setOnClickListener(new EditBirthdayController(customFriendDetailsArrayAdapter.getContext(),id));
 
-        AlertDialog.Builder alert = new AlertDialog.Builder(customArrayAdapter.getContext());
+        AlertDialog.Builder alert = new AlertDialog.Builder(customFriendDetailsArrayAdapter.getContext());
         alert.setTitle("Edit details");
         alert.setView(textEntryView);
 
@@ -85,7 +85,7 @@ public class CustomEditFriendDetailsAlertDialog extends AlertDialog.Builder{
                 String email = editEmail.getText().toString();
                 editFriendDetails(id, name, email);
 
-                Toast.makeText(customArrayAdapter.getContext(), "Friend updated", Toast.LENGTH_LONG).show();
+                Toast.makeText(customFriendDetailsArrayAdapter.getContext(), "Friend updated", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -110,7 +110,7 @@ public class CustomEditFriendDetailsAlertDialog extends AlertDialog.Builder{
                         f.setName(name);
                     if (!email.isEmpty())
                         f.setEmail(email);
-                    customArrayAdapter.notifyDataSetChanged();
+                    customFriendDetailsArrayAdapter.notifyDataSetChanged();
                 }
             }
 
