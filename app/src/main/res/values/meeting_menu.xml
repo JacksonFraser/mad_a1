@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="meetingMenuScheduleLbl">Schedule/Unschedule</string>
-    <string name="meetingMenuEditLbl">Edit</string>
+    <string name="meeting_schedule">Schedule/Unschedule</string>
+    <string name="meeting_edit">Edit</string>
+    <string name="meeting_display">Display</string>
+
 </resources>

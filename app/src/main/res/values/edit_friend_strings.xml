@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="editFriendBirthdayLbl">Birthday</string>
+    <string name="edit_friends_title">Edit Details</string>
+
+    <string name="edit_friends_name">Name</string>
+    <string name="edit_friends_email">Email</string>
+    <string name="edit_friends_birthday">Birthday</string>
+    <string name="edit_friends_select_birthday_button">Select birthday</string>
+
 </resources>

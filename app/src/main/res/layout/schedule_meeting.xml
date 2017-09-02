@@ -19,7 +19,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:hint="Meeting Title"
+            android:hint="@string/schedule_title_hint"
             android:maxLines="1"
             android:inputType="text"
             android:textSize="30sp" />
@@ -30,7 +30,7 @@
             android:id="@+id/fromLbl"
             android:layout_marginTop="20sp"
             android:layout_below="@+id/meetingTitle"
-            android:text="From:"
+            android:text="@string/schedule_from_label"
             android:textSize="20sp" />
 
         <TextView
@@ -40,7 +40,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/fromLbl"
-            android:hint="Start Time"
+            android:hint="@string/schedule_start_hint"
             android:textSize="15sp" />
 
         <Button
@@ -51,13 +51,13 @@
             android:layout_alignBottom="@+id/startTimeLbl"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:text="Start time" />
+            android:text="@string/schedule_start_button"/>
 
         <TextView
             android:id="@+id/toLbl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="To:"
+            android:text="@string/schedule_to_label"
             android:textSize="20sp"
             android:layout_marginTop="20sp"
             android:layout_below="@+id/startTimeLbl"
@@ -71,7 +71,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/toLbl"
-            android:hint="Finish Time"
+            android:hint="@string/schedule_finish_hint"
             android:textSize="15sp" />
 
         <Button
@@ -82,8 +82,7 @@
             android:layout_alignBottom="@+id/finishTimeLbl"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:text="Finish time"
-             />
+            android:text="@string/schedule_finish_button" />
 
         <Button
             android:layout_width="match_parent"
@@ -93,7 +92,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/finishTimeBtn"
-            android:text="Select friends" />
+            android:text="@string/schedule_select_friends_button"/>
 
         <Button
             android:layout_width="match_parent"
@@ -102,7 +101,7 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:text="Confirm" />
+            android:text="@string/schedule_confirm_button" />
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

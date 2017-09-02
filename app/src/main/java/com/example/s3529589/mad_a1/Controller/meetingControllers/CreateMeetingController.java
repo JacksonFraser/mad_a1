@@ -36,8 +36,6 @@ public class CreateMeetingController implements View.OnClickListener {
         this.meetingFriendList = meetingFriendList;
     }
 
-
-
     @Override
     public void onClick(View v) {
         String startInString = startTime.getText().toString();
@@ -57,10 +55,11 @@ public class CreateMeetingController implements View.OnClickListener {
         try{
             DataSingleton.getInstance().getMeetingList().add(new Meeting(meetingTitle.getText().toString(), start, finish, meetingFriendList, "11"));
             scheduleMeetingActivity.finish();
+            Toast.makeText(this.scheduleMeetingActivity, "Meeting created", Toast.LENGTH_SHORT).show();
+
         }catch(InvalidMeetingInput e){
             Toast.makeText(this.scheduleMeetingActivity, e.getMessage(), Toast.LENGTH_LONG).show();
         }
-
 
     }
 }
