@@ -9,6 +9,8 @@ public class Meeting {
     private int id;
     private String title;
     private Date startTime;
+
+
     private Date finishTime;
     private static int uuid = 0;
     private List<Friend> friendList = new ArrayList<>();
@@ -46,4 +48,19 @@ public class Meeting {
     }
 
     public Date getEndTIme() { return finishTime; }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setStartTime(Date startTime) {
+
+        this.startTime = startTime;
+    }
+
+    public void setFinishTime(Date finishTime) {
+        this.finishTime = finishTime;
+    }
+
+
 }

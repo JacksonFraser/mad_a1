@@ -101,7 +101,9 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:text="@string/schedule_confirm_button" />
+            android:text="@string/schedule_confirm_button"
+            android:visibility="gone"/>
+
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -87,6 +87,7 @@ public class ScheduleMeetingActivity extends Activity{
 
         //Create a meeting
         View createMeetingBtn = findViewById(R.id.confirmMeetingBtn);
+        createMeetingBtn.setVisibility(View.VISIBLE);
         createMeetingBtn.setOnClickListener(new CreateMeetingController(this,meetingTitleView, startTime, finishTime, meetingFriendList));
     }
 
