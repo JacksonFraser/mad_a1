@@ -40,7 +40,7 @@ public class FinishMeetingTimeController implements View.OnClickListener {
                 meetingTime.setText(labelTime);
             }
         };
-        TimePickerDialog t = new TimePickerDialog(scheduleMeetingActivity, android.R.style.Theme_Holo_Light_Dialog_MinWidth, listener, hour,minute, true);
+        TimePickerDialog t = new TimePickerDialog(scheduleMeetingActivity, TimePickerDialog.THEME_HOLO_LIGHT, listener, hour,minute, true);
         t.show();
     }
 }
