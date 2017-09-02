@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Friend Finder App</string>
+    <string name="friend_menu">Add/ Display Friends</string>
+    <string name="view_friends">Display Friends</string>
+    <string name="date_picker">Birthday</string>
+    <string name="meeting_menu">Add/ Display Meetings</string>
+    <string name="schedule_menu">Add A Meeting</string>
+    <string name="view_meetings">Display Meetings</string>
+
+</resources>

@@ -12,10 +12,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-/**
- * Created by supriya on 2/09/17.
- */
-
 public class MeetingTimeEditController implements View.OnClickListener {
     private int id;
     private CustomMeetingDetailsArrayAdapter customMeetingDetailsArrayAdapter;
@@ -39,13 +35,12 @@ public class MeetingTimeEditController implements View.OnClickListener {
                 cal.set(Calendar.MINUTE, minute);
                 Date startTime = cal.getTime();
 
-
                 SimpleDateFormat formatter = new SimpleDateFormat("d-MMM-yyyy, h:mm aaa");
                 String labelTime = formatter.format(startTime);
                 startTimeTV.setText(labelTime);
             }
         };
-        TimePickerDialog t = new TimePickerDialog(customMeetingDetailsArrayAdapter.getContext(), android.R.style.Theme_Holo_Light_Dialog_MinWidth, listener, hour, minute, true);
+        TimePickerDialog t = new TimePickerDialog(customMeetingDetailsArrayAdapter.getContext(), TimePickerDialog.THEME_HOLO_LIGHT, listener, hour, minute, false);
         t.show();
     }
 }

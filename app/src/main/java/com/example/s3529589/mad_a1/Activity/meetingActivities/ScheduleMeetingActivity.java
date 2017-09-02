@@ -1,9 +1,9 @@
 package com.example.s3529589.mad_a1.Activity.meetingActivities;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -16,10 +16,9 @@ import com.example.s3529589.mad_a1.Model.Friend;
 import com.example.s3529589.mad_a1.R;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-public class ScheduleMeetingActivity extends Activity{
+public class ScheduleMeetingActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

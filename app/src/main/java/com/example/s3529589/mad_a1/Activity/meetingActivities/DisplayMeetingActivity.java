@@ -1,18 +1,14 @@
 package com.example.s3529589.mad_a1.Activity.meetingActivities;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
 import com.example.s3529589.mad_a1.Model.CustomMeetingDetailsArrayAdapter;
 import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.R;
 
-/**
- * Created by supriya on 2/09/17.
- */
-
-public class DisplayMeetingActivity extends Activity {
+public class DisplayMeetingActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle saveInstanceState) {

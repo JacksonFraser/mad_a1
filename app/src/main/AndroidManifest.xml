@@ -21,13 +21,25 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Activity.friendActivities.FriendMenuActivity"></activity>
-        <activity android:name=".Activity.meetingActivities.MeetingMenuActivity"></activity>
-        <activity android:name=".Activity.friendActivities.DatePickerActivity"></activity>
-        <activity android:name=".Activity.friendActivities.DisplayFriendActivity"></activity>
+        <activity android:name=".Activity.friendActivities.FriendMenuActivity"
+            android:label="@string/friend_menu"></activity>
+
+        <activity android:name=".Activity.meetingActivities.MeetingMenuActivity"
+            android:label="@string/meeting_menu"></activity>
+
+        <activity android:name=".Activity.friendActivities.DatePickerActivity"
+            android:label="@string/date_picker"></activity>
+
+        <activity android:name=".Activity.friendActivities.DisplayFriendActivity"
+            android:label="@string/view_friends"></activity>
+
         <activity android:name=".Activity.friendActivities.CreateFriendActivity"></activity>
-        <activity android:name=".Activity.meetingActivities.ScheduleMeetingActivity"></activity>
-        <activity android:name=".Activity.meetingActivities.DisplayMeetingActivity"></activity>
+
+        <activity android:name=".Activity.meetingActivities.ScheduleMeetingActivity"
+            android:label="@string/schedule_menu"></activity>
+
+        <activity android:name=".Activity.meetingActivities.DisplayMeetingActivity"
+            android:label="@string/view_meetings"></activity>
 
     </application>
 

@@ -46,6 +46,7 @@ public class CreateMeetingController implements View.OnClickListener {
         DateFormat formatter = new SimpleDateFormat("d-MMM-yyyy, h:mm a");
         Date start = null;
         Date finish = null;
+
         try {
             start = formatter.parse(startInString);
             finish = formatter.parse(finishInString);

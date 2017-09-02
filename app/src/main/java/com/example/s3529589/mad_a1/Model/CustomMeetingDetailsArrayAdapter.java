@@ -13,7 +13,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-
 public class CustomMeetingDetailsArrayAdapter extends ArrayAdapter<Meeting> {
     private List<Meeting> meetingList;
     private Context context;
@@ -49,9 +48,8 @@ public class CustomMeetingDetailsArrayAdapter extends ArrayAdapter<Meeting> {
 
         holder.meetingEndTimeTV = (TextView) rowView.findViewById(R.id.meeting_end_time);
 
-
         //Formatted date or more readable display
-        Date endDate = meetingList.get(pos).getEndTIme();
+        Date endDate = meetingList.get(pos).getFinishTime();
         String endDateFormatted = s.format(endDate);
         holder.meetingEndTimeTV.setText(endDateFormatted);
 
@@ -63,6 +61,5 @@ public class CustomMeetingDetailsArrayAdapter extends ArrayAdapter<Meeting> {
         TextView meetingStartTimeTV;
         TextView meetingEndTimeTV;
     }
-
 
 }

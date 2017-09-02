@@ -13,7 +13,6 @@
     <color name="friendMenuDisplay">#B79FAD</color>
 
     <color name="meetingMenuSchedule">#326771</color>
-    <color name="meetingMenuEdit">#42D9C8</color>
     <color name="meetingMenuDisplay">#C47335</color>
 
 </resources>

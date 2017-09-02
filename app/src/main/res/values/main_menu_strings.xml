@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name">Friend Finder App</string>
-
-    <string name="main_Friends">Friends Menu</string>
-    <string name="main_Meetings">Meetings Menu</string>
+    <string name="main_friends">Friends Menu</string>
+    <string name="main_meetings">Meetings Menu</string>
 </resources>

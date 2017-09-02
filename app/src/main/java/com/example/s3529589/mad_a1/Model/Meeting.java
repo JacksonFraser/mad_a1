@@ -9,8 +9,6 @@ public class Meeting {
     private int id;
     private String title;
     private Date startTime;
-
-
     private Date finishTime;
     private static int uuid = 0;
     private List<Friend> friendList = new ArrayList<>();
@@ -47,20 +45,25 @@ public class Meeting {
         return startTime;
     }
 
-    public Date getEndTIme() { return finishTime; }
+    public Date getFinishTime() { return finishTime; }
 
     public void setTitle(String title) {
         this.title = title;
     }
 
-    public void setStartTime(Date startTime) {
-
-        this.startTime = startTime;
+    public void setStartTime(Date startTime) throws InvalidMeetingInput {
+        if(startTime.after(this.finishTime)) {
+            throw new InvalidMeetingInput("Start time must not be after finish time");
+        } else {
+            this.startTime = startTime;
+        }
     }
 
-    public void setFinishTime(Date finishTime) {
-        this.finishTime = finishTime;
+    public void setFinishTime(Date finishTime) throws InvalidMeetingInput {
+        if(finishTime.before(this.startTime)) {
+            throw new InvalidMeetingInput("Finish time must be after start time");
+        } else {
+            this.finishTime = finishTime;
+        }
     }
-
-
 }

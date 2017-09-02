@@ -3,13 +3,14 @@ package com.example.s3529589.mad_a1.Activity.friendActivities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
 import com.example.s3529589.mad_a1.Model.CustomFriendDetailsArrayAdapter;
 import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.R;
 
-public class DisplayFriendActivity extends Activity{
+public class DisplayFriendActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

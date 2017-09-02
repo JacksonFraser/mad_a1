@@ -32,18 +32,6 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editMeetingDetails"
-            android:text="@string/meeting_edit"
-            android:layout_weight="1"
-            android:background="@color/meetingMenuEdit"
-            android:textColor="@color/menuTextColor"
-            android:textStyle="bold"
-            android:textSize="22sp"
-            />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/displayMeetingsBtn"
             android:text="@string/meeting_display"
             android:layout_weight="1"
