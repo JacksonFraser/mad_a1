@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="edit_meeting_details">Edit Details</string>
+
+    <string name="edit_meeting_title">Title</string>
+    <string name="edit_meeting_start_time">Start Time</string>
+    <string name="edit_meeting_end_time">End Time</string>
+</resources>

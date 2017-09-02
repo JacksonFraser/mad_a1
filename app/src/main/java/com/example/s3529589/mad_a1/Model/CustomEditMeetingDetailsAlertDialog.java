@@ -2,7 +2,13 @@ package com.example.s3529589.mad_a1.Model;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.s3529589.mad_a1.R;
 
 
 public class CustomEditMeetingDetailsAlertDialog extends AlertDialog.Builder{
@@ -50,6 +56,48 @@ public class CustomEditMeetingDetailsAlertDialog extends AlertDialog.Builder{
         }
     }
     private void editMeeting(){
+        String choices[] = {"Cancel", "Confirm"};
+        LayoutInflater factory = LayoutInflater.from(customMeetingDetailsArrayAdapter.getContext());
 
+        final View editMeetingView = factory.inflate(R.layout.schedule_meeting, null);
+
+        final EditText editTitle = (EditText) editMeetingView.findViewById(R.id.meetingTitle);
+
+        final Button editStartTime = (Button) editMeetingView.findViewById(R.id.startTimeBtn);
+
+        final Button editEndTime = (Button) editMeetingView.findViewById(R.id.finishTimeBtn);
+
+
+
+        AlertDialog.Builder alert = new AlertDialog.Builder(customMeetingDetailsArrayAdapter.getContext());
+        alert.setTitle("Edit details");
+        alert.setView(editMeetingView);
+
+        // Edit friend details on 'Confirm'
+        alert.setPositiveButton("CONFIRM", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                //String name = editName.getText().toString();
+                //String email = editEmail.getText().toString();
+                //editFriendDetails(id, name, email);
+
+                Toast.makeText(customMeetingDetailsArrayAdapter.getContext(), R.string.friend_updated_toast, Toast.LENGTH_LONG).show();
+            }
+        });
+
+        // Close alert on 'Cancel'
+        alert.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+
+        alert.show();
     }
+
+
+
 }
