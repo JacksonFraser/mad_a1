@@ -2,10 +2,8 @@ package com.example.s3529589.mad_a1.Model;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.widget.Toast;
 
-/**
- * Created by supriya on 2/09/17.
- */
 
 public class CustomEditMeetingDetailsAlertDialog extends AlertDialog.Builder{
     private CustomMeetingDetailsArrayAdapter customMeetingDetailsArrayAdapter;
@@ -39,6 +37,17 @@ public class CustomEditMeetingDetailsAlertDialog extends AlertDialog.Builder{
     }
 
     private void removeMeeting() {
+        try{
+            for(Meeting m : DataSingleton.getInstance().getMeetingList()){
+                if(m.getId() ==  id){
+                    DataSingleton.getInstance().getMeetingList().remove(m);
+                    customMeetingDetailsArrayAdapter.notifyDataSetChanged();
+                    Toast.makeText(customMeetingDetailsArrayAdapter.getContext(), "Meeting Removed", Toast.LENGTH_LONG).show();
+                }
+            }
+        }catch (Exception e){
+
+        }
     }
     private void editMeeting(){
 

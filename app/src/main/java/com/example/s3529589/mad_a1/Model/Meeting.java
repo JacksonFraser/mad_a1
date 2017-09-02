@@ -1,7 +1,6 @@
 package com.example.s3529589.mad_a1.Model;
 
 import com.example.s3529589.mad_a1.Exceptions.InvalidMeetingInput;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

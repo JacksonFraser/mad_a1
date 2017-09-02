@@ -6,21 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.example.s3529589.mad_a1.Controller.friendControllers.FriendMenuLongClickController;
-import com.example.s3529589.mad_a1.Controller.friendControllers.PickDisplayPictureController;
 import com.example.s3529589.mad_a1.Controller.meetingControllers.MeetingDisplayLongClickController;
 import com.example.s3529589.mad_a1.R;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by supriya on 2/09/17.
- */
 
 public class CustomMeetingDetailsArrayAdapter extends ArrayAdapter<Meeting> {
     private List<Meeting> meetingList;
