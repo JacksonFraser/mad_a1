@@ -46,7 +46,7 @@ public class CustomEditFriendDetailsAlertDialog extends AlertDialog.Builder{
                 if (f.getId() == id) {
                     DataSingleton.getInstance().getFriendList().remove(f);
                     customFriendDetailsArrayAdapter.notifyDataSetChanged();
-                    Toast.makeText(customFriendDetailsArrayAdapter.getContext(), "Friend Removed", Toast.LENGTH_LONG).show();
+                    Toast.makeText(customFriendDetailsArrayAdapter.getContext(), R.string.friend_removed_toast, Toast.LENGTH_LONG).show();
                 }
             }
 
@@ -85,7 +85,7 @@ public class CustomEditFriendDetailsAlertDialog extends AlertDialog.Builder{
                 String email = editEmail.getText().toString();
                 editFriendDetails(id, name, email);
 
-                Toast.makeText(customFriendDetailsArrayAdapter.getContext(), "Friend updated", Toast.LENGTH_LONG).show();
+                Toast.makeText(customFriendDetailsArrayAdapter.getContext(), R.string.friend_updated_toast, Toast.LENGTH_LONG).show();
             }
         });
 

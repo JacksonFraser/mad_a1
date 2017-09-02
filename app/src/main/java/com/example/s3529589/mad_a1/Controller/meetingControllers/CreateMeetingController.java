@@ -10,6 +10,7 @@ import com.example.s3529589.mad_a1.Exceptions.InvalidMeetingInput;
 import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.Model.Friend;
 import com.example.s3529589.mad_a1.Model.Meeting;
+import com.example.s3529589.mad_a1.R;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -55,7 +56,7 @@ public class CreateMeetingController implements View.OnClickListener {
         try{
             DataSingleton.getInstance().getMeetingList().add(new Meeting(meetingTitle.getText().toString(), start, finish, meetingFriendList, "11"));
             scheduleMeetingActivity.finish();
-            Toast.makeText(this.scheduleMeetingActivity, "Meeting created", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this.scheduleMeetingActivity, R.string.meeting_created_toast, Toast.LENGTH_SHORT).show();
 
         }catch(InvalidMeetingInput e){
             Toast.makeText(this.scheduleMeetingActivity, e.getMessage(), Toast.LENGTH_LONG).show();

@@ -24,6 +24,7 @@ public class Meeting {
             throw new InvalidMeetingInput("Meeting end time cannot be null");
         if(title.isEmpty())
             throw new InvalidMeetingInput("Meeting has to have a title");
+
         this.id = uuid;
         uuid++;
         this.title = title;
@@ -31,7 +32,6 @@ public class Meeting {
         this.finishTime = finish;
         this.friendList = friendList;
         this.location = location;
-
     }
 
     public int getId() {
