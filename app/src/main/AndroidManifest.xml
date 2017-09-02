@@ -27,6 +27,7 @@
         <activity android:name=".Activity.friendActivities.DisplayFriendActivity"></activity>
         <activity android:name=".Activity.friendActivities.CreateFriendActivity"></activity>
         <activity android:name=".Activity.meetingActivities.ScheduleMeetingActivity"></activity>
+        <activity android:name=".Activity.meetingActivities.DisplayMeetingActivity"></activity>
 
     </application>
 

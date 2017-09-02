@@ -11,9 +11,11 @@ import android.widget.TextView;
 
 import com.example.s3529589.mad_a1.Controller.friendControllers.FriendMenuLongClickController;
 import com.example.s3529589.mad_a1.Controller.friendControllers.PickDisplayPictureController;
+import com.example.s3529589.mad_a1.Controller.meetingControllers.MeetingDisplayLongClickController;
 import com.example.s3529589.mad_a1.R;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -39,17 +41,27 @@ public class CustomMeetingDetailsArrayAdapter extends ArrayAdapter<Meeting> {
         MeetingHolder holder = new MeetingHolder();
 
         View rowView = inflater.inflate(R.layout.meeting_details_list_view_item_row, null);
-       // rowView.setOnLongClickListener(new FriendMenuLongClickController(friendList.get(pos).getId(),this));
+        rowView.setOnLongClickListener(new MeetingDisplayLongClickController(meetingList.get(pos).getId(),this));
 
         holder.meetingTitleTV = (TextView) rowView.findViewById(R.id.meeting_title);
         holder.meetingTitleTV.setText(meetingList.get(pos).getTitle());
 
+
         holder.meetingStartTimeTV = (TextView) rowView.findViewById(R.id.meeting_start_time);
-        holder.meetingStartTimeTV.setText(meetingList.get(pos).getStartTime().toString());
+
+        //Formatted date for more readable display
+        Date startDate = meetingList.get(pos).getStartTime();
+        SimpleDateFormat s = new SimpleDateFormat("d-MMM-yyyy, h:mm a");
+        String startDateFormatted = s.format(startDate);
+        holder.meetingStartTimeTV.setText(startDateFormatted);
 
         holder.meetingEndTimeTV = (TextView) rowView.findViewById(R.id.meeting_end_time);
-        holder.meetingEndTimeTV.setText(meetingList.get(pos).getEndTIme().toString());
 
+
+        //Formatted date or more readable display
+        Date endDate = meetingList.get(pos).getEndTIme();
+        String endDateFormatted = s.format(endDate);
+        holder.meetingEndTimeTV.setText(endDateFormatted);
 
         return rowView;
     }
