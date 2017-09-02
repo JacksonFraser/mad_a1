@@ -3,10 +3,13 @@ package com.example.s3529589.mad_a1.Controller.friendControllers;
 import android.content.Intent;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.Toast;
+
 import com.example.s3529589.mad_a1.Activity.friendActivities.DatePickerActivity;
 import com.example.s3529589.mad_a1.Activity.friendActivities.FriendMenuActivity;
 import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.Model.Friend;
+import com.example.s3529589.mad_a1.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -49,6 +52,6 @@ public class ConfirmDateController implements View.OnClickListener {
 
         //finish DatePickerActivity
         datePickerActivity.finish();
+        Toast.makeText(this.datePickerActivity, R.string.friend_added_toast, Toast.LENGTH_SHORT).show();
     }
-
 }

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="schedule_title_hint">Meeting Title</string>
+    <string name="schedule_from_label">From:</string>
+    <string name="schedule_to_label">To:</string>
+
+    <string name="schedule_start_hint">Start Time</string>
+    <string name="schedule_finish_hint">Finish Time</string>
+
+    <string name="schedule_start_button">Select start time</string>
+    <string name="schedule_finish_button">Select finish time</string>
+
+    <string name="schedule_select_friends_button">Select friends</string>
+    <string name="schedule_confirm_button">Confirm</string>
+
+</resources>
