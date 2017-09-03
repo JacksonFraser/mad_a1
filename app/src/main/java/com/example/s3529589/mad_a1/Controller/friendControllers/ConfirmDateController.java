@@ -47,11 +47,19 @@ public class ConfirmDateController implements View.OnClickListener {
 
         String birthday = formatter.format(date);
 
-        doDateStuff();
+        DummyLocationService d = DummyLocationService.getSingletonInstance(datePickerActivity);
+        Date locationDate = Calendar.getInstance().getTime();
+        d.getFriendLocationsForTime(locationDate,10010010,0);
+        List<DummyLocationService.FriendLocation> matched = null;
+        matched = d.getFriendLocationsForTime(locationDate,100123100,0);
 
+        System.out.println(matched.size()+"KHFKHDFKJHDF");
+        System.out.println(matched.get(0).latitude);
+        System.out.println(locationDate);
+       // for(Frie)
 
         // add to the Friends ArrayList
-        DataSingleton.getInstance().getFriendList().add(new Friend(name, email, date));
+        DataSingleton.getInstance().getFriendList().add(new Friend(name, email, date,1,1));
 
 
         Intent it = new Intent(datePickerActivity, FriendMenuActivity.class);
@@ -62,14 +70,5 @@ public class ConfirmDateController implements View.OnClickListener {
         Toast.makeText(this.datePickerActivity, R.string.friend_added_toast, Toast.LENGTH_SHORT).show();
     }
 
-    private void doDateStuff() {
-        DummyLocationService d = DummyLocationService.getSingletonInstance(datePickerActivity);
-        Calendar cal = Calendar.getInstance();
-        Date date = cal.getTime();
-        List<DummyLocationService.FriendLocation> matched = null;
-            // 2 mins either side of 9:46:30 AM
-            matched = d.getFriendLocationsForTime(date, 100, 0);
-        Log.i(LOG_TAG, "Matched Query:");
-        d.log(matched);
-    }
+
 }
