@@ -44,22 +44,37 @@ public class ConfirmDateController implements View.OnClickListener {
         calendar.set(year, month, day);
         Date date = calendar.getTime();
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-
         String birthday = formatter.format(date);
 
-        DummyLocationService d = DummyLocationService.getSingletonInstance(datePickerActivity);
-        Date locationDate = Calendar.getInstance().getTime();
-        List<DummyLocationService.FriendLocation> matched = null;
-        matched = d.getFriendLocationsForTime(locationDate,100,0);
+        // DUMMY DATA STUFF
+        Date currentTime = Calendar.getInstance().getTime();
+        SimpleDateFormat dummyFormat = new SimpleDateFormat("h:mm:ss a");
+        String timeInDataFormat = dummyFormat.format(currentTime);
 
-        System.out.println(locationDate);
-        System.out.println(matched.size()+"KHFKHDFKJHDF");
-        System.out.println(matched.get(0).latitude);
-       // for(Frie)
+        DummyLocationService dummyLocationService = DummyLocationService.getSingletonInstance(datePickerActivity);
+        List<DummyLocationService.FriendLocation> matched = null;
+
+        double latitude = 0;
+        double longitude = 0;
+
+        try
+        {
+            System.out.println(timeInDataFormat);
+            // 2 mins either side of timeInDataFormat
+            matched = dummyLocationService.getFriendLocationsForTime(DateFormat.getTimeInstance(
+                    DateFormat.MEDIUM).parse(timeInDataFormat), 2, 0);
+
+            latitude = matched.get(0).latitude;
+            longitude = matched.get(0).longitude;
+        }
+        catch (ParseException e)
+        {
+
+        }
 
         // add to the Friends ArrayList
-        DataSingleton.getInstance().getFriendList().add(new Friend(name, email, date,1,1));
-
+        DataSingleton.getInstance().getFriendList().add(new Friend(name, email, date, latitude, longitude));
+        DataSingleton.getInstance().getFriendList().get(4);
 
         Intent it = new Intent(datePickerActivity, FriendMenuActivity.class);
         datePickerActivity.startActivity(it);
