@@ -11,12 +11,13 @@ import com.example.s3529589.mad_a1.Model.Friend;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 
 public class MeetingFriendEditController implements View.OnClickListener {
-    private int id;
+    private UUID id;
     private CustomMeetingDetailsArrayAdapter customMeetingDetailsArrayAdapter;
-    public MeetingFriendEditController(int id, CustomMeetingDetailsArrayAdapter customMeetingDetailsArrayAdapter) {
+    public MeetingFriendEditController(UUID id, CustomMeetingDetailsArrayAdapter customMeetingDetailsArrayAdapter) {
         this.id = id;
         this.customMeetingDetailsArrayAdapter = customMeetingDetailsArrayAdapter;
     }
@@ -24,7 +25,7 @@ public class MeetingFriendEditController implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         final String[] friends = new String[DataSingleton.getInstance().getFriendList().size()];
-        final int[] friendsId = new int[DataSingleton.getInstance().getFriendList().size()];
+        final UUID[] friendsId = new UUID[DataSingleton.getInstance().getFriendList().size()];
         boolean[] checkedItems = new boolean[DataSingleton.getInstance().getFriendList().size()];
 
         int i = 0;

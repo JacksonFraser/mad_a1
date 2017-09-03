@@ -11,12 +11,13 @@ import com.example.s3529589.mad_a1.Model.DataSingleton;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.UUID;
 
 public class MeetingTimeEditController implements View.OnClickListener {
-    private int id;
+    private UUID id;
     private CustomMeetingDetailsArrayAdapter customMeetingDetailsArrayAdapter;
     private  TextView startTimeTV;
-    public MeetingTimeEditController(int id, CustomMeetingDetailsArrayAdapter customMeetingDetailsArrayAdapter, TextView startTimeTV) {
+    public MeetingTimeEditController(UUID id, CustomMeetingDetailsArrayAdapter customMeetingDetailsArrayAdapter, TextView startTimeTV) {
         this.id = id;
         this. customMeetingDetailsArrayAdapter = customMeetingDetailsArrayAdapter;
         this.startTimeTV = startTimeTV;

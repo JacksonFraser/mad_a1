@@ -25,13 +25,15 @@ public class CreateMeetingController implements View.OnClickListener {
     private TextView startTime;
     private TextView finishTime;
     private List<Friend> meetingFriendList;
+    private EditText meetingLocation;
 
-    public CreateMeetingController(ScheduleMeetingActivity scheduleMeetingActivity,EditText meetingTitle, TextView startTime, TextView finishTime, List<Friend> meetingFriendList) {
+    public CreateMeetingController(ScheduleMeetingActivity scheduleMeetingActivity,EditText meetingTitle, TextView startTime, TextView finishTime, List<Friend> meetingFriendList, EditText meetingLocation) {
         this.scheduleMeetingActivity = scheduleMeetingActivity;
         this.meetingTitle = meetingTitle;
         this.startTime =  startTime;
         this.finishTime = finishTime;
         this.meetingFriendList = meetingFriendList;
+        this.meetingLocation = meetingLocation;
     }
 
     @Override
@@ -52,7 +54,7 @@ public class CreateMeetingController implements View.OnClickListener {
         }
 
         try{
-            DataSingleton.getInstance().getMeetingList().add(new Meeting(meetingTitle.getText().toString(), start, finish, meetingFriendList, "11"));
+            DataSingleton.getInstance().getMeetingList().add(new Meeting(meetingTitle.getText().toString(), start, finish, meetingFriendList, meetingLocation.getText().toString()));
             scheduleMeetingActivity.finish();
             Toast.makeText(this.scheduleMeetingActivity, R.string.meeting_created_toast, Toast.LENGTH_SHORT).show();
 

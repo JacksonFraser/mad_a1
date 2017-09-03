@@ -62,8 +62,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-            Meeting m1 = new Meeting("meeting 1",date1,date2,friendList1,null);
-            Meeting m2 = new Meeting("meeting 2",date1,date2,friendList2,null);
+            Meeting m1 = new Meeting("meeting 1",date1,date2,friendList1,"+330.1131, +11.11");
+            Meeting m2 = new Meeting("meeting 2",date1,date2,friendList2,"+331.131, +111");
             DataSingleton.getInstance().getMeetingList().add(m1);
             DataSingleton.getInstance().getMeetingList().add(m2);
 

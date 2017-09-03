@@ -17,6 +17,7 @@ import com.example.s3529589.mad_a1.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class ScheduleMeetingActivity extends AppCompatActivity {
 
@@ -45,7 +46,7 @@ public class ScheduleMeetingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final String[] friends = new String[DataSingleton.getInstance().getFriendList().size()];
-                final int[] friendsId = new int[DataSingleton.getInstance().getFriendList().size()];
+                final UUID[] friendsId = new UUID[DataSingleton.getInstance().getFriendList().size()];
                 int i = 0;
                 for(Friend f : DataSingleton.getInstance().getFriendList()){
                     try{
@@ -65,14 +66,14 @@ public class ScheduleMeetingActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which, boolean isChecked) {
                         if(isChecked){
                             for(Friend f : DataSingleton.getInstance().getFriendList()){
-                                if(f.getId() == friendsId[which]){
+                                if(f.getId().equals(friendsId[which])){
                                     meetingFriendList.add(f);
                                 }
                             }
                         }
                         if(!isChecked){
                             for(Friend f : DataSingleton.getInstance().getFriendList()) {
-                                if (f.getId() == friendsId[which]) {
+                                if (f.getId().equals(friendsId[which])) {
                                     meetingFriendList.remove(f);
                                 }
                             }
@@ -89,10 +90,13 @@ public class ScheduleMeetingActivity extends AppCompatActivity {
             }
         });
 
+        EditText meetingLocaition = (EditText) findViewById(R.id.meeting_location_edit_text);
+
+
         //Create a meeting
         View createMeetingBtn = findViewById(R.id.confirmMeetingBtn);
         createMeetingBtn.setVisibility(View.VISIBLE);
-        createMeetingBtn.setOnClickListener(new CreateMeetingController(this,meetingTitleView, startTime, finishTime, meetingFriendList));
+        createMeetingBtn.setOnClickListener(new CreateMeetingController(this,meetingTitleView, startTime, finishTime, meetingFriendList, meetingLocaition));
     }
 
 }

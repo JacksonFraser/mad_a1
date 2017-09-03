@@ -11,11 +11,13 @@ import android.widget.Toast;
 import com.example.s3529589.mad_a1.Controller.friendControllers.EditBirthdayController;
 import com.example.s3529589.mad_a1.R;
 
+import java.util.UUID;
+
 public class CustomEditFriendDetailsAlertDialog extends AlertDialog.Builder{
     private CustomFriendDetailsArrayAdapter customFriendDetailsArrayAdapter;
-    private int id;
+    private UUID id;
 
-    public CustomEditFriendDetailsAlertDialog(CustomFriendDetailsArrayAdapter customFriendDetailsArrayAdapter, int id) {
+    public CustomEditFriendDetailsAlertDialog(CustomFriendDetailsArrayAdapter customFriendDetailsArrayAdapter, UUID id) {
         super(customFriendDetailsArrayAdapter.getContext());
         this.customFriendDetailsArrayAdapter = customFriendDetailsArrayAdapter;
         this.id = id;
@@ -101,11 +103,11 @@ public class CustomEditFriendDetailsAlertDialog extends AlertDialog.Builder{
         alert.show();
     }
 
-    private void editFriendDetails(int id, String name, String email) {
+    private void editFriendDetails(UUID id, String name, String email) {
         try {
 
             for (Friend f : DataSingleton.getInstance().getFriendList()) {
-                if (f.getId() == id) {
+                if (f.getId().equals(id)) {
                     if (!name.isEmpty())
                         f.setName(name);
                     if (!email.isEmpty())

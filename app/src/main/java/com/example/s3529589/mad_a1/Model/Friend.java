@@ -1,18 +1,16 @@
 package com.example.s3529589.mad_a1.Model;
 
 import java.util.Date;
+import java.util.UUID;
 
 public class Friend {
-    private int id;
     private String name;
     private String email;
     private Date birthday;
-
-    private static int uuid = 0;
+    private UUID uuid;
 
     public Friend(String name, String email, Date birthday){
-        id = uuid;
-        uuid++;
+        this.uuid = UUID.randomUUID();
         this.name = name;
         this.email = email;
         this.birthday = birthday;
@@ -30,8 +28,8 @@ public class Friend {
         return birthday;
     }
 
-    public int getId(){
-        return id;
+    public UUID getId(){
+        return uuid;
     }
 
     public void setName(String name) {

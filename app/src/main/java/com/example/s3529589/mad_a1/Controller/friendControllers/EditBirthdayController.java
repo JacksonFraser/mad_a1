@@ -12,12 +12,13 @@ import com.example.s3529589.mad_a1.Model.DataSingleton;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.UUID;
 
 public class EditBirthdayController implements View.OnClickListener {
     private Context context;
-    private int id;
+    private UUID id;
 
-    public EditBirthdayController(Context context, int id) {
+    public EditBirthdayController(Context context, UUID id) {
         this.context = context;
         this.id = id;
     }

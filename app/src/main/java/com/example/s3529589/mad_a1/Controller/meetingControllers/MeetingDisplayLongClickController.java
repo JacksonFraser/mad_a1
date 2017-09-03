@@ -5,12 +5,14 @@ import android.view.View;
 import com.example.s3529589.mad_a1.Model.CustomEditMeetingDetailsAlertDialog;
 import com.example.s3529589.mad_a1.Model.CustomMeetingDetailsArrayAdapter;
 
+import java.util.UUID;
+
 
 public class MeetingDisplayLongClickController implements View.OnLongClickListener {
-    private int id;
+    private UUID id;
     private CustomMeetingDetailsArrayAdapter customMeetingDetailsArrayAdapter;
 
-    public MeetingDisplayLongClickController(int id, CustomMeetingDetailsArrayAdapter customMeetingDetailsArrayAdapter) {
+    public MeetingDisplayLongClickController(UUID id, CustomMeetingDetailsArrayAdapter customMeetingDetailsArrayAdapter) {
         this.id = id;
         this.customMeetingDetailsArrayAdapter = customMeetingDetailsArrayAdapter;
     }

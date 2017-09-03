@@ -18,12 +18,13 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.UUID;
 
 public class CustomEditMeetingDetailsAlertDialog extends AlertDialog.Builder{
     private CustomMeetingDetailsArrayAdapter customMeetingDetailsArrayAdapter;
-    private int id;
+    private UUID id;
 
-    public CustomEditMeetingDetailsAlertDialog(CustomMeetingDetailsArrayAdapter customMeetingDetailsArrayAdapter, int id) {
+    public CustomEditMeetingDetailsAlertDialog(CustomMeetingDetailsArrayAdapter customMeetingDetailsArrayAdapter, UUID id) {
         super(customMeetingDetailsArrayAdapter.getContext());
         this.customMeetingDetailsArrayAdapter = customMeetingDetailsArrayAdapter;
         this.id = id;
@@ -123,7 +124,7 @@ public class CustomEditMeetingDetailsAlertDialog extends AlertDialog.Builder{
         alert.show();
     }
 
-    private void editMeetingDetails(int id, String title, TextView startTimeTV, TextView endTimeTV) throws InvalidMeetingInput {
+    private void editMeetingDetails(UUID id, String title, TextView startTimeTV, TextView endTimeTV) throws InvalidMeetingInput {
         DateFormat d = new SimpleDateFormat("d-MMM-yyy, h:mm a");
 
         for (Meeting m : DataSingleton.getInstance().getMeetingList())

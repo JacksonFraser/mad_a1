@@ -4,13 +4,13 @@ import com.example.s3529589.mad_a1.Exceptions.InvalidMeetingInput;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 public class Meeting {
-    private int id;
     private String title;
     private Date startTime;
     private Date finishTime;
-    private static int uuid = 0;
+    private UUID uuid;
     private List<Friend> friendList = new ArrayList<>();
     private String location;
 
@@ -23,9 +23,10 @@ public class Meeting {
             throw new InvalidMeetingInput("Meeting has to have a title");
         if(finish.before(start))
             throw new InvalidMeetingInput("Start time has to be before end time");
+        if(!validLocation(location))
+            throw new InvalidMeetingInput("Invalid location");
 
-        this.id = uuid;
-        uuid++;
+        this.uuid = UUID.randomUUID();
         this.title = title;
         this.startTime = start;
         this.finishTime = finish;
@@ -33,7 +34,9 @@ public class Meeting {
         this.location = location;
     }
 
-    public int getId() { return id; }
+
+
+    public UUID getId() { return uuid; }
 
     public String getTitle() { return title; }
 
@@ -43,7 +46,11 @@ public class Meeting {
 
     public Date getFinishTime() { return finishTime; }
 
+    public String getLocation() { return location; }
+
     public void setTitle(String title) { this.title = title; }
+
+
 
     public void setStartTime(Date startTime) throws InvalidMeetingInput {
             this.startTime = startTime;
@@ -51,5 +58,11 @@ public class Meeting {
 
     public void setFinishTime(Date finishTime) throws InvalidMeetingInput {
             this.finishTime = finishTime;
+    }
+
+    private boolean validLocation(String location) {
+        if(location.matches("([+-]?\\d+\\.?\\d+)\\s*,\\s*([+-]?\\d+\\.?\\d+)"))
+            return true;
+        return false;
     }
 }

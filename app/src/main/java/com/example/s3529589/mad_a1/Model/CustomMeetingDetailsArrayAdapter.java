@@ -54,6 +54,10 @@ public class CustomMeetingDetailsArrayAdapter extends ArrayAdapter<Meeting> {
         String endDateFormatted = s.format(endDate);
         holder.meetingEndTimeTV.setText(endDateFormatted);
 
+
+        holder.meetingLocationTV = (TextView) rowView.findViewById(R.id.meeting_location);
+        holder.meetingLocationTV.setText("Location: "+meetingList.get(pos).getLocation());
+
         //create friends
         holder.meetingFriendsTV = (TextView) rowView.findViewById(R.id.meeting_friends);
         String friends = createFriendsString(meetingList.get(pos).getFriendList());
@@ -81,6 +85,7 @@ public class CustomMeetingDetailsArrayAdapter extends ArrayAdapter<Meeting> {
         TextView meetingStartTimeTV;
         TextView meetingEndTimeTV;
         TextView meetingFriendsTV;
+        TextView meetingLocationTV;
     }
 
 }
