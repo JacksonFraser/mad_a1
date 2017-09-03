@@ -106,8 +106,10 @@ public class CustomEditMeetingDetailsAlertDialog extends AlertDialog.Builder{
             public void onClick(DialogInterface dialog, int which) {
                 String title = editTitle.getText().toString();
 
-                editMeetingDetails(id, title,startTimeTV,endTimeTV);
-                Toast.makeText(customMeetingDetailsArrayAdapter.getContext(), R.string.friend_updated_toast, Toast.LENGTH_LONG).show();
+                try {
+                    editMeetingDetails(id, title,startTimeTV,endTimeTV);
+                } catch (InvalidMeetingInput invalidMeetingInput) {
+                }
             }
         });
 
@@ -122,7 +124,7 @@ public class CustomEditMeetingDetailsAlertDialog extends AlertDialog.Builder{
         alert.show();
     }
 
-    private void editMeetingDetails(int id, String title, TextView startTimeTV, TextView endTimeTV) {
+    private void editMeetingDetails(int id, String title, TextView startTimeTV, TextView endTimeTV) throws InvalidMeetingInput {
         DateFormat d = new SimpleDateFormat("d-MMM-yyy, h:mm a");
 
         for (Meeting m : DataSingleton.getInstance().getMeetingList())
@@ -147,17 +149,15 @@ public class CustomEditMeetingDetailsAlertDialog extends AlertDialog.Builder{
                 }
 
                 if (newStartDate.before(newEndDate)) {
-                    try {
                         DataSingleton.getInstance().getMeetingById(id).setStartTime(newStartDate);
                         DataSingleton.getInstance().getMeetingById(id).setFinishTime(newEndDate);
 
                         System.out.println(DataSingleton.getInstance().getMeetingById(id).getStartTime());
                         System.out.println(DataSingleton.getInstance().getMeetingById(id).getFinishTime());
                         customMeetingDetailsArrayAdapter.notifyDataSetChanged();
-
-                    } catch (InvalidMeetingInput e) {
-                        Toast.makeText(customMeetingDetailsArrayAdapter.getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-                    }
+                         Toast.makeText(customMeetingDetailsArrayAdapter.getContext(), R.string.friend_updated_toast, Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(customMeetingDetailsArrayAdapter.getContext(), "Start time must be before finish time", Toast.LENGTH_LONG).show();
                 }
             }
     }

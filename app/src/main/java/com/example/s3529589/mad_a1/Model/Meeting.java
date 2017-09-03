@@ -46,18 +46,10 @@ public class Meeting {
     public void setTitle(String title) { this.title = title; }
 
     public void setStartTime(Date startTime) throws InvalidMeetingInput {
-        if(startTime.after(this.finishTime)) {
-            throw new InvalidMeetingInput("Start time must not be after finish time");
-        } else {
             this.startTime = startTime;
-        }
     }
 
     public void setFinishTime(Date finishTime) throws InvalidMeetingInput {
-        if(finishTime.before(this.startTime)) {
-            throw new InvalidMeetingInput("Finish time must be after start time");
-        } else {
             this.finishTime = finishTime;
-        }
     }
 }
