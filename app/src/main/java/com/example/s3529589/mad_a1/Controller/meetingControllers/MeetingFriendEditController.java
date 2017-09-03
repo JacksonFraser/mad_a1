@@ -17,6 +17,7 @@ import java.util.UUID;
 public class MeetingFriendEditController implements View.OnClickListener {
     private UUID id;
     private CustomMeetingDetailsArrayAdapter customMeetingDetailsArrayAdapter;
+
     public MeetingFriendEditController(UUID id, CustomMeetingDetailsArrayAdapter customMeetingDetailsArrayAdapter) {
         this.id = id;
         this.customMeetingDetailsArrayAdapter = customMeetingDetailsArrayAdapter;
@@ -29,13 +30,13 @@ public class MeetingFriendEditController implements View.OnClickListener {
         boolean[] checkedItems = new boolean[DataSingleton.getInstance().getFriendList().size()];
 
         int i = 0;
-        for(Friend f : DataSingleton.getInstance().getFriendList()){
+        for (Friend f : DataSingleton.getInstance().getFriendList()) {
             friends[i] = f.getName();
             friendsId[i] = f.getId();
-            if(DataSingleton.getInstance().getMeetingById(id).getFriendList().contains(f)){
-                try{
+            if (DataSingleton.getInstance().getMeetingById(id).getFriendList().contains(f)) {
+                try {
                     checkedItems[i] = true;
-                }catch (ArrayIndexOutOfBoundsException e){
+                } catch (ArrayIndexOutOfBoundsException e) {
                     System.out.println(e.getMessage());
                 }
             }
@@ -47,16 +48,16 @@ public class MeetingFriendEditController implements View.OnClickListener {
         builder.setMultiChoiceItems(friends, checkedItems, new DialogInterface.OnMultiChoiceClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-                if(isChecked){
-                    for(Friend f : DataSingleton.getInstance().getFriendList()){
-                        if(f.getId() == friendsId[which]){
+                if (isChecked) {
+                    for (Friend f : DataSingleton.getInstance().getFriendList()) {
+                        if (f.getId() == friendsId[which]) {
                             DataSingleton.getInstance().getMeetingById(id).getFriendList().add(f);
                             customMeetingDetailsArrayAdapter.notifyDataSetChanged();
                         }
                     }
                 }
-                if(!isChecked){
-                    for(Friend f : DataSingleton.getInstance().getFriendList()) {
+                if (!isChecked) {
+                    for (Friend f : DataSingleton.getInstance().getFriendList()) {
                         if (f.getId() == friendsId[which]) {
                             DataSingleton.getInstance().getMeetingById(id).getFriendList().remove(f);
                             customMeetingDetailsArrayAdapter.notifyDataSetChanged();

@@ -32,16 +32,16 @@ public class CustomFriendDetailsArrayAdapter extends ArrayAdapter<Friend> {
 
         this.friendList = friendList;
         this.context = activity;
-        inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.activity = activity;
     }
 
     @Override
-    public View getView(int pos, View convertView, ViewGroup parent){
+    public View getView(int pos, View convertView, ViewGroup parent) {
         FriendHolder holder = new FriendHolder();
 
         View rowView = inflater.inflate(R.layout.friend_details_list_iew_item_row, null);
-        rowView.setOnLongClickListener(new FriendMenuLongClickController(friendList.get(pos).getId(),this));
+        rowView.setOnLongClickListener(new FriendMenuLongClickController(friendList.get(pos).getId(), this));
 
         holder.friendNameTV = (TextView) rowView.findViewById(R.id.friendName);
         holder.friendNameTV.setText(friendList.get(pos).getName());

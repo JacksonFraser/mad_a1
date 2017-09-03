@@ -11,9 +11,10 @@ public class DisplayFriendsController implements View.OnClickListener {
     final int PICK_DISPLAY = 212;
     int id;
 
-    public DisplayFriendsController(FriendMenuActivity friendMenuActivity){
+    public DisplayFriendsController(FriendMenuActivity friendMenuActivity) {
         this.friendMenuActivity = friendMenuActivity;
     }
+
     @Override
     public void onClick(View v) {
         Intent it = new Intent(friendMenuActivity, DisplayFriendActivity.class);

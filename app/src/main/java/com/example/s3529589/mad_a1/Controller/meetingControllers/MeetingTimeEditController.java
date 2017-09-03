@@ -16,10 +16,11 @@ import java.util.UUID;
 public class MeetingTimeEditController implements View.OnClickListener {
     private UUID id;
     private CustomMeetingDetailsArrayAdapter customMeetingDetailsArrayAdapter;
-    private  TextView startTimeTV;
+    private TextView startTimeTV;
+
     public MeetingTimeEditController(UUID id, CustomMeetingDetailsArrayAdapter customMeetingDetailsArrayAdapter, TextView startTimeTV) {
         this.id = id;
-        this. customMeetingDetailsArrayAdapter = customMeetingDetailsArrayAdapter;
+        this.customMeetingDetailsArrayAdapter = customMeetingDetailsArrayAdapter;
         this.startTimeTV = startTimeTV;
     }
 

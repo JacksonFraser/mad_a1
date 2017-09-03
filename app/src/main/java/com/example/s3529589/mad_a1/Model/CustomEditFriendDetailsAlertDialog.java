@@ -13,7 +13,7 @@ import com.example.s3529589.mad_a1.R;
 
 import java.util.UUID;
 
-public class CustomEditFriendDetailsAlertDialog extends AlertDialog.Builder{
+public class CustomEditFriendDetailsAlertDialog extends AlertDialog.Builder {
     private CustomFriendDetailsArrayAdapter customFriendDetailsArrayAdapter;
     private UUID id;
 
@@ -28,17 +28,17 @@ public class CustomEditFriendDetailsAlertDialog extends AlertDialog.Builder{
         setTitle("Choose an option");
 
         setItems(holdOptions, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        switch (which) {
-                            case 0:
-                                editFriend();
-                                break;
-                            case 1:
-                                removeFriend();
-                                break;
-                        }
-                    }
-                });
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case 0:
+                        editFriend();
+                        break;
+                    case 1:
+                        removeFriend();
+                        break;
+                }
+            }
+        });
     }
 
 
@@ -47,6 +47,9 @@ public class CustomEditFriendDetailsAlertDialog extends AlertDialog.Builder{
             for (Friend f : DataSingleton.getInstance().getFriendList()) {
                 if (f.getId() == id) {
                     DataSingleton.getInstance().getFriendList().remove(f);
+
+                    //if the friend exists in any of the meeting, remove them.
+                    removeFriendFromMeeting(f);
                     customFriendDetailsArrayAdapter.notifyDataSetChanged();
                     Toast.makeText(customFriendDetailsArrayAdapter.getContext(), R.string.friend_removed_toast, Toast.LENGTH_LONG).show();
                 }
@@ -55,6 +58,7 @@ public class CustomEditFriendDetailsAlertDialog extends AlertDialog.Builder{
         } catch (Exception e) {
         }
     }
+
 
     // When the user selects Edit after long hold
     public void editFriend() {
@@ -72,7 +76,7 @@ public class CustomEditFriendDetailsAlertDialog extends AlertDialog.Builder{
         final Button editBtn = (Button) textEntryView.findViewById(R.id.selectDate);
 
         // Select birthday
-        editBtn.setOnClickListener(new EditBirthdayController(customFriendDetailsArrayAdapter.getContext(),id));
+        editBtn.setOnClickListener(new EditBirthdayController(customFriendDetailsArrayAdapter.getContext(), id));
 
         AlertDialog.Builder alert = new AlertDialog.Builder(customFriendDetailsArrayAdapter.getContext());
         alert.setTitle("Edit details");
@@ -119,6 +123,13 @@ public class CustomEditFriendDetailsAlertDialog extends AlertDialog.Builder{
         } catch (Exception e) {
 
         }
+    }
+
+    private void removeFriendFromMeeting(Friend f) {
+        for (Meeting m : DataSingleton.getInstance().getMeetingList())
+            if (m.getFriendList().contains(f)) {
+                m.getFriendList().remove(f);
+            }
     }
 
 }

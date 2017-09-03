@@ -37,20 +37,20 @@ public class MainActivity extends AppCompatActivity {
         meetingMenuBtn.setOnClickListener(new MeetingMenuController(this));
     }
 
-    private void addDummyData(){
+    private void addDummyData() {
         Calendar calendar = Calendar.getInstance();
         Date date = calendar.getTime();
         Date date1 = calendar.getTime();
         Date date2 = calendar.getTime();
-        Friend f1 = new Friend("BOBBY FLAG", "gmail@gmail", date,1,1);
-        Friend f2 = new Friend("GOOD PERSON", "newemail@me.com", date,1,1);
-        Friend f3 = new Friend("Sally Sanders", "sally@me.com", date,1,1);
-        Friend f4 = new Friend("dennis Le Mennis", "dennis@me.com", date,1,1);
+        Friend f1 = new Friend("BOBBY FLAG", "gmail@gmail", date, 1, 1);
+        Friend f2 = new Friend("GOOD PERSON", "newemail@me.com", date, 1, 1);
+        Friend f3 = new Friend("Sally Sanders", "sally@me.com", date, 1, 1);
+        Friend f4 = new Friend("dennis Le Mennis", "dennis@me.com", date, 1, 1);
         DataSingleton.getInstance().getFriendList().add(f1);
         DataSingleton.getInstance().getFriendList().add(f2);
         DataSingleton.getInstance().getFriendList().add(f3);
         DataSingleton.getInstance().getFriendList().add(f4);
-        try{
+        try {
             List<Friend> friendList1 = new ArrayList<>();
 
             friendList1.add(f1);
@@ -61,13 +61,12 @@ public class MainActivity extends AppCompatActivity {
             List<Friend> friendList2 = new ArrayList<>();
 
 
-
-            Meeting m1 = new Meeting("meeting 1",date1,date2,friendList1,"+330.1131, +11.11");
-            Meeting m2 = new Meeting("meeting 2",date1,date2,friendList2,"+331.131, +111");
+            Meeting m1 = new Meeting("meeting 1", date1, date2, friendList1, "+330.1131, +11.11");
+            Meeting m2 = new Meeting("meeting 2", date1, date2, friendList2, "+331.131, +111");
             DataSingleton.getInstance().getMeetingList().add(m1);
             DataSingleton.getInstance().getMeetingList().add(m2);
 
-        }catch (InvalidMeetingInput e){
+        } catch (InvalidMeetingInput e) {
             System.out.println(e.getMessage());
         }
 

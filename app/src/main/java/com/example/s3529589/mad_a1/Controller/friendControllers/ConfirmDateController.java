@@ -38,7 +38,7 @@ public class ConfirmDateController implements View.OnClickListener {
     public void onClick(View v) {
         int day = datePicker.getDayOfMonth();
         int month = datePicker.getMonth();
-        int year =  datePicker.getYear();
+        int year = datePicker.getYear();
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(year, month, day);
@@ -50,15 +50,15 @@ public class ConfirmDateController implements View.OnClickListener {
         DummyLocationService d = DummyLocationService.getSingletonInstance(datePickerActivity);
         Date locationDate = Calendar.getInstance().getTime();
         List<DummyLocationService.FriendLocation> matched = null;
-        matched = d.getFriendLocationsForTime(locationDate,100,0);
+        matched = d.getFriendLocationsForTime(locationDate, 100, 0);
 
         System.out.println(locationDate);
-        System.out.println(matched.size()+"KHFKHDFKJHDF");
+        System.out.println(matched.size() + "KHFKHDFKJHDF");
         System.out.println(matched.get(0).latitude);
-       // for(Frie)
+        // for(Frie)
 
         // add to the Friends ArrayList
-        DataSingleton.getInstance().getFriendList().add(new Friend(name, email, date,1,1));
+        DataSingleton.getInstance().getFriendList().add(new Friend(name, email, date, 1, 1));
 
 
         Intent it = new Intent(datePickerActivity, FriendMenuActivity.class);

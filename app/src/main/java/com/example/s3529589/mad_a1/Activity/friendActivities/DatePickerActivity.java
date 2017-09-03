@@ -31,8 +31,7 @@ public class DatePickerActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed()
-    {
+    public void onBackPressed() {
         Intent it = new Intent(DatePickerActivity.this, FriendMenuActivity.class);
         startActivity(it);
 

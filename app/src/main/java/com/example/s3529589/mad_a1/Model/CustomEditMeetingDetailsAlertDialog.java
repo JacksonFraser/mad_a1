@@ -20,7 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
-public class CustomEditMeetingDetailsAlertDialog extends AlertDialog.Builder{
+public class CustomEditMeetingDetailsAlertDialog extends AlertDialog.Builder {
     private CustomMeetingDetailsArrayAdapter customMeetingDetailsArrayAdapter;
     private UUID id;
 
@@ -50,19 +50,20 @@ public class CustomEditMeetingDetailsAlertDialog extends AlertDialog.Builder{
     }
 
     private void removeMeeting() {
-        try{
-            for(Meeting m : DataSingleton.getInstance().getMeetingList()){
-                if(m.getId() ==  id){
+        try {
+            for (Meeting m : DataSingleton.getInstance().getMeetingList()) {
+                if (m.getId() == id) {
                     DataSingleton.getInstance().getMeetingList().remove(m);
                     customMeetingDetailsArrayAdapter.notifyDataSetChanged();
                     Toast.makeText(customMeetingDetailsArrayAdapter.getContext(), "Meeting Removed", Toast.LENGTH_LONG).show();
                 }
             }
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
     }
-    private void editMeeting(){
+
+    private void editMeeting() {
         String choices[] = {"Cancel", "Confirm"};
         LayoutInflater factory = LayoutInflater.from(customMeetingDetailsArrayAdapter.getContext());
 
@@ -91,8 +92,8 @@ public class CustomEditMeetingDetailsAlertDialog extends AlertDialog.Builder{
 
         // Controllers to set meeting Start and Finish
         editStartTime.setOnClickListener(new MeetingTimeEditController(id, customMeetingDetailsArrayAdapter, startTimeTV));
-        editEndTime.setOnClickListener(new MeetingTimeEditController(id,customMeetingDetailsArrayAdapter,endTimeTV));
-        editFriend.setOnClickListener(new MeetingFriendEditController(id,customMeetingDetailsArrayAdapter));
+        editEndTime.setOnClickListener(new MeetingTimeEditController(id, customMeetingDetailsArrayAdapter, endTimeTV));
+        editFriend.setOnClickListener(new MeetingFriendEditController(id, customMeetingDetailsArrayAdapter));
 
 
         AlertDialog.Builder alert = new AlertDialog.Builder(customMeetingDetailsArrayAdapter.getContext());
@@ -106,7 +107,7 @@ public class CustomEditMeetingDetailsAlertDialog extends AlertDialog.Builder{
                 String title = editTitle.getText().toString();
 
                 try {
-                    editMeetingDetails(id, title,startTimeTV,endTimeTV);
+                    editMeetingDetails(id, title, startTimeTV, endTimeTV);
                     customMeetingDetailsArrayAdapter.notifyDataSetChanged();
                 } catch (InvalidMeetingInput invalidMeetingInput) {
                 }
@@ -149,13 +150,13 @@ public class CustomEditMeetingDetailsAlertDialog extends AlertDialog.Builder{
                 }
 
                 if (newStartDate.before(newEndDate)) {
-                        DataSingleton.getInstance().getMeetingById(id).setStartTime(newStartDate);
-                        DataSingleton.getInstance().getMeetingById(id).setFinishTime(newEndDate);
+                    DataSingleton.getInstance().getMeetingById(id).setStartTime(newStartDate);
+                    DataSingleton.getInstance().getMeetingById(id).setFinishTime(newEndDate);
 
-                        System.out.println(DataSingleton.getInstance().getMeetingById(id).getStartTime());
-                        System.out.println(DataSingleton.getInstance().getMeetingById(id).getFinishTime());
-                        customMeetingDetailsArrayAdapter.notifyDataSetChanged();
-                         Toast.makeText(customMeetingDetailsArrayAdapter.getContext(), R.string.friend_updated_toast, Toast.LENGTH_LONG).show();
+                    System.out.println(DataSingleton.getInstance().getMeetingById(id).getStartTime());
+                    System.out.println(DataSingleton.getInstance().getMeetingById(id).getFinishTime());
+                    customMeetingDetailsArrayAdapter.notifyDataSetChanged();
+                    Toast.makeText(customMeetingDetailsArrayAdapter.getContext(), R.string.friend_updated_toast, Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(customMeetingDetailsArrayAdapter.getContext(), "Start time must be before finish time", Toast.LENGTH_LONG).show();
                 }

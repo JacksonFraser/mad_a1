@@ -9,6 +9,7 @@ import com.example.s3529589.mad_a1.Model.TestLocationService;
 
 public class DisplayMeetingController implements View.OnClickListener {
     private MeetingMenuActivity meetingMenuActivity;
+
     public DisplayMeetingController(MeetingMenuActivity meetingMenuActivity) {
         this.meetingMenuActivity = meetingMenuActivity;
     }

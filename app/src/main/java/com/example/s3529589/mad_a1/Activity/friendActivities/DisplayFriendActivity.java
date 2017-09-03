@@ -19,7 +19,7 @@ public class DisplayFriendActivity extends AppCompatActivity {
         createListView();
     }
 
-    private void createListView(){
+    private void createListView() {
         ListView lv = (ListView) findViewById(R.id.list_view);
         // show when the list is empty
         lv.setEmptyView(findViewById(R.id.list_view_empty));
@@ -27,8 +27,7 @@ public class DisplayFriendActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed()
-    {
+    public void onBackPressed() {
         Intent it = new Intent(DisplayFriendActivity.this, FriendMenuActivity.class);
         startActivity(it);
 

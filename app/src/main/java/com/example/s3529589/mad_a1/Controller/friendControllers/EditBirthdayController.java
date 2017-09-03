@@ -45,7 +45,7 @@ public class EditBirthdayController implements View.OnClickListener {
         };
 
         DatePickerDialog d = new DatePickerDialog(
-                context, android.R.style.Theme_Holo_Light_Dialog_MinWidth, listener, year, month,day);
+                context, android.R.style.Theme_Holo_Light_Dialog_MinWidth, listener, year, month, day);
         d.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         d.show();

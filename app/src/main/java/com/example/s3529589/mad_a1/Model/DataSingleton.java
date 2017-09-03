@@ -9,35 +9,35 @@ public class DataSingleton {
     private static List<Friend> friendList = new ArrayList<>();
     private static List<Meeting> meetingList = new ArrayList<>();
 
-    protected DataSingleton(){
+    protected DataSingleton() {
 
     }
 
-    public static DataSingleton getInstance(){
-        if(instance == null)
+    public static DataSingleton getInstance() {
+        if (instance == null)
             instance = new DataSingleton();
         return instance;
     }
 
-    public List<Friend> getFriendList(){
+    public List<Friend> getFriendList() {
         return friendList;
     }
 
-    public List<Meeting> getMeetingList(){
+    public List<Meeting> getMeetingList() {
         return meetingList;
     }
 
-    public Friend getFriendById(UUID id){
-        for(Friend f : friendList)
-            if(id.equals(f.getId()))
+    public Friend getFriendById(UUID id) {
+        for (Friend f : friendList)
+            if (id.equals(f.getId()))
                 return f;
 
         return null;
     }
 
-    public Meeting getMeetingById(UUID id){
-        for(Meeting m : meetingList)
-            if(id.equals(m.getId()))
+    public Meeting getMeetingById(UUID id) {
+        for (Meeting m : meetingList)
+            if (id.equals(m.getId()))
                 return m;
 
         return null;
