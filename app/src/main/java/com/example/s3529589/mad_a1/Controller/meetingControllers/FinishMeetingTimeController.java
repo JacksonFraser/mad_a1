@@ -33,7 +33,7 @@ public class FinishMeetingTimeController implements View.OnClickListener {
                 cal.set(Calendar.MINUTE, minute);
                 Date finishTime = cal.getTime();
 
-                SimpleDateFormat formatter = new SimpleDateFormat("d-MMM-yyyy, h:mm aaa");
+                SimpleDateFormat formatter = new SimpleDateFormat("d-MMM-yyyy, h:mm:ss a");
                 String labelTime = formatter.format(finishTime);
 
                 meetingTime.setText(labelTime);
