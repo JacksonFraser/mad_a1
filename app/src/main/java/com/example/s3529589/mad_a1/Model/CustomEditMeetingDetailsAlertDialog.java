@@ -15,6 +15,7 @@ import com.example.s3529589.mad_a1.Exceptions.InvalidMeetingInput;
 import com.example.s3529589.mad_a1.R;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Comparator;
@@ -76,14 +77,12 @@ public class CustomEditMeetingDetailsAlertDialog extends AlertDialog.Builder{
         final TextView startTimeTV = (TextView) editMeetingView.findViewById(R.id.startTimeLbl);
         Date startAsDate = DataSingleton.getInstance().getMeetingById(id).getStartTime();
         String start = formatter.format(startAsDate);
-        startTimeTV.setHint(start);
+        startTimeTV.setText(start);
 
         final TextView endTimeTV = (TextView) editMeetingView.findViewById(R.id.finishTimeLbl);
-        Date finishAsDate = DataSingleton.getInstance().getMeetingById(id).getStartTime();
-        String finish = formatter.format(startAsDate);
-        endTimeTV.setHint(finish);
-
-
+        Date finishAsDate = DataSingleton.getInstance().getMeetingById(id).getFinishTime();
+        String finish = formatter.format(finishAsDate);
+        endTimeTV.setText(finish);
 
         final Button editStartTime = (Button) editMeetingView.findViewById(R.id.startTimeBtn);
         final Button editEndTime = (Button) editMeetingView.findViewById(R.id.finishTimeBtn);
@@ -134,36 +133,37 @@ public class CustomEditMeetingDetailsAlertDialog extends AlertDialog.Builder{
                         m.setTitle(title);
                         customMeetingDetailsArrayAdapter.notifyDataSetChanged();
                     }
-                    // Edit meeting start
-                    if (!startTimeTV.getText().toString().matches("")) {
-                        String startTimeString = startTimeTV.getText().toString();
 
-                        Date startDate = null;
-                        startDate = d.parse(startTimeString);
+                    String startTimeString = startTimeTV.getText().toString();
+                    String endTimeString = endTimeTV.getText().toString();
 
-                        try{
-                            DataSingleton.getInstance().getMeetingById(id).setStartTime(startDate);
-                            System.out.println(DataSingleton.getInstance().getMeetingById(id).getStartTime());
+                    Date newStartDate = null;
+                    Date newEndDate = null;
 
+                    try {
+                        newStartDate = d.parse(startTimeString);
+                        newEndDate = d.parse(endTimeString);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+
+                    if(newStartDate.before(newEndDate)){
+                        try {
+                            DataSingleton.getInstance().getMeetingById(id).setStartTime(newStartDate);
+                            DataSingleton.getInstance().getMeetingById(id).setFinishTime(newEndDate);
                             customMeetingDetailsArrayAdapter.notifyDataSetChanged();
-                        }catch(InvalidMeetingInput e){
-                            Toast.makeText(customMeetingDetailsArrayAdapter.getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                        } catch (InvalidMeetingInput invalidMeetingInput) {
+                            System.out.println("hello");
                         }
                     }
-                    // Edit meeting finish
-                    if (!endTimeTV.getText().toString().matches("")) {
-                        String endTimeString = endTimeTV.getText().toString();
 
-                        Date endDate = null;
-                        endDate = d.parse(endTimeString);
-
-                        try{
-                            DataSingleton.getInstance().getMeetingById(id).setFinishTime(endDate);
-                            System.out.println(DataSingleton.getInstance().getMeetingById(id).getFinishTime());
-
+                    if(newEndDate.after(newStartDate)){
+                        try {
+                            DataSingleton.getInstance().getMeetingById(id).setFinishTime(newEndDate);
+                            DataSingleton.getInstance().getMeetingById(id).setStartTime(newStartDate);
                             customMeetingDetailsArrayAdapter.notifyDataSetChanged();
-                        }catch(InvalidMeetingInput e){
-                            Toast.makeText(customMeetingDetailsArrayAdapter.getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                        } catch (InvalidMeetingInput invalidMeetingInput) {
+                            System.out.println("adsfasd");
                         }
                     }
                 }
