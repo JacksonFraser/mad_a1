@@ -15,14 +15,14 @@ public class Meeting {
     private String location;
 
     public Meeting(String title, Date start, Date finish, List<Friend> friendList, String location) throws InvalidMeetingInput{
-        if(finish.before(start))
-            throw new InvalidMeetingInput("Start time has to be before end time");
         if(start == null)
             throw new InvalidMeetingInput("Meeting start time cannot be null");
         if(finish == null)
             throw new InvalidMeetingInput("Meeting end time cannot be null");
         if(title.isEmpty())
             throw new InvalidMeetingInput("Meeting has to have a title");
+        if(finish.before(start))
+            throw new InvalidMeetingInput("Start time has to be before end time");
 
         this.id = uuid;
         uuid++;

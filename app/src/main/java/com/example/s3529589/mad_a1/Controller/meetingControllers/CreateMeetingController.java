@@ -15,11 +15,8 @@ import com.example.s3529589.mad_a1.R;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.Locale;
 
 public class CreateMeetingController implements View.OnClickListener {
     private ScheduleMeetingActivity scheduleMeetingActivity;
@@ -62,6 +59,5 @@ public class CreateMeetingController implements View.OnClickListener {
         }catch(InvalidMeetingInput e){
             Toast.makeText(this.scheduleMeetingActivity, e.getMessage(), Toast.LENGTH_LONG).show();
         }
-
     }
 }
