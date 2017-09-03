@@ -49,13 +49,12 @@ public class ConfirmDateController implements View.OnClickListener {
 
         DummyLocationService d = DummyLocationService.getSingletonInstance(datePickerActivity);
         Date locationDate = Calendar.getInstance().getTime();
-        d.getFriendLocationsForTime(locationDate,10010010,0);
         List<DummyLocationService.FriendLocation> matched = null;
-        matched = d.getFriendLocationsForTime(locationDate,100123100,0);
+        matched = d.getFriendLocationsForTime(locationDate,100,0);
 
+        System.out.println(locationDate);
         System.out.println(matched.size()+"KHFKHDFKJHDF");
         System.out.println(matched.get(0).latitude);
-        System.out.println(locationDate);
        // for(Frie)
 
         // add to the Friends ArrayList
