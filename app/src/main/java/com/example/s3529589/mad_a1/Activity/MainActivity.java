@@ -48,19 +48,24 @@ public class MainActivity extends AppCompatActivity {
         Friend f4 = new Friend("dennis Le Mennis", "dennis@me.com", date);
         DataSingleton.getInstance().getFriendList().add(f1);
         DataSingleton.getInstance().getFriendList().add(f2);
+        DataSingleton.getInstance().getFriendList().add(f3);
+        DataSingleton.getInstance().getFriendList().add(f4);
         try{
-            List<Friend> friendList = new ArrayList<>();
-            friendList.add(f1);
-            friendList.add(f2);
-            friendList.add(f3);
-            friendList.add(f4);
+            List<Friend> friendList1 = new ArrayList<>();
+
+            friendList1.add(f1);
+            friendList1.add(f2);
+            friendList1.add(f3);
+            friendList1.add(f4);
+
+            List<Friend> friendList2 = new ArrayList<>();
 
 
-            Meeting m1 = new Meeting("meeting 1",date1,date2,friendList,null);
-            Meeting m2 = new Meeting("meeting 2",date1,date2,friendList,null);
+
+            Meeting m1 = new Meeting("meeting 1",date1,date2,friendList1,null);
+            Meeting m2 = new Meeting("meeting 2",date1,date2,friendList2,null);
             DataSingleton.getInstance().getMeetingList().add(m1);
             DataSingleton.getInstance().getMeetingList().add(m2);
-
 
         }catch (InvalidMeetingInput e){
             System.out.println(e.getMessage());

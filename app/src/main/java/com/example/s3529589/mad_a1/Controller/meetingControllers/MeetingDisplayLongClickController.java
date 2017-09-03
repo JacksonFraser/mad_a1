@@ -19,6 +19,7 @@ public class MeetingDisplayLongClickController implements View.OnLongClickListen
     public boolean onLongClick(View v) {
         CustomEditMeetingDetailsAlertDialog editMeetingDialog = new CustomEditMeetingDetailsAlertDialog(this.customMeetingDetailsArrayAdapter, this.id);
         editMeetingDialog.show();
+        System.out.println("THIS IS THE MEETING ID " +id);
 
         return true;
     }
