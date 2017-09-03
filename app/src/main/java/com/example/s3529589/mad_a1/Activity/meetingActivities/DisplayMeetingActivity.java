@@ -21,11 +21,12 @@ public class DisplayMeetingActivity extends AppCompatActivity {
     }
 
     private void createListView() {
+
+        //Sort the meetings based in their start times
         Collections.sort(DataSingleton.getInstance().getMeetingList(), new MeetingDateCompare());
+
         ListView lv = (ListView) findViewById(R.id.meeting_list_view);
-
         lv.setEmptyView(findViewById(R.id.meeting_list_view_empty));
-
         lv.setAdapter(new CustomMeetingDetailsArrayAdapter(this, DataSingleton.getInstance().getMeetingList()));
     }
 

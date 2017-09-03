@@ -7,14 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import com.example.s3529589.mad_a1.Controller.meetingControllers.CreateMeetingController;
 import com.example.s3529589.mad_a1.Controller.meetingControllers.FinishMeetingTimeController;
 import com.example.s3529589.mad_a1.Controller.meetingControllers.StartMeetingTimeController;
 import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.Model.Friend;
 import com.example.s3529589.mad_a1.R;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -26,25 +24,35 @@ public class ScheduleMeetingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.schedule_meeting);
 
-        //Meeting title
+
+        // Meeting title
         EditText meetingTitleView = (EditText) findViewById(R.id.meetingTitle);
 
-        //Meeting start time
+
+        // Meeting start time
         View startTimeBtn = findViewById(R.id.startTimeBtn);
         TextView startTime = (TextView) findViewById(R.id.startTimeLbl);
         startTimeBtn.setOnClickListener(new StartMeetingTimeController(this, startTime));
 
-        //Meeting end time
+
+        // Meeting end time
         View endTimeBtn = findViewById(R.id.finishTimeBtn);
         TextView finishTime = (TextView) findViewById(R.id.finishTimeLbl);
         endTimeBtn.setOnClickListener(new FinishMeetingTimeController(this, finishTime));
 
+        // Meeting friend list
         final List<Friend> meetingFriendList = new ArrayList<>();
         View pickFriends = findViewById(R.id.selectFriendsBtn);
         pickFriends.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
+
+                /**
+                * Create two arrays to keep track of friend's ids
+                * so that we don't remove friends with the same name
+                * */
+
                 final String[] friends = new String[DataSingleton.getInstance().getFriendList().size()];
                 final UUID[] friendsId = new UUID[DataSingleton.getInstance().getFriendList().size()];
                 int i = 0;
@@ -90,13 +98,14 @@ public class ScheduleMeetingActivity extends AppCompatActivity {
             }
         });
 
-        EditText meetingLocaition = (EditText) findViewById(R.id.meeting_location_edit_text);
+        // Meeting location
+        EditText meetingLocation = (EditText) findViewById(R.id.meeting_location_edit_text);
 
 
-        //Create a meeting
+        // Create a meeting
         View createMeetingBtn = findViewById(R.id.confirmMeetingBtn);
         createMeetingBtn.setVisibility(View.VISIBLE);
-        createMeetingBtn.setOnClickListener(new CreateMeetingController(this, meetingTitleView, startTime, finishTime, meetingFriendList, meetingLocaition));
+        createMeetingBtn.setOnClickListener(new CreateMeetingController(this, meetingTitleView, startTime, finishTime, meetingFriendList, meetingLocation));
     }
 
 }
