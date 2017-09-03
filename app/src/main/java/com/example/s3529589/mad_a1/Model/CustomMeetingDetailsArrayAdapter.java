@@ -68,7 +68,7 @@ public class CustomMeetingDetailsArrayAdapter extends ArrayAdapter<Meeting> {
             for (Friend f : friendList) {
                friendString =  friendString.concat("- "+f.getName() + "\n");
             }
-            friendString = friendString.substring(0, friendString.length() - 2);
+            friendString = friendString.substring(0, friendString.length() - 1);
             return friendString;
         }catch (Exception e){
 
