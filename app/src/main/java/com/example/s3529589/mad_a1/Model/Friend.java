@@ -8,12 +8,16 @@ public class Friend {
     private String email;
     private Date birthday;
     private UUID uuid;
+    private double lon;
+    private double lat;
 
-    public Friend(String name, String email, Date birthday){
+    public Friend(String name, String email, Date birthday, double lon, double lat){
         this.uuid = UUID.randomUUID();
         this.name = name;
         this.email = email;
         this.birthday = birthday;
+        this.lon = lon;
+        this.lat = lat;
     }
 
     public String getName(){
