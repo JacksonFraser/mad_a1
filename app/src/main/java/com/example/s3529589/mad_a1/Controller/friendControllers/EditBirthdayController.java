@@ -2,6 +2,8 @@ package com.example.s3529589.mad_a1.Controller.friendControllers;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.view.View;
 import android.widget.DatePicker;
 
@@ -43,6 +45,7 @@ public class EditBirthdayController implements View.OnClickListener {
 
         DatePickerDialog d = new DatePickerDialog(
                 context, android.R.style.Theme_Holo_Light_Dialog_MinWidth, listener, year, month,day);
+        d.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         d.show();
     }

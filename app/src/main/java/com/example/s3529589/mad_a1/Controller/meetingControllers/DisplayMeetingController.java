@@ -6,10 +6,6 @@ import android.view.View;
 import com.example.s3529589.mad_a1.Activity.meetingActivities.DisplayMeetingActivity;
 import com.example.s3529589.mad_a1.Activity.meetingActivities.MeetingMenuActivity;
 
-/**
- * Created by supriya on 2/09/17.
- */
-
 public class DisplayMeetingController implements View.OnClickListener {
     private MeetingMenuActivity meetingMenuActivity;
     public DisplayMeetingController(MeetingMenuActivity meetingMenuActivity) {
