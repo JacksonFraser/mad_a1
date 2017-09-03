@@ -15,8 +15,10 @@ import com.example.s3529589.mad_a1.Model.Meeting;
 import com.example.s3529589.mad_a1.R;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import static android.os.Build.VERSION_CODES.M;
 
@@ -45,8 +47,19 @@ public class MainActivity extends AppCompatActivity {
         DataSingleton.getInstance().getFriendList().add(f1);
         DataSingleton.getInstance().getFriendList().add(f2);
         try{
-            Meeting m1 = new Meeting("meeting 1",date1,date2,null,null);
-            Meeting m2 = new Meeting("meeting 2",date1,date2,null,null);
+            List<Friend> friendList = new ArrayList<>();
+            friendList.add(f1);
+            friendList.add(f2);
+            friendList.add(f1);
+            friendList.add(f2);
+            friendList.add(f1);
+            friendList.add(f2);
+            friendList.add(f1);
+            friendList.add(f2);
+            friendList.add(f1);
+            friendList.add(f2);
+            Meeting m1 = new Meeting("meeting 1",date1,date2,friendList,null);
+            Meeting m2 = new Meeting("meeting 2",date1,date2,friendList,null);
             DataSingleton.getInstance().getMeetingList().add(m1);
             DataSingleton.getInstance().getMeetingList().add(m2);
 

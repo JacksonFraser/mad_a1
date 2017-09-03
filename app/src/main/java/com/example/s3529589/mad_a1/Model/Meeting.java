@@ -33,23 +33,17 @@ public class Meeting {
         this.location = location;
     }
 
-    public int getId() {
-        return id;
-    }
+    public int getId() { return id; }
 
-    public String getTitle() {
-        return title;
-    }
+    public String getTitle() { return title; }
 
-    public Date getStartTime() {
-        return startTime;
-    }
+    public Date getStartTime() { return startTime; }
+
+    public List<Friend> getFriendList() {return friendList; }
 
     public Date getFinishTime() { return finishTime; }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+    public void setTitle(String title) { this.title = title; }
 
     public void setStartTime(Date startTime) throws InvalidMeetingInput {
         if(startTime.after(this.finishTime)) {

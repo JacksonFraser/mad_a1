@@ -53,13 +53,33 @@ public class CustomMeetingDetailsArrayAdapter extends ArrayAdapter<Meeting> {
         String endDateFormatted = s.format(endDate);
         holder.meetingEndTimeTV.setText(endDateFormatted);
 
+        //create friends
+        holder.meetingFriendsTV = (TextView) rowView.findViewById(R.id.meeting_friends);
+        String friends = createFriendsString(meetingList.get(pos).getFriendList());
+        holder.meetingFriendsTV.setText(friends);
         return rowView;
+    }
+
+    private String createFriendsString(List<Friend> friendList) {
+        String friendString = "";
+
+        try {
+            for (Friend f : friendList) {
+               friendString =  friendString.concat("- "+f.getName() + "\n");
+            }
+            friendString = friendString.substring(0, friendString.length() - 2);
+            return friendString;
+        }catch (Exception e){
+
+        }
+        return friendString;
     }
 
     public class MeetingHolder {
         TextView meetingTitleTV;
         TextView meetingStartTimeTV;
         TextView meetingEndTimeTV;
+        TextView meetingFriendsTV;
     }
 
 }
