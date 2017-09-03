@@ -42,22 +42,21 @@ public class MainActivity extends AppCompatActivity {
         Date date = calendar.getTime();
         Date date1 = calendar.getTime();
         Date date2 = calendar.getTime();
-        Friend f1 = new Friend("BOBBY FLAG", "gmail@gmail", date);
-        Friend f2 = new Friend("GOOD PERSON", "newemail@me.com", date);
+        Friend f1 = new Friend("Bobby DropTables", "gmail@gmail", date);
+        Friend f2 = new Friend("Good Person", "newemail@me.com", date);
+        Friend f3 = new Friend("Sally Sanders", "sally@me.com", date);
+        Friend f4 = new Friend("Dennis Le Mennis", "dennis@me.com", date);
         DataSingleton.getInstance().getFriendList().add(f1);
         DataSingleton.getInstance().getFriendList().add(f2);
+        DataSingleton.getInstance().getFriendList().add(f3);
+        DataSingleton.getInstance().getFriendList().add(f4);
         try{
             List<Friend> friendList = new ArrayList<>();
             friendList.add(f1);
             friendList.add(f2);
-            friendList.add(f1);
-            friendList.add(f2);
-            friendList.add(f1);
-            friendList.add(f2);
-            friendList.add(f1);
-            friendList.add(f2);
-            friendList.add(f1);
-            friendList.add(f2);
+            friendList.add(f3);
+            friendList.add(f4);
+
             Meeting m1 = new Meeting("meeting 1",date1,date2,friendList,null);
             Meeting m2 = new Meeting("meeting 2",date1,date2,friendList,null);
             DataSingleton.getInstance().getMeetingList().add(m1);

@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.s3529589.mad_a1.Controller.meetingControllers.MeetingFriendEditController;
 import com.example.s3529589.mad_a1.Controller.meetingControllers.MeetingTimeEditController;
 import com.example.s3529589.mad_a1.Exceptions.InvalidMeetingInput;
 import com.example.s3529589.mad_a1.R;
@@ -82,12 +83,19 @@ public class CustomEditMeetingDetailsAlertDialog extends AlertDialog.Builder{
         String finish = formatter.format(startAsDate);
         endTimeTV.setHint(finish);
 
+
+
         final Button editStartTime = (Button) editMeetingView.findViewById(R.id.startTimeBtn);
         final Button editEndTime = (Button) editMeetingView.findViewById(R.id.finishTimeBtn);
+        final Button editFriend = (Button) editMeetingView.findViewById(R.id.selectFriendsBtn);
+        editFriend.setText("edit friends");
+
 
         // Controllers to set meeting Start and Finish
         editStartTime.setOnClickListener(new MeetingTimeEditController(id, customMeetingDetailsArrayAdapter, startTimeTV));
         editEndTime.setOnClickListener(new MeetingTimeEditController(id,customMeetingDetailsArrayAdapter,endTimeTV));
+        editFriend.setOnClickListener(new MeetingFriendEditController(id,customMeetingDetailsArrayAdapter));
+
 
         AlertDialog.Builder alert = new AlertDialog.Builder(customMeetingDetailsArrayAdapter.getContext());
         alert.setTitle("Edit details");

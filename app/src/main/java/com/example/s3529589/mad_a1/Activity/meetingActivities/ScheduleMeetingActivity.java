@@ -48,9 +48,14 @@ public class ScheduleMeetingActivity extends AppCompatActivity {
                 final int[] friendsId = new int[DataSingleton.getInstance().getFriendList().size()];
                 int i = 0;
                 for(Friend f : DataSingleton.getInstance().getFriendList()){
-                    friends[i] = f.getName();
-                    friendsId[i] = f.getId();
-                    i++;
+                    try{
+                        friends[i] = f.getName();
+                        friendsId[i] = f.getId();
+                        i++;
+
+                    }catch (Exception e){
+
+                    }
                 }
 
                 final AlertDialog.Builder builder = new AlertDialog.Builder(ScheduleMeetingActivity.this);
