@@ -54,6 +54,9 @@ public class CustomFriendDetailsArrayAdapter extends ArrayAdapter<Friend> {
         String birthday = formatter.format(friendList.get(pos).getBirthdate());
         holder.friendBirthDateTV.setText(birthday);
 
+        holder.friendLocation = (TextView) rowView.findViewById(R.id.friendLocation);
+        holder.friendLocation.setText((friendList.get(pos).getLon() + ", " + friendList.get(pos).getLat()));
+
         holder.displayImg = (ImageView) rowView.findViewById(R.id.displayImg);
         holder.displayImg.setOnClickListener(new PickDisplayPictureController(this));
 
@@ -64,6 +67,7 @@ public class CustomFriendDetailsArrayAdapter extends ArrayAdapter<Friend> {
         TextView friendNameTV;
         TextView friendEmailTV;
         TextView friendBirthDateTV;
+        TextView friendLocation;
         ImageView displayImg;
     }
 }
