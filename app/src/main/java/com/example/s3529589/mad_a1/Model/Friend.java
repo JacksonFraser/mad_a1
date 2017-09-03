@@ -32,6 +32,14 @@ public class Friend {
         return birthday;
     }
 
+    public double getLon() {
+        return lon;
+    }
+
+    public double getLat() {
+        return lat;
+    }
+
     public UUID getId() {
         return uuid;
     }

@@ -66,14 +66,13 @@ public class ConfirmDateController implements View.OnClickListener {
             latitude = matched.get(0).latitude;
             longitude = matched.get(0).longitude;
         }
-        catch (ParseException e)
+        catch (Exception e)
         {
 
         }
 
         // add to the Friends ArrayList
         DataSingleton.getInstance().getFriendList().add(new Friend(name, email, date, latitude, longitude));
-        DataSingleton.getInstance().getFriendList().get(4);
 
         Intent it = new Intent(datePickerActivity, FriendMenuActivity.class);
         datePickerActivity.startActivity(it);

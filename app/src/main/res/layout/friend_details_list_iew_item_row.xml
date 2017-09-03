@@ -33,6 +33,17 @@
         android:layout_marginTop="3dp"
         android:layout_below="@id/friendEmail"
         android:text="BIRTHDAY"
+        android:layout_marginLeft="20dp">
+    </TextView>
+
+    <TextView
+        android:id="@+id/friendLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_marginTop="3dp"
+        android:layout_below="@id/friendBirthday"
+        android:text="LONG, LAT"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="20dp">
     </TextView>
