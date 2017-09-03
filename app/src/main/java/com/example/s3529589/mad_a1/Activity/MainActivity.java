@@ -1,11 +1,8 @@
 package com.example.s3529589.mad_a1.Activity;
 
-import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-
 import com.example.s3529589.mad_a1.Controller.friendControllers.FriendMenuController;
 import com.example.s3529589.mad_a1.Controller.meetingControllers.MeetingMenuController;
 import com.example.s3529589.mad_a1.Exceptions.InvalidMeetingInput;
@@ -13,14 +10,11 @@ import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.Model.Friend;
 import com.example.s3529589.mad_a1.Model.Meeting;
 import com.example.s3529589.mad_a1.R;
-
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import static android.os.Build.VERSION_CODES.M;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,10 +36,10 @@ public class MainActivity extends AppCompatActivity {
         Date date = calendar.getTime();
         Date date1 = calendar.getTime();
         Date date2 = calendar.getTime();
-        Friend f1 = new Friend("BOBBY FLAG", "gmail@gmail", date, 1, 1);
-        Friend f2 = new Friend("GOOD PERSON", "newemail@me.com", date, 1, 1);
-        Friend f3 = new Friend("Sally Sanders", "sally@me.com", date, 1, 1);
-        Friend f4 = new Friend("dennis Le Mennis", "dennis@me.com", date, 1, 1);
+        Friend f1 = new Friend("Bobby Jarzombek", "gmail@gmail", date, 0, 0);
+        Friend f2 = new Friend("Chris Dave", "newemail@me.com", date, 0, 0);
+        Friend f3 = new Friend("Sally Sanders", "sally@me.com", date, 0, 0);
+        Friend f4 = new Friend("dennis Le Mennis", "dennis@me.com", date, 0, 0);
         DataSingleton.getInstance().getFriendList().add(f1);
         DataSingleton.getInstance().getFriendList().add(f2);
         DataSingleton.getInstance().getFriendList().add(f3);
