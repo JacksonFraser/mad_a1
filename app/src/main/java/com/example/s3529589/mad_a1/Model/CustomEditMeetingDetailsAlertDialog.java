@@ -152,9 +152,6 @@ public class CustomEditMeetingDetailsAlertDialog extends AlertDialog.Builder {
                 if (newStartDate.before(newEndDate)) {
                     DataSingleton.getInstance().getMeetingById(id).setStartTime(newStartDate);
                     DataSingleton.getInstance().getMeetingById(id).setFinishTime(newEndDate);
-
-                    System.out.println(DataSingleton.getInstance().getMeetingById(id).getStartTime());
-                    System.out.println(DataSingleton.getInstance().getMeetingById(id).getFinishTime());
                     customMeetingDetailsArrayAdapter.notifyDataSetChanged();
                     Toast.makeText(customMeetingDetailsArrayAdapter.getContext(), R.string.friend_updated_toast, Toast.LENGTH_LONG).show();
                 } else {
