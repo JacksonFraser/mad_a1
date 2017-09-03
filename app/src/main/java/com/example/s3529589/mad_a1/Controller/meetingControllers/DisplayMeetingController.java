@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.example.s3529589.mad_a1.Activity.meetingActivities.DisplayMeetingActivity;
 import com.example.s3529589.mad_a1.Activity.meetingActivities.MeetingMenuActivity;
+import com.example.s3529589.mad_a1.Model.TestLocationService;
 
 public class DisplayMeetingController implements View.OnClickListener {
     private MeetingMenuActivity meetingMenuActivity;
@@ -17,5 +18,7 @@ public class DisplayMeetingController implements View.OnClickListener {
         Intent it = new Intent(meetingMenuActivity, DisplayMeetingActivity.class);
         meetingMenuActivity.startActivity(it);
         meetingMenuActivity.finish();
+
+        TestLocationService.test(meetingMenuActivity);
     }
 }
