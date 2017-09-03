@@ -1,27 +1,22 @@
 package com.example.s3529589.mad_a1.Controller.friendControllers;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.Toast;
-
 import com.example.s3529589.mad_a1.Activity.friendActivities.DatePickerActivity;
 import com.example.s3529589.mad_a1.Activity.friendActivities.FriendMenuActivity;
 import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.Model.DummyLocationService;
 import com.example.s3529589.mad_a1.Model.Friend;
 import com.example.s3529589.mad_a1.R;
-
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 public class ConfirmDateController implements View.OnClickListener {
-    private static final String LOG_TAG = ConfirmDateController.class.getName();
     String name;
     String email;
     DatePicker datePicker;
@@ -43,8 +38,6 @@ public class ConfirmDateController implements View.OnClickListener {
         Calendar calendar = Calendar.getInstance();
         calendar.set(year, month, day);
         Date date = calendar.getTime();
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-        String birthday = formatter.format(date);
 
         // DUMMY DATA STUFF
         Date currentTime = Calendar.getInstance().getTime();

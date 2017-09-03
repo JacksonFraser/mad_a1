@@ -4,13 +4,10 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.view.View;
 
-import com.example.s3529589.mad_a1.Activity.meetingActivities.ScheduleMeetingActivity;
 import com.example.s3529589.mad_a1.Model.CustomMeetingDetailsArrayAdapter;
 import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.Model.Friend;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 
@@ -37,7 +34,6 @@ public class MeetingFriendEditController implements View.OnClickListener {
                 try {
                     checkedItems[i] = true;
                 } catch (ArrayIndexOutOfBoundsException e) {
-                    System.out.println(e.getMessage());
                 }
             }
             i++;

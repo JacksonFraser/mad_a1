@@ -13,6 +13,5 @@ public class PickDisplayPictureController implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        System.out.println("ZZZZZ PICK PICTURE");
     }
 }

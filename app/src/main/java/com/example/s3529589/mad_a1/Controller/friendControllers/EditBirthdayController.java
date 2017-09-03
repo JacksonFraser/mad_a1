@@ -9,7 +9,6 @@ import android.widget.DatePicker;
 
 import com.example.s3529589.mad_a1.Model.DataSingleton;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.UUID;
@@ -37,8 +36,6 @@ public class EditBirthdayController implements View.OnClickListener {
                 calendar.set(year, month, dayOfMonth);
 
                 Date date = calendar.getTime();
-                SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-                String birthday = formatter.format(date);
 
                 DataSingleton.getInstance().getFriendById(id).setBirthday(date);
             }
@@ -46,8 +43,8 @@ public class EditBirthdayController implements View.OnClickListener {
 
         DatePickerDialog d = new DatePickerDialog(
                 context, android.R.style.Theme_Holo_Light_Dialog_MinWidth, listener, year, month, day);
-        d.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
+        d.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         d.show();
     }
 }
