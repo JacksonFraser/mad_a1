@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="meeting_schedule">Schedule</string>
-    <string name="meeting_display">Display</string>
+    <string name="meeting_display">Display/ edit menu</string>
 </resources>

@@ -13,6 +13,6 @@
     <string name="schedule_select_friends_button">Select friends</string>
     <string name="schedule_confirm_button">Confirm</string>
     <string name="meeting_location_text_view">Location:</string>
-    <string name="meeting_location_edit_text_hint">lat lon</string>
+    <string name="meeting_location_edit_text_hint">latitude, longitude</string>
 
 </resources>

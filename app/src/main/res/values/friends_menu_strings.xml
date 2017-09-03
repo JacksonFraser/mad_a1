@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="friend_Add">Add a friend</string>
-    <string name="friend_Display">Display friends</string>
+    <string name="friend_Display">Display/ edit friends</string>
 </resources>

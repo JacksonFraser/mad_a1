@@ -35,7 +35,6 @@ public class Meeting {
         this.location = location;
     }
 
-
     public UUID getId() {
         return uuid;
     }
