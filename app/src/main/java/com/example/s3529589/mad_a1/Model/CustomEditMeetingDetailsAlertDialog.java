@@ -125,54 +125,40 @@ public class CustomEditMeetingDetailsAlertDialog extends AlertDialog.Builder{
     private void editMeetingDetails(int id, String title, TextView startTimeTV, TextView endTimeTV) {
         DateFormat d = new SimpleDateFormat("d-MMM-yyy, h:mm a");
 
-        try{
-            for(Meeting m : DataSingleton.getInstance().getMeetingList())
-                if (m.getId() == id) {
-                    // Edit meeting name
-                    if (!title.isEmpty()) {
-                        m.setTitle(title);
-                        customMeetingDetailsArrayAdapter.notifyDataSetChanged();
-                    }
-
-                    String startTimeString = startTimeTV.getText().toString();
-                    String endTimeString = endTimeTV.getText().toString();
-
-                    Date newStartDate = null;
-                    Date newEndDate = null;
-
-                    try {
-                        newStartDate = d.parse(startTimeString);
-                        newEndDate = d.parse(endTimeString);
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-
-                    if(newStartDate.before(newEndDate)){
-                        try {
-                            DataSingleton.getInstance().getMeetingById(id).setStartTime(newStartDate);
-                            DataSingleton.getInstance().getMeetingById(id).setFinishTime(newEndDate);
-                            customMeetingDetailsArrayAdapter.notifyDataSetChanged();
-                        } catch (InvalidMeetingInput invalidMeetingInput) {
-                            System.out.println("hello");
-                        }
-                    }
-
-                    if(newEndDate.after(newStartDate)){
-                        try {
-                            DataSingleton.getInstance().getMeetingById(id).setFinishTime(newEndDate);
-                            DataSingleton.getInstance().getMeetingById(id).setStartTime(newStartDate);
-                            customMeetingDetailsArrayAdapter.notifyDataSetChanged();
-                        } catch (InvalidMeetingInput invalidMeetingInput) {
-                            System.out.println("adsfasd");
-                        }
-                    }
+        for (Meeting m : DataSingleton.getInstance().getMeetingList())
+            if (m.getId() == id) {
+                // Edit meeting name
+                if (!title.isEmpty()) {
+                    m.setTitle(title);
+                    customMeetingDetailsArrayAdapter.notifyDataSetChanged();
                 }
 
-        } catch(Exception e) {
+                String startTimeString = startTimeTV.getText().toString();
+                String endTimeString = endTimeTV.getText().toString();
 
-        }
+                Date newStartDate = null;
+                Date newEndDate = null;
 
+                try {
+                    newStartDate = d.parse(startTimeString);
+                    newEndDate = d.parse(endTimeString);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+                if (newStartDate.before(newEndDate)) {
+                    try {
+                        DataSingleton.getInstance().getMeetingById(id).setStartTime(newStartDate);
+                        DataSingleton.getInstance().getMeetingById(id).setFinishTime(newEndDate);
+
+                        System.out.println(DataSingleton.getInstance().getMeetingById(id).getStartTime());
+                        System.out.println(DataSingleton.getInstance().getMeetingById(id).getFinishTime());
+                        customMeetingDetailsArrayAdapter.notifyDataSetChanged();
+
+                    } catch (InvalidMeetingInput e) {
+                        Toast.makeText(customMeetingDetailsArrayAdapter.getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
     }
-
-
 }
