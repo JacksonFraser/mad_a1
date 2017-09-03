@@ -42,7 +42,7 @@ public class CreateMeetingController implements View.OnClickListener {
         String finishInString = finishTime.getText().toString();
 
         // Convert String to Date
-        DateFormat formatter = new SimpleDateFormat("d-MMM-yyyy, h:mm a");
+        DateFormat formatter = new SimpleDateFormat("d-MMM-yyyy, h:mm:ss a");
         Date start = null;
         Date finish = null;
 

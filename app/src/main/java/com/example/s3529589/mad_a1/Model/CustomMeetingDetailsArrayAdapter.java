@@ -10,7 +10,6 @@ import android.widget.TextView;
 import com.example.s3529589.mad_a1.Controller.meetingControllers.MeetingDisplayLongClickController;
 import com.example.s3529589.mad_a1.R;
 import java.text.SimpleDateFormat;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -43,17 +42,16 @@ public class CustomMeetingDetailsArrayAdapter extends ArrayAdapter<Meeting> {
 
         //Formatted date for more readable display
         Date startDate = meetingList.get(pos).getStartTime();
-        SimpleDateFormat s = new SimpleDateFormat("d-MMM-yyyy, h:mm a");
+        SimpleDateFormat s = new SimpleDateFormat("d-MMM-yyyy, h:mm:ss a");
         String startDateFormatted = s.format(startDate);
-        holder.meetingStartTimeTV.setText(startDateFormatted);
+        holder.meetingStartTimeTV.setText("Start time: " + startDateFormatted);
 
         holder.meetingEndTimeTV = (TextView) rowView.findViewById(R.id.meeting_end_time);
 
         //Formatted date or more readable display
         Date endDate = meetingList.get(pos).getFinishTime();
         String endDateFormatted = s.format(endDate);
-        holder.meetingEndTimeTV.setText(endDateFormatted);
-
+        holder.meetingEndTimeTV.setText("Finish time: " + endDateFormatted);
 
         holder.meetingLocationTV = (TextView) rowView.findViewById(R.id.meeting_location);
         holder.meetingLocationTV.setText("Location: "+meetingList.get(pos).getLocation());

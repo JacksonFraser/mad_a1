@@ -96,7 +96,7 @@ public class ScheduleMeetingActivity extends AppCompatActivity {
         //Create a meeting
         View createMeetingBtn = findViewById(R.id.confirmMeetingBtn);
         createMeetingBtn.setVisibility(View.VISIBLE);
-        createMeetingBtn.setOnClickListener(new CreateMeetingController(this,meetingTitleView, startTime, finishTime, meetingFriendList, meetingLocaition));
+        createMeetingBtn.setOnClickListener(new CreateMeetingController(this, meetingTitleView, startTime, finishTime, meetingFriendList, meetingLocaition));
     }
 
 }
