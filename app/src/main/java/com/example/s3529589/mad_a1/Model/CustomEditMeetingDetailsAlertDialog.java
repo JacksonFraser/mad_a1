@@ -17,8 +17,6 @@ import com.example.s3529589.mad_a1.R;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 
 public class CustomEditMeetingDetailsAlertDialog extends AlertDialog.Builder{
@@ -108,6 +106,7 @@ public class CustomEditMeetingDetailsAlertDialog extends AlertDialog.Builder{
 
                 try {
                     editMeetingDetails(id, title,startTimeTV,endTimeTV);
+                    customMeetingDetailsArrayAdapter.notifyDataSetChanged();
                 } catch (InvalidMeetingInput invalidMeetingInput) {
                 }
             }
