@@ -2,7 +2,6 @@ package com.example.s3529589.mad_a1.Controller.meetingControllers;
 
 import android.app.TimePickerDialog;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 

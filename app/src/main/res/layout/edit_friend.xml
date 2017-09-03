@@ -7,13 +7,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/edit_friends_name"
-        />
+        android:textSize="20dp"
+        android:textColor="@color/headingTextColor"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp" />
 
     <EditText
         android:id="@+id/edit_friend_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLines="1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:inputType="text" />
 
 
@@ -21,13 +26,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/edit_friends_email"
-        />
+        android:textSize="20dp"
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/headingTextColor"
+        android:layout_marginTop="20dp" />
 
     <EditText
         android:id="@+id/edit_friend_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLines="1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:inputType="text" />
 
 
@@ -35,13 +45,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/edit_friends_birthday"
-        />
+        android:textSize="20dp"
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/headingTextColor"
+        android:layout_marginTop="20dp" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/edit_friends_select_birthday_button"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:id="@+id/selectDate"
-        />
+        android:layout_marginTop="5dp" />
 
 </LinearLayout>

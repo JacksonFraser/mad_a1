@@ -2,17 +2,18 @@
 
 <resources>
     <color name="menuTextColor">#eeeeee</color>
+    <color name="headingTextColor">#bc000000</color>
 
     <color name="colorPrimary">#000000</color>
     <color name="colorAccent">#3274ed</color>
 
-    <color name="mainMenuFriend">#931621</color>
+    <color name="mainMenuFriend">#336B87</color>
     <color name="mainMenuMeeting">#28464B</color>
 
-    <color name="friendMenuAdd">#326771</color>
-    <color name="friendMenuDisplay">#B79FAD</color>
+    <color name="friendMenuAdd">#486B00</color>
+    <color name="friendMenuDisplay">#4F4A45</color>
 
-    <color name="meetingMenuSchedule">#326771</color>
-    <color name="meetingMenuDisplay">#C47335</color>
+    <color name="meetingMenuSchedule">#04202C</color>
+    <color name="meetingMenuDisplay">#304040</color>
 
 </resources>
