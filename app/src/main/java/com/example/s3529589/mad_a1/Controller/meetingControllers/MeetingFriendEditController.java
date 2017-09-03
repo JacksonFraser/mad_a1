@@ -9,9 +9,9 @@ import com.example.s3529589.mad_a1.Model.CustomMeetingDetailsArrayAdapter;
 import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.Model.Friend;
 
-/**
- * Created by supriya on 3/09/17.
- */
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class MeetingFriendEditController implements View.OnClickListener {
     private int id;
@@ -25,7 +25,8 @@ public class MeetingFriendEditController implements View.OnClickListener {
     public void onClick(View v) {
         final String[] friends = new String[DataSingleton.getInstance().getFriendList().size()];
         final int[] friendsId = new int[DataSingleton.getInstance().getFriendList().size()];
-        boolean[] checkedItems = new boolean[DataSingleton.getInstance().getMeetingById(id).getFriendList().size()];
+        boolean[] checkedItems = new boolean[DataSingleton.getInstance().getFriendList().size()];
+
         int i = 0;
         for(Friend f : DataSingleton.getInstance().getFriendList()){
             friends[i] = f.getName();
@@ -33,7 +34,7 @@ public class MeetingFriendEditController implements View.OnClickListener {
             if(DataSingleton.getInstance().getMeetingById(id).getFriendList().contains(f)){
                 try{
                     checkedItems[i] = true;
-                }catch (Exception e){
+                }catch (ArrayIndexOutOfBoundsException e){
                     System.out.println(e.getMessage());
                 }
             }
@@ -49,6 +50,7 @@ public class MeetingFriendEditController implements View.OnClickListener {
                     for(Friend f : DataSingleton.getInstance().getFriendList()){
                         if(f.getId() == friendsId[which]){
                             DataSingleton.getInstance().getMeetingById(id).getFriendList().add(f);
+                            customMeetingDetailsArrayAdapter.notifyDataSetChanged();
                         }
                     }
                 }
@@ -56,6 +58,7 @@ public class MeetingFriendEditController implements View.OnClickListener {
                     for(Friend f : DataSingleton.getInstance().getFriendList()) {
                         if (f.getId() == friendsId[which]) {
                             DataSingleton.getInstance().getMeetingById(id).getFriendList().remove(f);
+                            customMeetingDetailsArrayAdapter.notifyDataSetChanged();
                         }
                     }
                 }
