@@ -19,7 +19,8 @@ public class DisplayMeetingActivity extends AppCompatActivity {
         setContentView(R.layout.display_meetings);
         createListView();
     }
-    private void createListView(){
+
+    private void createListView() {
         Collections.sort(DataSingleton.getInstance().getMeetingList(), new MeetingDateCompare());
         ListView lv = (ListView) findViewById(R.id.meeting_list_view);
 

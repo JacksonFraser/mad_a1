@@ -7,17 +7,15 @@ import android.provider.ContactsContract.CommonDataKinds.Email;
 import android.provider.ContactsContract.Contacts;
 import android.util.Log;
 
-public class ContactDataManager
-{
+public class ContactDataManager {
     private static final String LOG_TAG = ContactDataManager.class.getName();
     private Context context;
     private Intent intent;
 
-    public class ContactQueryException extends Exception
-    {
+    public class ContactQueryException extends Exception {
         private static final long serialVersionUID = 1L;
-        public ContactQueryException(String message)
-        {
+
+        public ContactQueryException(String message) {
             super(message);
         }
     }
@@ -27,8 +25,7 @@ public class ContactDataManager
      *                 was launched
      * @param anIntent The intent returned from the Android Contacts Picker Activity
      */
-    public ContactDataManager(Context aContext, Intent anIntent)
-    {
+    public ContactDataManager(Context aContext, Intent anIntent) {
         this.context = aContext;
         this.intent = anIntent;
     }
@@ -40,24 +37,20 @@ public class ContactDataManager
      * intent, {@link ContactDataManager#intent}
      * @throws ContactQueryException if querying the Contact Details Fails
      */
-    public String getContactName() throws ContactQueryException
-    {
+    public String getContactName() throws ContactQueryException {
         Cursor cursor = null;
         String name = null;
-        try
-        {
+        try {
             cursor = context.getContentResolver().query(intent.getData(), null,
                     null, null, null);
             if (cursor.moveToFirst())
                 name = cursor.getString(cursor
                         .getColumnIndexOrThrow(Contacts.DISPLAY_NAME));
 
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             Log.e(LOG_TAG, e.getMessage());
             throw new ContactQueryException(e.getMessage());
-        } finally
-        {
+        } finally {
             if (cursor != null)
                 cursor.close();
         }
@@ -72,12 +65,10 @@ public class ContactDataManager
      * intent, {@link ContactDataManager#intent}
      * @throws ContactQueryException if querying the Contact Details Fails
      */
-    public String getContactEmail() throws ContactQueryException
-    {
+    public String getContactEmail() throws ContactQueryException {
         Cursor cursor = null;
         String email = null;
-        try
-        {
+        try {
 
             cursor = context.getContentResolver().query(Email.CONTENT_URI,
                     null, Email.CONTACT_ID + "=?",
@@ -87,12 +78,10 @@ public class ContactDataManager
             if (cursor.moveToFirst())
                 email = cursor.getString(cursor.getColumnIndex(Email.DATA));
 
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             Log.e(LOG_TAG, e.getMessage());
             throw new ContactQueryException(e.getMessage());
-        } finally
-        {
+        } finally {
             if (cursor != null)
                 cursor.close();
         }

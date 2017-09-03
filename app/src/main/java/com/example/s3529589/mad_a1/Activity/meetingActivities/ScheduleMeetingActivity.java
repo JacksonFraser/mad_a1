@@ -41,20 +41,20 @@ public class ScheduleMeetingActivity extends AppCompatActivity {
 
         final List<Friend> meetingFriendList = new ArrayList<>();
         View pickFriends = findViewById(R.id.selectFriendsBtn);
-        pickFriends.setOnClickListener(new View.OnClickListener(){
+        pickFriends.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 final String[] friends = new String[DataSingleton.getInstance().getFriendList().size()];
                 final UUID[] friendsId = new UUID[DataSingleton.getInstance().getFriendList().size()];
                 int i = 0;
-                for(Friend f : DataSingleton.getInstance().getFriendList()){
-                    try{
+                for (Friend f : DataSingleton.getInstance().getFriendList()) {
+                    try {
                         friends[i] = f.getName();
                         friendsId[i] = f.getId();
                         i++;
 
-                    }catch (Exception e){
+                    } catch (Exception e) {
 
                     }
                 }
@@ -64,15 +64,15 @@ public class ScheduleMeetingActivity extends AppCompatActivity {
                 builder.setMultiChoiceItems(friends, null, new DialogInterface.OnMultiChoiceClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-                        if(isChecked){
-                            for(Friend f : DataSingleton.getInstance().getFriendList()){
-                                if(f.getId().equals(friendsId[which])){
+                        if (isChecked) {
+                            for (Friend f : DataSingleton.getInstance().getFriendList()) {
+                                if (f.getId().equals(friendsId[which])) {
                                     meetingFriendList.add(f);
                                 }
                             }
                         }
-                        if(!isChecked){
-                            for(Friend f : DataSingleton.getInstance().getFriendList()) {
+                        if (!isChecked) {
+                            for (Friend f : DataSingleton.getInstance().getFriendList()) {
                                 if (f.getId().equals(friendsId[which])) {
                                     meetingFriendList.remove(f);
                                 }
@@ -80,12 +80,12 @@ public class ScheduleMeetingActivity extends AppCompatActivity {
                         }
                     }
                 })
-                .setPositiveButton("Comfirm", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                        .setPositiveButton("Comfirm", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
 
-                    }
-                });
+                            }
+                        });
                 builder.show();
             }
         });

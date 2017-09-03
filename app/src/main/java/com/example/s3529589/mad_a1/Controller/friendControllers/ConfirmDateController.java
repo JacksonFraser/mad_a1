@@ -38,7 +38,7 @@ public class ConfirmDateController implements View.OnClickListener {
     public void onClick(View v) {
         int day = datePicker.getDayOfMonth();
         int month = datePicker.getMonth();
-        int year =  datePicker.getYear();
+        int year = datePicker.getYear();
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(year, month, day);
@@ -59,7 +59,6 @@ public class ConfirmDateController implements View.OnClickListener {
 
         try
         {
-            System.out.println(timeInDataFormat);
             // 2 mins either side of timeInDataFormat
             matched = dummyLocationService.getFriendLocationsForTime(DateFormat.getTimeInstance(
                     DateFormat.MEDIUM).parse(timeInDataFormat), 2, 0);
