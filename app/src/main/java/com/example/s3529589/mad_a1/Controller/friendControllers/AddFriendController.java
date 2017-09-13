@@ -1,12 +1,16 @@
 package com.example.s3529589.mad_a1.Controller.friendControllers;
 
-import android.content.Intent;
 import android.view.View;
-import com.example.s3529589.mad_a1.Activity.friendActivities.CreateFriendActivity;
 import com.example.s3529589.mad_a1.Activity.friendActivities.FriendMenuActivity;
+import com.example.s3529589.mad_a1.Model.WorkerRunnable;
+
+import java.util.Queue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class AddFriendController implements View.OnClickListener {
     private FriendMenuActivity friendMenuActivity;
+    private Thread createFriendThread;
+    private Queue<Thread> threadQueue = new LinkedBlockingQueue<>();
 
     public AddFriendController(FriendMenuActivity friendMenuActivity) {
         this.friendMenuActivity = friendMenuActivity;
@@ -14,8 +18,10 @@ public class AddFriendController implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        Intent it = new Intent(friendMenuActivity, CreateFriendActivity.class);
-        friendMenuActivity.startActivity(it);
-        friendMenuActivity.finish();
+
+        createFriendThread = new Thread(new WorkerRunnable(friendMenuActivity));
+        threadQueue.add(createFriendThread);
+        createFriendThread.setDaemon(true);
+        createFriendThread.start();
     }
 }

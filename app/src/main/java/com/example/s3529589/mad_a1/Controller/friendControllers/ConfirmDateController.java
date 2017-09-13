@@ -31,6 +31,7 @@ public class ConfirmDateController implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+
         int day = datePicker.getDayOfMonth();
         int month = datePicker.getMonth();
         int year = datePicker.getYear();

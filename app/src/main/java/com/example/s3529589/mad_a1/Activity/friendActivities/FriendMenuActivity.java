@@ -1,6 +1,7 @@
 package com.example.s3529589.mad_a1.Activity.friendActivities;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
@@ -9,6 +10,7 @@ import com.example.s3529589.mad_a1.Controller.friendControllers.DisplayFriendsCo
 import com.example.s3529589.mad_a1.R;
 
 public class FriendMenuActivity extends AppCompatActivity {
+    private Handler uiHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +23,11 @@ public class FriendMenuActivity extends AppCompatActivity {
 
         View displayBtn = findViewById(R.id.displayFriendsBtn);
         displayBtn.setOnClickListener(new DisplayFriendsController(this));
+        uiHandler = new Handler();
+    }
+
+    public Handler getHandler(){
+        return uiHandler;
     }
 }
 
