@@ -60,4 +60,8 @@ public class Friend {
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
+
+    public void setId(UUID uuid) {
+        this.uuid = uuid;
+    }
 }

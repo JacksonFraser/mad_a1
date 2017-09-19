@@ -40,7 +40,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String CREATE_CONTACTS_TABLE = "CREATE TABLE " + TABLE_FRIENDS +
-                "(" + KEY_ID_PRIMARY + " INTEGER PRIMARY KEY,"
+                "(" + KEY_ID_PRIMARY + " BLOB PRIMARY KEY,"
                     + KEY_ID         + " INTEGER,"
                     + KEY_NAME       + " TEXT,"
                     + KEY_EMAIL      + " TEXT,"
@@ -108,8 +108,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 Friend friend = new Friend();
-                friend.setName(cursor.getString(1));
-                friend.setEmail(cursor.getString(2));
+                friend.setId(UUID.fromString(cursor.getString(1)));
+                friend.setName(cursor.getString(2));
+                friend.setEmail(cursor.getString(3));
                 // Adding contact to list
                 friendList.add(friend);
             } while (cursor.moveToNext());

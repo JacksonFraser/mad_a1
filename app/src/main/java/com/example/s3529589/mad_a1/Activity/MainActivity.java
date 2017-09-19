@@ -2,9 +2,11 @@ package com.example.s3529589.mad_a1.Activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import com.example.s3529589.mad_a1.Controller.friendControllers.FriendMenuController;
 import com.example.s3529589.mad_a1.Controller.meetingControllers.MeetingMenuController;
+import com.example.s3529589.mad_a1.Database.DatabaseHandler;
 import com.example.s3529589.mad_a1.Exceptions.InvalidMeetingInput;
 import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.Model.Friend;
@@ -23,9 +25,35 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_menu);
+
+
+
+        DatabaseHandler db = new DatabaseHandler(this);
+
+        Calendar calendar = Calendar.getInstance();
+        Date date = calendar.getTime();
+
+        db.addFriend(new Friend("Bobby Jarzombek", "gmail@gmail", date, 0, 0));
+        db.addFriend(new Friend("Chris Dave", "newemail@me.com", date, 0, 0));
+        db.addFriend(new Friend("Sally Sanders", "sally@me.com", date, 0, 0));
+
+        // Reading all contacts
+        List<Friend> friends = db.getAllFriends();
+
+        for (Friend f : friends) {
+            String log = "Id: "+f.getId()+", Name: " + f.getName() + ", Email: " + f.getEmail() + " " +friends.size();
+            // Writing Contacts to log
+            Log.d("Entry number: ", log);
+            db.deleteFriend(f);
+        }
+
+
+
         addDummyData();
         View friendMenuBtn = findViewById(R.id.friendMenuBtn);
         friendMenuBtn.setOnClickListener(new FriendMenuController(this));
+
+
 
         View meetingMenuBtn = findViewById(R.id.meetingMenuBtn);
         meetingMenuBtn.setOnClickListener(new MeetingMenuController(this));
