@@ -20,6 +20,11 @@ public class Friend {
         this.lat = lat;
     }
 
+    public Friend() {
+
+    }
+
+
     public String getName() {
         return name;
     }
