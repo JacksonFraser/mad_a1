@@ -24,7 +24,6 @@ public class Friend {
 
     }
 
-
     public String getName() {
         return name;
     }

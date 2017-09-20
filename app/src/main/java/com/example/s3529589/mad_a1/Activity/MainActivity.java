@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         List<Friend> friends = db.getAllFriends();
 
         for (Friend f : friends) {
-            String log = "Id: "+f.getId()+", Name: " + f.getName() + ", Email: " + f.getEmail() + " " +friends.size();
+            String log = "Id: "+f.getId()+", Name: " + f.getName() + ", Email: " + f.getEmail() + ", Date: " + f.getBirthdate() + " " +friends.size();
             // Writing Contacts to log
             Log.d("Entry number: ", log);
             db.deleteFriend(f);

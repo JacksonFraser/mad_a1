@@ -11,6 +11,7 @@ import com.example.s3529589.mad_a1.Model.Friend;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -20,13 +21,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
 
-    // database name
     private static final String DATABASE_NAME = "friends_db";
-
-    // table name
     private static final String TABLE_FRIENDS = "friends";
 
-    // table columns names
     private static final String KEY_ID = "id";
     private static final String KEY_ID_PRIMARY = "id_primary";
     private static final String KEY_NAME = "name";
@@ -64,14 +61,20 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_ID, String.valueOf(friend.getId()));
         values.put(KEY_NAME, friend.getName());
         values.put(KEY_EMAIL, friend.getEmail());
-        values.put(KEY_BIRTHDATE, friend.getBirthdate().toString());
+
+        // format date to SQLite format before entering it into the DB
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
+        Date today = Calendar.getInstance().getTime();
+        String dateString = dateFormat.format(today);
+
+        values.put(KEY_BIRTHDATE, dateString);
 
         // Inserting Row
         db.insert(TABLE_FRIENDS, null, values);
-        db.close(); // Closing database connection
-
+        db.close();
     }
 
+    /*
     // Getting single friend
     public Friend getFriend(UUID id) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -81,12 +84,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 new String[]{String.valueOf(id)}, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
+
         String dateString = cursor.getString(3);
 
         Date d = null;
 
         try {
-            d = new SimpleDateFormat("dd/MM/yyyy").parse(dateString);
+            d = new SimpleDateFormat("YYYY-MM-DD HH:MM:SS.SSS").parse(dateString);
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -95,6 +99,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // return contact
         return friend;
     }
+    */
 
     // Getting All Friends
     public List<Friend> getAllFriends() {
@@ -111,6 +116,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 friend.setId(UUID.fromString(cursor.getString(1)));
                 friend.setName(cursor.getString(2));
                 friend.setEmail(cursor.getString(3));
+
+                String dateString = cursor.getString(4);
+                Date d = null;
+
+                try {
+                    d = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss").parse(dateString);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                friend.setBirthday(d);
+
                 // Adding contact to list
                 friendList.add(friend);
             } while (cursor.moveToNext());
@@ -142,7 +158,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // updating row
         return db.update(TABLE_FRIENDS, values, KEY_ID + " = ?",
                 new String[]{String.valueOf(friend.getId())});
-
     }
 
     // Deleting single friend
