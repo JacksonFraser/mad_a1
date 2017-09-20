@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
-import com.example.s3529589.mad_a1.Model.CustomMeetingDetailsArrayAdapter;
+import com.example.s3529589.mad_a1.Adapter.CustomMeetingDetailsArrayAdapter;
 import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.Model.MeetingDateCompare;
 import com.example.s3529589.mad_a1.R;

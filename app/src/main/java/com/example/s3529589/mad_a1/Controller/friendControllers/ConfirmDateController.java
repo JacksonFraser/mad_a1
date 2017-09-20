@@ -1,11 +1,13 @@
 package com.example.s3529589.mad_a1.Controller.friendControllers;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.Toast;
 import com.example.s3529589.mad_a1.Activity.friendActivities.DatePickerActivity;
 import com.example.s3529589.mad_a1.Activity.friendActivities.FriendMenuActivity;
+import com.example.s3529589.mad_a1.Database.FriendDatabaseHandler;
 import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.Model.DummyLocationService;
 import com.example.s3529589.mad_a1.Model.Friend;
@@ -64,8 +66,25 @@ public class ConfirmDateController implements View.OnClickListener {
 
         }
 
+
         // add to the Friends ArrayList
         DataSingleton.getInstance().getFriendList().add(new Friend(name, email, date, latitude, longitude));
+
+        // lol
+        FriendDatabaseHandler db = new FriendDatabaseHandler(datePickerActivity);
+        db.addFriend(new Friend(name, email, date, latitude, longitude));
+
+        // Reading all contacts
+        List<Friend> friends = db.getAllFriends();
+
+        for (Friend f : friends) {
+            String log = "Id: "+f.getId()+", Name: " + f.getName() + ", Email: " + f.getEmail() + ", Date: " + f.getBirthdate() + ", Longitude: " +
+                    f.getLon() + ", Latitude: " +  f.getLat() + " " + friends.size();
+            // Writing Contacts to log
+            Log.d("Entry number: ", log);
+            db.deleteFriend(f);
+        }
+
 
         Intent it = new Intent(datePickerActivity, FriendMenuActivity.class);
         datePickerActivity.startActivity(it);

@@ -1,4 +1,4 @@
-package com.example.s3529589.mad_a1.Model;
+package com.example.s3529589.mad_a1.Adapter;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -9,9 +9,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.s3529589.mad_a1.Adapter.CustomMeetingDetailsArrayAdapter;
 import com.example.s3529589.mad_a1.Controller.meetingControllers.MeetingFriendEditController;
 import com.example.s3529589.mad_a1.Controller.meetingControllers.MeetingTimeEditController;
 import com.example.s3529589.mad_a1.Exceptions.InvalidMeetingInput;
+import com.example.s3529589.mad_a1.Model.DataSingleton;
+import com.example.s3529589.mad_a1.Model.Meeting;
 import com.example.s3529589.mad_a1.R;
 
 import java.text.DateFormat;
