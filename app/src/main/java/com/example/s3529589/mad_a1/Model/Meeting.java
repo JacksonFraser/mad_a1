@@ -35,6 +35,10 @@ public class Meeting {
         this.location = location;
     }
 
+    public Meeting(){
+
+    }
+
     public UUID getId() {
         return uuid;
     }
@@ -61,6 +65,14 @@ public class Meeting {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public void setId(UUID uuid) {
+        this.uuid = uuid;
     }
 
 

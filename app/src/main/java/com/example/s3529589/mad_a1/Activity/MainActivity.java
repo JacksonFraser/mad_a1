@@ -7,6 +7,7 @@ import android.view.View;
 import com.example.s3529589.mad_a1.Controller.friendControllers.FriendMenuController;
 import com.example.s3529589.mad_a1.Controller.meetingControllers.MeetingMenuController;
 import com.example.s3529589.mad_a1.Database.DatabaseHandler;
+import com.example.s3529589.mad_a1.Database.MeetingDatabaseHandler;
 import com.example.s3529589.mad_a1.Exceptions.InvalidMeetingInput;
 import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.Model.Friend;
@@ -28,23 +29,58 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        DatabaseHandler db = new DatabaseHandler(this);
+        DatabaseHandler fdb = new DatabaseHandler(this);
+
+        MeetingDatabaseHandler mdb = new MeetingDatabaseHandler(this);
 
         Calendar calendar = Calendar.getInstance();
-        Date date = calendar.getTime();
+        Date date1 = calendar.getTime();
+        Date date2 = calendar.getTime();
 
-        db.addFriend(new Friend("Bobby Jarzombek", "gmail@gmail", date, 0, 0));
-        db.addFriend(new Friend("Chris Dave", "newemail@me.com", date, 0, 0));
-        db.addFriend(new Friend("Sally Sanders", "sally@me.com", date, 0, 0));
+        fdb.addFriend(new Friend("Bobby Jarzombek", "gmail@gmail", date1, 0, 0));
+        fdb.addFriend(new Friend("Chris Dave", "newemail@me.com", date1, 0, 0));
+        fdb.addFriend(new Friend("Sally Sanders", "sally@me.com", date1, 0, 0));
+
+
+        try {
+            Friend f1 = new Friend("Bobby Jarzombek", "gmail@gmail", date1, 0, 0);
+            Friend f2 = new Friend("Chris Dave", "newemail@me.com", date1, 0, 0);
+            Friend f3 = new Friend("Sally Sanders", "sally@me.com", date1, 0, 0);
+            Friend f4 = new Friend("dennis Le Mennis", "dennis@me.com", date1, 0, 0);
+            List<Friend> friendList1 = new ArrayList<>();
+
+            friendList1.add(f1);
+            friendList1.add(f2);
+            friendList1.add(f3);
+            friendList1.add(f4);
+
+            List<Friend> friendList2 = new ArrayList<>();
+
+
+            Meeting m1 = new Meeting("meeting 1", date1, date2, friendList1, "+330.1131, +11.11");
+            Meeting m2 = new Meeting("meeting 2", date1, date2, friendList2, "+331.131, +111");
+            mdb.addMeeting(m1);
+            mdb.addMeeting(m2);
+
+
+        } catch (InvalidMeetingInput invalidMeetingInput) {
+            invalidMeetingInput.printStackTrace();
+        }
 
         // Reading all contacts
-        List<Friend> friends = db.getAllFriends();
+        List<Meeting> meetings = mdb.getAllMeetings();
 
-        for (Friend f : friends) {
-            String log = "Id: "+f.getId()+", Name: " + f.getName() + ", Email: " + f.getEmail() + ", Date: " + f.getBirthdate() + " " +friends.size();
+        for (Meeting m : meetings) {
+            String log = "Id: "     + m.getId()
+                    + ", Title: "   + m.getTitle()
+                    + ", Start: "   + m.getStartTime()
+                    + ", End "      + m.getFinishTime()
+                    + ", Location"  + m.getLocation()
+                    + " " +meetings.size();
+
             // Writing Contacts to log
             Log.d("Entry number: ", log);
-            db.deleteFriend(f);
+            mdb.deleteFMeeting(m);
         }
 
 
