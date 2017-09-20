@@ -1,4 +1,4 @@
-package com.example.s3529589.mad_a1.Model;
+package com.example.s3529589.mad_a1.Adapter;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -8,7 +8,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.s3529589.mad_a1.Adapter.CustomFriendDetailsArrayAdapter;
 import com.example.s3529589.mad_a1.Controller.friendControllers.EditBirthdayController;
+import com.example.s3529589.mad_a1.Model.DataSingleton;
+import com.example.s3529589.mad_a1.Model.Friend;
+import com.example.s3529589.mad_a1.Model.Meeting;
 import com.example.s3529589.mad_a1.R;
 
 import java.util.UUID;

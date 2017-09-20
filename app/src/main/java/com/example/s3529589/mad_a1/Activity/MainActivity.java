@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         db.addFriend(new Friend("Chris Dave", "newemail@me.com", date, 0, 0));
         db.addFriend(new Friend("Sally Sanders", "sally@me.com", date, 0, 0));
 
+        /*
         // Reading all contacts
         List<Friend> friends = db.getAllFriends();
 
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
             Log.d("Entry number: ", log);
             db.deleteFriend(f);
         }
+        */
 
         addDummyData();
         View friendMenuBtn = findViewById(R.id.friendMenuBtn);

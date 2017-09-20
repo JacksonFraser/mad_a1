@@ -4,7 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.view.View;
 
-import com.example.s3529589.mad_a1.Model.CustomMeetingDetailsArrayAdapter;
+import com.example.s3529589.mad_a1.Adapter.CustomMeetingDetailsArrayAdapter;
 import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.Model.Friend;
 
