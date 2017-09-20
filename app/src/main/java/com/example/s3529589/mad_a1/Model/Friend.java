@@ -60,6 +60,14 @@ public class Friend {
         this.birthday = birthday;
     }
 
+    public void setLon(double lon) {
+        this.lon = lon;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
     public void setId(UUID uuid) {
         this.uuid = uuid;
     }

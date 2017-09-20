@@ -16,7 +16,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-public class DatabaseHandler extends SQLiteOpenHelper {
+public class FriendDatabaseHandler extends SQLiteOpenHelper {
 
 
     private static final int DATABASE_VERSION = 1;
@@ -28,9 +28,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_ID_PRIMARY = "id_primary";
     private static final String KEY_NAME = "name";
     private static final String KEY_EMAIL = "email";
-    private static final String KEY_BIRTHDATE = "birthdate";
+    private static final String KEY_BIRTHDAY = "birthday";
+    private static final String KEY_LATITUDE = "latitude";
+    private static final String KEY_LONGITUDE = "longitude";
 
-    public DatabaseHandler(Context context) {
+    public FriendDatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
@@ -41,14 +43,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                     + KEY_ID         + " INTEGER,"
                     + KEY_NAME       + " TEXT,"
                     + KEY_EMAIL      + " TEXT,"
-                    + KEY_BIRTHDATE  + " INTEGER" + ")";
+                    + KEY_BIRTHDAY   + " TEXT,"
+                    + KEY_LATITUDE   + " TEXT,"
+                    + KEY_LONGITUDE  + " TEXT" + ")";
         sqLiteDatabase.execSQL(CREATE_CONTACTS_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int j) {
         // Drop older table if existed
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_FRIENDS);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + DATABASE_NAME);
 
         onCreate(sqLiteDatabase);
     }
@@ -62,12 +66,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_NAME, friend.getName());
         values.put(KEY_EMAIL, friend.getEmail());
 
-        // format date to SQLite format before entering it into the DB
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
+        // format birthday into string before entering into SQLite db
+        SimpleDateFormat dateFormat = new SimpleDateFormat("d-MMM-yyyy, h:mm:ss a");
         Date today = Calendar.getInstance().getTime();
         String dateString = dateFormat.format(today);
+        values.put(KEY_BIRTHDAY, dateString);
 
-        values.put(KEY_BIRTHDATE, dateString);
+        values.put(KEY_LONGITUDE, friend.getLon());
+        values.put(KEY_LATITUDE, friend.getLat());
 
         // Inserting Row
         db.insert(TABLE_FRIENDS, null, values);
@@ -104,7 +110,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     // Getting All Friends
     public List<Friend> getAllFriends() {
         List<Friend> friendList = new ArrayList<Friend>();
-        // Select All Query
         String selectQuery = "SELECT  * FROM " + TABLE_FRIENDS;
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -113,30 +118,32 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 Friend friend = new Friend();
+
+                // set the friend's variables
                 friend.setId(UUID.fromString(cursor.getString(1)));
                 friend.setName(cursor.getString(2));
                 friend.setEmail(cursor.getString(3));
 
                 String dateString = cursor.getString(4);
-                Date d = null;
 
+                Date date = null;
                 try {
-                    d = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss").parse(dateString);
+                    date = new SimpleDateFormat("d-MMM-yyyy, h:mm:ss a").parse(dateString);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-                friend.setBirthday(d);
+                friend.setBirthday(date);
 
-                // Adding contact to list
+                friend.setLat(cursor.getDouble(5));
+                friend.setLon(cursor.getDouble(6));
                 friendList.add(friend);
+
             } while (cursor.moveToNext());
         }
-
-        // return contact list
         return friendList;
     }
 
-    // Getting contacts Count
+    // Number of contacts in DB
     public int getContactsCount() {
         String countQuery = "SELECT  * FROM " + TABLE_FRIENDS;
         SQLiteDatabase db = this.getReadableDatabase();
@@ -147,6 +154,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return cursor.getCount();
     }
 
+    /*
     // Updating single contact
     public int updateFriend(Friend friend) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -159,8 +167,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return db.update(TABLE_FRIENDS, values, KEY_ID + " = ?",
                 new String[]{String.valueOf(friend.getId())});
     }
+    */
 
-    // Deleting single friend
+    // Delete friend
     public void deleteFriend(Friend friend) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_FRIENDS, KEY_ID + " = ?",
