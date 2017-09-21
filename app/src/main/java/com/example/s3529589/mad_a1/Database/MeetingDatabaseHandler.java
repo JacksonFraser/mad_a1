@@ -19,7 +19,6 @@ import java.util.UUID;
 
 public class MeetingDatabaseHandler extends SQLiteOpenHelper {
 
-
     private static final int DATABASE_VERSION = 1;
 
     private static final String DATABASE_NAME = "meetings_db";

@@ -81,7 +81,7 @@ public class ConfirmDateController implements View.OnClickListener {
             String log = "Id: "+f.getId()+", Name: " + f.getName() + ", Email: " + f.getEmail() + ", Date: " + f.getBirthdate() + ", Longitude: " +
                     f.getLon() + ", Latitude: " +  f.getLat() + " " + friends.size();
             // Writing Contacts to log
-            Log.d("Entry number: ", log);
+            Log.d("Entry number", log);
             db.deleteFriend(f);
         }
 
