@@ -66,11 +66,10 @@ public class ConfirmDateController implements View.OnClickListener {
 
         }
 
-
         // add to the Friends ArrayList
         DataSingleton.getInstance().getFriendList().add(new Friend(name, email, date, latitude, longitude));
 
-        // lol
+        // database
         FriendDatabaseHandler db = new FriendDatabaseHandler(datePickerActivity);
         db.addFriend(new Friend(name, email, date, latitude, longitude));
 
@@ -82,7 +81,10 @@ public class ConfirmDateController implements View.OnClickListener {
                     f.getLon() + ", Latitude: " +  f.getLat() + " " + friends.size();
             // Writing Contacts to log
             Log.d("Entry number", log);
-            db.deleteFriend(f);
+
+
+            // delete all friends for testing purposes
+            //db.deleteFriend(f);
         }
 
 

@@ -10,14 +10,18 @@ import android.widget.Toast;
 
 import com.example.s3529589.mad_a1.Adapter.CustomFriendDetailsArrayAdapter;
 import com.example.s3529589.mad_a1.Controller.friendControllers.EditBirthdayController;
+import com.example.s3529589.mad_a1.Database.FriendDatabaseHandler;
 import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.Model.Friend;
 import com.example.s3529589.mad_a1.Model.Meeting;
 import com.example.s3529589.mad_a1.R;
 
+import java.util.List;
 import java.util.UUID;
 
 public class CustomEditFriendDetailsAlertDialog extends AlertDialog.Builder {
+    FriendDatabaseHandler db = new FriendDatabaseHandler(this.getContext());
+
     private CustomFriendDetailsArrayAdapter customFriendDetailsArrayAdapter;
     private UUID id;
 
@@ -25,6 +29,7 @@ public class CustomEditFriendDetailsAlertDialog extends AlertDialog.Builder {
         super(customFriendDetailsArrayAdapter.getContext());
         this.customFriendDetailsArrayAdapter = customFriendDetailsArrayAdapter;
         this.id = id;
+
         final String[] holdOptions = {
                 "Edit", "Delete"
         };
@@ -47,6 +52,7 @@ public class CustomEditFriendDetailsAlertDialog extends AlertDialog.Builder {
 
 
     private void removeFriend() {
+        /*
         try {
             for (Friend f : DataSingleton.getInstance().getFriendList()) {
                 if (f.getId() == id) {
@@ -54,6 +60,30 @@ public class CustomEditFriendDetailsAlertDialog extends AlertDialog.Builder {
 
                     //if the friend exists in any of the meeting, remove them.
                     removeFriendFromMeeting(f);
+                    customFriendDetailsArrayAdapter.notifyDataSetChanged();
+                    Toast.makeText(customFriendDetailsArrayAdapter.getContext(), R.string.friend_removed_toast, Toast.LENGTH_LONG).show();
+                }
+            }
+
+        } catch (Exception e) {
+        }
+        */
+
+        try {
+            System.out.println("Got here");
+            for (Friend f : db.getAllFriends()) {
+                System.out.println("Got here2");
+                System.out.println(f.getId());
+                System.out.println(id);
+                if (f.getId().equals(id)) {
+                    db.deleteFriend(f);
+                    System.out.println("Got here3");
+
+                    //if the friend exists in any of the meeting, remove them.
+                    //
+                    // NOT IMPLEMENTED YET
+                    //
+                    // removeFriendFromMeeting(friend);
                     customFriendDetailsArrayAdapter.notifyDataSetChanged();
                     Toast.makeText(customFriendDetailsArrayAdapter.getContext(), R.string.friend_removed_toast, Toast.LENGTH_LONG).show();
                 }
@@ -72,10 +102,12 @@ public class CustomEditFriendDetailsAlertDialog extends AlertDialog.Builder {
         final View textEntryView = factory.inflate(R.layout.edit_friend, null);
 
         final EditText editName = (EditText) textEntryView.findViewById(R.id.edit_friend_name);
-        editName.setHint(DataSingleton.getInstance().getFriendById(id).getName());
+        //editName.setHint(DataSingleton.getInstance().getFriendById(id).getName());
+        editName.setHint(db.getFriend(id).getName());
 
         final EditText editEmail = (EditText) textEntryView.findViewById(R.id.edit_friend_email);
-        editEmail.setHint(DataSingleton.getInstance().getFriendById(id).getEmail());
+        //editEmail.setHint(DataSingleton.getInstance().getFriendById(id).getEmail());
+        editEmail.setHint(db.getFriend(id).getEmail());
 
         final Button editBtn = (Button) textEntryView.findViewById(R.id.selectDate);
 

@@ -103,6 +103,7 @@ public class FriendDatabaseHandler extends SQLiteOpenHelper {
 
         Friend friend = new Friend((cursor.getString(1)), cursor.getString(2),
                 date, cursor.getDouble(4), cursor.getDouble(5));
+        friend.setId(id);
 
         return friend;
     }

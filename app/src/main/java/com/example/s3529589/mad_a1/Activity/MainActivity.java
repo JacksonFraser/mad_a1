@@ -60,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
 
             List<Friend> friendList2 = new ArrayList<>();
 
-
             Meeting m1 = new Meeting("meeting 1", date1, date2, friendList1, "+330.1131, +11.11");
             Meeting m2 = new Meeting("meeting 2", date1, date2, friendList2, "+331.131, +111");
             DataSingleton.getInstance().getMeetingList().add(m1);
@@ -84,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
         fdb.addFriend(new Friend("Chris Dave", "newemail@me.com", date1, 0, 0));
         fdb.addFriend(new Friend("Sally Sanders", "sally@me.com", date1, 0, 0));
 
-
         try {
             Friend f1 = new Friend("Bobby Jarzombek", "gmail@gmail", date1, 0, 0);
             Friend f2 = new Friend("Chris Dave", "newemail@me.com", date1, 0, 0);
@@ -99,12 +97,10 @@ public class MainActivity extends AppCompatActivity {
 
             List<Friend> friendList2 = new ArrayList<>();
 
-
             Meeting m1 = new Meeting("meeting 1", date1, date2, friendList1, "+330.1131, +11.11");
             Meeting m2 = new Meeting("meeting 2", date1, date2, friendList2, "+331.131, +111");
             mdb.addMeeting(m1);
             mdb.addMeeting(m2);
-
 
         } catch (InvalidMeetingInput invalidMeetingInput) {
             invalidMeetingInput.printStackTrace();
