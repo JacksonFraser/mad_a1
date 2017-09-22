@@ -163,7 +163,7 @@ public class CustomEditFriendDetailsAlertDialog extends AlertDialog.Builder {
 
         for (Friend f : db.getAllFriends()) {
             db.updateFriend(id.toString(), name, email);
-            customFriendDetailsArrayAdapter.notifyDataSetChanged();
+            customFriendDetailsArrayAdapter.updateItems(db.getAllFriends());
         }
     }
 

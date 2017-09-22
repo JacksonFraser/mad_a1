@@ -71,4 +71,10 @@ public class CustomFriendDetailsArrayAdapter extends ArrayAdapter<Friend> {
         TextView friendLocation;
         ImageView displayImg;
     }
+
+    public void updateItems(List<Friend> friendList){
+        this.friendList = friendList;
+        notifyDataSetChanged();
+    }
+
 }

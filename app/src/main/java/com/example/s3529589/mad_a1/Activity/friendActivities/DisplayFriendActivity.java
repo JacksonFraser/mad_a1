@@ -15,6 +15,8 @@ import java.util.List;
 
 public class DisplayFriendActivity extends AppCompatActivity {
 
+    private FriendDatabaseHandler fdbh;
+    private  CustomFriendDetailsArrayAdapter customFriendDetailsArrayAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,13 +37,14 @@ public class DisplayFriendActivity extends AppCompatActivity {
         */
 
         // load the listview based on the friends database
-        FriendDatabaseHandler db = new FriendDatabaseHandler(this);
-        List<Friend> friendsInDatabase = db.getAllFriends();
+        fdbh = new FriendDatabaseHandler(this);
 
         ListView lv = (ListView) findViewById(R.id.list_view);
         // show when the list is empty
         lv.setEmptyView(findViewById(R.id.list_view_empty));
-        lv.setAdapter(new CustomFriendDetailsArrayAdapter(this, friendsInDatabase));
+
+        customFriendDetailsArrayAdapter = new CustomFriendDetailsArrayAdapter(this,fdbh.getAllFriends());
+        lv.setAdapter(customFriendDetailsArrayAdapter);
     }
 
     @Override
@@ -52,5 +55,7 @@ public class DisplayFriendActivity extends AppCompatActivity {
         //finish DisplayFriendActivity
         finish();
     }
+
+
 
 }
