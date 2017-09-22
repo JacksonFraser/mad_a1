@@ -24,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        // Delete the database
+        // this.deleteDatabase("friends_db");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_menu);
 

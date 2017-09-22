@@ -144,8 +144,8 @@ public class CustomEditFriendDetailsAlertDialog extends AlertDialog.Builder {
     }
 
     private void editFriendDetails(UUID id, String name, String email) {
+        /*
         try {
-
             for (Friend f : DataSingleton.getInstance().getFriendList()) {
                 if (f.getId().equals(id)) {
                     if (!name.isEmpty())
@@ -159,7 +159,14 @@ public class CustomEditFriendDetailsAlertDialog extends AlertDialog.Builder {
         } catch (Exception e) {
 
         }
+        */
+
+        for (Friend f : db.getAllFriends()) {
+            db.updateFriend(id.toString(), name, email);
+            customFriendDetailsArrayAdapter.notifyDataSetChanged();
+        }
     }
+
 
     private void removeFriendFromMeeting(Friend f) {
         for (Meeting m : DataSingleton.getInstance().getMeetingList())

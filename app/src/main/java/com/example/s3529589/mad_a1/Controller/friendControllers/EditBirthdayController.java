@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.view.View;
 import android.widget.DatePicker;
 
+import com.example.s3529589.mad_a1.Database.FriendDatabaseHandler;
 import com.example.s3529589.mad_a1.Model.DataSingleton;
 
 import java.util.Calendar;
@@ -32,12 +33,15 @@ public class EditBirthdayController implements View.OnClickListener {
         DatePickerDialog.OnDateSetListener listener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                FriendDatabaseHandler db = new FriendDatabaseHandler(context);
+
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(year, month, dayOfMonth);
 
                 Date date = calendar.getTime();
 
-                DataSingleton.getInstance().getFriendById(id).setBirthday(date);
+                //DataSingleton.getInstance().getFriendById(id).setBirthday(date);
+                db.getFriend(id).setBirthday(date);
             }
         };
 
