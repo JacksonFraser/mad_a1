@@ -84,7 +84,6 @@ public class CustomEditFriendDetailsAlertDialog extends AlertDialog.Builder {
                     // NOT IMPLEMENTED YET
                     //
                     // removeFriendFromMeeting(friend);
-                    customFriendDetailsArrayAdapter.notifyDataSetChanged();
                     Toast.makeText(customFriendDetailsArrayAdapter.getContext(), R.string.friend_removed_toast, Toast.LENGTH_LONG).show();
                 }
             }

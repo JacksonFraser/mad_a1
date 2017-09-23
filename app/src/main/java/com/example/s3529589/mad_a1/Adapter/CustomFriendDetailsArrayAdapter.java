@@ -73,8 +73,12 @@ public class CustomFriendDetailsArrayAdapter extends ArrayAdapter<Friend> {
     }
 
     public void updateItems(List<Friend> friendList){
-        this.friendList = friendList;
-        notifyDataSetChanged();
+        if(friendList.isEmpty()){
+            notifyDataSetChanged();
+        } else {
+            this.friendList = friendList;
+            notifyDataSetChanged();
+        }
     }
 
 }

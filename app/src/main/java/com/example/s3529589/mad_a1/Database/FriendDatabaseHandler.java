@@ -67,14 +67,13 @@ public class FriendDatabaseHandler extends SQLiteOpenHelper {
 
         // format birthday into string before entering into SQLite db
         SimpleDateFormat dateFormat = new SimpleDateFormat("d-MMM-yyyy, h:mm:ss a");
-        Date today = Calendar.getInstance().getTime();
+        Date today = friend.getBirthdate();
         String dateString = dateFormat.format(today);
         values.put(KEY_BIRTHDAY, dateString);
 
         values.put(KEY_LONGITUDE, friend.getLon());
         values.put(KEY_LATITUDE, friend.getLat());
 
-        // Inserting Row
         db.insert(TABLE_FRIENDS, null, values);
         db.close();
     }
@@ -174,5 +173,4 @@ public class FriendDatabaseHandler extends SQLiteOpenHelper {
 
         return cursor.getCount();
     }
-
 }
