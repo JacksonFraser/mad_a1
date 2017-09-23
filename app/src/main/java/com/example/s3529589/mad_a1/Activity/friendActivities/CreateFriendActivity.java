@@ -2,55 +2,67 @@ package com.example.s3529589.mad_a1.Activity.friendActivities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.widget.Button;
+import android.widget.DatePicker;
 
-import com.example.s3529589.mad_a1.Model.ContactDataManager;
+import com.example.s3529589.mad_a1.Controller.friendControllers.ConfirmDateController;
+import com.example.s3529589.mad_a1.Database.FriendDatabaseHandler;
+import com.example.s3529589.mad_a1.Model.DataSingleton;
+import com.example.s3529589.mad_a1.Model.Friend;
 import com.example.s3529589.mad_a1.R;
 
+import java.util.Date;
+import java.util.List;
+
 public class CreateFriendActivity extends AppCompatActivity {
+    private Button confirmBtn;
+    private DatePicker datePicker;
     private String name;
     private String email;
-    private int PICK_CONTACTS = 100;
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.friends_menu);
+        setContentView(R.layout.date_picker);
 
-        // check();
-        Intent contactPickerIntent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
-        startActivityForResult(contactPickerIntent, PICK_CONTACTS);
+        confirmBtn = (Button) findViewById(R.id.confirmDateBtn);
+        datePicker = (DatePicker) findViewById(R.id.datePicker);
+
+        // receive intents from SelectContactActivity
+        Intent incomingIntent = getIntent();
+        name = incomingIntent.getStringExtra("name");
+        email = incomingIntent.getStringExtra("email");
+
+        confirmBtn.setOnClickListener(new ConfirmDateController(name, email, datePicker, this));
+    }
+
+    public void createFriend(String name, String email, Date date, double latitude, double longitude) {
+        // add to the Friends ArrayList
+        DataSingleton.getInstance().getFriendList().add(new Friend(name, email, date, latitude, longitude));
+
+        // database
+        FriendDatabaseHandler db = new FriendDatabaseHandler(this);
+        db.addFriend(new Friend(name, email, date, latitude, longitude));
+
+        // Reading all contacts
+        List<Friend> friends = db.getAllFriends();
+
+        for (Friend f : friends) {
+            String log = "Id: "+f.getId()+", Name: " + f.getName() + ", Email: " + f.getEmail() + ", Date: " + f.getBirthdate() + ", Longitude: " +
+                    f.getLon() + ", Latitude: " +  f.getLat() + " " + friends.size();
+            // Writing Contacts to log
+            Log.d("CREATE_FRIEND", log);
+        }
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 100) {
-            if (resultCode == RESULT_OK) {
-                ContactDataManager contactsManager = new ContactDataManager(this, data);
-                try {
-                    this.name = contactsManager.getContactName();
-                    this.email = contactsManager.getContactEmail();
+    public void onBackPressed() {
+        Intent it = new Intent(CreateFriendActivity.this, FriendMenuActivity.class);
+        startActivity(it);
 
-                    // send data to DatePickerActivity
-                    Intent it = new Intent(CreateFriendActivity.this, DatePickerActivity.class);
-                    it.putExtra("name", this.name);
-                    it.putExtra("email", this.email);
-
-                    // start DatePickerActivity
-                    startActivity(it);
-
-                    // finish PickContactActivity
-                    finish();
-
-                } catch (ContactDataManager.ContactQueryException e) {
-                }
-            } else {
-                Intent it = new Intent(CreateFriendActivity.this, FriendMenuActivity.class);
-                startActivity(it);
-                // finish PickContactActivity
-                finish();
-            }
-        }
+        //finish CreateFriendActivity
+        finish();
     }
 }
+

@@ -16,7 +16,5 @@ public class FriendMenuController implements View.OnClickListener {
     public void onClick(View v) {
         Intent it = new Intent(mainActivity, FriendMenuActivity.class);
         mainActivity.startActivity(it);
-
     }
-
 }

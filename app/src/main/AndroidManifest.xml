@@ -27,13 +27,13 @@
         <activity android:name=".Activity.meetingActivities.MeetingMenuActivity"
             android:label="@string/meeting_menu"></activity>
 
-        <activity android:name=".Activity.friendActivities.DatePickerActivity"
+        <activity android:name=".Activity.friendActivities.CreateFriendActivity"
             android:label="@string/date_picker"></activity>
 
         <activity android:name=".Activity.friendActivities.DisplayFriendActivity"
             android:label="@string/view_friends"></activity>
 
-        <activity android:name=".Activity.friendActivities.CreateFriendActivity"></activity>
+        <activity android:name=".Activity.friendActivities.SelectContactActivity"></activity>
 
         <activity android:name=".Activity.meetingActivities.ScheduleMeetingActivity"
             android:label="@string/schedule_menu"></activity>

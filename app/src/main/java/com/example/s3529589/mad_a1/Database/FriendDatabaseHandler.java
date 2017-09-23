@@ -67,8 +67,8 @@ public class FriendDatabaseHandler extends SQLiteOpenHelper {
 
         // format birthday into string before entering into SQLite db
         SimpleDateFormat dateFormat = new SimpleDateFormat("d-MMM-yyyy, h:mm:ss a");
-        Date today = friend.getBirthdate();
-        String dateString = dateFormat.format(today);
+        Date friendBirthdate = friend.getBirthdate();
+        String dateString = dateFormat.format(friendBirthdate);
         values.put(KEY_BIRTHDAY, dateString);
 
         values.put(KEY_LONGITUDE, friend.getLon());
@@ -77,7 +77,6 @@ public class FriendDatabaseHandler extends SQLiteOpenHelper {
         db.insert(TABLE_FRIENDS, null, values);
         db.close();
     }
-
 
     // RETRIEVE
     public Friend getFriend(UUID id) {
@@ -115,10 +114,13 @@ public class FriendDatabaseHandler extends SQLiteOpenHelper {
         if (!email.isEmpty())
             values.put(KEY_EMAIL, email);
 
-        return db.update(TABLE_FRIENDS, values, KEY_ID + " = ?",
-                new String[]{String.valueOf((UUID.fromString(id)))});
+        if (name.isEmpty() && email.isEmpty()) {
+            return -1;
+        } else {
+            return db.update(TABLE_FRIENDS, values, KEY_ID + " = ?",
+                    new String[]{String.valueOf((UUID.fromString(id)))});
+        }
     }
-
 
     // DELETE
     public void deleteFriend(Friend friend) {
