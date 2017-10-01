@@ -106,7 +106,10 @@ public class MainActivity extends AppCompatActivity {
             mdb.addMeeting(m1);
             mdb.addMeeting(m2);
 
-
+            System.out.println("THIS IS THE DATE  " + m1.getStartTime());
+            for(Meeting m : mdb.getAllMeetings()){
+                System.out.println(m.getStartTime());
+            }
         } catch (InvalidMeetingInput invalidMeetingInput) {
             invalidMeetingInput.printStackTrace();
         }
