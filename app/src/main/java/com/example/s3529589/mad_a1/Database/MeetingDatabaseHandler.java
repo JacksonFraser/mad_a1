@@ -172,7 +172,7 @@ public class MeetingDatabaseHandler extends SQLiteOpenHelper {
     }
 
     // Deleting single friend
-    public void deleteFMeeting(Meeting meeting) {
+    public void deleteMeeting(Meeting meeting) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_MEETINGS, KEY_ID + " = ?",
                 new String[]{String.valueOf(meeting.getId())});

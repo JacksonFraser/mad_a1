@@ -25,7 +25,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         // Delete the database
-        // this.deleteDatabase("friends_db");
+        this.deleteDatabase("friends_db");
+        this.deleteDatabase("meetings_db");
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_menu);
@@ -36,8 +37,7 @@ public class MainActivity extends AppCompatActivity {
         View meetingMenuBtn = findViewById(R.id.meetingMenuBtn);
 
         meetingMenuBtn.setOnClickListener(new MeetingMenuController(this));
-        addDummyData();
-        //addDummyDatabaseStuff();
+        addDummyDatabaseStuff();
     }
 
     private void addDummyData() {
@@ -82,15 +82,16 @@ public class MainActivity extends AppCompatActivity {
         Date date1 = calendar.getTime();
         Date date2 = calendar.getTime();
 
-        fdb.addFriend(new Friend("Bobby Jarzombek", "gmail@gmail", date1, 0, 0));
-        fdb.addFriend(new Friend("Chris Dave", "newemail@me.com", date1, 0, 0));
-        fdb.addFriend(new Friend("Sally Sanders", "sally@me.com", date1, 0, 0));
+        Friend f1 = new Friend("Bobby Jarzombek", "gmail@gmail", date1, 0, 0);
+        Friend f2 = new Friend("Chris Dave", "newemail@me.com", date1, 0, 0);
+        Friend f3 = new Friend("Sally Sanders", "sally@me.com", date1, 0, 0);
+        Friend f4 = new Friend("dennis Le Mennis", "dennis@me.com", date1, 0, 0);
+        fdb.addFriend(f1);
+        fdb.addFriend(f2);
+        fdb.addFriend(f3);
+        fdb.addFriend(f4);
 
         try {
-            Friend f1 = new Friend("Bobby Jarzombek", "gmail@gmail", date1, 0, 0);
-            Friend f2 = new Friend("Chris Dave", "newemail@me.com", date1, 0, 0);
-            Friend f3 = new Friend("Sally Sanders", "sally@me.com", date1, 0, 0);
-            Friend f4 = new Friend("dennis Le Mennis", "dennis@me.com", date1, 0, 0);
             List<Friend> friendList1 = new ArrayList<>();
 
             friendList1.add(f1);
@@ -104,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
             Meeting m2 = new Meeting("meeting 2", date1, date2, friendList2, "+331.131, +111");
             mdb.addMeeting(m1);
             mdb.addMeeting(m2);
+
 
         } catch (InvalidMeetingInput invalidMeetingInput) {
             invalidMeetingInput.printStackTrace();

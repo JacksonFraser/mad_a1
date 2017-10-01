@@ -90,4 +90,15 @@ public class CustomMeetingDetailsArrayAdapter extends ArrayAdapter<Meeting> {
         TextView meetingLocationTV;
     }
 
+    public void updateItems(List<Meeting> meetingList){
+        super.clear();
+        if(meetingList.isEmpty()){
+            notifyDataSetChanged();
+        } else {
+            this.meetingList = meetingList;
+            super.addAll(meetingList);
+            notifyDataSetChanged();
+        }
+    }
+
 }
