@@ -24,7 +24,7 @@ public class DatabaseManagerSingleton {
 
     }
 
-    public synchronized DatabaseManagerSingleton getInstance(){
+    public static synchronized DatabaseManagerSingleton getInstance(){
         if(instance == null){
             throw new IllegalStateException("Error. DatabaseManagerSingleton hasn't been initialised yet...");
         }

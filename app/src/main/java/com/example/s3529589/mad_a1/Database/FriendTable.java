@@ -1,8 +1,17 @@
 package com.example.s3529589.mad_a1.Database;
 
+import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.s3529589.mad_a1.Model.Friend;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by s3529589 on 10/2/17.
@@ -29,17 +38,9 @@ public class FriendTable {
                 + KEY_LONGITUDE + " TEXT" + ")";
     }
 
-    public void insert(Friend f) {
-
-        //SQLiteDatabase db = Da
-
-        /*
-        *
-        *
-        *  // CREATE
     public void addFriend(Friend friend) {
-        SQLiteDatabase db = this.getWritableDatabase();
-http://instinctcoder.com/android-studio-sqlite-database-multiple-tables-example/
+        SQLiteDatabase db = DatabaseManagerSingleton.getInstance().openDatabase();
+
         ContentValues values = new ContentValues();
         values.put(KEY_ID, String.valueOf(friend.getId()));
         values.put(KEY_NAME, friend.getName());
@@ -54,12 +55,72 @@ http://instinctcoder.com/android-studio-sqlite-database-multiple-tables-example/
         values.put(KEY_LONGITUDE, friend.getLon());
         values.put(KEY_LATITUDE, friend.getLat());
 
-        db.insert(TABLE_FRIENDS, null, values);
-        db.close();
+        db.insert(TABLE, null, values);
+        DatabaseManagerSingleton.getInstance().closeDatabase();
     }
-        *
-        *
-        * */
+
+    public void deleteFriend(Friend friend) {
+        SQLiteDatabase db = DatabaseManagerSingleton.getInstance().openDatabase();
+        db.delete(TABLE, KEY_ID + " = ?",
+                new String[]{String.valueOf(friend.getId())});
+        DatabaseManagerSingleton.getInstance().closeDatabase();
     }
+
+    public List<Friend> getAllFriends() {
+        List<Friend> friendList = new ArrayList<Friend>();
+        String selectQuery = "SELECT  * FROM " + TABLE;
+
+        SQLiteDatabase db = DatabaseManagerSingleton.getInstance().openDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                Friend friend = new Friend();
+
+                // set the friend's variables
+                friend.setId(UUID.fromString(cursor.getString(0)));
+                friend.setName(cursor.getString(1));
+                friend.setEmail(cursor.getString(2));
+
+                String dateString = cursor.getString(3);
+
+                Date date = null;
+                try {
+                    date = new SimpleDateFormat("d-MMM-yyyy, h:mm:ss a").parse(dateString);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                friend.setBirthday(date);
+
+                friend.setLat(cursor.getDouble(4));
+                friend.setLon(cursor.getDouble(5));
+                friendList.add(friend);
+
+            } while (cursor.moveToNext());
+        }
+        DatabaseManagerSingleton.getInstance().closeDatabase();
+        return friendList;
+    }
+
+    public void updateFriend(String id, String name, String email) {
+        SQLiteDatabase db = DatabaseManagerSingleton.getInstance().openDatabase();
+
+        ContentValues values = new ContentValues();
+
+        if (!name.isEmpty())
+            values.put(KEY_NAME, name);
+        if (!email.isEmpty())
+            values.put(KEY_EMAIL, email);
+
+        if (name.isEmpty() && email.isEmpty()) {
+
+        } else {
+            db.update(TABLE, values, KEY_ID + " = ?",
+                    new String[]{String.valueOf((UUID.fromString(id)))});
+            DatabaseManagerSingleton.getInstance().closeDatabase();
+        }
+    }
+
+
 
 }

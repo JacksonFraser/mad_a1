@@ -4,6 +4,8 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.s3529589.mad_a1.Model.Meeting;
+
 /**
  * Created by s3529589 on 10/2/17.
  */
@@ -20,11 +22,14 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
         db.execSQL(FriendTable.createTable());
+        db.execSQL(MeetingTable.createTable());
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + FriendTable.TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + MeetingTable.TABLE);
     }
 }

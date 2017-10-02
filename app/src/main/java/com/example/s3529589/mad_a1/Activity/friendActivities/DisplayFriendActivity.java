@@ -7,15 +7,13 @@ import android.widget.ListView;
 
 import com.example.s3529589.mad_a1.Adapter.CustomFriendDetailsArrayAdapter;
 import com.example.s3529589.mad_a1.Database.FriendDatabaseHandler;
-import com.example.s3529589.mad_a1.Model.DataSingleton;
-import com.example.s3529589.mad_a1.Model.Friend;
+import com.example.s3529589.mad_a1.Database.FriendTable;
 import com.example.s3529589.mad_a1.R;
 
-import java.util.List;
 
 public class DisplayFriendActivity extends AppCompatActivity {
 
-    private FriendDatabaseHandler fdbh;
+    private FriendTable friendTable;
     private  CustomFriendDetailsArrayAdapter customFriendDetailsArrayAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,13 +35,13 @@ public class DisplayFriendActivity extends AppCompatActivity {
         */
 
         // load the listview based on the friends database
-        fdbh = new FriendDatabaseHandler(this);
+        friendTable = new FriendTable();
 
         ListView lv = (ListView) findViewById(R.id.list_view);
         // show when the list is empty
         lv.setEmptyView(findViewById(R.id.list_view_empty));
 
-        customFriendDetailsArrayAdapter = new CustomFriendDetailsArrayAdapter(this,fdbh.getAllFriends());
+        customFriendDetailsArrayAdapter = new CustomFriendDetailsArrayAdapter(this,friendTable.getAllFriends());
         lv.setAdapter(customFriendDetailsArrayAdapter);
     }
 

@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.s3529589.mad_a1.Controller.friendControllers.EditBirthdayController;
 import com.example.s3529589.mad_a1.Database.FriendDatabaseHandler;
+import com.example.s3529589.mad_a1.Database.FriendTable;
 import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.Model.Friend;
 import com.example.s3529589.mad_a1.Model.Meeting;
@@ -18,7 +19,7 @@ import com.example.s3529589.mad_a1.R;
 import java.util.UUID;
 
 public class CustomEditFriendDetailsAlertDialog extends AlertDialog.Builder {
-    FriendDatabaseHandler db = new FriendDatabaseHandler(this.getContext());
+    FriendTable friendTable = new FriendTable();
 
     private CustomFriendDetailsArrayAdapter customFriendDetailsArrayAdapter;
     private UUID id;
@@ -53,10 +54,10 @@ public class CustomEditFriendDetailsAlertDialog extends AlertDialog.Builder {
 
 
         try {
-            for (Friend f : db.getAllFriends()) {
+            for (Friend f : friendTable.getAllFriends()) {
                 if (f.getId().equals(id)) {
-                    db.deleteFriend(f);
-                    customFriendDetailsArrayAdapter.updateItems(db.getAllFriends());
+                    friendTable.deleteFriend(f);
+                    customFriendDetailsArrayAdapter.updateItems(friendTable.getAllFriends());
                     //if the friend exists in any of the meeting, remove them.
                     //
                     // NOT IMPLEMENTED YET
@@ -122,9 +123,9 @@ public class CustomEditFriendDetailsAlertDialog extends AlertDialog.Builder {
     private void editFriendDetails(UUID id, String name, String email) {
 
 
-        for (Friend f : db.getAllFriends()) {
-            db.updateFriend(id.toString(), name, email);
-            customFriendDetailsArrayAdapter.updateItems(db.getAllFriends());
+        for (Friend f : friendTable.getAllFriends()) {
+            friendTable.updateFriend(id.toString(), name, email);
+            customFriendDetailsArrayAdapter.updateItems(friendTable.getAllFriends());
         }
     }
 
@@ -137,7 +138,7 @@ public class CustomEditFriendDetailsAlertDialog extends AlertDialog.Builder {
 
 
     private Friend getFriendForPopulatingHints() {
-        for(Friend f : db.getAllFriends()){
+        for(Friend f : friendTable.getAllFriends()){
             if(f.getId().equals(id)){
 
                 return f;
