@@ -65,10 +65,10 @@ public class MeetingDatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_LOCATION,   meeting.getLocation());
 
         // format date to SQLite format before entering it into the DB
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-        Date start= Calendar.getInstance().getTime();
-        Date end = Calendar.getInstance().getTime();
+        Date start= meeting.getStartTime();
+        Date end = meeting.getFinishTime();
 
         String startString = dateFormat.format(start);
         String endString = dateFormat.format(end);
@@ -126,8 +126,9 @@ public class MeetingDatabaseHandler extends SQLiteOpenHelper {
                 meeting.setLocation(cursor.getString(5));
 
                 try {
-                    Date  start = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss").parse(cursor.getString(3));
-                    Date  end = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss").parse(cursor.getString(4));
+                    System.out.println(("The string to parse: " + cursor.getString(3)));
+                    Date  start = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(cursor.getString(3));
+                    Date  end = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(cursor.getString(4));
                     meeting.setStartTime(start);
                     meeting.setFinishTime(end);
                 } catch (ParseException e ) {
@@ -162,8 +163,14 @@ public class MeetingDatabaseHandler extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
         values.put(KEY_TITLE, meeting.getTitle());
-        values.put(KEY_START_TIME, String.valueOf(meeting.getStartTime()));
-        values.put(KEY_END_TIME, String.valueOf(meeting.getFinishTime()));
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date startTime = meeting.getStartTime();
+        String startString = dateFormat.format(startTime);
+        Date endTime = meeting.getFinishTime();
+        String endString = dateFormat.format(endTime);
+        values.put(KEY_START_TIME, startString);
+        values.put(KEY_END_TIME, endString);
         values.put(KEY_LOCATION, String.valueOf(meeting.getLocation()));
 
         // updating row
@@ -172,7 +179,7 @@ public class MeetingDatabaseHandler extends SQLiteOpenHelper {
     }
 
     // Deleting single friend
-    public void deleteFMeeting(Meeting meeting) {
+    public void deleteMeeting(Meeting meeting) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_MEETINGS, KEY_ID + " = ?",
                 new String[]{String.valueOf(meeting.getId())});

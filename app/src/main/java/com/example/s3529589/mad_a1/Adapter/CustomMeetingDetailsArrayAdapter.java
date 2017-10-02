@@ -44,10 +44,33 @@ public class CustomMeetingDetailsArrayAdapter extends ArrayAdapter<Meeting> {
 
         holder.meetingStartTimeTV = (TextView) rowView.findViewById(R.id.meeting_start_time);
 
+
+/*
+
+
+
+
+
+
+        // format date to SQLite format before entering it into the DB
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        Date start= meeting.getStartTime();
+        Date end = meeting.getFinishTime();
+
+        String startString = dateFormat.format(start);
+        String endString = dateFormat.format(end);
+
+        */
+
+
+
+
         //Formatted date for more readable display
         Date startDate = meetingList.get(pos).getStartTime();
-        SimpleDateFormat s = new SimpleDateFormat("d-MMM-yyyy, h:mm:ss a");
+        SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String startDateFormatted = s.format(startDate);
+        System.out.println("WE GOT HERE " +startDateFormatted);
         holder.meetingStartTimeTV.setText("Start time: " + startDateFormatted);
 
         holder.meetingEndTimeTV = (TextView) rowView.findViewById(R.id.meeting_end_time);
@@ -88,6 +111,18 @@ public class CustomMeetingDetailsArrayAdapter extends ArrayAdapter<Meeting> {
         TextView meetingEndTimeTV;
         TextView meetingFriendsTV;
         TextView meetingLocationTV;
+    }
+
+    public void updateItems(List<Meeting> meetingList){
+        super.clear();
+        if(meetingList.isEmpty()){
+            notifyDataSetChanged();
+        } else {
+            this.meetingList = meetingList;
+
+        }
+        super.addAll(meetingList);
+        notifyDataSetChanged();
     }
 
 }

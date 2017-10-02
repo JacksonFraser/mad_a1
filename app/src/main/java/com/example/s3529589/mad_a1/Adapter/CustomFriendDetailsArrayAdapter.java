@@ -21,6 +21,8 @@ public class CustomFriendDetailsArrayAdapter extends ArrayAdapter<Friend> {
     private List<Friend> friendList;
     private Context context;
 
+
+
     public Activity getActivity() {
         return activity;
     }
@@ -40,8 +42,9 @@ public class CustomFriendDetailsArrayAdapter extends ArrayAdapter<Friend> {
     @Override
     public View getView(int pos, View convertView, ViewGroup parent) {
         FriendHolder holder = new FriendHolder();
-
+        System.out.println("THIS IS THE NUMBEEEEEER " + pos);
         View rowView = inflater.inflate(R.layout.friend_details_list_iew_item_row, null);
+
         rowView.setOnLongClickListener(new FriendMenuLongClickController(friendList.get(pos).getId(), this));
 
         holder.friendNameTV = (TextView) rowView.findViewById(R.id.friendName);
@@ -73,12 +76,16 @@ public class CustomFriendDetailsArrayAdapter extends ArrayAdapter<Friend> {
     }
 
     public void updateItems(List<Friend> friendList){
+        super.clear();
         if(friendList.isEmpty()){
             notifyDataSetChanged();
         } else {
             this.friendList = friendList;
-            notifyDataSetChanged();
         }
+        super.addAll(friendList);
+        notifyDataSetChanged();
     }
+
+
 
 }
