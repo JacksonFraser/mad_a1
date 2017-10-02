@@ -5,6 +5,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.s3529589.mad_a1.Activity.meetingActivities.ScheduleMeetingActivity;
+import com.example.s3529589.mad_a1.Database.MeetingDatabaseHandler;
 import com.example.s3529589.mad_a1.Exceptions.InvalidMeetingInput;
 import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.Model.Friend;
@@ -18,7 +19,7 @@ import java.util.List;
 
 public class CreateMeetingController implements View.OnClickListener {
     private ScheduleMeetingActivity scheduleMeetingActivity;
-
+    private MeetingDatabaseHandler mdbh;
     private EditText meetingTitle;
     private TextView startTime;
     private TextView finishTime;
@@ -32,6 +33,7 @@ public class CreateMeetingController implements View.OnClickListener {
         this.finishTime = finishTime;
         this.meetingFriendList = meetingFriendList;
         this.meetingLocation = meetingLocation;
+        this.mdbh = new MeetingDatabaseHandler(scheduleMeetingActivity);
     }
 
     @Override
@@ -40,7 +42,7 @@ public class CreateMeetingController implements View.OnClickListener {
         String finishInString = finishTime.getText().toString();
 
         // Convert String to Date
-        DateFormat formatter = new SimpleDateFormat("d-MMM-yyyy, h:mm:ss a");
+        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date start = null;
         Date finish = null;
 

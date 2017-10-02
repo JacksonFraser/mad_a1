@@ -1,10 +1,8 @@
 package com.example.s3529589.mad_a1.Database;
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.s3529589.mad_a1.Exceptions.InvalidMeetingInput;
 import com.example.s3529589.mad_a1.Model.Meeting;
@@ -12,18 +10,16 @@ import com.example.s3529589.mad_a1.Model.Meeting;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-public class MeetingDatabaseHandler extends SQLiteOpenHelper {
+/**
+ * Created by supriya on 2/10/17.
+ */
 
-    private static final int DATABASE_VERSION = 1;
-
-    private static final String DATABASE_NAME = "meetings_db";
-    private static final String TABLE_MEETINGS = "meetings";
-
+public class MeetingTable {
+    public static final String TABLE = "meetings";
     private static final String KEY_ID = "id";
     private static final String KEY_ID_PRIMARY = "id_primary";
     private static final String KEY_TITLE = "title";
@@ -31,33 +27,19 @@ public class MeetingDatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_END_TIME = "end_time";
     private static final String KEY_LOCATION = "location";
 
-    public MeetingDatabaseHandler(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
-    }
 
-    @Override
-    public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String CREATE_CONTACTS_TABLE = "CREATE TABLE " + TABLE_MEETINGS +
+    public static String createTable(){
+       return "CREATE TABLE " + TABLE +
                 "(" + KEY_ID_PRIMARY + " BLOB PRIMARY KEY,"
                 + KEY_ID             + " INTEGER,"
                 + KEY_TITLE          + " TEXT,"
                 + KEY_START_TIME     + " TEXT,"
                 + KEY_END_TIME       + " TEXT,"
                 + KEY_LOCATION       + " TEXT" + ")";
-        sqLiteDatabase.execSQL(CREATE_CONTACTS_TABLE);
     }
 
-    @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int j) {
-        // Drop older table if existed
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_MEETINGS);
-
-        onCreate(sqLiteDatabase);
-    }
-
-    // Adding new meeting
     public void addMeeting(Meeting meeting) {
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = DatabaseManagerSingleton.getInstance().openDatabase();
 
         ContentValues values = new ContentValues();
         values.put(KEY_ID,         String.valueOf(meeting.getId()));
@@ -78,44 +60,16 @@ public class MeetingDatabaseHandler extends SQLiteOpenHelper {
 
 
         // Inserting Row
-        db.insert(TABLE_MEETINGS, null, values);
-        db.close();
+        db.insert(TABLE, null, values);
+        DatabaseManagerSingleton.getInstance().closeDatabase();
     }
 
-    /*
-    // Getting single friend
-    public Friend getFriend(UUID id) {
-        SQLiteDatabase db = this.getReadableDatabase();
-
-        Cursor cursor = db.query(TABLE_FRIENDS, new String[]{KEY_ID,
-                        KEY_NAME, KEY_EMAIL, KEY_BIRTHDATE}, KEY_ID + "=?",
-                new String[]{String.valueOf(id)}, null, null, null, null);
-        if (cursor != null)
-            cursor.moveToFirst();
-
-        String dateString = cursor.getString(3);
-
-        Date d = null;
-
-        try {
-            d = new SimpleDateFormat("YYYY-MM-DD HH:MM:SS.SSS").parse(dateString);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        Friend friend = new Friend(cursor.getString(1),cursor.getString(2), d, 0, 0);
-        // return contact
-        return friend;
-    }
-    */
-
-    // Getting All Friends
     public List<Meeting> getAllMeetings() {
         List<Meeting> meetingList = new ArrayList<>();
         // Select All Query
-        String selectQuery = "SELECT  * FROM " + TABLE_MEETINGS;
+        String selectQuery = "SELECT  * FROM " + TABLE;
 
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = DatabaseManagerSingleton.getInstance().openDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
         if (cursor.moveToFirst()) {
@@ -142,24 +96,13 @@ public class MeetingDatabaseHandler extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         }
 
+        DatabaseManagerSingleton.getInstance().closeDatabase();
         // return contact list
         return meetingList;
     }
 
-    // Getting contacts Count
-    public int getContactsCount() {
-        String countQuery = "SELECT  * FROM " + TABLE_MEETINGS;
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(countQuery, null);
-        cursor.close();
-
-        // return count
-        return cursor.getCount();
-    }
-
-    // Updating single contact
-    public int updateMeeting(Meeting meeting) {
-        SQLiteDatabase db = this.getWritableDatabase();
+    public void updateMeeting(Meeting meeting) {
+        SQLiteDatabase db = DatabaseManagerSingleton.getInstance().openDatabase();
 
         ContentValues values = new ContentValues();
         values.put(KEY_TITLE, meeting.getTitle());
@@ -174,15 +117,16 @@ public class MeetingDatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_LOCATION, String.valueOf(meeting.getLocation()));
 
         // updating row
-        return db.update(TABLE_MEETINGS, values, KEY_ID + " = ?",
+        db.update(TABLE, values, KEY_ID + " = ?",
                 new String[]{String.valueOf(meeting.getId())});
+        DatabaseManagerSingleton.getInstance().closeDatabase();
     }
 
     // Deleting single friend
     public void deleteMeeting(Meeting meeting) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_MEETINGS, KEY_ID + " = ?",
+        SQLiteDatabase db = DatabaseManagerSingleton.getInstance().openDatabase();
+        db.delete(TABLE, KEY_ID + " = ?",
                 new String[]{String.valueOf(meeting.getId())});
-        db.close();
+        DatabaseManagerSingleton.getInstance().closeDatabase();
     }
 }

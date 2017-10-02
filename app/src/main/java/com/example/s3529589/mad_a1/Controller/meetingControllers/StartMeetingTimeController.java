@@ -33,7 +33,7 @@ public class StartMeetingTimeController implements View.OnClickListener {
                 cal.set(Calendar.MINUTE, minute);
                 Date startTime = cal.getTime();
 
-                SimpleDateFormat formatter = new SimpleDateFormat("d-MMM-yyyy, h:mm:ss a");
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 String labelTime = formatter.format(startTime);
 
                 meetingTime.setText(labelTime);

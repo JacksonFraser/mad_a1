@@ -6,8 +6,12 @@ import android.util.Log;
 import android.view.View;
 import com.example.s3529589.mad_a1.Controller.friendControllers.FriendMenuController;
 import com.example.s3529589.mad_a1.Controller.meetingControllers.MeetingMenuController;
+import com.example.s3529589.mad_a1.Database.DBHelper;
+import com.example.s3529589.mad_a1.Database.DatabaseManagerSingleton;
+import com.example.s3529589.mad_a1.Database.FriendTable;
 import com.example.s3529589.mad_a1.Database.MeetingDatabaseHandler;
 import com.example.s3529589.mad_a1.Database.FriendDatabaseHandler;
+import com.example.s3529589.mad_a1.Database.MeetingTable;
 import com.example.s3529589.mad_a1.Exceptions.InvalidMeetingInput;
 import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.Model.Friend;
@@ -25,8 +29,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         // Delete the database
-        // this.deleteDatabase("friends_db");
-
+        this.deleteDatabase("mad_db");
+        DBHelper dbHelper = new DBHelper(this);
+        DatabaseManagerSingleton.initialise(dbHelper);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_menu);
 
@@ -36,8 +41,7 @@ public class MainActivity extends AppCompatActivity {
         View meetingMenuBtn = findViewById(R.id.meetingMenuBtn);
 
         meetingMenuBtn.setOnClickListener(new MeetingMenuController(this));
-        addDummyData();
-        //addDummyDatabaseStuff();
+        addDummyDatabaseStuff();
     }
 
     private void addDummyData() {
@@ -75,22 +79,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addDummyDatabaseStuff(){
-        MeetingDatabaseHandler mdb = new MeetingDatabaseHandler(this);
-        FriendDatabaseHandler fdb = new FriendDatabaseHandler(this);
-
+       // MeetingDatabaseHandler mdb = new MeetingDatabaseHandler(this);
+        FriendTable friendTable = new FriendTable();
+        MeetingTable meetingTable = new MeetingTable();
         Calendar calendar = Calendar.getInstance();
         Date date1 = calendar.getTime();
         Date date2 = calendar.getTime();
 
-        fdb.addFriend(new Friend("Bobby Jarzombek", "gmail@gmail", date1, 0, 0));
-        fdb.addFriend(new Friend("Chris Dave", "newemail@me.com", date1, 0, 0));
-        fdb.addFriend(new Friend("Sally Sanders", "sally@me.com", date1, 0, 0));
+        Friend f1 = new Friend("Bobby Jarzombek", "gmail@gmail", date1, 0, 0);
+        Friend f2 = new Friend("Chris Dave", "newemail@me.com", date1, 0, 0);
+        Friend f3 = new Friend("Sally Sanders", "sally@me.com", date1, 0, 0);
+        Friend f4 = new Friend("dennis Le Mennis", "dennis@me.com", date1, 0, 0);
+        friendTable.addFriend(f1);
+        friendTable.addFriend(f2);
+        friendTable.addFriend(f3);
+        friendTable.addFriend(f4);
+
 
         try {
-            Friend f1 = new Friend("Bobby Jarzombek", "gmail@gmail", date1, 0, 0);
-            Friend f2 = new Friend("Chris Dave", "newemail@me.com", date1, 0, 0);
-            Friend f3 = new Friend("Sally Sanders", "sally@me.com", date1, 0, 0);
-            Friend f4 = new Friend("dennis Le Mennis", "dennis@me.com", date1, 0, 0);
             List<Friend> friendList1 = new ArrayList<>();
 
             friendList1.add(f1);
@@ -102,9 +108,13 @@ public class MainActivity extends AppCompatActivity {
 
             Meeting m1 = new Meeting("meeting 1", date1, date2, friendList1, "+330.1131, +11.11");
             Meeting m2 = new Meeting("meeting 2", date1, date2, friendList2, "+331.131, +111");
-            mdb.addMeeting(m1);
-            mdb.addMeeting(m2);
+            meetingTable.addMeeting(m1);
+            meetingTable.addMeeting(m2);
 
+            System.out.println("THIS IS THE DATE  " + m1.getStartTime());
+         //   for(Meeting m : mdb.getAllMeetings()){
+          //      System.out.println(m.getStartTime());
+           // }
         } catch (InvalidMeetingInput invalidMeetingInput) {
             invalidMeetingInput.printStackTrace();
         }
