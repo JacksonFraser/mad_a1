@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.example.s3529589.mad_a1.Controller.meetingControllers.DisplayMapController;
 import com.example.s3529589.mad_a1.Controller.meetingControllers.MeetingDisplayLongClickController;
 import com.example.s3529589.mad_a1.Model.Friend;
 import com.example.s3529589.mad_a1.Model.Meeting;
@@ -37,6 +38,9 @@ public class CustomMeetingDetailsArrayAdapter extends ArrayAdapter<Meeting> {
 
         View rowView = inflater.inflate(R.layout.meeting_details_list_view_item_row, null);
         rowView.setOnLongClickListener(new MeetingDisplayLongClickController(meetingList.get(pos).getId(), this));
+
+        // Open map
+        rowView.setOnClickListener(new DisplayMapController(meetingList.get(pos).getId(), this));
 
         holder.meetingTitleTV = (TextView) rowView.findViewById(R.id.meeting_title);
         holder.meetingTitleTV.setText(meetingList.get(pos).getTitle());

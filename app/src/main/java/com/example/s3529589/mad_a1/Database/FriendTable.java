@@ -1,7 +1,5 @@
 package com.example.s3529589.mad_a1.Database;
 
-import android.database.sqlite.SQLiteDatabase;
-
 import com.example.s3529589.mad_a1.Model.Friend;
 
 /**
@@ -31,7 +29,7 @@ public class FriendTable {
 
     public void insert(Friend f) {
 
-        SQLiteDatabase db = Da
+        //SQLiteDatabase db = Da
 
         /*
         *
