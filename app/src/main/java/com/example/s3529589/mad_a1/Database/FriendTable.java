@@ -39,7 +39,7 @@ public class FriendTable {
         *  // CREATE
     public void addFriend(Friend friend) {
         SQLiteDatabase db = this.getWritableDatabase();
-
+http://instinctcoder.com/android-studio-sqlite-database-multiple-tables-example/
         ContentValues values = new ContentValues();
         values.put(KEY_ID, String.valueOf(friend.getId()));
         values.put(KEY_NAME, friend.getName());
