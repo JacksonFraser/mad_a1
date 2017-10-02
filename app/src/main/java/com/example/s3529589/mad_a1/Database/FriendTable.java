@@ -31,7 +31,7 @@ public class FriendTable {
 
     public void insert(Friend f) {
 
-        SQLiteDatabase db = Da
+        //SQLiteDatabase db = Da
 
         /*
         *
