@@ -129,12 +129,7 @@ public class CustomEditFriendDetailsAlertDialog extends AlertDialog.Builder {
         }
     }
 
-    private void removeFriendFromMeeting(Friend f) {
-        for (Meeting m : DataSingleton.getInstance().getMeetingList())
-            if (m.getFriendList().contains(f)) {
-                m.getFriendList().remove(f);
-            }
-    }
+
 
 
     private Friend getFriendForPopulatingHints() {

@@ -10,13 +10,17 @@ import android.widget.TextView;
 
 import com.example.s3529589.mad_a1.Controller.meetingControllers.DisplayMapController;
 import com.example.s3529589.mad_a1.Controller.meetingControllers.MeetingDisplayLongClickController;
+import com.example.s3529589.mad_a1.Database.FriendTable;
+import com.example.s3529589.mad_a1.Database.MeetingFriendTable;
 import com.example.s3529589.mad_a1.Model.Friend;
 import com.example.s3529589.mad_a1.Model.Meeting;
+import com.example.s3529589.mad_a1.Model.MeetingFriend;
 import com.example.s3529589.mad_a1.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 public class CustomMeetingDetailsArrayAdapter extends ArrayAdapter<Meeting> {
     private List<Meeting> meetingList;
@@ -89,18 +93,30 @@ public class CustomMeetingDetailsArrayAdapter extends ArrayAdapter<Meeting> {
 
         //create friends
         holder.meetingFriendsTV = (TextView) rowView.findViewById(R.id.meeting_friends);
-        String friends = createFriendsString(meetingList.get(pos).getFriendList());
+        String friends = createFriendsString(meetingList.get(pos).getId());
         holder.meetingFriendsTV.setText(friends);
         return rowView;
     }
 
-    private String createFriendsString(List<Friend> friendList) {
+    private String createFriendsString(UUID meetingUUID) {
         String friendString = "";
-
+        MeetingFriendTable meetingFriendTable =  new MeetingFriendTable();
+        FriendTable friendTable = new FriendTable();
+        System.out.println("THIS IS THE SIZE "+meetingFriendTable.getAllMeetingFriends().size());
         try {
-            for (Friend f : friendList) {
-                friendString = friendString.concat("- " + f.getName() + "\n");
+            for (MeetingFriend m : meetingFriendTable.getAllMeetingFriends()) {
+                if(m.getMeetingUUID().equals(meetingUUID)) {
+                    for(Friend f : friendTable.getAllFriends()){
+                        if(f.getId().equals(m.getFriendUUID())){
+                            friendString = friendString.concat("- " + f.getName() + "\n");
+
+                        }
+                    }
+
+
+                }
             }
+
             friendString = friendString.substring(0, friendString.length() - 1);
             return friendString;
         } catch (Exception e) {

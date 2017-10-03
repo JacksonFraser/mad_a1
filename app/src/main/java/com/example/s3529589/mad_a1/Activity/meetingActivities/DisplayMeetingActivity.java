@@ -23,15 +23,14 @@ public class DisplayMeetingActivity extends AppCompatActivity {
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.display_meetings);
+        meetingTable = new MeetingTable();
         createListView();
     }
 
     private void createListView() {
 
-        meetingTable = new MeetingTable();
-
         //Sort the meetings based in their start times
-        Collections.sort(DataSingleton.getInstance().getMeetingList(), new MeetingDateCompare());
+        Collections.sort(meetingTable.getAllMeetings(), new MeetingDateCompare());
 
         ListView lv = (ListView) findViewById(R.id.meeting_list_view);
         lv.setEmptyView(findViewById(R.id.meeting_list_view_empty));

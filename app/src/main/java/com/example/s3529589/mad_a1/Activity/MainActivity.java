@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         // Delete the database
-        this.deleteDatabase("mad_db");
+       // this.deleteDatabase("mad_db");
         DBHelper dbHelper = new DBHelper(this);
         DatabaseManagerSingleton.initialise(dbHelper);
         super.onCreate(savedInstanceState);
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         View meetingMenuBtn = findViewById(R.id.meetingMenuBtn);
 
         meetingMenuBtn.setOnClickListener(new MeetingMenuController(this));
-        addDummyDatabaseStuff();
+       // addDummyDatabaseStuff();
     }
 
     private void addDummyData() {
@@ -67,8 +67,8 @@ public class MainActivity extends AppCompatActivity {
 
             List<Friend> friendList2 = new ArrayList<>();
 
-            Meeting m1 = new Meeting("meeting 1", date1, date2, friendList1, "+330.1131, +11.11");
-            Meeting m2 = new Meeting("meeting 2", date1, date2, friendList2, "+331.131, +111");
+            Meeting m1 = new Meeting("meeting 1", date1, date2, "+330.1131, +11.11");
+            Meeting m2 = new Meeting("meeting 2", date1, date2, "+331.131, +111");
             DataSingleton.getInstance().getMeetingList().add(m1);
             DataSingleton.getInstance().getMeetingList().add(m2);
 
@@ -106,8 +106,8 @@ public class MainActivity extends AppCompatActivity {
 
             List<Friend> friendList2 = new ArrayList<>();
 
-            Meeting m1 = new Meeting("meeting 1", date1, date2, friendList1, "+330.1131, +11.11");
-            Meeting m2 = new Meeting("meeting 2", date1, date2, friendList2, "+331.131, +111");
+            Meeting m1 = new Meeting("meeting 1", date1, date2, "+330.1131, +11.11");
+            Meeting m2 = new Meeting("meeting 2", date1, date2, "+331.131, +111");
             meetingTable.addMeeting(m1);
             meetingTable.addMeeting(m2);
 
