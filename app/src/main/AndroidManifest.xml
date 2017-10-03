@@ -5,6 +5,7 @@
     // Manifest permission for reading contacts
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -47,8 +48,11 @@
         <activity android:name=".Activity.meetingActivities.DisplayMeetingActivity"
             android:label="@string/view_meetings"></activity>
 
-        <activity android:name=".Activity.meetingActivities.GoogleMapsActivity"
+        <activity android:name=".Activity.GoogleMapsActivity"
             android:label="@string/view_map"></activity>
+
+        <activity android:name=".Activity.DistanceMatrixAPIActivity"
+            android:label="Calculate distance"></activity>
 
     </application>
 

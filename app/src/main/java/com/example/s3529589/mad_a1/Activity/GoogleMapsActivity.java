@@ -1,4 +1,4 @@
-package com.example.s3529589.mad_a1.Activity.meetingActivities;
+package com.example.s3529589.mad_a1.Activity;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -30,10 +30,17 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
 
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
-        LatLng location = new LatLng(-37.808943, 144.965117);
+        // RMIT
+        // -37.808943, 144.965117
+
+        // Midbetween A1 and Crown
+        // -37.792657500000004, 144.96047349999998
+
+        // GET THE LONGITUDE AND LATITUDE OF THE MEETING
+        // AND THEN DISPLAY IT'S LOCATION
+        LatLng location = new LatLng(-37.79265752390738, 144.9604744938475);
         mMap.addMarker(new MarkerOptions().position(location).title("Meeting location"));
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(location));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(16));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 16));
     }
 }
