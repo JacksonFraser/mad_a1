@@ -50,7 +50,7 @@ public class DistanceMatrixAPIActivity  {
         //print out long lat
         System.out.println("latitude: " + midwayLat + ", Longitude: " + midwayLon);
 
-        String meetingLocationString = midwayLat + "," + midwayLon;
+        String meetingLocationString = String.valueOf(midwayLat).substring(0,10) + ", " + String.valueOf(String.valueOf(midwayLon).substring(0,10));
 
         return meetingLocationString;
     }
