@@ -6,14 +6,25 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.example.s3529589.mad_a1.Model.HttpHelper;
+import com.example.s3529589.mad_a1.Model.Meeting;
 import com.example.s3529589.mad_a1.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 
-public class DistanceMatrixAPIActivity extends AppCompatActivity {
+public class DistanceMatrixAPIActivity  {
     final String API_KEY = "AIzaSyCMnEw6U-no-uYyqL8o40N_dV91lc5QldQ";
+    private double friendLatitude;
+    private double friendLongitude;
+    private Meeting meeting;
+
+
+   public DistanceMatrixAPIActivity(Meeting meeting, double latitude, double longitde){
+       this.meeting = meeting;
+       this.friendLatitude = latitude;
+       this.friendLongitude = longitde;
+   }
 
     // Original coordinates
     // RMIT to Melbourne Central
@@ -26,27 +37,18 @@ public class DistanceMatrixAPIActivity extends AppCompatActivity {
     */
 
     // A1 Bakery to Crown Casino
-    double originLat = -37.761785;
-    double originLon = 144.962852;
+    double gpsLat = -37.761785;
+    double gpsLon = 144.962852;
 
-    double destinationLat =  -37.823530;
-    double destinationLon = 144.958095;
+    double friendLat =  friendLatitude;
+    double friendLon = friendLongitude;
 
     // Coordinates after calculating midway point
     double midwayLat;
     double midwayLon;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.distance_activity);
+    new getWalkingDistance().execute();
 
-        // calculate the midway point between the origin and the destination
-        midPoint(originLat, originLon, destinationLat, destinationLon);
-
-        // get the walking distance
-        new getWalkingDistance().execute();
-    }
 
     public void midPoint(double originLat, double originLon, double destinationLat, double destinationLon){
         double midwayLat = (originLat + destinationLat)/2;

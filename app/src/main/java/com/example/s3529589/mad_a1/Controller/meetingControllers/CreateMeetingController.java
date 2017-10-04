@@ -4,6 +4,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.s3529589.mad_a1.Activity.DistanceMatrixAPIActivity;
 import com.example.s3529589.mad_a1.Activity.meetingActivities.ScheduleMeetingActivity;
 import com.example.s3529589.mad_a1.Database.MeetingDatabaseHandler;
 import com.example.s3529589.mad_a1.Database.MeetingFriendTable;
@@ -28,6 +30,7 @@ public class CreateMeetingController implements View.OnClickListener {
     private TextView finishTime;
     private List<Friend> meetingFriendList;
     private EditText meetingLocation;
+    private DistanceMatrixAPIActivity distanceMatrixAPIActivity;
 
     public CreateMeetingController(ScheduleMeetingActivity scheduleMeetingActivity, EditText meetingTitle, TextView startTime, TextView finishTime, List<Friend> meetingFriendList, EditText meetingLocation) {
         this.scheduleMeetingActivity = scheduleMeetingActivity;
@@ -63,6 +66,15 @@ public class CreateMeetingController implements View.OnClickListener {
                 MeetingFriend meetingFriend = new MeetingFriend(m.getId(),f.getId());
                 meetingFriendTable.addMeetingFriend(meetingFriend);
             }
+
+
+            if(meetingFriendList.isEmpty()){
+                DistanceMatrixAPIActivity distanceMatrixAPIActivity = new DistanceMatrixAPIActivity(m,0,0);
+            }
+            else{
+                DistanceMatrixAPIActivity distanceMatrixAPIActivity = new DistanceMatrixAPIActivity(m,meetingFriendList.get(0).getLat(),meetingFriendList.get(0).getLon());
+            }
+            //distanceMatrixAPIActivity
             meetingTable.addMeeting(m);
             scheduleMeetingActivity.finish();
             Toast.makeText(this.scheduleMeetingActivity, R.string.meeting_created_toast, Toast.LENGTH_SHORT).show();
