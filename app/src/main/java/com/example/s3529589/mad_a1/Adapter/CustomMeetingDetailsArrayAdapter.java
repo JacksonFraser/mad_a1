@@ -53,27 +53,6 @@ public class CustomMeetingDetailsArrayAdapter extends ArrayAdapter<Meeting> {
         holder.meetingStartTimeTV = (TextView) rowView.findViewById(R.id.meeting_start_time);
 
 
-/*
-
-
-
-
-
-
-        // format date to SQLite format before entering it into the DB
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
-        Date start= meeting.getStartTime();
-        Date end = meeting.getFinishTime();
-
-        String startString = dateFormat.format(start);
-        String endString = dateFormat.format(end);
-
-        */
-
-
-
-
         //Formatted date for more readable display
         Date startDate = meetingList.get(pos).getStartTime();
         SimpleDateFormat s = new SimpleDateFormat("d-MMM-yyyy, h:mm:ss a");
