@@ -9,6 +9,7 @@ import android.widget.DatePicker;
 
 import com.example.s3529589.mad_a1.Controller.friendControllers.ConfirmDateController;
 import com.example.s3529589.mad_a1.Database.FriendDatabaseHandler;
+import com.example.s3529589.mad_a1.Database.FriendTable;
 import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.Model.Friend;
 import com.example.s3529589.mad_a1.R;
@@ -38,15 +39,13 @@ public class CreateFriendActivity extends AppCompatActivity {
     }
 
     public void createFriend(String name, String email, Date date, double latitude, double longitude) {
-        // add to the Friends ArrayList
-        DataSingleton.getInstance().getFriendList().add(new Friend(name, email, date, latitude, longitude));
 
         // database
-        FriendDatabaseHandler db = new FriendDatabaseHandler(this);
-        db.addFriend(new Friend(name, email, date, latitude, longitude));
+        FriendTable friendTable = new FriendTable();
+        friendTable.addFriend(new Friend(name, email, date, latitude, longitude));
 
         // Reading all contacts
-        List<Friend> friends = db.getAllFriends();
+        List<Friend> friends = friendTable.getAllFriends();
 
         for (Friend f : friends) {
             String log = "Id: "+f.getId()+", Name: " + f.getName() + ", Email: " + f.getEmail() + ", Date: " + f.getBirthdate() + ", Longitude: " +

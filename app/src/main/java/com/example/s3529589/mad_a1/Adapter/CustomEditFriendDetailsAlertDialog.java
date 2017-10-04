@@ -121,12 +121,9 @@ public class CustomEditFriendDetailsAlertDialog extends AlertDialog.Builder {
     }
 
     private void editFriendDetails(UUID id, String name, String email) {
+        friendTable.updateFriend(id.toString(), name, email);
+        customFriendDetailsArrayAdapter.updateItems(friendTable.getAllFriends());
 
-
-        for (Friend f : friendTable.getAllFriends()) {
-            friendTable.updateFriend(id.toString(), name, email);
-            customFriendDetailsArrayAdapter.updateItems(friendTable.getAllFriends());
-        }
     }
 
 

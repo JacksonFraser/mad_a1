@@ -96,7 +96,7 @@ public class FriendTable {
         return friendList;
     }
 
-    public void updateFriend(String id, String name, String email) {
+    public void updateFriend(String id, String name, String email ) {
         SQLiteDatabase db = DatabaseManagerSingleton.getInstance().openDatabase();
 
         ContentValues values = new ContentValues();
@@ -114,4 +114,6 @@ public class FriendTable {
             DatabaseManagerSingleton.getInstance().closeDatabase();
         }
     }
+
+
 }

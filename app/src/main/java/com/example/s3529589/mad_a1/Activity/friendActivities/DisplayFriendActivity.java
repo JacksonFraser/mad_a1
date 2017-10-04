@@ -23,16 +23,6 @@ public class DisplayFriendActivity extends AppCompatActivity {
     }
 
     private void createListView() {
-        /* load the listview based on the friends list singleton
-        *
-
-        ListView lv = (ListView) findViewById(R.id.list_view);
-        // show when the list is empty
-        lv.setEmptyView(findViewById(R.id.list_view_empty));
-        lv.setAdapter(new CustomFriendDetailsArrayAdapter(this, DataSingleton.getInstance().getFriendList()));
-
-        *
-        */
 
         // load the listview based on the friends database
         friendTable = new FriendTable();

@@ -164,7 +164,7 @@ public class CustomEditMeetingDetailsAlertDialog extends AlertDialog.Builder {
                     m.setFinishTime(newEndDate);
                     meetingTable.updateMeeting(m);
                     customMeetingDetailsArrayAdapter.updateItems(meetingTable.getAllMeetings());
-                    Toast.makeText(customMeetingDetailsArrayAdapter.getContext(), R.string.friend_updated_toast, Toast.LENGTH_LONG).show();
+                    Toast.makeText(customMeetingDetailsArrayAdapter.getContext(), R.string.meeting_successfuly_edited_toast, Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(customMeetingDetailsArrayAdapter.getContext(), "Start time must be before finish time", Toast.LENGTH_LONG).show();
                 }
