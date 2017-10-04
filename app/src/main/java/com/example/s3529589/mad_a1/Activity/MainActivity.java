@@ -46,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         // Uncomment these to restore dummy data
-        //this.deleteDatabase("mad_db");
-        //addDummyDatabaseStuff();
+        this.deleteDatabase("mad_db");
+        addDummyDatabaseStuff();
 
         //Only runs if you don't have contact permission
         checkPersissions();
@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
         Date date1 = calendar.getTime();
         Date date2 = calendar.getTime();
 
-        Friend f1 = new Friend("Bobby Jarzombek", "gmail@gmail", date1, 0, 0);
+        Friend f1 = new Friend("Bobby Jarzombek", "gmail@gmail", date1, -37.824620, 144.957029);
         Friend f2 = new Friend("Chris Dave", "newemail@me.com", date1, 0, 0);
         Friend f3 = new Friend("Sally Sanders", "sally@me.com", date1, 0, 0);
         Friend f4 = new Friend("dennis Le Mennis", "dennis@me.com", date1, 0, 0);

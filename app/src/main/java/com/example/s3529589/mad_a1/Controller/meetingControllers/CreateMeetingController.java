@@ -68,11 +68,9 @@ public class CreateMeetingController implements View.OnClickListener {
             }
 
 
-            if(meetingFriendList.isEmpty()){
-                DistanceMatrixAPIActivity distanceMatrixAPIActivity = new DistanceMatrixAPIActivity(m,0,0);
-            }
-            else{
-                DistanceMatrixAPIActivity distanceMatrixAPIActivity = new DistanceMatrixAPIActivity(m,meetingFriendList.get(0).getLat(),meetingFriendList.get(0).getLon());
+            if(!meetingFriendList.isEmpty()) {
+                DistanceMatrixAPIActivity distanceMatrixAPIActivity = new DistanceMatrixAPIActivity(m, meetingFriendList.get(0).getLat(), meetingFriendList.get(0).getLon());
+                m.setLocation(distanceMatrixAPIActivity.midPoint());
             }
             //distanceMatrixAPIActivity
             meetingTable.addMeeting(m);

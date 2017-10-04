@@ -11,7 +11,7 @@ public class Friend {
     private double lon;
     private double lat;
 
-    public Friend(String name, String email, Date birthday, double lon, double lat) {
+    public Friend(String name, String email, Date birthday, double lat, double lon) {
         this.uuid = UUID.randomUUID();
         this.name = name;
         this.email = email;

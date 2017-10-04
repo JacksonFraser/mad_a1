@@ -17,15 +17,20 @@ public class DistanceMatrixAPIActivity  {
     final String API_KEY = "AIzaSyCMnEw6U-no-uYyqL8o40N_dV91lc5QldQ";
     private double friendLatitude;
     private double friendLongitude;
+    private double gpsLatitude;
+    private double gpsLongitude;
     private Meeting meeting;
+    private double midwayLat;
+    private double midwayLon;
 
 
-   public DistanceMatrixAPIActivity(Meeting meeting, double latitude, double longitde){
+   public DistanceMatrixAPIActivity(Meeting meeting, double latitude, double longitude){
        this.meeting = meeting;
        this.friendLatitude = latitude;
-       this.friendLongitude = longitde;
+       this.friendLongitude = longitude;
+       gpsLatitude = -37.761785;
+       gpsLongitude= 144.962852;
    }
-
     // Original coordinates
     // RMIT to Melbourne Central
     /*
@@ -35,30 +40,16 @@ public class DistanceMatrixAPIActivity  {
     double destinationLat = -37.810428;
     double destinationLon = 144.962915;
     */
-
     // A1 Bakery to Crown Casino
-    double gpsLat = -37.761785;
-    double gpsLon = 144.962852;
 
-    double friendLat =  friendLatitude;
-    double friendLon = friendLongitude;
-
-    // Coordinates after calculating midway point
-    double midwayLat;
-    double midwayLon;
-
-    new getWalkingDistance().execute();
-
-
-    public String  midPoint(double originLat, double originLon, double destinationLat, double destinationLon){
-        double midwayLat = (originLat + destinationLat)/2;
-        double midwayLon = (originLon + destinationLon)/2;
+    public String  midPoint(){
+      //  new getWalkingDistance().execute();
+        midwayLat = ((gpsLatitude) + (friendLatitude))/2;
+        midwayLon = (gpsLongitude + friendLongitude)/2;
 
         //print out long lat
         System.out.println("latitude: " + midwayLat + ", Longitude: " + midwayLon);
 
-        this.midwayLat = midwayLat;
-        this.midwayLon = midwayLon;
         String meetingLocationString = midwayLat + "," + midwayLon;
 
         return meetingLocationString;
@@ -66,8 +57,8 @@ public class DistanceMatrixAPIActivity  {
 
     private class getWalkingDistance extends AsyncTask<Void, Void, Void> {
 
-        String url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&" +
-                "origins=" + originLat + "," + originLon + "&destinations=" + midwayLat + "," + midwayLon
+       String url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&" +
+                "origins=" + gpsLatitude + "," + gpsLongitude + "&destinations=" + midwayLat + "," + midwayLon
             + "&mode=walking" + "&key=" + API_KEY;
 
         @Override

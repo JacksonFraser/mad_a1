@@ -42,7 +42,6 @@ public class CustomFriendDetailsArrayAdapter extends ArrayAdapter<Friend> {
     @Override
     public View getView(int pos, View convertView, ViewGroup parent) {
         FriendHolder holder = new FriendHolder();
-        System.out.println("THIS IS THE NUMBEEEEEER " + pos);
         View rowView = inflater.inflate(R.layout.friend_details_list_iew_item_row, null);
 
         rowView.setOnLongClickListener(new FriendMenuLongClickController(friendList.get(pos).getId(), this));
@@ -59,7 +58,7 @@ public class CustomFriendDetailsArrayAdapter extends ArrayAdapter<Friend> {
         holder.friendBirthDateTV.setText(birthday);
 
         holder.friendLocation = (TextView) rowView.findViewById(R.id.friendLocation);
-        holder.friendLocation.setText((friendList.get(pos).getLon() + ", " + friendList.get(pos).getLat()));
+        holder.friendLocation.setText((friendList.get(pos).getLat() + ", " + friendList.get(pos).getLon()));
 
         holder.displayImg = (ImageView) rowView.findViewById(R.id.displayImg);
         holder.displayImg.setOnClickListener(new PickDisplayPictureController(this));
