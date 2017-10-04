@@ -28,8 +28,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        // Delete the database
-       // this.deleteDatabase("mad_db");
         DBHelper dbHelper = new DBHelper(this);
         DatabaseManagerSingleton.initialise(dbHelper);
         super.onCreate(savedInstanceState);
@@ -41,7 +39,10 @@ public class MainActivity extends AppCompatActivity {
         View meetingMenuBtn = findViewById(R.id.meetingMenuBtn);
 
         meetingMenuBtn.setOnClickListener(new MeetingMenuController(this));
-       // addDummyDatabaseStuff();
+
+        // Uncomment these to restore dummy data
+        //this.deleteDatabase("mad_db");
+        //addDummyDatabaseStuff();
     }
 
     private void addDummyData() {
@@ -79,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addDummyDatabaseStuff(){
-       // MeetingDatabaseHandler mdb = new MeetingDatabaseHandler(this);
         FriendTable friendTable = new FriendTable();
         MeetingTable meetingTable = new MeetingTable();
         Calendar calendar = Calendar.getInstance();
@@ -111,7 +111,6 @@ public class MainActivity extends AppCompatActivity {
             meetingTable.addMeeting(m1);
             meetingTable.addMeeting(m2);
 
-            System.out.println("THIS IS THE DATE  " + m1.getStartTime());
          //   for(Meeting m : mdb.getAllMeetings()){
           //      System.out.println(m.getStartTime());
            // }

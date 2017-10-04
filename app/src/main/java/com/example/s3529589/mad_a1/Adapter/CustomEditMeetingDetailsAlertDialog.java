@@ -76,7 +76,7 @@ public class CustomEditMeetingDetailsAlertDialog extends AlertDialog.Builder {
         String choices[] = {"Cancel", "Confirm"};
         LayoutInflater factory = LayoutInflater.from(customMeetingDetailsArrayAdapter.getContext());
 
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat formatter = new SimpleDateFormat("d-MMM-yyyy, h:mm:ss a");
 
         final View editMeetingView = factory.inflate(R.layout.schedule_meeting, null);
 
@@ -134,7 +134,7 @@ public class CustomEditMeetingDetailsAlertDialog extends AlertDialog.Builder {
     }
 
     private void editMeetingDetails(UUID id, String title, TextView startTimeTV, TextView endTimeTV) throws InvalidMeetingInput {
-        DateFormat d = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        DateFormat d = new SimpleDateFormat("d-MMM-yyyy, h:mm:ss a");
 
         for (Meeting m : meetingTable.getAllMeetings())
             if (m.getId().equals(id)) {

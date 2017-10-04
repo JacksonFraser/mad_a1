@@ -76,7 +76,7 @@ public class CustomMeetingDetailsArrayAdapter extends ArrayAdapter<Meeting> {
 
         //Formatted date for more readable display
         Date startDate = meetingList.get(pos).getStartTime();
-        SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat s = new SimpleDateFormat("d-MMM-yyyy, h:mm:ss a");
         String startDateFormatted = s.format(startDate);
         System.out.println("WE GOT HERE " +startDateFormatted);
         holder.meetingStartTimeTV.setText("Start time: " + startDateFormatted);

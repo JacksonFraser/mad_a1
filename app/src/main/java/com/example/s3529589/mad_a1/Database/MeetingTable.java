@@ -47,7 +47,7 @@ public class MeetingTable {
         values.put(KEY_LOCATION,   meeting.getLocation());
 
         // format date to SQLite format before entering it into the DB
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("d-MMM-yyyy, h:mm:ss a");
 
         Date start= meeting.getStartTime();
         Date end = meeting.getFinishTime();
@@ -81,8 +81,8 @@ public class MeetingTable {
 
                 try {
                     System.out.println(("The string to parse: " + cursor.getString(3)));
-                    Date  start = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(cursor.getString(3));
-                    Date  end = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(cursor.getString(4));
+                    Date  start = new SimpleDateFormat("d-MMM-yyyy, h:mm:ss a").parse(cursor.getString(3));
+                    Date  end = new SimpleDateFormat("d-MMM-yyyy, h:mm:ss a").parse(cursor.getString(4));
                     meeting.setStartTime(start);
                     meeting.setFinishTime(end);
                 } catch (ParseException e ) {
@@ -107,7 +107,7 @@ public class MeetingTable {
         ContentValues values = new ContentValues();
         values.put(KEY_TITLE, meeting.getTitle());
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("d-MMM-yyyy, h:mm:ss a");
         Date startTime = meeting.getStartTime();
         String startString = dateFormat.format(startTime);
         Date endTime = meeting.getFinishTime();
