@@ -50,7 +50,7 @@ public class DistanceMatrixAPIActivity  {
     new getWalkingDistance().execute();
 
 
-    public void midPoint(double originLat, double originLon, double destinationLat, double destinationLon){
+    public String  midPoint(double originLat, double originLon, double destinationLat, double destinationLon){
         double midwayLat = (originLat + destinationLat)/2;
         double midwayLon = (originLon + destinationLon)/2;
 
@@ -59,6 +59,9 @@ public class DistanceMatrixAPIActivity  {
 
         this.midwayLat = midwayLat;
         this.midwayLon = midwayLon;
+        String meetingLocationString = midwayLat + "," + midwayLon;
+
+        return meetingLocationString;
     }
 
     private class getWalkingDistance extends AsyncTask<Void, Void, Void> {
