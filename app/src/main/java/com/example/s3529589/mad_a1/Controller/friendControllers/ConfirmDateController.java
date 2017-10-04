@@ -4,11 +4,10 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.Toast;
-import com.example.s3529589.mad_a1.Activity.friendActivities.DatePickerActivity;
+
+import com.example.s3529589.mad_a1.Activity.friendActivities.CreateFriendActivity;
 import com.example.s3529589.mad_a1.Activity.friendActivities.FriendMenuActivity;
-import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.Model.DummyLocationService;
-import com.example.s3529589.mad_a1.Model.Friend;
 import com.example.s3529589.mad_a1.R;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -20,9 +19,9 @@ public class ConfirmDateController implements View.OnClickListener {
     String name;
     String email;
     DatePicker datePicker;
-    private DatePickerActivity datePickerActivity;
+    private CreateFriendActivity datePickerActivity;
 
-    public ConfirmDateController(String name, String email, DatePicker datePicker, DatePickerActivity datePickerActivity) {
+    public ConfirmDateController(String name, String email, DatePicker datePicker, CreateFriendActivity datePickerActivity) {
         this.name = name;
         this.email = email;
         this.datePicker = datePicker;
@@ -65,13 +64,12 @@ public class ConfirmDateController implements View.OnClickListener {
 
         }
 
-        // add to the Friends ArrayList
-        DataSingleton.getInstance().getFriendList().add(new Friend(name, email, date, latitude, longitude));
+        datePickerActivity.createFriend(name, email, date, latitude, longitude);
 
         Intent it = new Intent(datePickerActivity, FriendMenuActivity.class);
         datePickerActivity.startActivity(it);
 
-        //finish DatePickerActivity
+        //finish CreateFriendActivity
         datePickerActivity.finish();
         Toast.makeText(this.datePickerActivity, R.string.friend_added_toast, Toast.LENGTH_SHORT).show();
     }

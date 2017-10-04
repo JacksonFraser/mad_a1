@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
-import com.example.s3529589.mad_a1.Model.CustomMeetingDetailsArrayAdapter;
+import com.example.s3529589.mad_a1.Adapter.CustomMeetingDetailsArrayAdapter;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

@@ -2,8 +2,8 @@ package com.example.s3529589.mad_a1.Controller.meetingControllers;
 
 import android.view.View;
 
-import com.example.s3529589.mad_a1.Model.CustomEditMeetingDetailsAlertDialog;
-import com.example.s3529589.mad_a1.Model.CustomMeetingDetailsArrayAdapter;
+import com.example.s3529589.mad_a1.Adapter.CustomEditMeetingDetailsAlertDialog;
+import com.example.s3529589.mad_a1.Adapter.CustomMeetingDetailsArrayAdapter;
 
 import java.util.UUID;
 

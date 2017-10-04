@@ -20,6 +20,10 @@ public class Friend {
         this.lat = lat;
     }
 
+    public Friend() {
+
+    }
+
     public String getName() {
         return name;
     }
@@ -54,5 +58,17 @@ public class Friend {
 
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
+    }
+
+    public void setLon(double lon) {
+        this.lon = lon;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public void setId(UUID uuid) {
+        this.uuid = uuid;
     }
 }

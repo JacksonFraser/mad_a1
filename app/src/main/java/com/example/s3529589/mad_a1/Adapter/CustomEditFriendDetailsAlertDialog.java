@@ -1,4 +1,4 @@
-package com.example.s3529589.mad_a1.Model;
+package com.example.s3529589.mad_a1.Adapter;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -9,11 +9,18 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.s3529589.mad_a1.Controller.friendControllers.EditBirthdayController;
+import com.example.s3529589.mad_a1.Database.FriendDatabaseHandler;
+import com.example.s3529589.mad_a1.Database.FriendTable;
+import com.example.s3529589.mad_a1.Model.DataSingleton;
+import com.example.s3529589.mad_a1.Model.Friend;
+import com.example.s3529589.mad_a1.Model.Meeting;
 import com.example.s3529589.mad_a1.R;
 
 import java.util.UUID;
 
 public class CustomEditFriendDetailsAlertDialog extends AlertDialog.Builder {
+    FriendTable friendTable = new FriendTable();
+
     private CustomFriendDetailsArrayAdapter customFriendDetailsArrayAdapter;
     private UUID id;
 
@@ -21,6 +28,7 @@ public class CustomEditFriendDetailsAlertDialog extends AlertDialog.Builder {
         super(customFriendDetailsArrayAdapter.getContext());
         this.customFriendDetailsArrayAdapter = customFriendDetailsArrayAdapter;
         this.id = id;
+
         final String[] holdOptions = {
                 "Edit", "Delete"
         };
@@ -43,14 +51,18 @@ public class CustomEditFriendDetailsAlertDialog extends AlertDialog.Builder {
 
 
     private void removeFriend() {
-        try {
-            for (Friend f : DataSingleton.getInstance().getFriendList()) {
-                if (f.getId() == id) {
-                    DataSingleton.getInstance().getFriendList().remove(f);
 
+
+        try {
+            for (Friend f : friendTable.getAllFriends()) {
+                if (f.getId().equals(id)) {
+                    friendTable.deleteFriend(f);
+                    customFriendDetailsArrayAdapter.updateItems(friendTable.getAllFriends());
                     //if the friend exists in any of the meeting, remove them.
-                    removeFriendFromMeeting(f);
-                    customFriendDetailsArrayAdapter.notifyDataSetChanged();
+                    //
+                    // NOT IMPLEMENTED YET
+                    //
+                    // removeFriendFromMeeting(friend);
                     Toast.makeText(customFriendDetailsArrayAdapter.getContext(), R.string.friend_removed_toast, Toast.LENGTH_LONG).show();
                 }
             }
@@ -62,16 +74,17 @@ public class CustomEditFriendDetailsAlertDialog extends AlertDialog.Builder {
 
     // When the user selects Edit after long hold
     public void editFriend() {
+        Friend friendDetailsForHint = getFriendForPopulatingHints();
         String choices[] = {"Cancel", "Confirm"};
         LayoutInflater factory = LayoutInflater.from(customFriendDetailsArrayAdapter.getContext());
 
         final View textEntryView = factory.inflate(R.layout.edit_friend, null);
 
         final EditText editName = (EditText) textEntryView.findViewById(R.id.edit_friend_name);
-        editName.setHint(DataSingleton.getInstance().getFriendById(id).getName());
+        editName.setHint(friendDetailsForHint.getName());
 
         final EditText editEmail = (EditText) textEntryView.findViewById(R.id.edit_friend_email);
-        editEmail.setHint(DataSingleton.getInstance().getFriendById(id).getEmail());
+        editEmail.setHint(friendDetailsForHint.getEmail());
 
         final Button editBtn = (Button) textEntryView.findViewById(R.id.selectDate);
 
@@ -108,28 +121,23 @@ public class CustomEditFriendDetailsAlertDialog extends AlertDialog.Builder {
     }
 
     private void editFriendDetails(UUID id, String name, String email) {
-        try {
+        friendTable.updateFriend(id.toString(), name, email);
+        customFriendDetailsArrayAdapter.updateItems(friendTable.getAllFriends());
 
-            for (Friend f : DataSingleton.getInstance().getFriendList()) {
-                if (f.getId().equals(id)) {
-                    if (!name.isEmpty())
-                        f.setName(name);
-                    if (!email.isEmpty())
-                        f.setEmail(email);
-                    customFriendDetailsArrayAdapter.notifyDataSetChanged();
-                }
-            }
-
-        } catch (Exception e) {
-
-        }
     }
 
-    private void removeFriendFromMeeting(Friend f) {
-        for (Meeting m : DataSingleton.getInstance().getMeetingList())
-            if (m.getFriendList().contains(f)) {
-                m.getFriendList().remove(f);
+
+
+
+    private Friend getFriendForPopulatingHints() {
+        for(Friend f : friendTable.getAllFriends()){
+            if(f.getId().equals(id)){
+
+                return f;
             }
+        }
+
+        return null;
     }
 
 }

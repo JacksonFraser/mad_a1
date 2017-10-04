@@ -2,7 +2,7 @@ package com.example.s3529589.mad_a1.Controller.friendControllers;
 
 import android.view.View;
 
-import com.example.s3529589.mad_a1.Model.CustomFriendDetailsArrayAdapter;
+import com.example.s3529589.mad_a1.Adapter.CustomFriendDetailsArrayAdapter;
 
 public class PickDisplayPictureController implements View.OnClickListener {
     private CustomFriendDetailsArrayAdapter caa;
@@ -13,5 +13,6 @@ public class PickDisplayPictureController implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        // unimplemented
     }
 }

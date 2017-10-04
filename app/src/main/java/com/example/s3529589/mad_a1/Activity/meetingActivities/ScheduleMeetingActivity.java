@@ -4,12 +4,15 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.example.s3529589.mad_a1.Controller.meetingControllers.CreateMeetingController;
 import com.example.s3529589.mad_a1.Controller.meetingControllers.FinishMeetingTimeController;
 import com.example.s3529589.mad_a1.Controller.meetingControllers.StartMeetingTimeController;
+import com.example.s3529589.mad_a1.Database.FriendTable;
+import com.example.s3529589.mad_a1.Database.MeetingTable;
 import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.Model.Friend;
 import com.example.s3529589.mad_a1.R;
@@ -19,6 +22,8 @@ import java.util.UUID;
 
 public class ScheduleMeetingActivity extends AppCompatActivity {
 
+    private MeetingTable meetingTable = new MeetingTable();
+    private FriendTable friendTable = new FriendTable();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,10 +58,10 @@ public class ScheduleMeetingActivity extends AppCompatActivity {
                 * so that we don't remove friends with the same name
                 * */
 
-                final String[] friends = new String[DataSingleton.getInstance().getFriendList().size()];
-                final UUID[] friendsId = new UUID[DataSingleton.getInstance().getFriendList().size()];
+                final String[] friends = new String[friendTable.getAllFriends().size()];
+                final UUID[] friendsId = new UUID[friendTable.getAllFriends().size()];
                 int i = 0;
-                for (Friend f : DataSingleton.getInstance().getFriendList()) {
+                for (Friend f : friendTable.getAllFriends()) {
                     try {
                         friends[i] = f.getName();
                         friendsId[i] = f.getId();
@@ -73,14 +78,14 @@ public class ScheduleMeetingActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which, boolean isChecked) {
                         if (isChecked) {
-                            for (Friend f : DataSingleton.getInstance().getFriendList()) {
+                            for (Friend f : friendTable.getAllFriends()) {
                                 if (f.getId().equals(friendsId[which])) {
                                     meetingFriendList.add(f);
                                 }
                             }
                         }
                         if (!isChecked) {
-                            for (Friend f : DataSingleton.getInstance().getFriendList()) {
+                            for (Friend f : friendTable.getAllFriends()) {
                                 if (f.getId().equals(friendsId[which])) {
                                     meetingFriendList.remove(f);
                                 }

@@ -1,4 +1,4 @@
-package com.example.s3529589.mad_a1.Model;
+package com.example.s3529589.mad_a1.Adapter;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -9,9 +9,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.s3529589.mad_a1.Adapter.CustomMeetingDetailsArrayAdapter;
 import com.example.s3529589.mad_a1.Controller.meetingControllers.MeetingFriendEditController;
 import com.example.s3529589.mad_a1.Controller.meetingControllers.MeetingTimeEditController;
+import com.example.s3529589.mad_a1.Database.MeetingDatabaseHandler;
+import com.example.s3529589.mad_a1.Database.MeetingTable;
 import com.example.s3529589.mad_a1.Exceptions.InvalidMeetingInput;
+import com.example.s3529589.mad_a1.Model.DataSingleton;
+import com.example.s3529589.mad_a1.Model.Meeting;
 import com.example.s3529589.mad_a1.R;
 
 import java.text.DateFormat;
@@ -21,6 +26,8 @@ import java.util.Date;
 import java.util.UUID;
 
 public class CustomEditMeetingDetailsAlertDialog extends AlertDialog.Builder {
+
+    private MeetingTable meetingTable = new MeetingTable();
     private CustomMeetingDetailsArrayAdapter customMeetingDetailsArrayAdapter;
     private UUID id;
 
@@ -51,10 +58,10 @@ public class CustomEditMeetingDetailsAlertDialog extends AlertDialog.Builder {
 
     private void removeMeeting() {
         try {
-            for (Meeting m : DataSingleton.getInstance().getMeetingList()) {
-                if (m.getId() == id) {
-                    DataSingleton.getInstance().getMeetingList().remove(m);
-                    customMeetingDetailsArrayAdapter.notifyDataSetChanged();
+            for (Meeting m : meetingTable.getAllMeetings()) {
+                if (m.getId().equals(id)) {
+                    meetingTable.deleteMeeting(m);
+                    customMeetingDetailsArrayAdapter.updateItems(meetingTable.getAllMeetings());
                     Toast.makeText(customMeetingDetailsArrayAdapter.getContext(), "Meeting Removed", Toast.LENGTH_LONG).show();
                 }
             }
@@ -64,6 +71,8 @@ public class CustomEditMeetingDetailsAlertDialog extends AlertDialog.Builder {
     }
 
     private void editMeeting() {
+
+        Meeting  meetingDetailsForHints = getMeetingForPopulatingHints();
         String choices[] = {"Cancel", "Confirm"};
         LayoutInflater factory = LayoutInflater.from(customMeetingDetailsArrayAdapter.getContext());
 
@@ -72,15 +81,15 @@ public class CustomEditMeetingDetailsAlertDialog extends AlertDialog.Builder {
         final View editMeetingView = factory.inflate(R.layout.schedule_meeting, null);
 
         final EditText editTitle = (EditText) editMeetingView.findViewById(R.id.meetingTitle);
-        editTitle.setHint(DataSingleton.getInstance().getMeetingById(id).getTitle());
+        editTitle.setHint(meetingDetailsForHints.getTitle());
 
         final TextView startTimeTV = (TextView) editMeetingView.findViewById(R.id.startTimeLbl);
-        Date startAsDate = DataSingleton.getInstance().getMeetingById(id).getStartTime();
+        Date startAsDate = meetingDetailsForHints.getStartTime();
         String start = formatter.format(startAsDate);
         startTimeTV.setText(start);
 
         final TextView endTimeTV = (TextView) editMeetingView.findViewById(R.id.finishTimeLbl);
-        Date finishAsDate = DataSingleton.getInstance().getMeetingById(id).getFinishTime();
+        Date finishAsDate = meetingDetailsForHints.getFinishTime();
         String finish = formatter.format(finishAsDate);
         endTimeTV.setText(finish);
 
@@ -108,7 +117,6 @@ public class CustomEditMeetingDetailsAlertDialog extends AlertDialog.Builder {
 
                 try {
                     editMeetingDetails(id, title, startTimeTV, endTimeTV);
-                    customMeetingDetailsArrayAdapter.notifyDataSetChanged();
                 } catch (InvalidMeetingInput invalidMeetingInput) {
                 }
             }
@@ -126,14 +134,16 @@ public class CustomEditMeetingDetailsAlertDialog extends AlertDialog.Builder {
     }
 
     private void editMeetingDetails(UUID id, String title, TextView startTimeTV, TextView endTimeTV) throws InvalidMeetingInput {
-        DateFormat d = new SimpleDateFormat("d-MMM-yyy, h:mm:ss a");
+        DateFormat d = new SimpleDateFormat("d-MMM-yyyy, h:mm:ss a");
 
-        for (Meeting m : DataSingleton.getInstance().getMeetingList())
-            if (m.getId() == id) {
+        for (Meeting m : meetingTable.getAllMeetings())
+            if (m.getId().equals(id)) {
                 // Edit meeting name
                 if (!title.isEmpty()) {
                     m.setTitle(title);
-                    customMeetingDetailsArrayAdapter.notifyDataSetChanged();
+
+                    meetingTable.updateMeeting(m);
+                    customMeetingDetailsArrayAdapter.updateItems(meetingTable.getAllMeetings());
                 }
 
                 String startTimeString = startTimeTV.getText().toString();
@@ -150,13 +160,23 @@ public class CustomEditMeetingDetailsAlertDialog extends AlertDialog.Builder {
                 }
 
                 if (newStartDate.before(newEndDate)) {
-                    DataSingleton.getInstance().getMeetingById(id).setStartTime(newStartDate);
-                    DataSingleton.getInstance().getMeetingById(id).setFinishTime(newEndDate);
-                    customMeetingDetailsArrayAdapter.notifyDataSetChanged();
-                    Toast.makeText(customMeetingDetailsArrayAdapter.getContext(), R.string.friend_updated_toast, Toast.LENGTH_LONG).show();
+                    m.setStartTime(newStartDate);
+                    m.setFinishTime(newEndDate);
+                    meetingTable.updateMeeting(m);
+                    customMeetingDetailsArrayAdapter.updateItems(meetingTable.getAllMeetings());
+                    Toast.makeText(customMeetingDetailsArrayAdapter.getContext(), R.string.meeting_successfuly_edited_toast, Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(customMeetingDetailsArrayAdapter.getContext(), "Start time must be before finish time", Toast.LENGTH_LONG).show();
                 }
             }
+    }
+
+    private Meeting getMeetingForPopulatingHints() {
+        for(Meeting m : meetingTable.getAllMeetings()){
+            if(m.getId().equals(id)){
+                return m;
+            }
+        }
+        return null;
     }
 }

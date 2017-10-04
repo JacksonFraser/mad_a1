@@ -5,10 +5,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.s3529589.mad_a1.Activity.meetingActivities.ScheduleMeetingActivity;
+import com.example.s3529589.mad_a1.Database.MeetingDatabaseHandler;
+import com.example.s3529589.mad_a1.Database.MeetingFriendTable;
+import com.example.s3529589.mad_a1.Database.MeetingTable;
 import com.example.s3529589.mad_a1.Exceptions.InvalidMeetingInput;
 import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.Model.Friend;
 import com.example.s3529589.mad_a1.Model.Meeting;
+import com.example.s3529589.mad_a1.Model.MeetingFriend;
 import com.example.s3529589.mad_a1.R;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -18,7 +22,7 @@ import java.util.List;
 
 public class CreateMeetingController implements View.OnClickListener {
     private ScheduleMeetingActivity scheduleMeetingActivity;
-
+    private MeetingTable meetingTable;
     private EditText meetingTitle;
     private TextView startTime;
     private TextView finishTime;
@@ -32,6 +36,7 @@ public class CreateMeetingController implements View.OnClickListener {
         this.finishTime = finishTime;
         this.meetingFriendList = meetingFriendList;
         this.meetingLocation = meetingLocation;
+        this.meetingTable = new MeetingTable();
     }
 
     @Override
@@ -52,7 +57,13 @@ public class CreateMeetingController implements View.OnClickListener {
         }
 
         try {
-            DataSingleton.getInstance().getMeetingList().add(new Meeting(meetingTitle.getText().toString(), start, finish, meetingFriendList, meetingLocation.getText().toString()));
+            Meeting m = new Meeting(meetingTitle.getText().toString(), start, finish, meetingLocation.getText().toString());
+            MeetingFriendTable meetingFriendTable = new MeetingFriendTable();
+            for(Friend f : meetingFriendList){
+                MeetingFriend meetingFriend = new MeetingFriend(m.getId(),f.getId());
+                meetingFriendTable.addMeetingFriend(meetingFriend);
+            }
+            meetingTable.addMeeting(m);
             scheduleMeetingActivity.finish();
             Toast.makeText(this.scheduleMeetingActivity, R.string.meeting_created_toast, Toast.LENGTH_SHORT).show();
 

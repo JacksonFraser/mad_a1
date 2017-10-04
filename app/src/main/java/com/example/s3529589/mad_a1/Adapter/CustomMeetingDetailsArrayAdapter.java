@@ -1,4 +1,4 @@
-package com.example.s3529589.mad_a1.Model;
+package com.example.s3529589.mad_a1.Adapter;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,12 +8,19 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.example.s3529589.mad_a1.Controller.meetingControllers.DisplayMapController;
 import com.example.s3529589.mad_a1.Controller.meetingControllers.MeetingDisplayLongClickController;
+import com.example.s3529589.mad_a1.Database.FriendTable;
+import com.example.s3529589.mad_a1.Database.MeetingFriendTable;
+import com.example.s3529589.mad_a1.Model.Friend;
+import com.example.s3529589.mad_a1.Model.Meeting;
+import com.example.s3529589.mad_a1.Model.MeetingFriend;
 import com.example.s3529589.mad_a1.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 public class CustomMeetingDetailsArrayAdapter extends ArrayAdapter<Meeting> {
     private List<Meeting> meetingList;
@@ -36,16 +43,21 @@ public class CustomMeetingDetailsArrayAdapter extends ArrayAdapter<Meeting> {
         View rowView = inflater.inflate(R.layout.meeting_details_list_view_item_row, null);
         rowView.setOnLongClickListener(new MeetingDisplayLongClickController(meetingList.get(pos).getId(), this));
 
+        // Open map
+        rowView.setOnClickListener(new DisplayMapController(meetingList.get(pos).getId(), this));
+
         holder.meetingTitleTV = (TextView) rowView.findViewById(R.id.meeting_title);
         holder.meetingTitleTV.setText(meetingList.get(pos).getTitle());
 
 
         holder.meetingStartTimeTV = (TextView) rowView.findViewById(R.id.meeting_start_time);
 
+
         //Formatted date for more readable display
         Date startDate = meetingList.get(pos).getStartTime();
         SimpleDateFormat s = new SimpleDateFormat("d-MMM-yyyy, h:mm:ss a");
         String startDateFormatted = s.format(startDate);
+        System.out.println("WE GOT HERE " +startDateFormatted);
         holder.meetingStartTimeTV.setText("Start time: " + startDateFormatted);
 
         holder.meetingEndTimeTV = (TextView) rowView.findViewById(R.id.meeting_end_time);
@@ -60,18 +72,30 @@ public class CustomMeetingDetailsArrayAdapter extends ArrayAdapter<Meeting> {
 
         //create friends
         holder.meetingFriendsTV = (TextView) rowView.findViewById(R.id.meeting_friends);
-        String friends = createFriendsString(meetingList.get(pos).getFriendList());
+        String friends = createFriendsString(meetingList.get(pos).getId());
         holder.meetingFriendsTV.setText(friends);
         return rowView;
     }
 
-    private String createFriendsString(List<Friend> friendList) {
+    private String createFriendsString(UUID meetingUUID) {
         String friendString = "";
-
+        MeetingFriendTable meetingFriendTable =  new MeetingFriendTable();
+        FriendTable friendTable = new FriendTable();
+        System.out.println("THIS IS THE SIZE "+meetingFriendTable.getAllMeetingFriends().size());
         try {
-            for (Friend f : friendList) {
-                friendString = friendString.concat("- " + f.getName() + "\n");
+            for (MeetingFriend m : meetingFriendTable.getAllMeetingFriends()) {
+                if(m.getMeetingUUID().equals(meetingUUID)) {
+                    for(Friend f : friendTable.getAllFriends()){
+                        if(f.getId().equals(m.getFriendUUID())){
+                            friendString = friendString.concat("- " + f.getName() + "\n");
+
+                        }
+                    }
+
+
+                }
             }
+
             friendString = friendString.substring(0, friendString.length() - 1);
             return friendString;
         } catch (Exception e) {
@@ -86,6 +110,18 @@ public class CustomMeetingDetailsArrayAdapter extends ArrayAdapter<Meeting> {
         TextView meetingEndTimeTV;
         TextView meetingFriendsTV;
         TextView meetingLocationTV;
+    }
+
+    public void updateItems(List<Meeting> meetingList){
+        super.clear();
+        if(meetingList.isEmpty()){
+            notifyDataSetChanged();
+        } else {
+            this.meetingList = meetingList;
+
+        }
+        super.addAll(meetingList);
+        notifyDataSetChanged();
     }
 
 }

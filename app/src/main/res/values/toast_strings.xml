@@ -3,7 +3,7 @@
     <string name="friend_added_toast">Friend Added</string>
     <string name="friend_removed_toast">Friend Removed</string>
     <string name="friend_updated_toast">Friend Updated</string>
-
+    <string name="meeting_successfuly_edited_toast">Meeting successfully updated</string>
     <string name="meeting_created_toast">Meeting Created</string>
 
 

@@ -1,4 +1,4 @@
-package com.example.s3529589.mad_a1.Model;
+package com.example.s3529589.mad_a1.Adapter;
 
 import android.app.Activity;
 import android.content.Context;
@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.s3529589.mad_a1.Controller.friendControllers.FriendMenuLongClickController;
 import com.example.s3529589.mad_a1.Controller.friendControllers.PickDisplayPictureController;
+import com.example.s3529589.mad_a1.Model.Friend;
 import com.example.s3529589.mad_a1.R;
 
 import java.text.SimpleDateFormat;
@@ -19,6 +20,8 @@ import java.util.List;
 public class CustomFriendDetailsArrayAdapter extends ArrayAdapter<Friend> {
     private List<Friend> friendList;
     private Context context;
+
+
 
     public Activity getActivity() {
         return activity;
@@ -39,8 +42,9 @@ public class CustomFriendDetailsArrayAdapter extends ArrayAdapter<Friend> {
     @Override
     public View getView(int pos, View convertView, ViewGroup parent) {
         FriendHolder holder = new FriendHolder();
-
+        System.out.println("THIS IS THE NUMBEEEEEER " + pos);
         View rowView = inflater.inflate(R.layout.friend_details_list_iew_item_row, null);
+
         rowView.setOnLongClickListener(new FriendMenuLongClickController(friendList.get(pos).getId(), this));
 
         holder.friendNameTV = (TextView) rowView.findViewById(R.id.friendName);
@@ -70,4 +74,18 @@ public class CustomFriendDetailsArrayAdapter extends ArrayAdapter<Friend> {
         TextView friendLocation;
         ImageView displayImg;
     }
+
+    public void updateItems(List<Friend> friendList){
+        super.clear();
+        if(friendList.isEmpty()){
+            notifyDataSetChanged();
+        } else {
+            this.friendList = friendList;
+        }
+        super.addAll(friendList);
+        notifyDataSetChanged();
+    }
+
+
+
 }

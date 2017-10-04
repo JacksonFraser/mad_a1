@@ -7,5 +7,6 @@
     <string name="meeting_menu">Add/ Display Meetings</string>
     <string name="schedule_menu">Add A Meeting</string>
     <string name="view_meetings">Display Meetings</string>
+    <string name="view_map">View Location</string>
 
 </resources>

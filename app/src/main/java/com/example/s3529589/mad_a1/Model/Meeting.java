@@ -12,10 +12,9 @@ public class Meeting {
     private Date startTime;
     private Date finishTime;
     private UUID uuid;
-    private List<Friend> friendList = new ArrayList<>();
     private String location;
 
-    public Meeting(String title, Date start, Date finish, List<Friend> friendList, String location) throws InvalidMeetingInput {
+    public Meeting(String title, Date start, Date finish,  String location) throws InvalidMeetingInput {
         if (start == null)
             throw new InvalidMeetingInput("Meeting start time cannot be null");
         if (finish == null)
@@ -31,8 +30,11 @@ public class Meeting {
         this.title = title;
         this.startTime = start;
         this.finishTime = finish;
-        this.friendList = friendList;
         this.location = location;
+    }
+
+    public Meeting(){
+
     }
 
     public UUID getId() {
@@ -47,10 +49,6 @@ public class Meeting {
         return startTime;
     }
 
-    public List<Friend> getFriendList() {
-        return friendList;
-    }
-
     public Date getFinishTime() {
         return finishTime;
     }
@@ -61,6 +59,14 @@ public class Meeting {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public void setId(UUID uuid) {
+        this.uuid = uuid;
     }
 
 
