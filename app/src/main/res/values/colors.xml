@@ -16,4 +16,6 @@
     <color name="meetingMenuSchedule">#04202C</color>
     <color name="meetingMenuDisplay">#304040</color>
 
+    <color name="buttonTextColour">#3274ed</color>
+
 </resources>
