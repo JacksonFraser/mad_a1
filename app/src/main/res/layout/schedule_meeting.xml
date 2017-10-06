@@ -55,11 +55,15 @@
             android:layout_height="wrap_content"
             android:id="@+id/startTimeBtn"
             android:text="@string/schedule_start_button"
-            android:layout_alignTop="@+id/fromLbl"
+            android:layout_alignTop="@+id/startTimeLbl"
             android:layout_alignBottom="@id/startTimeLbl"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginRight="10dp"/>
+            android:layout_marginRight="10dp"
+            android:background="@android:color/transparent"
+            android:textSize="15sp"
+            android:textColor="@color/buttonTextColour"
+            />
 
         <TextView
             android:id="@+id/toLbl"
@@ -89,12 +93,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/finishTimeBtn"
-            android:layout_alignTop="@+id/toLbl"
+            android:layout_alignTop="@+id/finishTimeLbl"
             android:layout_alignBottom="@+id/finishTimeLbl"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:text="@string/schedule_finish_button"
-            android:layout_marginRight="10dp"/>
+            android:layout_marginRight="10dp"
+            android:background="@android:color/transparent"
+            android:textSize="15sp"
+            android:textColor="@color/buttonTextColour"
+            />
 
         <TextView
             android:id="@+id/meeting_location_text_view"
@@ -145,7 +153,11 @@
             android:text="@string/schedule_select_friends_button"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10sp"
-            android:layout_marginLeft="10sp"/>
+            android:layout_marginLeft="10sp"
+            android:background="@android:color/transparent"
+            android:textSize="20sp"
+            android:textColor="@color/buttonTextColour"
+            />
 
     </RelativeLayout>
 
