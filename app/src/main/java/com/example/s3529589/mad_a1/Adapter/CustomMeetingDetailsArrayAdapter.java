@@ -57,7 +57,6 @@ public class CustomMeetingDetailsArrayAdapter extends ArrayAdapter<Meeting> {
         Date startDate = meetingList.get(pos).getStartTime();
         SimpleDateFormat s = new SimpleDateFormat("d-MMM-yyyy, h:mm:ss a");
         String startDateFormatted = s.format(startDate);
-        System.out.println("WE GOT HERE " +startDateFormatted);
         holder.meetingStartTimeTV.setText("Start time: " + startDateFormatted);
 
         holder.meetingEndTimeTV = (TextView) rowView.findViewById(R.id.meeting_end_time);
@@ -81,7 +80,6 @@ public class CustomMeetingDetailsArrayAdapter extends ArrayAdapter<Meeting> {
         String friendString = "";
         MeetingFriendTable meetingFriendTable =  new MeetingFriendTable();
         FriendTable friendTable = new FriendTable();
-        System.out.println("THIS IS THE SIZE "+meetingFriendTable.getAllMeetingFriends().size());
         try {
             for (MeetingFriend m : meetingFriendTable.getAllMeetingFriends()) {
                 if(m.getMeetingUUID().equals(meetingUUID)) {

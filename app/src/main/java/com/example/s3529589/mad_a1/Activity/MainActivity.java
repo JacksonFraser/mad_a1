@@ -46,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         // Uncomment these to restore dummy data
-        this.deleteDatabase("mad_db");
-        addDummyDatabaseStuff();
+        //this.deleteDatabase("mad_db");
+        // addDummyDatabaseStuff();
 
         //Only runs if you don't have contact permission
         checkPersissions();

@@ -69,7 +69,7 @@ public class CreateMeetingController implements View.OnClickListener {
 
 
             if(!meetingFriendList.isEmpty()) {
-                DistanceMatrixAPIActivity distanceMatrixAPIActivity = new DistanceMatrixAPIActivity(m, meetingFriendList.get(0).getLat(), meetingFriendList.get(0).getLon());
+                DistanceMatrixAPIActivity distanceMatrixAPIActivity = new DistanceMatrixAPIActivity(scheduleMeetingActivity, meetingFriendList.get(0).getLat(), meetingFriendList.get(0).getLon());
                 m.setLocation(distanceMatrixAPIActivity.midPoint());
             }
             //distanceMatrixAPIActivity

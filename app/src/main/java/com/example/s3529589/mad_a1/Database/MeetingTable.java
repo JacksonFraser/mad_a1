@@ -80,7 +80,6 @@ public class MeetingTable {
                 meeting.setLocation(cursor.getString(5));
 
                 try {
-                    System.out.println(("The string to parse: " + cursor.getString(3)));
                     Date  start = new SimpleDateFormat("d-MMM-yyyy, h:mm:ss a").parse(cursor.getString(3));
                     Date  end = new SimpleDateFormat("d-MMM-yyyy, h:mm:ss a").parse(cursor.getString(4));
                     meeting.setStartTime(start);
