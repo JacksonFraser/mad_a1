@@ -23,6 +23,7 @@ public class CustomFriendDetailsArrayAdapter extends ArrayAdapter<Friend> {
 
 
 
+
     public Activity getActivity() {
         return activity;
     }
