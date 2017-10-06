@@ -103,14 +103,11 @@ public class ScheduleMeetingActivity extends AppCompatActivity {
             }
         });
 
-        // Meeting location
-        EditText meetingLocation = (EditText) findViewById(R.id.meeting_location_edit_text);
-
 
         // Create a meeting
         View createMeetingBtn = findViewById(R.id.confirmMeetingBtn);
         createMeetingBtn.setVisibility(View.VISIBLE);
-        createMeetingBtn.setOnClickListener(new CreateMeetingController(this, meetingTitleView, startTime, finishTime, meetingFriendList, meetingLocation));
+        createMeetingBtn.setOnClickListener(new CreateMeetingController(this, meetingTitleView, startTime, finishTime, meetingFriendList));
     }
 
 }

@@ -2,9 +2,7 @@ package com.example.s3529589.mad_a1.Model;
 
 import com.example.s3529589.mad_a1.Exceptions.InvalidMeetingInput;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.UUID;
 
 public class Meeting {
@@ -31,6 +29,22 @@ public class Meeting {
         this.startTime = start;
         this.finishTime = finish;
         this.location = location;
+    }
+
+    public Meeting(String title, Date start, Date finish) throws InvalidMeetingInput {
+        if (start == null)
+            throw new InvalidMeetingInput("Meeting start time cannot be null");
+        if (finish == null)
+            throw new InvalidMeetingInput("Meeting end time cannot be null");
+        if (title.isEmpty())
+            throw new InvalidMeetingInput("Meeting has to have a title");
+        if (finish.before(start))
+            throw new InvalidMeetingInput("Start time has to be before end time");
+
+        this.uuid = UUID.randomUUID();
+        this.title = title;
+        this.startTime = start;
+        this.finishTime = finish;
     }
 
     public Meeting(){

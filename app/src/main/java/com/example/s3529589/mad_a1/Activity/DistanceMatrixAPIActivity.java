@@ -25,6 +25,7 @@ public class DistanceMatrixAPIActivity {
     private double gpsLongitude;
     private double midwayLat;
     private double midwayLon;
+
     private LocationManager mLocationManager;
     private Location location;
     private ScheduleMeetingActivity context;
@@ -38,26 +39,15 @@ public class DistanceMatrixAPIActivity {
         this.context = context;
 
         location = findCurrentLocation();
-    //        System.out.println("INSIDE THE CONSTRUCTOR " + location.getLatitude());
-  //      System.out.println("INSIDE THE CONSTRUCTOR " + location.getLongitude());
+        System.out.println("INSIDE THE CONSTRUCTOR " + location.getLatitude());
+        System.out.println("INSIDE THE CONSTRUCTOR " + location.getLongitude());
 
     }
 
-    // Original coordinates
-    // RMIT to Melbourne Central
-    /*
-    double originLat = -37.808943;
-    double originLon = 144.965117;
-
-    double destinationLat = -37.810428;
-    double destinationLon = 144.962915;
-    */
-    // A1 Bakery to Crown Casino
-
     public String midPoint() {
         //  new getWalkingDistance().execute();
-        midwayLat = ((gpsLatitude) + (friendLatitude)) / 2;
-        midwayLon = (gpsLongitude + friendLongitude) / 2;
+        midwayLat = ((location.getLatitude()) + (friendLatitude)) / 2;
+        midwayLon = (location.getLongitude() + friendLongitude) / 2;
 
         //print out long lat
         System.out.println("latitude: " + midwayLat + ", Longitude: " + midwayLon);
@@ -116,14 +106,11 @@ public class DistanceMatrixAPIActivity {
             if (ActivityCompat.shouldShowRequestPermissionRationale(context,
                     Manifest.permission.ACCESS_FINE_LOCATION)) {
             } else {
-                ActivityCompat.requestPermissions(context,
-                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                        0);
-                ActivityCompat.requestPermissions(context,
-                        new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
-                        0);
+                ActivityCompat.requestPermissions(context, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 0);
+                ActivityCompat.requestPermissions(context, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 0);
             }
         }
+
         mLocationManager = (LocationManager) context.getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
         List<String> providers = mLocationManager.getProviders(true);
         Location bestLocation = null;
@@ -136,6 +123,8 @@ public class DistanceMatrixAPIActivity {
                 bestLocation = l;
             }
         }
+
         return bestLocation;
     }
+
 }

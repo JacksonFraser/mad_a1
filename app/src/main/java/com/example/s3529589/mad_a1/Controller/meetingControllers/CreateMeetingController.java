@@ -7,15 +7,14 @@ import android.widget.Toast;
 
 import com.example.s3529589.mad_a1.Activity.DistanceMatrixAPIActivity;
 import com.example.s3529589.mad_a1.Activity.meetingActivities.ScheduleMeetingActivity;
-import com.example.s3529589.mad_a1.Database.MeetingDatabaseHandler;
 import com.example.s3529589.mad_a1.Database.MeetingFriendTable;
 import com.example.s3529589.mad_a1.Database.MeetingTable;
 import com.example.s3529589.mad_a1.Exceptions.InvalidMeetingInput;
-import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.Model.Friend;
 import com.example.s3529589.mad_a1.Model.Meeting;
 import com.example.s3529589.mad_a1.Model.MeetingFriend;
 import com.example.s3529589.mad_a1.R;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -29,16 +28,14 @@ public class CreateMeetingController implements View.OnClickListener {
     private TextView startTime;
     private TextView finishTime;
     private List<Friend> meetingFriendList;
-    private EditText meetingLocation;
     private DistanceMatrixAPIActivity distanceMatrixAPIActivity;
 
-    public CreateMeetingController(ScheduleMeetingActivity scheduleMeetingActivity, EditText meetingTitle, TextView startTime, TextView finishTime, List<Friend> meetingFriendList, EditText meetingLocation) {
+    public CreateMeetingController(ScheduleMeetingActivity scheduleMeetingActivity, EditText meetingTitle, TextView startTime, TextView finishTime, List<Friend> meetingFriendList) {
         this.scheduleMeetingActivity = scheduleMeetingActivity;
         this.meetingTitle = meetingTitle;
         this.startTime = startTime;
         this.finishTime = finishTime;
         this.meetingFriendList = meetingFriendList;
-        this.meetingLocation = meetingLocation;
         this.meetingTable = new MeetingTable();
     }
 
@@ -60,19 +57,18 @@ public class CreateMeetingController implements View.OnClickListener {
         }
 
         try {
-            Meeting m = new Meeting(meetingTitle.getText().toString(), start, finish, meetingLocation.getText().toString());
+            Meeting m = new Meeting(meetingTitle.getText().toString(), start, finish);
             MeetingFriendTable meetingFriendTable = new MeetingFriendTable();
             for(Friend f : meetingFriendList){
                 MeetingFriend meetingFriend = new MeetingFriend(m.getId(),f.getId());
                 meetingFriendTable.addMeetingFriend(meetingFriend);
             }
 
-
             if(!meetingFriendList.isEmpty()) {
-                DistanceMatrixAPIActivity distanceMatrixAPIActivity = new DistanceMatrixAPIActivity(scheduleMeetingActivity, meetingFriendList.get(0).getLat(), meetingFriendList.get(0).getLon());
+                distanceMatrixAPIActivity = new DistanceMatrixAPIActivity(scheduleMeetingActivity, meetingFriendList.get(0).getLat(), meetingFriendList.get(0).getLon());
                 m.setLocation(distanceMatrixAPIActivity.midPoint());
             }
-            //distanceMatrixAPIActivity
+
             meetingTable.addMeeting(m);
             scheduleMeetingActivity.finish();
             Toast.makeText(this.scheduleMeetingActivity, R.string.meeting_created_toast, Toast.LENGTH_SHORT).show();
