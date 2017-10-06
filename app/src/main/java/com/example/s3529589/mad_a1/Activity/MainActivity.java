@@ -6,21 +6,20 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
+
 import com.example.s3529589.mad_a1.Controller.friendControllers.FriendMenuController;
 import com.example.s3529589.mad_a1.Controller.meetingControllers.MeetingMenuController;
 import com.example.s3529589.mad_a1.Database.DBHelper;
 import com.example.s3529589.mad_a1.Database.DatabaseManagerSingleton;
 import com.example.s3529589.mad_a1.Database.FriendTable;
-import com.example.s3529589.mad_a1.Database.MeetingDatabaseHandler;
-import com.example.s3529589.mad_a1.Database.FriendDatabaseHandler;
 import com.example.s3529589.mad_a1.Database.MeetingTable;
 import com.example.s3529589.mad_a1.Exceptions.InvalidMeetingInput;
 import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.Model.Friend;
 import com.example.s3529589.mad_a1.Model.Meeting;
 import com.example.s3529589.mad_a1.R;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -88,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         Date date = calendar.getTime();
         Date date1 = calendar.getTime();
         Date date2 = calendar.getTime();
-        Friend f1 = new Friend("Bobby Jarzombek", "gmail@gmail", date, 0, 0);
+        Friend f1 = new Friend("Bobby Jarzombek", "gmail@gmail", date, -37.824620, 144.957029);
         Friend f2 = new Friend("Chris Dave", "newemail@me.com", date, 0, 0);
         Friend f3 = new Friend("Sally Sanders", "sally@me.com", date, 0, 0);
         Friend f4 = new Friend("dennis Le Mennis", "dennis@me.com", date, 0, 0);

@@ -5,10 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
 import com.example.s3529589.mad_a1.Adapter.CustomMeetingDetailsArrayAdapter;
-import com.example.s3529589.mad_a1.Database.MeetingDatabaseHandler;
 import com.example.s3529589.mad_a1.Database.MeetingTable;
-import com.example.s3529589.mad_a1.Model.DataSingleton;
-import com.example.s3529589.mad_a1.Model.Meeting;
 import com.example.s3529589.mad_a1.Model.MeetingDateCompare;
 import com.example.s3529589.mad_a1.R;
 
@@ -28,7 +25,6 @@ public class DisplayMeetingActivity extends AppCompatActivity {
     }
 
     private void createListView() {
-
         //Sort the meetings based in their start times
         Collections.sort(meetingTable.getAllMeetings(), new MeetingDateCompare());
 
@@ -38,6 +34,5 @@ public class DisplayMeetingActivity extends AppCompatActivity {
         customMeetingDetailsArrayAdapter = new CustomMeetingDetailsArrayAdapter(this,meetingTable.getAllMeetings());
         lv.setAdapter(customMeetingDetailsArrayAdapter);
     }
-
 
 }

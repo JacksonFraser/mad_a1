@@ -3,26 +3,19 @@ package com.example.s3529589.mad_a1.Activity;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.example.s3529589.mad_a1.Activity.meetingActivities.ScheduleMeetingActivity;
 import com.example.s3529589.mad_a1.Model.HttpHelper;
-import com.example.s3529589.mad_a1.Model.Meeting;
-import com.example.s3529589.mad_a1.R;
-import com.google.android.gms.location.LocationRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.List;
-
 
 public class DistanceMatrixAPIActivity {
     final String API_KEY = "AIzaSyCMnEw6U-no-uYyqL8o40N_dV91lc5QldQ";
@@ -45,8 +38,8 @@ public class DistanceMatrixAPIActivity {
         this.context = context;
 
         location = findCurrentLocation();
-        System.out.println("INSIDE THE CONSTRUCTOR " + location.getLatitude());
-        System.out.println("INSIDE THE CONSTRUCTOR " + location.getLongitude());
+    //        System.out.println("INSIDE THE CONSTRUCTOR " + location.getLatitude());
+  //      System.out.println("INSIDE THE CONSTRUCTOR " + location.getLongitude());
 
     }
 
@@ -69,7 +62,7 @@ public class DistanceMatrixAPIActivity {
         //print out long lat
         System.out.println("latitude: " + midwayLat + ", Longitude: " + midwayLon);
 
-        String meetingLocationString = String.valueOf(midwayLat).substring(0, 10) + ", " + String.valueOf(String.valueOf(midwayLon).substring(0, 10));
+        String meetingLocationString = String.valueOf(midwayLat).substring(0, 8) + ", " + String.valueOf(String.valueOf(midwayLon).substring(0, 8));
 
         return meetingLocationString;
     }
