@@ -14,9 +14,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-/**
- * Created by supriya on 2/10/17.
- */
 
 public class MeetingTable {
     public static final String TABLE = "meetings";
