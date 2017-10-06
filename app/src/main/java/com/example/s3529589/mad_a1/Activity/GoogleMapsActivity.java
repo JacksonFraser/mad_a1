@@ -33,7 +33,6 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
         // receive intents from DisplayMapActivity
         Intent incomingIntent = getIntent();
         meetingId = incomingIntent.getStringExtra("id_of_meeting");
-        System.out.println("asdasdasdasd + " + meetingId);
     }
 
     @Override
@@ -42,9 +41,10 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
 
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         MeetingTable meetingTable = new MeetingTable();
+
         for(Meeting m : meetingTable.getAllMeetings()){
-            if(m.getId().equals(meetingId)){
-                // parse the id into long and lat
+            if(m.getId().toString().equals(meetingId)){
+                // parse string into latitude and longitude
                 String location = m.getLocation();
                 String[] delims = location.split(",");
 
@@ -52,18 +52,6 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
                 longitude = Double.parseDouble(delims[1]);
             }
         }
-
-        // RMIT
-        // -37.808943, 144.965117
-
-        // Midbetween A1 and Crown
-        // -37.792657500000004, 144.96047349999998
-
-        // GET THE LONGITUDE AND LATITUDE OF THE MEETING
-        // AND THEN DISPLAY IT'S LOCATION
-
-        System.out.println("asdadasd" + this.latitude);
-        System.out.println("hey got here " + this.longitude);
 
         LatLng location = new LatLng(latitude, longitude);
         mMap.addMarker(new MarkerOptions().position(location).title("Meeting location"));

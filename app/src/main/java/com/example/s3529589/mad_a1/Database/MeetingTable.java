@@ -55,7 +55,6 @@ public class MeetingTable {
         values.put(KEY_START_TIME, startString);
         values.put(KEY_END_TIME,   endString);
 
-
         // Inserting Row
         db.insert(TABLE, null, values);
         DatabaseManagerSingleton.getInstance().closeDatabase();
