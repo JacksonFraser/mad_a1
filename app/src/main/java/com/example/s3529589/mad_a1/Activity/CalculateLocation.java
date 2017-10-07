@@ -5,19 +5,13 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
-import android.os.AsyncTask;
 import android.support.v4.app.ActivityCompat;
-import android.util.Log;
 
 import com.example.s3529589.mad_a1.Activity.meetingActivities.ScheduleMeetingActivity;
-import com.example.s3529589.mad_a1.Model.HttpHelper;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.List;
 
-public class DistanceMatrixAPIActivity {
+public class CalculateLocation {
     final String API_KEY = "AIzaSyCMnEw6U-no-uYyqL8o40N_dV91lc5QldQ";
     private double friendLatitude;
     private double friendLongitude;
@@ -30,8 +24,7 @@ public class DistanceMatrixAPIActivity {
     private Location location;
     private ScheduleMeetingActivity context;
 
-
-    public DistanceMatrixAPIActivity(ScheduleMeetingActivity context, double latitude, double longitude) {
+    public CalculateLocation(ScheduleMeetingActivity context, double latitude, double longitude) {
         this.friendLatitude = latitude;
         this.friendLongitude = longitude;
         gpsLatitude = -37.761785;
@@ -39,9 +32,6 @@ public class DistanceMatrixAPIActivity {
         this.context = context;
 
         location = findCurrentLocation();
-        System.out.println("INSIDE THE CONSTRUCTOR " + location.getLatitude());
-        System.out.println("INSIDE THE CONSTRUCTOR " + location.getLongitude());
-
     }
 
     public String midPoint() {
@@ -57,11 +47,13 @@ public class DistanceMatrixAPIActivity {
         return meetingLocationString;
     }
 
+    /*
     private class getWalkingDistance extends AsyncTask<Void, Void, Void> {
 
         String url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&" +
                 "origins=" + gpsLatitude + "," + gpsLongitude + "&destinations=" + midwayLat + "," + midwayLon
                 + "&mode=walking" + "&key=" + API_KEY;
+
 
         @Override
         protected void onPreExecute() {
@@ -97,6 +89,7 @@ public class DistanceMatrixAPIActivity {
         System.out.println(distance);
         return distance;
     }
+    */
 
     private Location findCurrentLocation() {
         if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION)
