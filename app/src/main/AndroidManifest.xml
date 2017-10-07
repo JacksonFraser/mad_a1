@@ -51,7 +51,7 @@
         <activity android:name=".Activity.GoogleMapsActivity"
             android:label="@string/view_map"></activity>
 
-        <activity android:name=".Activity.CalculateLocation"
+        <activity android:name=".Activity.CalculateMidpoint"
             android:label="Calculate distance"></activity>
 
         <service

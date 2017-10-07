@@ -1,7 +1,9 @@
 package com.example.s3529589.mad_a1.Activity;
 
+import android.app.Activity;
 import android.app.Service;
 import android.content.Intent;
+import android.location.Location;
 import android.os.AsyncTask;
 import android.os.IBinder;
 import android.util.Log;

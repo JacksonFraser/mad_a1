@@ -5,7 +5,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.s3529589.mad_a1.Activity.CalculateLocation;
+import com.example.s3529589.mad_a1.Activity.CalculateMidpoint;
 import com.example.s3529589.mad_a1.Activity.meetingActivities.ScheduleMeetingActivity;
 import com.example.s3529589.mad_a1.Database.MeetingFriendTable;
 import com.example.s3529589.mad_a1.Database.MeetingTable;
@@ -28,7 +28,7 @@ public class CreateMeetingController implements View.OnClickListener {
     private TextView startTime;
     private TextView finishTime;
     private List<Friend> meetingFriendList;
-    private CalculateLocation distanceMatrixAPIActivity;
+    private CalculateMidpoint distanceMatrixAPIActivity;
 
     public CreateMeetingController(ScheduleMeetingActivity scheduleMeetingActivity, EditText meetingTitle, TextView startTime, TextView finishTime, List<Friend> meetingFriendList) {
         this.scheduleMeetingActivity = scheduleMeetingActivity;
@@ -65,8 +65,8 @@ public class CreateMeetingController implements View.OnClickListener {
             }
 
             if(!meetingFriendList.isEmpty()) {
-                distanceMatrixAPIActivity = new CalculateLocation(scheduleMeetingActivity, meetingFriendList.get(0).getLat(), meetingFriendList.get(0).getLon());
-                m.setLocation(distanceMatrixAPIActivity.midPoint());
+                distanceMatrixAPIActivity = new CalculateMidpoint(scheduleMeetingActivity, meetingFriendList.get(0).getLat(), meetingFriendList.get(0).getLon());
+                m.setLocation(distanceMatrixAPIActivity.getMidPoint());
             }
 
             meetingTable.addMeeting(m);
