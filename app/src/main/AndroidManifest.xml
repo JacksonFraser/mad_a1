@@ -52,12 +52,14 @@
         <activity android:name=".Activity.GoogleMapsActivity"
             android:label="@string/view_map"></activity>
 
-        <activity android:name=".Activity.DistanceMatrixAPIActivity"
+        <activity android:name=".Activity.CalculateMidpoint"
             android:label="Calculate distance"></activity>
 
         <service
             android:name=".Services.MeetingJobService"
             android:permission="android.permission.BIND_JOB_SERVICE"/>
+
+        <service android:name=".Activity.DistanceMatrixAPIService"/>
 
     </application>
 

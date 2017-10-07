@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.job.JobInfo;
 import android.app.job.JobScheduler;
 import android.content.ComponentName;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -11,7 +12,6 @@ import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 
 import com.example.s3529589.mad_a1.Controller.friendControllers.FriendMenuController;
@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
 
         createMeetingJobScheduler();
         DBHelper dbHelper = new DBHelper(this);
@@ -113,6 +112,10 @@ public class MainActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void createMeetingJobScheduler(){
         ComponentName componentName = new ComponentName(this, MeetingJobService.class);
+
+        // try this
+        startService(new Intent(getBaseContext(), DistanceMatrixAPIService.class));
+
         JobInfo jobInfo = new JobInfo.Builder(12, componentName)
                 .setRequiresCharging(true)
                 .setPeriodic(10000)
@@ -127,7 +130,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-
 }
 
 
