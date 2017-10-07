@@ -7,8 +7,7 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.util.Log;
 
-import com.example.s3529589.mad_a1.CustomDialogs.CustomMeetingServiceAlertDialog;
-import com.example.s3529589.mad_a1.CustomDialogs.TestDialogActivity;
+import com.example.s3529589.mad_a1.Activity.JobSchedulerActivity;
 
 
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -39,12 +38,10 @@ public class MeetingJobService extends JobService {
 
     private void doWork(JobParameters jobParameters) {
 
-
-        CustomMeetingServiceAlertDialog a = new CustomMeetingServiceAlertDialog(this);
-
-        // Intent dialogIntent = new Intent(this, TestDialogActivity.class);
-        //dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-       // startActivity(dialogIntent);
+        Intent it = new Intent(this, JobSchedulerActivity.class);
+        it.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(it);
+        //friendMenuActivity.finish();
 
         if (jobCancelled)
                 return;

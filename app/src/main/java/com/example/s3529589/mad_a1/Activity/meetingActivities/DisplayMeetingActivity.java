@@ -8,6 +8,7 @@ import com.example.s3529589.mad_a1.Adapter.CustomMeetingDetailsArrayAdapter;
 import com.example.s3529589.mad_a1.Database.MeetingTable;
 import com.example.s3529589.mad_a1.Model.MeetingDateCompare;
 import com.example.s3529589.mad_a1.R;
+import com.example.s3529589.mad_a1.Services.ApplicationTrackerSingleton;
 
 import java.util.Collections;
 
@@ -19,6 +20,7 @@ public class DisplayMeetingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
+        ApplicationTrackerSingleton.getInstance().setCurrentActivity(this);
         setContentView(R.layout.display_meetings);
         meetingTable = new MeetingTable();
         createListView();

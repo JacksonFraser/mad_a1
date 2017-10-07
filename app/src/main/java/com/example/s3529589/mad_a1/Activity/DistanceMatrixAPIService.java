@@ -13,58 +13,27 @@ import com.example.s3529589.mad_a1.Model.HttpHelper;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class DistanceMatrixAPIService extends Service {
+public class DistanceMatrixAPIService {
+    private double currLat;
+    private double currLon;
+    private double friendLat;
+    private double friendLon;
+    public  String walkingDistance;
 
     final String API_KEY = "AIzaSyCMnEw6U-no-uYyqL8o40N_dV91lc5QldQ";
-
-    double originLat = -37.761785;
-    double originLon = 144.962852;
-
-    double friendLat =  -37.823530;
-    double friendLon = 144.958095;
-
+    public DistanceMatrixAPIService(){
+        this.currLat = -37.810449;
+        this.currLon = 144.962808;
+    }
     // Coordinates after calculating midway point
-    double midwayLat;
-    double midwayLon;
 
 
-    @Override
-    public IBinder onBind(Intent intent) {
-        return null;
-    }
 
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId){
 
-        // calculate the midway point between the origin and the destination
-        midPoint(originLat, originLon, friendLat, friendLon);
-
-        // get the walking distance
-        new getWalkingDistance().execute();
-
-        return START_STICKY;
-    }
-
-    @Override
-    public void onDestroy(){
-        super.onDestroy();
-    }
-
-    public void midPoint(double originLat, double originLon, double destinationLat, double destinationLon){
-        double midwayLat = (originLat + destinationLat)/2;
-        double midwayLon = (originLon + destinationLon)/2;
-
-        //print out long lat
-        System.out.println("latitude: " + midwayLat + ", Longitude: " + midwayLon);
-
-        this.midwayLat = midwayLat;
-        this.midwayLon = midwayLon;
-    }
-
-    private class getWalkingDistance extends AsyncTask<Void, Void, Void> {
+    private class GetWalkingDistance extends AsyncTask<Void, Void, Void> {
 
         String url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&" +
-                "origins=" + originLat + "," + originLon + "&destinations=" + midwayLat + "," + midwayLon
+                "origins=" + currLat + "," + currLon + "&destinations=" + friendLat + "," + friendLon
                 + "&mode=walking" + "&key=" + API_KEY;
 
         @Override
@@ -88,17 +57,36 @@ public class DistanceMatrixAPIService extends Service {
         }
     }
 
-    private String getDistance(String jsonString) throws JSONException {
+    private void getDistance(String jsonString) throws JSONException {
         JSONObject jsonDistance = new JSONObject(jsonString)
                 .getJSONArray("rows")
                 .getJSONObject(0)
                 .getJSONArray("elements")
                 .getJSONObject(0)
-                .getJSONObject("distance");
+                .getJSONObject("duration");
 
-        String distance = jsonDistance.get("value").toString();
-
-        System.out.println(distance);
-        return distance;
+        setWalkingDistance(jsonDistance.get("value").toString());
+        System.out.println("walking " + walkingDistance);
     }
+
+    public String getWalkingDistance(){
+        return walkingDistance;
+    }
+
+    public void setFriendLat(double friendLat) {
+        this.friendLat = friendLat;
+    }
+
+    public void setFriendLon(double friendLon) {
+        this.friendLon = friendLon;
+    }
+
+    public void startTheThing(DistanceMatrixAPIService dmAPI){
+        new GetWalkingDistance().execute();
+
+    }
+    public void setWalkingDistance(String walkingDistance){
+        this.walkingDistance = walkingDistance;
+    }
+
 }

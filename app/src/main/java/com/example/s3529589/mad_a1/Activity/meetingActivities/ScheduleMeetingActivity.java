@@ -16,6 +16,8 @@ import com.example.s3529589.mad_a1.Database.MeetingTable;
 import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.Model.Friend;
 import com.example.s3529589.mad_a1.R;
+import com.example.s3529589.mad_a1.Services.ApplicationTrackerSingleton;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -28,7 +30,7 @@ public class ScheduleMeetingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.schedule_meeting);
-
+        ApplicationTrackerSingleton.getInstance().setCurrentActivity(this);
 
         // Meeting title
         EditText meetingTitleView = (EditText) findViewById(R.id.meetingTitle);

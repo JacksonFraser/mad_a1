@@ -7,6 +7,7 @@ import android.view.View;
 import com.example.s3529589.mad_a1.Controller.friendControllers.AddFriendController;
 import com.example.s3529589.mad_a1.Controller.friendControllers.DisplayFriendsController;
 import com.example.s3529589.mad_a1.R;
+import com.example.s3529589.mad_a1.Services.ApplicationTrackerSingleton;
 
 public class FriendMenuActivity extends AppCompatActivity {
 
@@ -15,7 +16,7 @@ public class FriendMenuActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.friends_menu);
-
+        ApplicationTrackerSingleton.getInstance().setCurrentActivity(this);
         View addBtn = findViewById(R.id.addBtn);
         addBtn.setOnClickListener(new AddFriendController(this));
 

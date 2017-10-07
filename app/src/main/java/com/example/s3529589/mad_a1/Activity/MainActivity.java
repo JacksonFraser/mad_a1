@@ -24,6 +24,7 @@ import com.example.s3529589.mad_a1.Exceptions.InvalidMeetingInput;
 import com.example.s3529589.mad_a1.Model.Friend;
 import com.example.s3529589.mad_a1.Model.Meeting;
 import com.example.s3529589.mad_a1.R;
+import com.example.s3529589.mad_a1.Services.ApplicationTrackerSingleton;
 import com.example.s3529589.mad_a1.Services.MeetingJobService;
 
 import java.util.ArrayList;
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         DatabaseManagerSingleton.initialise(dbHelper);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_menu);
-
+        ApplicationTrackerSingleton.getInstance().setCurrentActivity(this);
         View friendMenuBtn = findViewById(R.id.friendMenuBtn);
         friendMenuBtn.setOnClickListener(new FriendMenuController(this));
 
@@ -114,7 +115,8 @@ public class MainActivity extends AppCompatActivity {
         ComponentName componentName = new ComponentName(this, MeetingJobService.class);
 
         // try this
-        startService(new Intent(getBaseContext(), DistanceMatrixAPIService.class));
+       // startService(new Intent(getBaseContext(), DistanceMatrixAPIService.class));
+
 
         JobInfo jobInfo = new JobInfo.Builder(12, componentName)
                 .setRequiresCharging(true)

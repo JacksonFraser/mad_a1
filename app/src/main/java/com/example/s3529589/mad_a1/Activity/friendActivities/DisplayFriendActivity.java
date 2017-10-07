@@ -9,6 +9,7 @@ import com.example.s3529589.mad_a1.Adapter.CustomFriendDetailsArrayAdapter;
 import com.example.s3529589.mad_a1.Database.FriendDatabaseHandler;
 import com.example.s3529589.mad_a1.Database.FriendTable;
 import com.example.s3529589.mad_a1.R;
+import com.example.s3529589.mad_a1.Services.ApplicationTrackerSingleton;
 
 
 public class DisplayFriendActivity extends AppCompatActivity {
@@ -18,6 +19,7 @@ public class DisplayFriendActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ApplicationTrackerSingleton.getInstance().setCurrentActivity(this);
         setContentView(R.layout.display_friends);
         createListView();
     }
