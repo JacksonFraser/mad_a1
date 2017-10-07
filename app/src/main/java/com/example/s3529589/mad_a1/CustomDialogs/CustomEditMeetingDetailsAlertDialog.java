@@ -1,4 +1,4 @@
-package com.example.s3529589.mad_a1.Adapter;
+package com.example.s3529589.mad_a1.CustomDialogs;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;

@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
         ComponentName componentName = new ComponentName(this, MeetingJobService.class);
         JobInfo jobInfo = new JobInfo.Builder(12, componentName)
                 .setRequiresCharging(true)
-                .setPeriodic(3000)
+                .setPeriodic(10000)
                 .build();
 
         JobScheduler jobScheduler = (JobScheduler)getSystemService(JOB_SCHEDULER_SERVICE);

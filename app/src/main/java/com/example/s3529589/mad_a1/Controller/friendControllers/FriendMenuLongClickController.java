@@ -1,7 +1,7 @@
 package com.example.s3529589.mad_a1.Controller.friendControllers;
 
 import android.view.View;
-import com.example.s3529589.mad_a1.Adapter.CustomEditFriendDetailsAlertDialog;
+import com.example.s3529589.mad_a1.CustomDialogs.CustomEditFriendDetailsAlertDialog;
 import com.example.s3529589.mad_a1.Adapter.CustomFriendDetailsArrayAdapter;
 import java.util.UUID;
 

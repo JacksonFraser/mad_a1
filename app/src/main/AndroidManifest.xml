@@ -30,6 +30,7 @@
 
         <activity android:name=".Activity.friendActivities.FriendMenuActivity"
             android:label="@string/friend_menu"></activity>
+        <activity android:name=".CustomDialogs.TestDialogActivity"></activity>
 
         <activity android:name=".Activity.meetingActivities.MeetingMenuActivity"
             android:label="@string/meeting_menu"></activity>

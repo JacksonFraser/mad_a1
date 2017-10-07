@@ -1,4 +1,4 @@
-package com.example.s3529589.mad_a1.Adapter;
+package com.example.s3529589.mad_a1.CustomDialogs;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.s3529589.mad_a1.Adapter.CustomFriendDetailsArrayAdapter;
 import com.example.s3529589.mad_a1.Controller.friendControllers.EditBirthdayController;
 import com.example.s3529589.mad_a1.Database.FriendDatabaseHandler;
 import com.example.s3529589.mad_a1.Database.FriendTable;
@@ -19,7 +20,7 @@ import com.example.s3529589.mad_a1.R;
 import java.util.UUID;
 
 public class CustomEditFriendDetailsAlertDialog extends AlertDialog.Builder {
-    FriendTable friendTable = new FriendTable();
+    private FriendTable friendTable = new FriendTable();
 
     private CustomFriendDetailsArrayAdapter customFriendDetailsArrayAdapter;
     private UUID id;
