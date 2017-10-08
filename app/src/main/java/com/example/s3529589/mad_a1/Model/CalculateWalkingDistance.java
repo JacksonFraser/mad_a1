@@ -45,6 +45,9 @@ public class CalculateWalkingDistance extends AsyncTask<Void, Void, Void> {
     protected Void doInBackground(Void... arg0) {
         GPSCurrentLocationFinder lf = new GPSCurrentLocationFinder(context);
         Location l = lf.findCurrentLocation();
+
+        currLat = l.getLatitude();
+        currLon = l.getLongitude();
         FriendTable friendTable = new FriendTable();
         friendWalkingDistanceMap = new HashMap<>();
         for (Friend f : friendTable.getAllFriends()) {
@@ -59,8 +62,6 @@ public class CalculateWalkingDistance extends AsyncTask<Void, Void, Void> {
 
         Friend f = findClosestFriend(friendWalkingDistanceMap);
 
-        System.out.println("this is the one we found " + f.getName());
-        DateFormat dateFormat = new SimpleDateFormat("d-MMM-yyyy, h:mm:ss a");
         Date startDate = new Date();
         Calendar currTime = Calendar.getInstance();
         long t = currTime.getTimeInMillis();
