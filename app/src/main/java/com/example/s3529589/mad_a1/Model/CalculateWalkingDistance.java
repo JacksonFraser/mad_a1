@@ -8,11 +8,6 @@ import android.util.Log;
 import com.example.s3529589.mad_a1.Database.FriendTable;
 import com.example.s3529589.mad_a1.Database.MeetingTable;
 import com.example.s3529589.mad_a1.Exceptions.InvalidMeetingInput;
-import com.example.s3529589.mad_a1.Model.CalculateMidpoint;
-import com.example.s3529589.mad_a1.Model.Friend;
-import com.example.s3529589.mad_a1.Model.HttpHelper;
-import com.example.s3529589.mad_a1.Model.LocationFinder;
-import com.example.s3529589.mad_a1.Model.Meeting;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,7 +19,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class WalkingDistance extends AsyncTask<Void, Void, Void> {
+public class CalculateWalkingDistance extends AsyncTask<Void, Void, Void> {
     private double currLat;
     private double currLon;
     private double friendLat;
@@ -34,11 +29,12 @@ public class WalkingDistance extends AsyncTask<Void, Void, Void> {
     private Activity context;
     private Map<Friend, Integer> friendWalkingDistanceMap;
 
-    public WalkingDistance(Activity context) {
+    public CalculateWalkingDistance(Activity context) {
+        this.currLat = -37.810449;
+        this.currLon = 144.962808;
         this.context = context;
 
     }
-
 
     @Override
     protected void onPreExecute() {
@@ -47,7 +43,7 @@ public class WalkingDistance extends AsyncTask<Void, Void, Void> {
 
     @Override
     protected Void doInBackground(Void... arg0) {
-        LocationFinder lf = new LocationFinder(context);
+        GPSCurrentLocationFinder lf = new GPSCurrentLocationFinder(context);
         Location l = lf.findCurrentLocation();
 
         currLat = l.getLatitude();
@@ -74,7 +70,7 @@ public class WalkingDistance extends AsyncTask<Void, Void, Void> {
         MeetingTable meetingTable = new MeetingTable();
         try {
             Meeting m = new Meeting("Meeting with " + f.getName(), startDate, endDate);
-            CalculateMidpoint midPoint = new CalculateMidpoint(context, f.getLat(),f.getLon());
+            CalculateMeetingLocation midPoint = new CalculateMeetingLocation(context, f.getLat(), f.getLon());
             m.setLocation(midPoint.getMidPoint());
             meetingTable.addMeeting(m);
 
@@ -158,7 +154,6 @@ public class WalkingDistance extends AsyncTask<Void, Void, Void> {
         }
         return null;
     }
-
 
 }
 

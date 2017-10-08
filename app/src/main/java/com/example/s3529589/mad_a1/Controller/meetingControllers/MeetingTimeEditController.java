@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
-import com.example.s3529589.mad_a1.Adapter.CustomMeetingDetailsArrayAdapter;
+import com.example.s3529589.mad_a1.Adapter.MeetingArrayAdapter;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -14,12 +14,12 @@ import java.util.UUID;
 
 public class MeetingTimeEditController implements View.OnClickListener {
     private UUID id;
-    private CustomMeetingDetailsArrayAdapter customMeetingDetailsArrayAdapter;
+    private MeetingArrayAdapter meetingArrayAdapter;
     private TextView startTimeTV;
 
-    public MeetingTimeEditController(UUID id, CustomMeetingDetailsArrayAdapter customMeetingDetailsArrayAdapter, TextView startTimeTV) {
+    public MeetingTimeEditController(UUID id, MeetingArrayAdapter meetingArrayAdapter, TextView startTimeTV) {
         this.id = id;
-        this.customMeetingDetailsArrayAdapter = customMeetingDetailsArrayAdapter;
+        this.meetingArrayAdapter = meetingArrayAdapter;
         this.startTimeTV = startTimeTV;
     }
 
@@ -41,7 +41,7 @@ public class MeetingTimeEditController implements View.OnClickListener {
                 startTimeTV.setText(labelTime);
             }
         };
-        TimePickerDialog t = new TimePickerDialog(customMeetingDetailsArrayAdapter.getContext(), TimePickerDialog.THEME_HOLO_LIGHT, listener, hour, minute, false);
+        TimePickerDialog t = new TimePickerDialog(meetingArrayAdapter.getContext(), TimePickerDialog.THEME_HOLO_LIGHT, listener, hour, minute, false);
         t.show();
     }
 }

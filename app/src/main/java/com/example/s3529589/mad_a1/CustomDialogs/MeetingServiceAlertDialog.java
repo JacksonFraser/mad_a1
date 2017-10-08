@@ -8,17 +8,17 @@ import android.content.DialogInterface;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 
-import com.example.s3529589.mad_a1.Model.WalkingDistance;
+import com.example.s3529589.mad_a1.Model.CalculateWalkingDistance;
 import com.example.s3529589.mad_a1.Database.FriendTable;
 import com.example.s3529589.mad_a1.Model.Friend;
 
 import java.util.Map;
 
 
-public class CustomMeetingServiceAlertDialog extends AlertDialog.Builder {
+public class MeetingServiceAlertDialog extends AlertDialog.Builder {
     private Context context;
 
-    public CustomMeetingServiceAlertDialog(Context context) {
+    public MeetingServiceAlertDialog(Context context) {
         super(context);
         this.context = context;
 
@@ -51,7 +51,6 @@ public class CustomMeetingServiceAlertDialog extends AlertDialog.Builder {
         JobScheduler jobScheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
         jobScheduler.cancel(12);
         noSelected();
-
     }
 
     private void noSelected() {
@@ -61,15 +60,13 @@ public class CustomMeetingServiceAlertDialog extends AlertDialog.Builder {
 
     private void yesSelected() {
         // context.startService(new Intent(context, DistanceMatrixAPIService.class));
-        WalkingDistance walkingDistance = new WalkingDistance(((Activity) (context)));
+        CalculateWalkingDistance walkingDistance = new CalculateWalkingDistance(((Activity) (context)));
         walkingDistance.start();
 
 
         //Friend closestFriend = findClosestFriend(friendWalkingDistanceMap);
 
         // System.out.println("Closest " +closestFriend.getName());
-
-
     }
 
     private Friend findClosestFriend(Map<Friend, Integer> friendWalkingDistanceMap) {

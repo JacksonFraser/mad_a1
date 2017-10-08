@@ -7,11 +7,11 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.util.Log;
 
-import com.example.s3529589.mad_a1.Activity.JobSchedulerActivity;
+import com.example.s3529589.mad_a1.Activity.CreateMeetingPromptActivity;
 
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-public class MeetingJobService extends JobService {
-    private static final String TAG = MeetingJobService.class.getSimpleName();
+public class SuggestMeetingService extends JobService {
+    private static final String TAG = SuggestMeetingService.class.getSimpleName();
     boolean isWorking = false;
     boolean jobCancelled = false;
 
@@ -39,7 +39,7 @@ public class MeetingJobService extends JobService {
         if (jobCancelled)
             return;
 
-        Intent it = new Intent(this, JobSchedulerActivity.class);
+        Intent it = new Intent(this, CreateMeetingPromptActivity.class);
         it.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(it);
         //friendMenuActivity.finish();

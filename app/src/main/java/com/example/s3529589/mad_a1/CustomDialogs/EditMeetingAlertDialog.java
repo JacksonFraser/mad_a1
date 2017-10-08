@@ -9,13 +9,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.s3529589.mad_a1.Adapter.CustomMeetingDetailsArrayAdapter;
-import com.example.s3529589.mad_a1.Controller.meetingControllers.MeetingFriendEditController;
+import com.example.s3529589.mad_a1.Adapter.MeetingArrayAdapter;
+import com.example.s3529589.mad_a1.Controller.meetingControllers.MeetingSelectFriendsController;
 import com.example.s3529589.mad_a1.Controller.meetingControllers.MeetingTimeEditController;
-import com.example.s3529589.mad_a1.Database.MeetingDatabaseHandler;
 import com.example.s3529589.mad_a1.Database.MeetingTable;
 import com.example.s3529589.mad_a1.Exceptions.InvalidMeetingInput;
-import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.Model.Meeting;
 import com.example.s3529589.mad_a1.R;
 
@@ -25,15 +23,15 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
-public class CustomEditMeetingDetailsAlertDialog extends AlertDialog.Builder {
+public class EditMeetingAlertDialog extends AlertDialog.Builder {
 
     private MeetingTable meetingTable = new MeetingTable();
-    private CustomMeetingDetailsArrayAdapter customMeetingDetailsArrayAdapter;
+    private MeetingArrayAdapter meetingArrayAdapter;
     private UUID id;
 
-    public CustomEditMeetingDetailsAlertDialog(CustomMeetingDetailsArrayAdapter customMeetingDetailsArrayAdapter, UUID id) {
-        super(customMeetingDetailsArrayAdapter.getContext());
-        this.customMeetingDetailsArrayAdapter = customMeetingDetailsArrayAdapter;
+    public EditMeetingAlertDialog(MeetingArrayAdapter meetingArrayAdapter, UUID id) {
+        super(meetingArrayAdapter.getContext());
+        this.meetingArrayAdapter = meetingArrayAdapter;
         this.id = id;
 
         final String[] holdOptions = {
@@ -61,8 +59,8 @@ public class CustomEditMeetingDetailsAlertDialog extends AlertDialog.Builder {
             for (Meeting m : meetingTable.getAllMeetings()) {
                 if (m.getId().equals(id)) {
                     meetingTable.deleteMeeting(m);
-                    customMeetingDetailsArrayAdapter.updateItems(meetingTable.getAllMeetings());
-                    Toast.makeText(customMeetingDetailsArrayAdapter.getContext(), "Meeting Removed", Toast.LENGTH_LONG).show();
+                    meetingArrayAdapter.updateItems(meetingTable.getAllMeetings());
+                    Toast.makeText(meetingArrayAdapter.getContext(), "Meeting Removed", Toast.LENGTH_LONG).show();
                 }
             }
         } catch (Exception e) {
@@ -72,9 +70,9 @@ public class CustomEditMeetingDetailsAlertDialog extends AlertDialog.Builder {
 
     private void editMeeting() {
 
-        Meeting  meetingDetailsForHints = getMeetingForPopulatingHints();
+        Meeting meetingDetailsForHints = getMeetingForPopulatingHints();
         String choices[] = {"Cancel", "Confirm"};
-        LayoutInflater factory = LayoutInflater.from(customMeetingDetailsArrayAdapter.getContext());
+        LayoutInflater factory = LayoutInflater.from(meetingArrayAdapter.getContext());
 
         SimpleDateFormat formatter = new SimpleDateFormat("d-MMM-yyyy, h:mm:ss a");
 
@@ -100,12 +98,12 @@ public class CustomEditMeetingDetailsAlertDialog extends AlertDialog.Builder {
 
 
         // Controllers to set meeting Start and Finish
-        editStartTime.setOnClickListener(new MeetingTimeEditController(id, customMeetingDetailsArrayAdapter, startTimeTV));
-        editEndTime.setOnClickListener(new MeetingTimeEditController(id, customMeetingDetailsArrayAdapter, endTimeTV));
-        editFriend.setOnClickListener(new MeetingFriendEditController(id, customMeetingDetailsArrayAdapter));
+        editStartTime.setOnClickListener(new MeetingTimeEditController(id, meetingArrayAdapter, startTimeTV));
+        editEndTime.setOnClickListener(new MeetingTimeEditController(id, meetingArrayAdapter, endTimeTV));
+        editFriend.setOnClickListener(new MeetingSelectFriendsController(id, meetingArrayAdapter));
 
 
-        AlertDialog.Builder alert = new AlertDialog.Builder(customMeetingDetailsArrayAdapter.getContext());
+        AlertDialog.Builder alert = new AlertDialog.Builder(meetingArrayAdapter.getContext());
         alert.setTitle("Edit details");
         alert.setView(editMeetingView);
 
@@ -143,7 +141,7 @@ public class CustomEditMeetingDetailsAlertDialog extends AlertDialog.Builder {
                     m.setTitle(title);
 
                     meetingTable.updateMeeting(m);
-                    customMeetingDetailsArrayAdapter.updateItems(meetingTable.getAllMeetings());
+                    meetingArrayAdapter.updateItems(meetingTable.getAllMeetings());
                 }
 
                 String startTimeString = startTimeTV.getText().toString();
@@ -163,17 +161,17 @@ public class CustomEditMeetingDetailsAlertDialog extends AlertDialog.Builder {
                     m.setStartTime(newStartDate);
                     m.setFinishTime(newEndDate);
                     meetingTable.updateMeeting(m);
-                    customMeetingDetailsArrayAdapter.updateItems(meetingTable.getAllMeetings());
-                    Toast.makeText(customMeetingDetailsArrayAdapter.getContext(), R.string.meeting_successfuly_edited_toast, Toast.LENGTH_LONG).show();
+                    meetingArrayAdapter.updateItems(meetingTable.getAllMeetings());
+                    Toast.makeText(meetingArrayAdapter.getContext(), R.string.meeting_successfuly_edited_toast, Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(customMeetingDetailsArrayAdapter.getContext(), "Start time must be before finish time", Toast.LENGTH_LONG).show();
+                    Toast.makeText(meetingArrayAdapter.getContext(), "Start time must be before finish time", Toast.LENGTH_LONG).show();
                 }
             }
     }
 
     private Meeting getMeetingForPopulatingHints() {
-        for(Meeting m : meetingTable.getAllMeetings()){
-            if(m.getId().equals(id)){
+        for (Meeting m : meetingTable.getAllMeetings()) {
+            if (m.getId().equals(id)) {
                 return m;
             }
         }

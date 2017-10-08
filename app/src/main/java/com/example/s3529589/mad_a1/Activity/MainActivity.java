@@ -23,8 +23,7 @@ import com.example.s3529589.mad_a1.Exceptions.InvalidMeetingInput;
 import com.example.s3529589.mad_a1.Model.Friend;
 import com.example.s3529589.mad_a1.Model.Meeting;
 import com.example.s3529589.mad_a1.R;
-import com.example.s3529589.mad_a1.Services.ApplicationTrackerSingleton;
-import com.example.s3529589.mad_a1.Services.MeetingJobService;
+import com.example.s3529589.mad_a1.Services.SuggestMeetingService;
 import com.example.s3529589.mad_a1.Services.NotificationService;
 
 import java.util.ArrayList;
@@ -37,15 +36,15 @@ public class MainActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        System.out.println("GOT CREATED");
         createMeetingJobScheduler();
         createNotificationScheduler();
 
         DBHelper dbHelper = new DBHelper(this);
         DatabaseManagerSingleton.initialise(dbHelper);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_menu);
-        ApplicationTrackerSingleton.getInstance().setCurrentActivity(this);
+
         View friendMenuBtn = findViewById(R.id.friendMenuBtn);
         friendMenuBtn.setOnClickListener(new FriendMenuController(this));
 
@@ -75,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void addDummyDatabaseStuff(){
+    private void addDummyDatabaseStuff() {
         FriendTable friendTable = new FriendTable();
         MeetingTable meetingTable = new MeetingTable();
         Calendar calendar = Calendar.getInstance();
@@ -90,7 +89,6 @@ public class MainActivity extends AppCompatActivity {
         friendTable.addFriend(f2);
         friendTable.addFriend(f3);
         friendTable.addFriend(f4);
-
 
         try {
             List<Friend> friendList1 = new ArrayList<>();
@@ -113,19 +111,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    private void createMeetingJobScheduler(){
-        ComponentName componentName = new ComponentName(this, MeetingJobService.class);
-
-        // try this
-       // startService(new Intent(getBaseContext(), DistanceMatrixAPIService.class));
-
+    private void createMeetingJobScheduler() {
+        ComponentName componentName = new ComponentName(this, SuggestMeetingService.class);
 
         JobInfo jobInfo = new JobInfo.Builder(12, componentName)
                 .setRequiresCharging(true)
                 .setPeriodic(30000)
                 .build();
 
-        JobScheduler jobScheduler = (JobScheduler)getSystemService(JOB_SCHEDULER_SERVICE);
+        JobScheduler jobScheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
         int resultCode = jobScheduler.schedule(jobInfo);
         if (resultCode == JobScheduler.RESULT_SUCCESS) {
         } else {
@@ -134,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    private void createNotificationScheduler(){
+    private void createNotificationScheduler() {
         ComponentName componentName = new ComponentName(this, NotificationService.class);
 
         JobInfo jobInfo = new JobInfo.Builder(13, componentName)
@@ -142,12 +136,10 @@ public class MainActivity extends AppCompatActivity {
                 .setPeriodic(12000)
                 .build();
 
-        JobScheduler jobScheduler = (JobScheduler)getSystemService(JOB_SCHEDULER_SERVICE);
+        JobScheduler jobScheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
         int resultCode = jobScheduler.schedule(jobInfo);
         if (resultCode == JobScheduler.RESULT_SUCCESS) {
-            System.out.println("kljasdhkj");
         } else {
-            System.out.println("not kljasdhkj");
         }
 
     }

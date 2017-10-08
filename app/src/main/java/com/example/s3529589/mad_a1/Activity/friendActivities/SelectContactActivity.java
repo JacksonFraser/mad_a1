@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.example.s3529589.mad_a1.Model.ContactDataManager;
 import com.example.s3529589.mad_a1.R;
-import com.example.s3529589.mad_a1.Services.ApplicationTrackerSingleton;
 
 public class SelectContactActivity extends AppCompatActivity {
     private String name;
@@ -18,7 +17,7 @@ public class SelectContactActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.friends_menu);
-        ApplicationTrackerSingleton.getInstance().setCurrentActivity(this);
+
         // check();
         Intent contactPickerIntent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
         startActivityForResult(contactPickerIntent, PICK_CONTACTS);

@@ -4,23 +4,22 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.view.View;
 
-import com.example.s3529589.mad_a1.Adapter.CustomMeetingDetailsArrayAdapter;
+import com.example.s3529589.mad_a1.Adapter.MeetingArrayAdapter;
 import com.example.s3529589.mad_a1.Database.FriendTable;
 import com.example.s3529589.mad_a1.Database.MeetingFriendTable;
-import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.Model.Friend;
 import com.example.s3529589.mad_a1.Model.MeetingFriend;
 
 import java.util.UUID;
 
 
-public class MeetingFriendEditController implements View.OnClickListener {
+public class MeetingSelectFriendsController implements View.OnClickListener {
     private UUID id;
-    private CustomMeetingDetailsArrayAdapter customMeetingDetailsArrayAdapter;
+    private MeetingArrayAdapter meetingArrayAdapter;
 
-    public MeetingFriendEditController(UUID id, CustomMeetingDetailsArrayAdapter customMeetingDetailsArrayAdapter) {
+    public MeetingSelectFriendsController(UUID id, MeetingArrayAdapter meetingArrayAdapter) {
         this.id = id;
-        this.customMeetingDetailsArrayAdapter = customMeetingDetailsArrayAdapter;
+        this.meetingArrayAdapter = meetingArrayAdapter;
     }
 
     @Override
@@ -47,7 +46,7 @@ public class MeetingFriendEditController implements View.OnClickListener {
             i++;
         }
 
-        final AlertDialog.Builder builder = new AlertDialog.Builder(customMeetingDetailsArrayAdapter.getContext());
+        final AlertDialog.Builder builder = new AlertDialog.Builder(meetingArrayAdapter.getContext());
         builder.setTitle("Select Friends");
 
         builder.setMultiChoiceItems(friends, checkedItems, new DialogInterface.OnMultiChoiceClickListener() {
@@ -61,16 +60,16 @@ public class MeetingFriendEditController implements View.OnClickListener {
                         if (f.getId().equals(friendsId[which])) {
                             MeetingFriend meetingFriend = new MeetingFriend(id, f.getId());
                             meetingFriendTable.addMeetingFriend(meetingFriend);
-                            customMeetingDetailsArrayAdapter.notifyDataSetChanged();
+                            meetingArrayAdapter.notifyDataSetChanged();
                         }
                     }
                 }
                 if (!isChecked) {
                     for (Friend f : friendTable.getAllFriends()) {
-                        MeetingFriend meetingFriend = new MeetingFriend(id,f.getId());
-                        if (f.getId().equals(friendsId[which]) && meetingFriend.getMeetingUUID().equals(id) ) {
+                        MeetingFriend meetingFriend = new MeetingFriend(id, f.getId());
+                        if (f.getId().equals(friendsId[which]) && meetingFriend.getMeetingUUID().equals(id)) {
                             meetingFriendTable.deleteMeetingFriendByFriendId(meetingFriend);
-                            customMeetingDetailsArrayAdapter.notifyDataSetChanged();
+                            meetingArrayAdapter.notifyDataSetChanged();
                         }
                     }
                 }

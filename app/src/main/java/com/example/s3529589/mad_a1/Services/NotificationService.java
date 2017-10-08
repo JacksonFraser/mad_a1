@@ -15,7 +15,7 @@ import com.example.s3529589.mad_a1.Model.MeetingAlarm;
 
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class NotificationService extends JobService {
-    private static final String TAG = MeetingJobService.class.getSimpleName();
+    private static final String TAG = SuggestMeetingService.class.getSimpleName();
     boolean isWorking = false;
     boolean jobCancelled = false;
 
@@ -42,7 +42,7 @@ public class NotificationService extends JobService {
     private void doWork(JobParameters jobParameters) {
         startAlarm();
         /*
-        Intent it = new Intent(this, JobSchedulerActivity.class);
+        Intent it = new Intent(this, CreateMeetingPromptActivity.class);
         it.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(it);
         //friendMenuActivity.finish();
@@ -68,14 +68,14 @@ public class NotificationService extends JobService {
     }
 
     // Alarm + notification related code
-    private void startAlarm(){
-        AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+    private void startAlarm() {
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent myIntent;
         PendingIntent pendingIntent;
 
         myIntent = new Intent(NotificationService.this, MeetingAlarm.class);
         pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent, 0);
 
-        alarmManager.set(AlarmManager.RTC_WAKEUP, SystemClock.elapsedRealtime()+1000, pendingIntent);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, SystemClock.elapsedRealtime() + 1000, pendingIntent);
     }
 }

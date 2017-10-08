@@ -4,19 +4,17 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MenuInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+
 import com.example.s3529589.mad_a1.Controller.meetingControllers.CreateMeetingController;
 import com.example.s3529589.mad_a1.Controller.meetingControllers.FinishMeetingTimeController;
 import com.example.s3529589.mad_a1.Controller.meetingControllers.StartMeetingTimeController;
 import com.example.s3529589.mad_a1.Database.FriendTable;
 import com.example.s3529589.mad_a1.Database.MeetingTable;
-import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.Model.Friend;
 import com.example.s3529589.mad_a1.R;
-import com.example.s3529589.mad_a1.Services.ApplicationTrackerSingleton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,21 +24,19 @@ public class ScheduleMeetingActivity extends AppCompatActivity {
 
     private MeetingTable meetingTable = new MeetingTable();
     private FriendTable friendTable = new FriendTable();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.schedule_meeting);
-        ApplicationTrackerSingleton.getInstance().setCurrentActivity(this);
 
         // Meeting title
         EditText meetingTitleView = (EditText) findViewById(R.id.meetingTitle);
-
 
         // Meeting start time
         View startTimeBtn = findViewById(R.id.startTimeBtn);
         TextView startTime = (TextView) findViewById(R.id.startTimeLbl);
         startTimeBtn.setOnClickListener(new StartMeetingTimeController(this, startTime));
-
 
         // Meeting end time
         View endTimeBtn = findViewById(R.id.finishTimeBtn);
@@ -56,9 +52,9 @@ public class ScheduleMeetingActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 /**
-                * Create two arrays to keep track of friend's ids
-                * so that we don't remove friends with the same name
-                * */
+                 * Create two arrays to keep track of friend's ids
+                 * so that we don't remove friends with the same name
+                 * */
 
                 final String[] friends = new String[friendTable.getAllFriends().size()];
                 final UUID[] friendsId = new UUID[friendTable.getAllFriends().size()];
@@ -105,12 +101,10 @@ public class ScheduleMeetingActivity extends AppCompatActivity {
             }
         });
 
-
         // Create a meeting
         View createMeetingBtn = findViewById(R.id.confirmMeetingBtn);
         createMeetingBtn.setVisibility(View.VISIBLE);
         createMeetingBtn.setOnClickListener(new CreateMeetingController(this, meetingTitleView, startTime, finishTime, meetingFriendList));
     }
-
 }
 
