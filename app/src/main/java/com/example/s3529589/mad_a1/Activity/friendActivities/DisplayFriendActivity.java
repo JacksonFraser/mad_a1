@@ -17,7 +17,6 @@ public class DisplayFriendActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ApplicationTrackerSingleton.getInstance().setCurrentActivity(this);
         setContentView(R.layout.display_friends);
         createListView();
     }

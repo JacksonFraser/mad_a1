@@ -53,8 +53,8 @@ public class MainActivity extends AppCompatActivity {
         meetingMenuBtn.setOnClickListener(new MeetingMenuController(this));
 
         // Uncomment these to restore dummy data
-        //this.deleteDatabase("mad_db");
-        //addDummyDatabaseStuff();
+        this.deleteDatabase("mad_db");
+        addDummyDatabaseStuff();
 
         //Only runs if you don't have contact permission
         checkPermissions();
