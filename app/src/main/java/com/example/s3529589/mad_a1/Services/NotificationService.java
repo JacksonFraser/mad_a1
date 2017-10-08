@@ -9,11 +9,10 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.SystemClock;
 import android.support.annotation.RequiresApi;
-import android.util.Log;
 
+import com.example.s3529589.mad_a1.Activity.MeetingAlarm;
 import com.example.s3529589.mad_a1.Database.MeetingTable;
 import com.example.s3529589.mad_a1.Model.Meeting;
-import com.example.s3529589.mad_a1.Activity.MeetingAlarm;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -31,7 +30,6 @@ public class NotificationService extends JobService {
     // Called by the Android system when it's time to run the job
     @Override
     public boolean onStartJob(JobParameters jobParameters) {
-        Log.d(TAG, "Job started!");
         isWorking = true;
         // We need 'jobParameters' so we can call 'jobFinished'
         startWorkOnNewThread(jobParameters); // Services do NOT run on a separate thread
@@ -48,7 +46,10 @@ public class NotificationService extends JobService {
     }
 
     private void doWork(JobParameters jobParameters) {
-        Date date = new Date(System.currentTimeMillis()+(60*1000)*5);
+        // How many minutes before a meeting to display a notification
+        int meetingVariable = (60*1000)*3;
+
+        Date date = new Date(System.currentTimeMillis() + meetingVariable);
         MeetingTable meetingTable = new MeetingTable();
 
         boolean foundAMeeting = false;
@@ -62,16 +63,8 @@ public class NotificationService extends JobService {
             }
         }
 
-        /*
-        Intent it = new Intent(this, CreateMeetingPromptActivity.class);
-        it.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(it);
-        //friendMenuActivity.finish();
-        */
-
         if (jobCancelled)
             return;
-
 
         isWorking = false;
         boolean needsReschedule = false;
@@ -81,7 +74,6 @@ public class NotificationService extends JobService {
     // Called if the job was cancelled before being finished
     @Override
     public boolean onStopJob(JobParameters jobParameters) {
-        Log.d(TAG, "Job cancelled before being completed.");
         jobCancelled = true;
         boolean needsReschedule = isWorking;
         jobFinished(jobParameters, needsReschedule);
@@ -97,7 +89,6 @@ public class NotificationService extends JobService {
         myIntent = new Intent(NotificationService.this, MeetingAlarm.class);
         myIntent.putExtra("meeting_title", meeting.getTitle());
         pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent, 0);
-
 
         alarmManager.set(AlarmManager.RTC_WAKEUP, SystemClock.elapsedRealtime() + 1000, pendingIntent);
     }

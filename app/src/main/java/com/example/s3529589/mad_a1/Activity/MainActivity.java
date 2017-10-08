@@ -78,8 +78,8 @@ public class MainActivity extends AppCompatActivity {
         FriendTable friendTable = new FriendTable();
         MeetingTable meetingTable = new MeetingTable();
         Calendar calendar = Calendar.getInstance();
-        Date date1 = new Date(System.currentTimeMillis());
-        Date date2 = new Date(System.currentTimeMillis()+(60*1000)*40);
+        Date date1 = new Date(System.currentTimeMillis()+(60*1000)*4);
+        Date date2 = new Date(System.currentTimeMillis()+(60*1000)*5);
 
         Friend f1 = new Friend("Bobby Jarzombek", "gmail@gmail", date1, -37.824620, 144.957029);
         Friend f2 = new Friend("Chris Dave", "newemail@me.com", date1, -37.782931, 144.911485);
@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
             List<Friend> friendList2 = new ArrayList<>();
 
             Meeting m1 = new Meeting("meeting 1", date1, date2, "-37.867679, 144.976866");
-            Meeting m2 = new Meeting("meeting 2", date1, date2, "37.421814, -122.084364");
+            Meeting m2 = new Meeting("meeting 2", date2, date2, "37.421814, -122.084364");
             meetingTable.addMeeting(m1);
             meetingTable.addMeeting(m2);
 

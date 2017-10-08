@@ -32,7 +32,6 @@ public class CalculateWalkingDistance extends AsyncTask<Void, Void, Void> {
         this.currLat = -37.810449;
         this.currLon = 144.962808;
         this.context = context;
-
     }
 
     @Override
@@ -56,15 +55,15 @@ public class CalculateWalkingDistance extends AsyncTask<Void, Void, Void> {
             int walkingDuration = calculateWalkingDistance();
 
             friendWalkingDistanceMap.put(f, walkingDuration);
-
         }
 
         Friend f = findClosestFriend(friendWalkingDistanceMap);
 
         Calendar currTime = Calendar.getInstance();
         long t = currTime.getTimeInMillis();
-        Date startDate = new Date(t + (10 * 60000));
-        Date endDate = new Date(t + (10 * 120000));
+
+        Date startDate = new Date(t + ((60 * 1000) * 3));
+        Date endDate = new Date(t + (60 * 1000) * 3);
 
         MeetingTable meetingTable = new MeetingTable();
         MeetingFriendTable meetingFriendTable = new MeetingFriendTable();
@@ -79,7 +78,6 @@ public class CalculateWalkingDistance extends AsyncTask<Void, Void, Void> {
         } catch (InvalidMeetingInput e) {
             e.printStackTrace();
         }
-
 
         return null;
     }
@@ -100,7 +98,6 @@ public class CalculateWalkingDistance extends AsyncTask<Void, Void, Void> {
     public void setFriendLon(double friendLon) {
         this.friendLon = friendLon;
     }
-
 
     public void setWalkingDistance(String walkingDistance) {
         this.walkingDistance = walkingDistance;

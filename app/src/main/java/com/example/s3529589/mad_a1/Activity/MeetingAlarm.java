@@ -19,7 +19,7 @@ public class MeetingAlarm extends BroadcastReceiver {
         NotificationCompat.Builder builder = (NotificationCompat.Builder) new NotificationCompat.Builder(context)
                 .setAutoCancel(true)
                 .setSmallIcon(android.R.drawable.ic_dialog_info)
-                .setContentTitle("App name")
+                .setContentTitle("Friend Finder App")
                 .setContentText(meetingTitle + " is soon!")
 
                 // open meeting menu on click

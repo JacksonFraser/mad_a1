@@ -9,10 +9,6 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 
 import com.example.s3529589.mad_a1.Model.CalculateWalkingDistance;
-import com.example.s3529589.mad_a1.Database.FriendTable;
-import com.example.s3529589.mad_a1.Model.Friend;
-
-import java.util.Map;
 
 
 public class MeetingServiceAlertDialog extends AlertDialog.Builder {
@@ -62,8 +58,7 @@ public class MeetingServiceAlertDialog extends AlertDialog.Builder {
         CalculateWalkingDistance walkingDistance = new CalculateWalkingDistance(((Activity) (context)));
         walkingDistance.start();
 
-
+        noSelected();
     }
-
 
 }
