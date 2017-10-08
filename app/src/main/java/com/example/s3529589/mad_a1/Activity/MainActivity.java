@@ -5,6 +5,7 @@ import android.app.job.JobInfo;
 import android.app.job.JobScheduler;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
@@ -35,6 +36,17 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        SharedPreferences prefs = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+
+        // Interval between suggest a meeting
+        editor.putInt("alertInterval", 20000);
+        // Interval to search if there is a meeting soon
+        editor.putInt("notificationInterval", 5);
+        // How soon a meeting must be before sending a notification
+        editor.putInt("timeBeforeNotification", 180000);
+        editor.apply();
 
         DBHelper dbHelper = new DBHelper(this);
         DatabaseManagerSingleton.initialise(dbHelper);
@@ -113,9 +125,12 @@ public class MainActivity extends AppCompatActivity {
     private void createMeetingJobScheduler() {
         ComponentName componentName = new ComponentName(this, SuggestMeetingService.class);
 
+        SharedPreferences prefs = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+        int alertInterval = prefs.getInt("alertInterval", 21000);
+
         JobInfo jobInfo = new JobInfo.Builder(12, componentName)
                 .setRequiresCharging(true)
-                .setPeriodic(20000)
+                .setPeriodic(alertInterval)
                 .build();
 
         JobScheduler jobScheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
@@ -125,9 +140,12 @@ public class MainActivity extends AppCompatActivity {
     private void createNotificationScheduler() {
         ComponentName componentName = new ComponentName(this, NotificationService.class);
 
+        SharedPreferences prefs = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+        int notificationInterval = prefs.getInt("notificationInterval", 10);
+
         JobInfo jobInfo = new JobInfo.Builder(13, componentName)
                 .setRequiresCharging(true)
-                .setPeriodic(5)
+                .setPeriodic(notificationInterval)
                 .build();
 
         JobScheduler jobScheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);

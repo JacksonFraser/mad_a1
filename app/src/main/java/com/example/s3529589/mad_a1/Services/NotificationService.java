@@ -6,6 +6,7 @@ import android.app.job.JobParameters;
 import android.app.job.JobService;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.SystemClock;
 import android.support.annotation.RequiresApi;
@@ -46,10 +47,10 @@ public class NotificationService extends JobService {
     }
 
     private void doWork(JobParameters jobParameters) {
-        // How many minutes before a meeting to display a notification
-        int meetingVariable = (60*1000)*3;
+        SharedPreferences prefs = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+        int timeBeforeNotification = prefs.getInt("timeBeforeNotification", 200000);
 
-        Date date = new Date(System.currentTimeMillis() + meetingVariable);
+        Date date = new Date(System.currentTimeMillis() + timeBeforeNotification);
         MeetingTable meetingTable = new MeetingTable();
 
         boolean foundAMeeting = false;
