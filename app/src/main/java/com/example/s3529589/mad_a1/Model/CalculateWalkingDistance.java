@@ -13,8 +13,6 @@ import com.example.s3529589.mad_a1.Exceptions.InvalidMeetingInput;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -76,6 +74,7 @@ public class CalculateWalkingDistance extends AsyncTask<Void, Void, Void> {
             m.setLocation(midPoint.getMidPoint());
             meetingTable.addMeeting(m);
             MeetingFriend meetingFriend = new MeetingFriend(m.getId(), f.getId());
+            meetingFriendTable.addMeetingFriend(meetingFriend);
 
         } catch (InvalidMeetingInput e) {
             e.printStackTrace();
