@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        System.out.println("GOT CREATED");
         createMeetingJobScheduler();
         DBHelper dbHelper = new DBHelper(this);
         DatabaseManagerSingleton.initialise(dbHelper);
@@ -52,8 +52,8 @@ public class MainActivity extends AppCompatActivity {
         meetingMenuBtn.setOnClickListener(new MeetingMenuController(this));
 
         // Uncomment these to restore dummy data
-        this.deleteDatabase("mad_db");
-        addDummyDatabaseStuff();
+        //this.deleteDatabase("mad_db");
+        //addDummyDatabaseStuff();
 
         //Only runs if you don't have contact permission
         checkPersissions();
@@ -120,15 +120,13 @@ public class MainActivity extends AppCompatActivity {
 
         JobInfo jobInfo = new JobInfo.Builder(12, componentName)
                 .setRequiresCharging(true)
-                .setPeriodic(10000)
+                .setPeriodic(5000)
                 .build();
 
         JobScheduler jobScheduler = (JobScheduler)getSystemService(JOB_SCHEDULER_SERVICE);
         int resultCode = jobScheduler.schedule(jobInfo);
         if (resultCode == JobScheduler.RESULT_SUCCESS) {
-            System.out.println("kljasdhkj");
         } else {
-            System.out.println("not kljasdhkj");
         }
 
     }

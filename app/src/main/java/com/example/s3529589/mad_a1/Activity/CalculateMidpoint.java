@@ -1,28 +1,24 @@
 package com.example.s3529589.mad_a1.Activity;
 
+import android.app.Activity;
 import android.location.Location;
 import android.location.LocationManager;
 
 import com.example.s3529589.mad_a1.Activity.meetingActivities.ScheduleMeetingActivity;
 
 public class CalculateMidpoint {
-    final String API_KEY = "AIzaSyCMnEw6U-no-uYyqL8o40N_dV91lc5QldQ";
     private double friendLatitude;
     private double friendLongitude;
     private double gpsLatitude;
     private double gpsLongitude;
     private double midwayLat;
     private double midwayLon;
-
-    private LocationManager mLocationManager;
     private Location location;
-    private ScheduleMeetingActivity context;
+    private Activity context;
 
-    public CalculateMidpoint(ScheduleMeetingActivity context, double latitude, double longitude) {
+    public CalculateMidpoint(Activity context, double latitude, double longitude) {
         this.friendLatitude = latitude;
         this.friendLongitude = longitude;
-        gpsLatitude = -37.761785;
-        gpsLongitude = 144.962852;
         this.context = context;
 
         LocationFinder lf = new LocationFinder(context);

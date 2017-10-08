@@ -37,14 +37,13 @@ public class MeetingJobService extends JobService {
     }
 
     private void doWork(JobParameters jobParameters) {
+        if (jobCancelled)
+            return;
 
         Intent it = new Intent(this, JobSchedulerActivity.class);
         it.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(it);
         //friendMenuActivity.finish();
-
-        if (jobCancelled)
-                return;
 
 
         isWorking = false;
@@ -60,5 +59,10 @@ public class MeetingJobService extends JobService {
         boolean needsReschedule = isWorking;
         jobFinished(jobParameters, needsReschedule);
         return needsReschedule;
+    }
+
+    @Override
+    public void onDestroy() {
+        this.jobCancelled = true;
     }
 }
