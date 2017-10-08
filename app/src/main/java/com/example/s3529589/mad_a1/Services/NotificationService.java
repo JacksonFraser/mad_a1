@@ -11,11 +11,10 @@ import android.os.SystemClock;
 import android.support.annotation.RequiresApi;
 import android.util.Log;
 
-import com.example.s3529589.mad_a1.Activity.JobSchedulerActivity;
 import com.example.s3529589.mad_a1.Activity.MeetingAlarm;
 
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-public class MeetingJobService extends JobService {
+public class NotificationService extends JobService {
     private static final String TAG = MeetingJobService.class.getSimpleName();
     boolean isWorking = false;
     boolean jobCancelled = false;
@@ -41,13 +40,16 @@ public class MeetingJobService extends JobService {
     }
 
     private void doWork(JobParameters jobParameters) {
-        if (jobCancelled)
-            return;
-
+        startAlarm();
+        /*
         Intent it = new Intent(this, JobSchedulerActivity.class);
         it.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(it);
         //friendMenuActivity.finish();
+        */
+
+        if (jobCancelled)
+            return;
 
 
         isWorking = false;
@@ -65,8 +67,15 @@ public class MeetingJobService extends JobService {
         return needsReschedule;
     }
 
-    @Override
-    public void onDestroy() {
-        this.jobCancelled = true;
+    // Alarm + notification related code
+    private void startAlarm(){
+        AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+        Intent myIntent;
+        PendingIntent pendingIntent;
+
+        myIntent = new Intent(NotificationService.this, MeetingAlarm.class);
+        pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent, 0);
+
+        alarmManager.set(AlarmManager.RTC_WAKEUP, SystemClock.elapsedRealtime()+1000, pendingIntent);
     }
 }
