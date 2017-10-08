@@ -1,18 +1,17 @@
-package com.example.s3529589.mad_a1.Activity;
+package com.example.s3529589.mad_a1.Model;
 
 import android.app.Activity;
-import android.app.Service;
-import android.content.Intent;
 import android.location.Location;
 import android.os.AsyncTask;
-import android.os.IBinder;
 import android.util.Log;
 
 import com.example.s3529589.mad_a1.Database.FriendTable;
 import com.example.s3529589.mad_a1.Database.MeetingTable;
 import com.example.s3529589.mad_a1.Exceptions.InvalidMeetingInput;
+import com.example.s3529589.mad_a1.Model.CalculateMidpoint;
 import com.example.s3529589.mad_a1.Model.Friend;
 import com.example.s3529589.mad_a1.Model.HttpHelper;
+import com.example.s3529589.mad_a1.Model.LocationFinder;
 import com.example.s3529589.mad_a1.Model.Meeting;
 
 import org.json.JSONException;

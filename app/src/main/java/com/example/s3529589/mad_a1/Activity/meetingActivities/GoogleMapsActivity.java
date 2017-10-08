@@ -1,4 +1,4 @@
-package com.example.s3529589.mad_a1.Activity;
+package com.example.s3529589.mad_a1.Activity.meetingActivities;
 
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;

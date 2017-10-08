@@ -49,7 +49,7 @@
         <activity android:name=".Activity.meetingActivities.DisplayMeetingActivity"
             android:label="@string/view_meetings"></activity>
 
-        <activity android:name=".Activity.GoogleMapsActivity"
+        <activity android:name=".Activity.meetingActivities.GoogleMapsActivity"
             android:label="@string/view_map"></activity>
 
         <activity android:name=".Activity.JobSchedulerActivity"
@@ -63,7 +63,7 @@
             android:name=".Services.NotificationService"
             android:permission="android.permission.BIND_JOB_SERVICE"/>
 
-        <receiver android:name=".Activity.MeetingAlarm"/>
+        <receiver android:name=".Model.MeetingAlarm"/>
 
     </application>
 

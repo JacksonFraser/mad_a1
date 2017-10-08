@@ -11,7 +11,7 @@ import android.os.SystemClock;
 import android.support.annotation.RequiresApi;
 import android.util.Log;
 
-import com.example.s3529589.mad_a1.Activity.MeetingAlarm;
+import com.example.s3529589.mad_a1.Model.MeetingAlarm;
 
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class NotificationService extends JobService {

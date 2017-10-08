@@ -5,18 +5,13 @@ import android.app.AlertDialog;
 import android.app.job.JobScheduler;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.location.Location;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 
-import com.example.s3529589.mad_a1.Activity.WalkingDistance;
-import com.example.s3529589.mad_a1.Activity.LocationFinder;
+import com.example.s3529589.mad_a1.Model.WalkingDistance;
 import com.example.s3529589.mad_a1.Database.FriendTable;
 import com.example.s3529589.mad_a1.Model.Friend;
-import com.example.s3529589.mad_a1.Services.MeetingJobService;
 
-import java.util.HashMap;
 import java.util.Map;
 
 
@@ -54,7 +49,7 @@ public class CustomMeetingServiceAlertDialog extends AlertDialog.Builder {
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void stopAsking() {
         JobScheduler jobScheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
-        jobScheduler.cancelAll();
+        jobScheduler.cancel(12);
         noSelected();
 
     }

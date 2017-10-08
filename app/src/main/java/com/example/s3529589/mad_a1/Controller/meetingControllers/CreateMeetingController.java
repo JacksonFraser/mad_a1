@@ -5,7 +5,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.s3529589.mad_a1.Activity.CalculateMidpoint;
+import com.example.s3529589.mad_a1.Model.CalculateMidpoint;
 import com.example.s3529589.mad_a1.Activity.meetingActivities.ScheduleMeetingActivity;
 import com.example.s3529589.mad_a1.Database.MeetingFriendTable;
 import com.example.s3529589.mad_a1.Database.MeetingTable;

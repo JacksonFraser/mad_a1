@@ -1,10 +1,7 @@
-package com.example.s3529589.mad_a1.Activity;
+package com.example.s3529589.mad_a1.Model;
 
 import android.app.Activity;
 import android.location.Location;
-import android.location.LocationManager;
-
-import com.example.s3529589.mad_a1.Activity.meetingActivities.ScheduleMeetingActivity;
 
 public class CalculateMidpoint {
     private double friendLatitude;
