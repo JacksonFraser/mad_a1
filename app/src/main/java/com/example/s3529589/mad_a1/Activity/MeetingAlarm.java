@@ -1,4 +1,4 @@
-package com.example.s3529589.mad_a1.Model;
+package com.example.s3529589.mad_a1.Activity;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -16,9 +16,6 @@ public class MeetingAlarm extends BroadcastReceiver {
         // Recieve intent
         String meetingTitle = intent.getStringExtra("meeting_title");
 
-        // Specify which action should be performed once the user selects the notification
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, (int) System.currentTimeMillis(), intent, 0);
-
         NotificationCompat.Builder builder = (NotificationCompat.Builder) new NotificationCompat.Builder(context)
                 .setAutoCancel(true)
                 .setSmallIcon(android.R.drawable.ic_dialog_info)
@@ -28,13 +25,11 @@ public class MeetingAlarm extends BroadcastReceiver {
                 // open meeting menu on click
                 .setContentIntent(PendingIntent.getActivity(context, 0,
                         new Intent(context, DisplayMeetingActivity.class), PendingIntent.FLAG_UPDATE_CURRENT))
-                .setContentIntent(pendingIntent)
 
-                .addAction(android.R.drawable.ic_menu_info_details, "Dismiss", pendingIntent)
-                .addAction(android.R.drawable.stat_notify_error, "Cancel", pendingIntent)
-                .addAction(android.R.drawable.ic_menu_edit, "Remind me later", pendingIntent)
-
-                ;
+                // click to do something
+                .addAction(android.R.drawable.ic_menu_info_details, "Dismiss", null)
+                .addAction(android.R.drawable.stat_notify_error, "Cancel", null)
+                .addAction(android.R.drawable.ic_menu_edit, "Remind me later", null);
 
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(1, builder.build());

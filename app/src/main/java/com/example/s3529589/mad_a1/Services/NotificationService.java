@@ -13,7 +13,7 @@ import android.util.Log;
 
 import com.example.s3529589.mad_a1.Database.MeetingTable;
 import com.example.s3529589.mad_a1.Model.Meeting;
-import com.example.s3529589.mad_a1.Model.MeetingAlarm;
+import com.example.s3529589.mad_a1.Activity.MeetingAlarm;
 
 import java.util.ArrayList;
 import java.util.Date;

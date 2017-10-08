@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         DBHelper dbHelper = new DBHelper(this);
         DatabaseManagerSingleton.initialise(dbHelper);
-       // createMeetingJobScheduler();
+        createMeetingJobScheduler();
         createNotificationScheduler();
 
         super.onCreate(savedInstanceState);
@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
 
         JobInfo jobInfo = new JobInfo.Builder(12, componentName)
                 .setRequiresCharging(true)
-                .setPeriodic(15000)
+                .setPeriodic(20000)
                 .build();
 
         JobScheduler jobScheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
@@ -137,7 +137,6 @@ public class MainActivity extends AppCompatActivity {
     private void setTestLocation() {
         LocationManager mLocationManager = (LocationManager) this.getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
         if (!mLocationManager.isProviderEnabled("gps")) {
-            System.out.println("ISNT");
         } else {
             Location l = new Location("gps");
             l.setLatitude(-37.808481);
