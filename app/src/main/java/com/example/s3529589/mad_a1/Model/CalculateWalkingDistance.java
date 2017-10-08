@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.example.s3529589.mad_a1.Database.FriendTable;
+import com.example.s3529589.mad_a1.Database.MeetingFriendTable;
 import com.example.s3529589.mad_a1.Database.MeetingTable;
 import com.example.s3529589.mad_a1.Exceptions.InvalidMeetingInput;
 
@@ -68,11 +69,13 @@ public class CalculateWalkingDistance extends AsyncTask<Void, Void, Void> {
         Date endDate = new Date(t + (10 * 60000));
 
         MeetingTable meetingTable = new MeetingTable();
+        MeetingFriendTable meetingFriendTable = new MeetingFriendTable();
         try {
             Meeting m = new Meeting("Meeting with " + f.getName(), startDate, endDate);
             CalculateMeetingLocation midPoint = new CalculateMeetingLocation(context, f.getLat(), f.getLon());
             m.setLocation(midPoint.getMidPoint());
             meetingTable.addMeeting(m);
+            MeetingFriend meetingFriend = new MeetingFriend(m.getId(), f.getId());
 
         } catch (InvalidMeetingInput e) {
             e.printStackTrace();

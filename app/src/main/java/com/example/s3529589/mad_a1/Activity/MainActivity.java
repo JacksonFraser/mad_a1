@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
 
         JobInfo jobInfo = new JobInfo.Builder(12, componentName)
                 .setRequiresCharging(true)
-                .setPeriodic(30000)
+                .setPeriodic(15000)
                 .build();
 
         JobScheduler jobScheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);

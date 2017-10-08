@@ -59,39 +59,11 @@ public class MeetingServiceAlertDialog extends AlertDialog.Builder {
     }
 
     private void yesSelected() {
-        // context.startService(new Intent(context, DistanceMatrixAPIService.class));
         CalculateWalkingDistance walkingDistance = new CalculateWalkingDistance(((Activity) (context)));
         walkingDistance.start();
 
 
-        //Friend closestFriend = findClosestFriend(friendWalkingDistanceMap);
-
-        // System.out.println("Closest " +closestFriend.getName());
     }
 
-    private Friend findClosestFriend(Map<Friend, Integer> friendWalkingDistanceMap) {
-
-        int lowestVal = 10000;
-        Friend f = new Friend();
-        for (Map.Entry<Friend, Integer> entry : friendWalkingDistanceMap.entrySet()) {
-            if (entry.getValue() < lowestVal) {
-                lowestVal = entry.getValue();
-                f = findFriendFromDB(entry.getKey());
-            }
-
-        }
-        return f;
-
-    }
-
-    private Friend findFriendFromDB(Friend friend) {
-        FriendTable friendTable = new FriendTable();
-        for (Friend f : friendTable.getAllFriends()) {
-            if (f.getId().equals(friend.getId())) {
-                return f;
-            }
-        }
-        return null;
-    }
 
 }
