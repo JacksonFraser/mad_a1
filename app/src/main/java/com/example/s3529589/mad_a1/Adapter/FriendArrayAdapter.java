@@ -17,12 +17,9 @@ import com.example.s3529589.mad_a1.R;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-public class CustomFriendDetailsArrayAdapter extends ArrayAdapter<Friend> {
+public class FriendArrayAdapter extends ArrayAdapter<Friend> {
     private List<Friend> friendList;
     private Context context;
-
-
-
 
     public Activity getActivity() {
         return activity;
@@ -31,9 +28,8 @@ public class CustomFriendDetailsArrayAdapter extends ArrayAdapter<Friend> {
     private Activity activity;
     private static LayoutInflater inflater = null;
 
-    public CustomFriendDetailsArrayAdapter(Activity activity, List<Friend> friendList) {
+    public FriendArrayAdapter(Activity activity, List<Friend> friendList) {
         super(activity, 0, friendList);
-
         this.friendList = friendList;
         this.context = activity;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -75,9 +71,9 @@ public class CustomFriendDetailsArrayAdapter extends ArrayAdapter<Friend> {
         ImageView displayImg;
     }
 
-    public void updateItems(List<Friend> friendList){
+    public void updateItems(List<Friend> friendList) {
         super.clear();
-        if(friendList.isEmpty()){
+        if (friendList.isEmpty()) {
             notifyDataSetChanged();
         } else {
             this.friendList = friendList;
@@ -85,7 +81,6 @@ public class CustomFriendDetailsArrayAdapter extends ArrayAdapter<Friend> {
         super.addAll(friendList);
         notifyDataSetChanged();
     }
-
 
 
 }

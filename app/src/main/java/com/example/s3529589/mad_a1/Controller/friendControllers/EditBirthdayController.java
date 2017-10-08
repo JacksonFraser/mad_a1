@@ -7,9 +7,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.view.View;
 import android.widget.DatePicker;
 
-import com.example.s3529589.mad_a1.Database.FriendDatabaseHandler;
 import com.example.s3529589.mad_a1.Database.FriendTable;
-import com.example.s3529589.mad_a1.Model.DataSingleton;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -40,9 +38,6 @@ public class EditBirthdayController implements View.OnClickListener {
                 calendar.set(year, month, dayOfMonth);
 
                 Date date = calendar.getTime();
-
-                //DataSingleton.getInstance().getFriendById(id).setBirthday(date);
-                //db.getFriend(id).setBirthday(date);
             }
         };
 

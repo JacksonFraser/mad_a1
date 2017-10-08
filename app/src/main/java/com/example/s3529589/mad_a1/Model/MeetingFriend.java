@@ -7,7 +7,7 @@ public class MeetingFriend {
     private UUID friendUUID;
     private UUID meetingUUID;
 
-    public MeetingFriend(UUID  meetingUUID, UUID friendUUID){
+    public MeetingFriend(UUID meetingUUID, UUID friendUUID) {
         this.friendUUID = friendUUID;
         this.meetingUUID = meetingUUID;
     }
@@ -15,7 +15,6 @@ public class MeetingFriend {
     public MeetingFriend() {
 
     }
-
 
     public void setFriendUUID(UUID friendUUID) {
         this.friendUUID = friendUUID;
@@ -32,7 +31,6 @@ public class MeetingFriend {
     public UUID getMeetingUUID() {
         return meetingUUID;
     }
-
 
 
 }

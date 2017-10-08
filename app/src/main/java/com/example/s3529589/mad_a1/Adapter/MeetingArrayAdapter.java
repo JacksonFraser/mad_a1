@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.example.s3529589.mad_a1.Controller.meetingControllers.DisplayMapController;
+import com.example.s3529589.mad_a1.Controller.meetingControllers.DisplayMeetingOnGoogleMapController;
 import com.example.s3529589.mad_a1.Controller.meetingControllers.MeetingDisplayLongClickController;
 import com.example.s3529589.mad_a1.Database.FriendTable;
 import com.example.s3529589.mad_a1.Database.MeetingFriendTable;
@@ -22,13 +22,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-public class CustomMeetingDetailsArrayAdapter extends ArrayAdapter<Meeting> {
+public class MeetingArrayAdapter extends ArrayAdapter<Meeting> {
     private List<Meeting> meetingList;
     private Context context;
     private static LayoutInflater inflater = null;
     private Activity activity;
 
-    public CustomMeetingDetailsArrayAdapter(Activity activity, List<Meeting> meetingList) {
+    public MeetingArrayAdapter(Activity activity, List<Meeting> meetingList) {
         super(activity, 0, meetingList);
         this.meetingList = meetingList;
         this.context = activity;
@@ -44,7 +44,7 @@ public class CustomMeetingDetailsArrayAdapter extends ArrayAdapter<Meeting> {
         rowView.setOnLongClickListener(new MeetingDisplayLongClickController(meetingList.get(pos).getId(), this));
 
         // Open map
-        rowView.setOnClickListener(new DisplayMapController(meetingList.get(pos).getId(), this));
+        rowView.setOnClickListener(new DisplayMeetingOnGoogleMapController(meetingList.get(pos).getId(), this));
 
         holder.meetingTitleTV = (TextView) rowView.findViewById(R.id.meeting_title);
         holder.meetingTitleTV.setText(meetingList.get(pos).getTitle());
@@ -78,13 +78,13 @@ public class CustomMeetingDetailsArrayAdapter extends ArrayAdapter<Meeting> {
 
     private String createFriendsString(UUID meetingUUID) {
         String friendString = "";
-        MeetingFriendTable meetingFriendTable =  new MeetingFriendTable();
+        MeetingFriendTable meetingFriendTable = new MeetingFriendTable();
         FriendTable friendTable = new FriendTable();
         try {
             for (MeetingFriend m : meetingFriendTable.getAllMeetingFriends()) {
-                if(m.getMeetingUUID().equals(meetingUUID)) {
-                    for(Friend f : friendTable.getAllFriends()){
-                        if(f.getId().equals(m.getFriendUUID())){
+                if (m.getMeetingUUID().equals(meetingUUID)) {
+                    for (Friend f : friendTable.getAllFriends()) {
+                        if (f.getId().equals(m.getFriendUUID())) {
                             friendString = friendString.concat("- " + f.getName() + "\n");
 
                         }
@@ -110,9 +110,9 @@ public class CustomMeetingDetailsArrayAdapter extends ArrayAdapter<Meeting> {
         TextView meetingLocationTV;
     }
 
-    public void updateItems(List<Meeting> meetingList){
+    public void updateItems(List<Meeting> meetingList) {
         super.clear();
-        if(meetingList.isEmpty()){
+        if (meetingList.isEmpty()) {
             notifyDataSetChanged();
         } else {
             this.meetingList = meetingList;

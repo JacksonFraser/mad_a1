@@ -4,13 +4,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.s3529589.mad_a1.Model.Meeting;
-import com.example.s3529589.mad_a1.Model.MeetingFriend;
-
-/**
- * Created by s3529589 on 10/2/17.
- */
-
 public class DBHelper extends SQLiteOpenHelper {
 
     private static final int DATA_BASE_VERSION = 1;

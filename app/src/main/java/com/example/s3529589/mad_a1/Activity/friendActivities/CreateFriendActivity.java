@@ -8,12 +8,9 @@ import android.widget.Button;
 import android.widget.DatePicker;
 
 import com.example.s3529589.mad_a1.Controller.friendControllers.ConfirmDateController;
-import com.example.s3529589.mad_a1.Database.FriendDatabaseHandler;
 import com.example.s3529589.mad_a1.Database.FriendTable;
-import com.example.s3529589.mad_a1.Model.DataSingleton;
 import com.example.s3529589.mad_a1.Model.Friend;
 import com.example.s3529589.mad_a1.R;
-import com.example.s3529589.mad_a1.Services.ApplicationTrackerSingleton;
 
 import java.util.Date;
 import java.util.List;
@@ -27,7 +24,6 @@ public class CreateFriendActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.date_picker);
-        ApplicationTrackerSingleton.getInstance().setCurrentActivity(this);
         confirmBtn = (Button) findViewById(R.id.confirmDateBtn);
         datePicker = (DatePicker) findViewById(R.id.datePicker);
 

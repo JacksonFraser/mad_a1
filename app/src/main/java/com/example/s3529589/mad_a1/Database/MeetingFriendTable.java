@@ -3,7 +3,9 @@ package com.example.s3529589.mad_a1.Database;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+
 import com.example.s3529589.mad_a1.Model.MeetingFriend;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;

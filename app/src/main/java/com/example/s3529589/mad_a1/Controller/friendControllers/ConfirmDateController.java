@@ -9,6 +9,7 @@ import com.example.s3529589.mad_a1.Activity.friendActivities.CreateFriendActivit
 import com.example.s3529589.mad_a1.Activity.friendActivities.FriendMenuActivity;
 import com.example.s3529589.mad_a1.Model.DummyLocationService;
 import com.example.s3529589.mad_a1.R;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -49,17 +50,14 @@ public class ConfirmDateController implements View.OnClickListener {
         double latitude = 0;
         double longitude = 0;
 
-        try
-        {
+        try {
             // 2 mins either side of timeInDataFormat
             matched = dummyLocationService.getFriendLocationsForTime(DateFormat.getTimeInstance(
                     DateFormat.MEDIUM).parse(timeInDataFormat), 2, 0);
 
             latitude = matched.get(0).latitude;
             longitude = matched.get(0).longitude;
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
 
         }
 

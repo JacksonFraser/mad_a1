@@ -12,7 +12,7 @@ public class Meeting {
     private UUID uuid;
     private String location;
 
-    public Meeting(String title, Date start, Date finish,  String location) throws InvalidMeetingInput {
+    public Meeting(String title, Date start, Date finish, String location) throws InvalidMeetingInput {
         if (start == null)
             throw new InvalidMeetingInput("Meeting start time cannot be null");
         if (finish == null)
@@ -47,7 +47,7 @@ public class Meeting {
         this.finishTime = finish;
     }
 
-    public Meeting(){
+    public Meeting() {
 
     }
 

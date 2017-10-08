@@ -49,14 +49,14 @@
         <activity android:name=".Activity.meetingActivities.DisplayMeetingActivity"
             android:label="@string/view_meetings"></activity>
 
-        <activity android:name=".Activity.meetingActivities.GoogleMapsActivity"
+        <activity android:name=".Activity.meetingActivities.MeetingOnGoogleMapActivity"
             android:label="@string/view_map"></activity>
 
-        <activity android:name=".Activity.JobSchedulerActivity"
+        <activity android:name=".Activity.CreateMeetingPromptActivity"
             android:label="Calculate distance"></activity>
 
         <service
-            android:name=".Services.MeetingJobService"
+            android:name=".Services.SuggestMeetingService"
             android:permission="android.permission.BIND_JOB_SERVICE"/>
 
         <service

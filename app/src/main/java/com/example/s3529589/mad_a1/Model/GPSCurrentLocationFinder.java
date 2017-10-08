@@ -10,14 +10,14 @@ import android.support.v4.app.ActivityCompat;
 
 import java.util.List;
 
-public class LocationFinder {
+public class GPSCurrentLocationFinder {
 
     private Activity context;
 
     private LocationManager mLocationManager;
     private Location location;
 
-    public LocationFinder(Activity context){
+    public GPSCurrentLocationFinder(Activity context) {
         this.context = context;
     }
 
