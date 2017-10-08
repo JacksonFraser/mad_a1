@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         FriendTable friendTable = new FriendTable();
         MeetingTable meetingTable = new MeetingTable();
         Calendar calendar = Calendar.getInstance();
-        Date date1 = new Date(System.currentTimeMillis()+(60*1000)*6);
+        Date date1 = new Date(System.currentTimeMillis());
         Date date2 = new Date(System.currentTimeMillis()+(60*1000)*40);
 
         Friend f1 = new Friend("Bobby Jarzombek", "gmail@gmail", date1, -37.824620, 144.957029);

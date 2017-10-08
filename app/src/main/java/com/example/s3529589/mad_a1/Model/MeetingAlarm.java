@@ -13,14 +13,17 @@ public class MeetingAlarm extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
+        // Recieve intent
+        String meetingTitle = intent.getStringExtra("meeting_title");
+
         // Specify which action should be performed once the user selects the notification
         PendingIntent pendingIntent = PendingIntent.getActivity(context, (int) System.currentTimeMillis(), intent, 0);
 
         NotificationCompat.Builder builder = (NotificationCompat.Builder) new NotificationCompat.Builder(context)
                 .setAutoCancel(true)
                 .setSmallIcon(android.R.drawable.ic_dialog_info)
-                .setContentTitle("Notification title")
-                .setContentText("Content text")
+                .setContentTitle("App name")
+                .setContentText(meetingTitle + " is soon!")
 
                 // open meeting menu on click
                 .setContentIntent(PendingIntent.getActivity(context, 0,

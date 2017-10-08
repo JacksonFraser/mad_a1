@@ -26,7 +26,7 @@ public class NotificationService extends JobService {
     boolean isWorking = false;
     boolean jobCancelled = false;
     private static List<UUID> alarmMeetingList = new ArrayList<>();
-
+    private  Meeting meeting;
 
     // Called by the Android system when it's time to run the job
     @Override
@@ -55,6 +55,7 @@ public class NotificationService extends JobService {
         for(Meeting m : meetingTable.getAllMeetings()){
             if(date.after(m.getStartTime()) && !alarmMeetingList.contains(m.getId()) && !foundAMeeting){
                 System.out.println("THIS IS THE SIZE " + alarmMeetingList.size());
+                meeting = m;
                 alarmMeetingList.add(m.getId());
                 foundAMeeting = true;
                 startAlarm();
@@ -94,7 +95,9 @@ public class NotificationService extends JobService {
         PendingIntent pendingIntent;
 
         myIntent = new Intent(NotificationService.this, MeetingAlarm.class);
+        myIntent.putExtra("meeting_title", meeting.getTitle());
         pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent, 0);
+
 
         alarmManager.set(AlarmManager.RTC_WAKEUP, SystemClock.elapsedRealtime() + 1000, pendingIntent);
     }
