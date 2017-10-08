@@ -58,10 +58,10 @@ public class MainActivity extends AppCompatActivity {
         //addDummyDatabaseStuff();
 
         //Only runs if you don't have contact permission
-        checkPersissions();
+        checkPermissions();
     }
 
-    private void checkPersissions() {
+    private void checkPermissions() {
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.READ_CONTACTS)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
 
         JobInfo jobInfo = new JobInfo.Builder(12, componentName)
                 .setRequiresCharging(true)
-                .setPeriodic(5000)
+                .setPeriodic(30000)
                 .build();
 
         JobScheduler jobScheduler = (JobScheduler)getSystemService(JOB_SCHEDULER_SERVICE);

@@ -35,8 +35,6 @@ public class WalkingDistance extends AsyncTask<Void, Void, Void> {
     private Map<Friend, Integer> friendWalkingDistanceMap;
 
     public WalkingDistance(Activity context) {
-        this.currLat = -37.810449;
-        this.currLon = 144.962808;
         this.context = context;
 
     }
@@ -51,6 +49,9 @@ public class WalkingDistance extends AsyncTask<Void, Void, Void> {
     protected Void doInBackground(Void... arg0) {
         LocationFinder lf = new LocationFinder(context);
         Location l = lf.findCurrentLocation();
+
+        currLat = l.getLatitude();
+        currLon = l.getLongitude();
         FriendTable friendTable = new FriendTable();
         friendWalkingDistanceMap = new HashMap<>();
         for (Friend f : friendTable.getAllFriends()) {
@@ -65,8 +66,6 @@ public class WalkingDistance extends AsyncTask<Void, Void, Void> {
 
         Friend f = findClosestFriend(friendWalkingDistanceMap);
 
-        System.out.println("this is the one we found " + f.getName());
-        DateFormat dateFormat = new SimpleDateFormat("d-MMM-yyyy, h:mm:ss a");
         Date startDate = new Date();
         Calendar currTime = Calendar.getInstance();
         long t = currTime.getTimeInMillis();
