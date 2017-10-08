@@ -4,7 +4,6 @@ import android.Manifest;
 import android.app.job.JobInfo;
 import android.app.job.JobScheduler;
 import android.content.ComponentName;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -26,6 +25,7 @@ import com.example.s3529589.mad_a1.Model.Meeting;
 import com.example.s3529589.mad_a1.R;
 import com.example.s3529589.mad_a1.Services.ApplicationTrackerSingleton;
 import com.example.s3529589.mad_a1.Services.MeetingJobService;
+import com.example.s3529589.mad_a1.Services.NotificationService;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         createMeetingJobScheduler();
+        createNotificationScheduler();
+
         DBHelper dbHelper = new DBHelper(this);
         DatabaseManagerSingleton.initialise(dbHelper);
         super.onCreate(savedInstanceState);
@@ -132,6 +134,26 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    private void createNotificationScheduler(){
+        ComponentName componentName = new ComponentName(this, NotificationService.class);
+
+        JobInfo jobInfo = new JobInfo.Builder(13, componentName)
+                .setRequiresCharging(true)
+                .setPeriodic(12000)
+                .build();
+
+        JobScheduler jobScheduler = (JobScheduler)getSystemService(JOB_SCHEDULER_SERVICE);
+        int resultCode = jobScheduler.schedule(jobInfo);
+        if (resultCode == JobScheduler.RESULT_SUCCESS) {
+            System.out.println("kljasdhkj");
+        } else {
+            System.out.println("not kljasdhkj");
+        }
+
+    }
+
 }
 
 

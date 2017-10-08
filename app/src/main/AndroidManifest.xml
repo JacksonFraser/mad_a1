@@ -59,7 +59,11 @@
             android:name=".Services.MeetingJobService"
             android:permission="android.permission.BIND_JOB_SERVICE"/>
 
-        <service android:name=".Activity.DistanceMatrixAPIService"/>
+        <service
+            android:name=".Services.NotificationService"
+            android:permission="android.permission.BIND_JOB_SERVICE"/>
+
+        <receiver android:name=".Activity.MeetingAlarm"/>
 
     </application>
 
