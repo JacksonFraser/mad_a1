@@ -11,13 +11,21 @@ import android.os.SystemClock;
 import android.support.annotation.RequiresApi;
 import android.util.Log;
 
+import com.example.s3529589.mad_a1.Database.MeetingTable;
+import com.example.s3529589.mad_a1.Model.Meeting;
 import com.example.s3529589.mad_a1.Model.MeetingAlarm;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
 
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class NotificationService extends JobService {
     private static final String TAG = SuggestMeetingService.class.getSimpleName();
     boolean isWorking = false;
     boolean jobCancelled = false;
+    private static List<UUID> alarmMeetingList = new ArrayList<>();
 
 
     // Called by the Android system when it's time to run the job
@@ -40,7 +48,19 @@ public class NotificationService extends JobService {
     }
 
     private void doWork(JobParameters jobParameters) {
-        startAlarm();
+        Date date = new Date(System.currentTimeMillis()+(60*1000)*5);
+        MeetingTable meetingTable = new MeetingTable();
+
+        boolean foundAMeeting = false;
+        for(Meeting m : meetingTable.getAllMeetings()){
+            if(date.after(m.getStartTime()) && !alarmMeetingList.contains(m.getId()) && !foundAMeeting){
+                System.out.println("THIS IS THE SIZE " + alarmMeetingList.size());
+                alarmMeetingList.add(m.getId());
+                foundAMeeting = true;
+                startAlarm();
+            }
+        }
+
         /*
         Intent it = new Intent(this, CreateMeetingPromptActivity.class);
         it.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

@@ -63,10 +63,10 @@ public class CalculateWalkingDistance extends AsyncTask<Void, Void, Void> {
 
         Friend f = findClosestFriend(friendWalkingDistanceMap);
 
-        Date startDate = new Date();
         Calendar currTime = Calendar.getInstance();
         long t = currTime.getTimeInMillis();
-        Date endDate = new Date(t + (10 * 60000));
+        Date startDate = new Date(t + (10 * 60000));
+        Date endDate = new Date(t + (10 * 120000));
 
         MeetingTable meetingTable = new MeetingTable();
         MeetingFriendTable meetingFriendTable = new MeetingFriendTable();
@@ -76,6 +76,7 @@ public class CalculateWalkingDistance extends AsyncTask<Void, Void, Void> {
             m.setLocation(midPoint.getMidPoint());
             meetingTable.addMeeting(m);
             MeetingFriend meetingFriend = new MeetingFriend(m.getId(), f.getId());
+            meetingFriendTable.addMeetingFriend(meetingFriend);
 
         } catch (InvalidMeetingInput e) {
             e.printStackTrace();

@@ -4,13 +4,16 @@ import android.Manifest;
 import android.app.job.JobInfo;
 import android.app.job.JobScheduler;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-
 import com.example.s3529589.mad_a1.Controller.friendControllers.FriendMenuController;
 import com.example.s3529589.mad_a1.Controller.meetingControllers.MeetingMenuController;
 import com.example.s3529589.mad_a1.Database.DBHelper;
@@ -23,7 +26,6 @@ import com.example.s3529589.mad_a1.Model.Meeting;
 import com.example.s3529589.mad_a1.R;
 import com.example.s3529589.mad_a1.Services.NotificationService;
 import com.example.s3529589.mad_a1.Services.SuggestMeetingService;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -33,11 +35,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        createMeetingJobScheduler();
-        createNotificationScheduler();
 
         DBHelper dbHelper = new DBHelper(this);
         DatabaseManagerSingleton.initialise(dbHelper);
+       // createMeetingJobScheduler();
+        createNotificationScheduler();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_menu);
@@ -57,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         checkPermissions();
     }
 
+
     private void checkPermissions() {
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.READ_CONTACTS)
@@ -75,8 +78,8 @@ public class MainActivity extends AppCompatActivity {
         FriendTable friendTable = new FriendTable();
         MeetingTable meetingTable = new MeetingTable();
         Calendar calendar = Calendar.getInstance();
-        Date date1 = calendar.getTime();
-        Date date2 = calendar.getTime();
+        Date date1 = new Date(System.currentTimeMillis()+(60*1000)*6);
+        Date date2 = new Date(System.currentTimeMillis()+(60*1000)*40);
 
         Friend f1 = new Friend("Bobby Jarzombek", "gmail@gmail", date1, -37.824620, 144.957029);
         Friend f2 = new Friend("Chris Dave", "newemail@me.com", date1, -37.782931, 144.911485);
@@ -124,12 +127,29 @@ public class MainActivity extends AppCompatActivity {
 
         JobInfo jobInfo = new JobInfo.Builder(13, componentName)
                 .setRequiresCharging(true)
-                .setPeriodic(12000)
+                .setPeriodic(5)
                 .build();
 
         JobScheduler jobScheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
         int resultCode = jobScheduler.schedule(jobInfo);
     }
+
+    private void setTestLocation() {
+        LocationManager mLocationManager = (LocationManager) this.getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
+        if (!mLocationManager.isProviderEnabled("gps")) {
+            System.out.println("ISNT");
+        } else {
+            Location l = new Location("gps");
+            l.setLatitude(-37.808481);
+            l.setLongitude(144.963397);
+            l.setAccuracy(100000);
+            l.setTime(System.currentTimeMillis());
+            l.setElapsedRealtimeNanos(SystemClock.elapsedRealtimeNanos());
+            mLocationManager.setTestProviderLocation("gps", l);
+        }
+
+    }
+
 
 }
 
