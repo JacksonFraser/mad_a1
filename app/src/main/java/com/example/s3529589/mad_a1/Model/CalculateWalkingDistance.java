@@ -13,8 +13,6 @@ import com.example.s3529589.mad_a1.Exceptions.InvalidMeetingInput;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
