@@ -41,11 +41,12 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = prefs.edit();
 
         // Interval between suggest a meeting
-        editor.putInt("alertInterval", 20000);
+        editor.putInt("alertInterval", 30000);
         // Interval to search if there is a meeting soon
-        editor.putInt("notificationInterval", 5);
+        editor.putInt("notificationInterval", 1);
         // How soon a meeting must be before sending a notification
-        editor.putInt("timeBeforeNotification", 180000);
+        editor.putInt("timeBeforeNotification", 540000);
+
         editor.apply();
 
         DBHelper dbHelper = new DBHelper(this);

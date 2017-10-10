@@ -62,8 +62,9 @@ public class CalculateWalkingDistance extends AsyncTask<Void, Void, Void> {
         Calendar currTime = Calendar.getInstance();
         long t = currTime.getTimeInMillis();
 
-        Date startDate = new Date(t + ((60 * 1000) * 3));
-        Date endDate = new Date(t + (60 * 1000) * 3);
+        // Creates the meeting 10 minutes from now
+        Date startDate = new Date(t + ((60 * 1000) * 10));
+        Date endDate = new Date(t + (60 * 1000) * 11);
 
         MeetingTable meetingTable = new MeetingTable();
         MeetingFriendTable meetingFriendTable = new MeetingFriendTable();
